@@ -181,12 +181,20 @@ export class ProbeClient {
       }))
         url.searchParams.set(k, v);
       let retry = false;
+      let retryDelay = attempt * 250 + Math.floor(Math.random() * 100);
       try {
         const response = await this.fetcher(url, {
           redirect: "error",
           signal: AbortSignal.timeout(this.timeoutMs),
         });
         record.status = response.status;
+        const retryAfter = response.headers.get("retry-after");
+        if (retryAfter) {
+          const delay = /^\d+$/.test(retryAfter)
+            ? Number(retryAfter) * 1000
+            : Date.parse(retryAfter) - Date.now();
+          if (Number.isFinite(delay)) retryDelay = Math.max(retryDelay, delay);
+        }
         if ([401, 403, 429].includes(response.status)) this.blocked = true;
         const reader = response.body?.getReader();
         const chunks: Uint8Array[] = [];
@@ -222,13 +230,20 @@ export class ProbeClient {
           if (record.anomalies.includes("business-envelope-unverified"))
             record.error = "Unverified business error envelope";
         }
-      } catch {
+      } catch (error) {
         record.error = "Transport, timeout, redirect, or response size failure";
+        retry =
+          attempt < 3 &&
+          (error instanceof TypeError ||
+            (error instanceof Error &&
+              ["TimeoutError", "AbortError"].includes(error.name)));
       }
       await this.capture(redact(record, this.key) as Capture);
       if (!record.error) return rowsOf(redact(record.body, this.key))!;
-      if (!retry) throw new Error(record.error);
-      await new Promise((resolve) => setTimeout(resolve, attempt * 250));
+      if (retry && this.calls >= this.budget)
+        throw new Error("Request budget exhausted");
+      if (!retry || retryDelay > 10_000) throw new Error(record.error);
+      await new Promise((resolve) => setTimeout(resolve, retryDelay));
     }
     throw new Error("Retry limit exhausted");
   }

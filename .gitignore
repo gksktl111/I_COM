@@ -36,6 +36,8 @@ yarn-error.log*
 
 # Local policy API observations (review before promoting to fixtures)
 /.local/policy-probe/
+/.local/policy-prepared/
+/.local/policy-sync/
 
 # vercel
 .vercel
@@ -43,3 +45,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Supabase CLI local cache
+/supabase/.temp/

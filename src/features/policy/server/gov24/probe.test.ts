@@ -193,3 +193,42 @@ test("business errors with data and pagination inconsistencies remain explicit",
     "currentCount-mismatch",
   ]);
 });
+
+test("transient transport retry succeeds within budget; long Retry-After is deferred", async () => {
+  let calls = 0;
+  const client = new ProbeClient(
+    "synthetic-retry",
+    2,
+    async () => {},
+    async () => {
+      if (++calls === 1) throw new TypeError("synthetic network failure");
+      return new Response(
+        JSON.stringify({
+          page: 1,
+          perPage: 5,
+          currentCount: 0,
+          totalCount: 0,
+          matchCount: 0,
+          data: [],
+        }),
+      );
+    },
+  );
+  assert.deepEqual(await client.request("serviceList", 1, 5, {}), []);
+  assert.equal(calls, 2);
+  let deferredCalls = 0;
+  const deferred = new ProbeClient(
+    "synthetic-defer",
+    3,
+    async () => {},
+    async () => {
+      deferredCalls++;
+      return new Response("{}", {
+        status: 503,
+        headers: { "Retry-After": "60" },
+      });
+    },
+  );
+  await assert.rejects(deferred.request("serviceList", 1, 5, {}), /HTTP 503/);
+  assert.equal(deferredCalls, 1);
+});

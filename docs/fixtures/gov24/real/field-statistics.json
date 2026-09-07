@@ -1,0 +1,1149 @@
+{
+  "scope": "8 selected list rows and first-run detail/conditions rows only; repeat and search candidates excluded; string length in Unicode code points",
+  "endpoints": {
+    "serviceList": {
+      "rowCount": 8,
+      "fields": {
+        "등록일시": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 14,
+          "longestExampleServiceId": "134200005012"
+        },
+        "부서명": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 9,
+          "longestExampleServiceId": "301000000124"
+        },
+        "사용자구분": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 6,
+          "longestExampleServiceId": "135200005055"
+        },
+        "상세조회URL": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 54,
+          "longestExampleServiceId": "134200005012"
+        },
+        "서비스ID": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 12,
+          "longestExampleServiceId": "134200005012"
+        },
+        "서비스명": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 34,
+          "longestExampleServiceId": "611000000155"
+        },
+        "서비스목적요약": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 48,
+          "longestExampleServiceId": "174000000029"
+        },
+        "서비스분야": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 5,
+          "longestExampleServiceId": "134200005012"
+        },
+        "선정기준": {
+          "specificationType": "string",
+          "types": {
+            "string": 4,
+            "null": 4
+          },
+          "missing": 0,
+          "null": 4,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 178,
+          "longestExampleServiceId": "134200005012"
+        },
+        "소관기관명": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 8,
+          "longestExampleServiceId": "301000000124"
+        },
+        "소관기관유형": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 6,
+          "longestExampleServiceId": "134200005012"
+        },
+        "소관기관코드": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 7,
+          "longestExampleServiceId": "134200005012"
+        },
+        "수정일시": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 14,
+          "longestExampleServiceId": "134200005012"
+        },
+        "신청기한": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 45,
+          "longestExampleServiceId": "174000000029"
+        },
+        "신청방법": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 15,
+          "longestExampleServiceId": "301000000126"
+        },
+        "전화문의": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 521,
+          "longestExampleServiceId": "135200005048"
+        },
+        "접수기관": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 4,
+          "longestExampleServiceId": "174000000029"
+        },
+        "조회수": {
+          "specificationType": "integer",
+          "types": {
+            "integer": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "지원내용": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 672,
+          "longestExampleServiceId": "135200005048"
+        },
+        "지원대상": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 222,
+          "longestExampleServiceId": "174000000029"
+        },
+        "지원유형": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 40,
+          "longestExampleServiceId": "135200005048"
+        }
+      }
+    },
+    "serviceDetail": {
+      "rowCount": 8,
+      "fields": {
+        "공무원확인구비서류": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 4,
+          "longestExampleServiceId": "134200005012"
+        },
+        "구비서류": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 183,
+          "longestExampleServiceId": "174000000029"
+        },
+        "문의처": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 521,
+          "longestExampleServiceId": "135200005048"
+        },
+        "법령": {
+          "specificationType": "string",
+          "types": {
+            "string": 4,
+            "null": 4
+          },
+          "missing": 0,
+          "null": 4,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 250,
+          "longestExampleServiceId": "135200005055"
+        },
+        "본인확인필요구비서류": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 4,
+          "longestExampleServiceId": "134200005012"
+        },
+        "서비스ID": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 12,
+          "longestExampleServiceId": "134200005012"
+        },
+        "서비스명": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 34,
+          "longestExampleServiceId": "611000000155"
+        },
+        "서비스목적": {
+          "specificationType": "string",
+          "types": {
+            "string": 6,
+            "null": 2
+          },
+          "missing": 0,
+          "null": 2,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 99,
+          "longestExampleServiceId": "611000000155"
+        },
+        "선정기준": {
+          "specificationType": "string",
+          "types": {
+            "string": 4,
+            "null": 4
+          },
+          "missing": 0,
+          "null": 4,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 178,
+          "longestExampleServiceId": "134200005012"
+        },
+        "소관기관명": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 8,
+          "longestExampleServiceId": "301000000124"
+        },
+        "수정일시": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 10,
+          "longestExampleServiceId": "134200005012"
+        },
+        "신청기한": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 45,
+          "longestExampleServiceId": "174000000029"
+        },
+        "신청방법": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 234,
+          "longestExampleServiceId": "135200005048"
+        },
+        "온라인신청사이트URL": {
+          "specificationType": "string",
+          "types": {
+            "string": 5,
+            "null": 3
+          },
+          "missing": 0,
+          "null": 3,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 100,
+          "longestExampleServiceId": "611000019644"
+        },
+        "자치법규": {
+          "specificationType": "string",
+          "types": {
+            "null": 4,
+            "string": 4
+          },
+          "missing": 0,
+          "null": 4,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 54,
+          "longestExampleServiceId": "611000019644"
+        },
+        "접수기관명": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 4,
+          "longestExampleServiceId": "174000000029"
+        },
+        "지원내용": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 672,
+          "longestExampleServiceId": "135200005048"
+        },
+        "지원대상": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 222,
+          "longestExampleServiceId": "174000000029"
+        },
+        "지원유형": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 40,
+          "longestExampleServiceId": "135200005048"
+        },
+        "행정규칙": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 36,
+          "longestExampleServiceId": "174000000029"
+        }
+      }
+    },
+    "supportConditions": {
+      "rowCount": 8,
+      "fields": {
+        "JA0101": {
+          "specificationType": "string",
+          "types": {
+            "string": 4,
+            "null": 4
+          },
+          "missing": 0,
+          "null": 4,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "134200005012"
+        },
+        "JA0102": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "134200005012"
+        },
+        "JA0110": {
+          "specificationType": "integer",
+          "types": {
+            "integer": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA0111": {
+          "specificationType": "integer",
+          "types": {
+            "integer": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA0201": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "134200005012"
+        },
+        "JA0202": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "134200005012"
+        },
+        "JA0203": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "134200005012"
+        },
+        "JA0204": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "134200005012"
+        },
+        "JA0205": {
+          "specificationType": "string",
+          "types": {
+            "string": 7,
+            "null": 1
+          },
+          "missing": 0,
+          "null": 1,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "134200005012"
+        },
+        "JA0301": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "611000019644"
+        },
+        "JA0302": {
+          "specificationType": "string",
+          "types": {
+            "null": 5,
+            "string": 3
+          },
+          "missing": 0,
+          "null": 5,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "135200005048"
+        },
+        "JA0303": {
+          "specificationType": "string",
+          "types": {
+            "null": 2,
+            "string": 6
+          },
+          "missing": 0,
+          "null": 2,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "135200005048"
+        },
+        "JA0313": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "611000019644"
+        },
+        "JA0314": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "611000019644"
+        },
+        "JA0315": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "611000019644"
+        },
+        "JA0316": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "611000019644"
+        },
+        "JA0317": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "135200005055"
+        },
+        "JA0318": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "135200005055"
+        },
+        "JA0319": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "135200005055"
+        },
+        "JA0320": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "611000019644"
+        },
+        "JA0322": {
+          "specificationType": "string",
+          "types": {
+            "string": 3,
+            "null": 5
+          },
+          "missing": 0,
+          "null": 5,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "134200005012"
+        },
+        "JA0326": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "611000019644"
+        },
+        "JA0327": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "611000019644"
+        },
+        "JA0328": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "611000019644"
+        },
+        "JA0329": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "611000019644"
+        },
+        "JA0330": {
+          "specificationType": "string",
+          "types": {
+            "null": 7,
+            "string": 1
+          },
+          "missing": 0,
+          "null": 7,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "611000019644"
+        },
+        "JA0401": {
+          "specificationType": "string",
+          "types": {
+            "null": 2,
+            "string": 6
+          },
+          "missing": 0,
+          "null": 2,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "135200005055"
+        },
+        "JA0402": {
+          "specificationType": "string",
+          "types": {
+            "null": 3,
+            "string": 5
+          },
+          "missing": 0,
+          "null": 3,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "135200005055"
+        },
+        "JA0403": {
+          "specificationType": "string",
+          "types": {
+            "null": 4,
+            "string": 4
+          },
+          "missing": 0,
+          "null": 4,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "174000000029"
+        },
+        "JA0404": {
+          "specificationType": "string",
+          "types": {
+            "null": 4,
+            "string": 4
+          },
+          "missing": 0,
+          "null": 4,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "174000000029"
+        },
+        "JA0410": {
+          "specificationType": "string",
+          "types": {
+            "string": 7,
+            "null": 1
+          },
+          "missing": 0,
+          "null": 1,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "134200005012"
+        },
+        "JA0411": {
+          "specificationType": "string",
+          "types": {
+            "null": 3,
+            "string": 5
+          },
+          "missing": 0,
+          "null": 3,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "135200005055"
+        },
+        "JA0412": {
+          "specificationType": "string",
+          "types": {
+            "null": 3,
+            "string": 5
+          },
+          "missing": 0,
+          "null": 3,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "135200005055"
+        },
+        "JA0413": {
+          "specificationType": "string",
+          "types": {
+            "null": 3,
+            "string": 5
+          },
+          "missing": 0,
+          "null": 3,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "135200005055"
+        },
+        "JA0414": {
+          "specificationType": "string",
+          "types": {
+            "null": 3,
+            "string": 5
+          },
+          "missing": 0,
+          "null": 3,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 1,
+          "longestExampleServiceId": "135200005055"
+        },
+        "JA1101": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA1102": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA1103": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA1201": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA1202": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA1299": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA2101": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA2102": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA2103": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA2201": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA2202": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA2203": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "JA2299": {
+          "specificationType": "string",
+          "types": {
+            "null": 8
+          },
+          "missing": 0,
+          "null": 8,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 0,
+          "longestExampleServiceId": null
+        },
+        "서비스ID": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 12,
+          "longestExampleServiceId": "134200005012"
+        },
+        "서비스명": {
+          "specificationType": "string",
+          "types": {
+            "string": 8
+          },
+          "missing": 0,
+          "null": 0,
+          "emptyString": 0,
+          "whitespaceOnly": 0,
+          "maxStringLength": 34,
+          "longestExampleServiceId": "611000000155"
+        }
+      }
+    }
+  }
+}

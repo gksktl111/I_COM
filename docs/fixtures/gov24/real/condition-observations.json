@@ -1,0 +1,5714 @@
+{
+  "JA0101": {
+    "officialDescription": "남성",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0102": {
+    "officialDescription": "여성",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0110": {
+    "officialDescription": "대상연령(시작)",
+    "specificationType": "integer",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": 2,
+        "type": "integer",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": 0,
+        "type": "integer",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": 2,
+        "type": "integer",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": 0,
+        "type": "integer",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": 18,
+        "type": "integer",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0111": {
+    "officialDescription": "대상연령(종료)",
+    "specificationType": "integer",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": 7,
+        "type": "integer",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": 17,
+        "type": "integer",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": 55,
+        "type": "integer",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": 60,
+        "type": "integer",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": 44,
+        "type": "integer",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": 44,
+        "type": "integer",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": 44,
+        "type": "integer",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": 55,
+        "type": "integer",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": 7,
+        "type": "integer",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": 17,
+        "type": "integer",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": 55,
+        "type": "integer",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": 60,
+        "type": "integer",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": 44,
+        "type": "integer",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": 44,
+        "type": "integer",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": 44,
+        "type": "integer",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": 55,
+        "type": "integer",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0201": {
+    "officialDescription": "중위소득 0~50%",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0202": {
+    "officialDescription": "중위소득 51~75%",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0203": {
+    "officialDescription": "중위소득 76~100%",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0204": {
+    "officialDescription": "중위소득 101~200%",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0205": {
+    "officialDescription": "중위소득 200% 초과",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0301": {
+    "officialDescription": "예비부모/난임",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0302": {
+    "officialDescription": "임산부",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0303": {
+    "officialDescription": "출산/입양",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0313": {
+    "officialDescription": "농업인",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0314": {
+    "officialDescription": "어업인",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0315": {
+    "officialDescription": "축산업인",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0316": {
+    "officialDescription": "임업인",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0317": {
+    "officialDescription": "초등학생",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0318": {
+    "officialDescription": "중학생",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0319": {
+    "officialDescription": "고등학생",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0320": {
+    "officialDescription": "대학생/대학원생",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0322": {
+    "officialDescription": "해당사항없음",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0326": {
+    "officialDescription": "근로자/직장인",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0327": {
+    "officialDescription": "구직자/실업자",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0328": {
+    "officialDescription": "장애인",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0329": {
+    "officialDescription": "국가보훈대상자",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0330": {
+    "officialDescription": "질병/질환자",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0401": {
+    "officialDescription": "다문화가족",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0402": {
+    "officialDescription": "북한이탈주민",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0403": {
+    "officialDescription": "한부모가정/조손가정",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0404": {
+    "officialDescription": "1인가구",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0410": {
+    "officialDescription": "해당사항없음",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0411": {
+    "officialDescription": "다자녀가구",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0412": {
+    "officialDescription": "무주택세대",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0413": {
+    "officialDescription": "신규전입",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA0414": {
+    "officialDescription": "확대가족",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": "Y",
+        "type": "string",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA1101": {
+    "officialDescription": "예비창업자",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA1102": {
+    "officialDescription": "영업중",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA1103": {
+    "officialDescription": "생계곤란/폐업예정자",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA1201": {
+    "officialDescription": "음식적업",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA1202": {
+    "officialDescription": "제조업",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA1299": {
+    "officialDescription": "기타업종",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA2101": {
+    "officialDescription": "중소기업",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA2102": {
+    "officialDescription": "사회복지시설",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA2103": {
+    "officialDescription": "기관/단체",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA2201": {
+    "officialDescription": "제조업",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA2202": {
+    "officialDescription": "농업,임업 및 어업",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA2203": {
+    "officialDescription": "정보통신업",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  },
+  "JA2299": {
+    "officialDescription": "기타업종",
+    "specificationType": "string",
+    "meaning": "UNKNOWN",
+    "observations": [
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:13.270Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:13.485Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:13.682Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:13.885Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:14.111Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:14.328Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:14.546Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:14.742Z",
+        "value": null,
+        "type": "null",
+        "fixture": "first/request-031.json"
+      },
+      {
+        "serviceId": "134200005012",
+        "at": "2026-09-07T17:54:47.663Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-003.json"
+      },
+      {
+        "serviceId": "135200005055",
+        "at": "2026-09-07T17:54:47.857Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-007.json"
+      },
+      {
+        "serviceId": "135200005048",
+        "at": "2026-09-07T17:54:48.063Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-011.json"
+      },
+      {
+        "serviceId": "174000000029",
+        "at": "2026-09-07T17:54:48.254Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-015.json"
+      },
+      {
+        "serviceId": "301000000124",
+        "at": "2026-09-07T17:54:48.445Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-019.json"
+      },
+      {
+        "serviceId": "301000000126",
+        "at": "2026-09-07T17:54:48.660Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-023.json"
+      },
+      {
+        "serviceId": "611000000155",
+        "at": "2026-09-07T17:54:48.845Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-027.json"
+      },
+      {
+        "serviceId": "611000019644",
+        "at": "2026-09-07T17:54:49.053Z",
+        "value": null,
+        "type": "null",
+        "fixture": "repeat/request-031.json"
+      }
+    ]
+  }
+}
