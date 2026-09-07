@@ -10,7 +10,8 @@
     "policy:probe": "node --experimental-strip-types scripts/policy/probe-gov24.ts",
     "policy:test": "node --experimental-strip-types --test src/features/policy/server/gov24/*.test.ts src/features/policy/server/*.test.ts",
     "policy:sync": "node --experimental-strip-types scripts/policy/sync.ts",
-    "policy:prepare": "node --experimental-strip-types scripts/policy/prepare.ts"
+    "policy:prepare": "node --experimental-strip-types scripts/policy/prepare.ts",
+    "policy:sync:bokjiro": "node --experimental-strip-types scripts/policy/sync-bokjiro.ts"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

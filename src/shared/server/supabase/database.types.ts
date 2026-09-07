@@ -207,6 +207,7 @@ export type Database = {
           calls: number
           finished_at: string | null
           id: string
+          provider: string
           scope: Json
           started_at: string
           status: string
@@ -217,6 +218,7 @@ export type Database = {
           calls?: number
           finished_at?: string | null
           id: string
+          provider?: string
           scope: Json
           started_at?: string
           status: string
@@ -227,6 +229,7 @@ export type Database = {
           calls?: number
           finished_at?: string | null
           id?: string
+          provider?: string
           scope?: Json
           started_at?: string
           status?: string

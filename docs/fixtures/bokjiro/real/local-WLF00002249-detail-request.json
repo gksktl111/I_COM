@@ -1,0 +1,9 @@
+{
+  "kind": "local",
+  "endpoint": "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations/LcgvWelfaredetailed",
+  "params": {
+    "servId": "WLF00002249"
+  },
+  "status": 200,
+  "at": "2026-09-07T19:24:16.634689+00:00"
+}

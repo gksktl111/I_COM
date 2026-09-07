@@ -1,5 +1,7 @@
 # 정책 수집 저장 계약 v1
 
+추가 적용: `20260907192856_policy_multiple_providers.sql`에서 provider에 BOKJIRO_CENTRAL/BOKJIRO_LOCAL을 허용하고 runs.provider와 출처별 잠금을 추가했다. RPC payload.provider는 생략 시 GOV24이며 모든 읽기·쓰기·재개에서 출처를 구분한다. 복지로 raw는 list/detail의 servId와 원문 XML을 검증한다. 기존 Gov24 계약은 유지한다. 상세 실행은 [복지로 안내](./policy-bokjiro-runbook.md)를 따른다. 아래 초기 테이블 설명의 GOV24 단일 제약은 이 추가 마이그레이션으로 확장됐다.
+
 [실응답 계약](./policy-data-contract.md)에 따른 초기 수집 전용 스키마다. 승인된 policy-dev 개발 DB에 버전20260907181933으로 적용하고 원격 검증했다. UI 공개·추천·자격 규칙 테이블은 포함하지 않는다.
 
 ## 테이블

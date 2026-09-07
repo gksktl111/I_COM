@@ -64,7 +64,7 @@ export function hashJson(value: unknown): string {
     .digest("hex");
 }
 
-function plainText(raw: string): string | null {
+export function plainText(raw: string): string | null {
   let out = "",
     hidden = 0;
   const lists: (number | null)[] = [];

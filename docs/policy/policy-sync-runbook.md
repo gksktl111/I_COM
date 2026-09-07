@@ -1,5 +1,7 @@
 # 정책 수집 실행 안내
 
+이 문서는 Gov24 실행 안내다. 복지로 중앙·지자체 수집은 [복지로 실행·재개 안내](./policy-bokjiro-runbook.md)를 따른다.
+
 초기 범위는 `scripts/policy/selection.json`의 검증된 8개 ID다. UI·추천·자격 판정과 연결하지 않는다. Node 24, `.env.local`의 `GOV24_API_KEY`, DB 실행에는 `SUPABASE_URL`/`SUPABASE_SECRET_KEY`가 필요하다. 비밀은 서버 환경에만 저장한다.
 
 ## 현재 상태와 사전 조건
