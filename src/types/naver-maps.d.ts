@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // Minimal Naver Maps (v3) types used within this project
 
-declare namespace NaverMaps {
+export namespace NaverMaps {
   class LatLng {
     constructor(lat: number, lng: number);
   }
@@ -14,10 +13,14 @@ declare namespace NaverMaps {
         zoom?: number;
       },
     );
+    setCenter(position: LatLng): void;
+    panTo(position: LatLng): void;
   }
 
   class Marker {
     constructor(options: { position: LatLng; map: Map });
+    setPosition(position: LatLng): void;
+    setMap(map: Map | null): void;
   }
 }
 

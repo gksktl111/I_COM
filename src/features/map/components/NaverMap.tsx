@@ -3,6 +3,7 @@
 import { useGeolocation } from "@/shared/hooks/useGeolocation";
 import { useEffect, useRef } from "react";
 import type { Place } from "@/features/map/types/place";
+import type { NaverMaps } from "@/types/naver-maps";
 
 export function NaverMap({
   places = [],

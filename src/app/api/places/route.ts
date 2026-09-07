@@ -9,6 +9,24 @@ type Place = {
   lng: number;
 };
 
+type KakaoPlaceDocument = {
+  id?: string;
+  place_id?: string;
+  place_name?: string;
+  name?: string;
+  category_name?: string;
+  category?: string;
+  road_address_name?: string;
+  address_name?: string;
+  x: string;
+  y: string;
+};
+
+type KakaoSearchResponse = {
+  documents?: KakaoPlaceDocument[];
+  meta?: unknown;
+};
+
 // Resolve Kakao REST key from a few common env names
 function getKakaoKey(): string | null {
   return (
@@ -94,8 +112,10 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  const data = (await r.json()) as any;
-  const docs: any[] = Array.isArray(data?.documents) ? data.documents : [];
+  const data = (await r.json()) as KakaoSearchResponse;
+  const docs: KakaoPlaceDocument[] = Array.isArray(data?.documents)
+    ? data.documents
+    : [];
   const results: Place[] = docs.map((d) => ({
     id: String(d?.id ?? d?.place_id ?? `${d?.x}-${d?.y}`),
     name: String(d?.place_name ?? d?.name ?? "").trim(),

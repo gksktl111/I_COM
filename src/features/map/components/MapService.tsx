@@ -8,13 +8,15 @@ import { useGeolocation } from "@/shared/hooks/useGeolocation";
 import type { Place } from "@/features/map/types/place";
 import { toast } from "sonner";
 
+type PlacesResponse = { results?: Place[]; error?: string };
+
 // 지도 서비스 메인 컴포넌트
 export function MapService() {
   const params = useSearchParams();
   const router = useRouter();
   const query = params.get("q")?.trim() || "";
 
-  const { location } = useGeolocation({ auto: true, desiredAccuracy: 100, maxWaitMs: 10000 });
+  const { location } = useGeolocation({ auto: true });
 
   const [results, setResults] = useState<Place[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,13 +30,13 @@ export function MapService() {
       setIsLoading(true);
       const url = `/api/places?q=${encodeURIComponent(query)}&lat=${location!.lat}&lng=${location!.lng}`;
       const res = await fetch(url);
-      const data = await res.json();
+      const data: PlacesResponse = await res.json();
       if (!res.ok) {
-        toast.error((data as any)?.error || "검색에 실패했습니다.");
+        toast.error(data?.error || "검색에 실패했습니다.");
         setResults([]);
         return;
       }
-      setResults((data as any)?.results || []);
+      setResults(data?.results || []);
       setFocus(null); // 새 검색 시 포커스 초기화
     } catch (e) {
       console.error(e);
