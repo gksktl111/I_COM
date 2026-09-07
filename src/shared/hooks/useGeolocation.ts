@@ -3,6 +3,12 @@ import { useCallback, useEffect } from "react";
 import { toast } from "sonner";
 import { useLocationStore } from "../store/location.store";
 
+type ReverseGeocodeResponse = {
+  error?: string;
+  emd?: string | null;
+  address?: string | null;
+};
+
 export function useGeolocation(options?: { auto?: boolean }) {
   const {
     location,
@@ -20,15 +26,15 @@ export function useGeolocation(options?: { auto?: boolean }) {
       try {
         setResolving(true);
         const res = await fetch(`/api/revgeo?lat=${lat}&lng=${lng}`);
-        const data = await res.json();
+        const data: ReverseGeocodeResponse = await res.json();
         if (!res.ok) {
-          const msg = (data as any)?.error || "주소 변환에 실패했습니다.";
+          const msg = data?.error || "주소 변환에 실패했습니다.";
           toast.error(msg);
           setAddress(null);
           return;
         }
         // 동/읍/면(emd) 우선으로 저장, 없으면 전체 주소
-        setAddress((data as any)?.emd ?? (data as any)?.address ?? null);
+        setAddress(data?.emd ?? data?.address ?? null);
       } catch (e) {
         console.error("Reverse geocoding failed", e);
         toast.error("주소 변환 중 오류가 발생했습니다.");
