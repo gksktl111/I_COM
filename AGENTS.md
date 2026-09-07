@@ -79,3 +79,8 @@ agent. Keep tightly coupled work local when delegation would delay the next deci
   messages only for actionable findings, not duplicate app-task completion reports.
 - The parent reviews the diff and decisive results without redoing successful work.
   Retry only for a named fix or explicit bounded transient-retry policy.
+
+### Repository workflows
+
+- For Git/GitHub operations, apply the repository-specific workflow in `.codex/skills/git-workflow/SKILL.md`.
+- When creating an issue, follow the repository's issue template if one exists.
