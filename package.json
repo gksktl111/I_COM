@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "npm run lint && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "policy:probe": "node --experimental-strip-types scripts/policy/probe-gov24.ts",
+    "policy:test": "node --experimental-strip-types --test src/features/policy/server/gov24/*.test.ts"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
