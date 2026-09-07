@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
 import { MapSidebar } from "./MapSidebar";
 import { MapView } from "./MapView";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -19,7 +19,7 @@ export function MapService() {
   const { location } = useGeolocation({ auto: true });
 
   const [results, setResults] = useState<Place[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, startTransition] = useTransition();
   const [focus, setFocus] = useState<{ lat: number; lng: number } | null>(null);
 
   const canSearch = useMemo(() => !!query && !!location, [query, location]);
@@ -27,7 +27,6 @@ export function MapService() {
   const runSearch = useCallback(async () => {
     if (!canSearch) return;
     try {
-      setIsLoading(true);
       const url = `/api/places?q=${encodeURIComponent(query)}&lat=${location!.lat}&lng=${location!.lng}`;
       const res = await fetch(url);
       const data: PlacesResponse = await res.json();
@@ -42,14 +41,12 @@ export function MapService() {
       console.error(e);
       toast.error("검색 중 오류가 발생했습니다.");
       setResults([]);
-    } finally {
-      setIsLoading(false);
     }
   }, [canSearch, query, location]);
 
   useEffect(() => {
-    runSearch();
-  }, [runSearch]);
+    startTransition(runSearch);
+  }, [runSearch, startTransition]);
 
   const handleSearch = useCallback(
     (q: string) => {
