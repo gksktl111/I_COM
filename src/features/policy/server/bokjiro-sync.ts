@@ -1,3 +1,4 @@
+import { evaluatePolicyQuality, failureQuality } from "./quality.ts";
 import { randomUUID } from "node:crypto";
 import { BokjiClient, normalizeBokji } from "./bokjiro.ts";
 import type { BokjiProvider, BokjiRaw } from "./bokjiro.ts";
@@ -171,6 +172,7 @@ export async function syncBokjiro(options: {
         externalId: id,
         errorCode: error,
         evidence,
+        quality: failureQuality(error),
       });
     items.push({ id, status: "FAILED", error });
   };
@@ -281,6 +283,27 @@ export async function syncBokjiro(options: {
           await fail(selection.id, "unverified-or-regressed-source-date");
           continue;
         }
+        const quality = evaluatePolicyQuality(
+          raw,
+          normalized,
+          current?.normalized,
+        );
+        if (quality.status === "ERROR") {
+          if (!dry)
+            await command("fail", {
+              ...fence,
+              externalId: selection.id,
+              errorCode: "quality-check-failed",
+              evidence: raw.evidence,
+              quality,
+            });
+          items.push({
+            id: selection.id,
+            status: "FAILED",
+            error: "quality-check-failed",
+          });
+          continue;
+        }
         if (!dry)
           await command("apply", {
             ...fence,
@@ -288,6 +311,7 @@ export async function syncBokjiro(options: {
             snapshotId,
             normalized,
             changes,
+            quality,
           });
         items.push({ id: selection.id, status: "SUCCESS", changes });
       } catch {

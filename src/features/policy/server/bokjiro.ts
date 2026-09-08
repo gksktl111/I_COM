@@ -426,13 +426,25 @@ export function normalizeBokji(raw: BokjiRaw) {
     }),
     displayHash: hashJson(display),
     conditionsHash: hashJson({
-      target: d[central ? "tgtrDtlCn" : "sprtTrgtCn"] ?? null,
-      criteria: d.slctCritCn ?? null,
-      classification,
+      list: conditionEvidence(l),
+      detail: conditionEvidence(d),
     }),
-    normalizerVersion: "bokjiro-1",
+    normalizerVersion: "bokjiro-2",
     hashVersion: "sha256-sorted-json-v1",
   };
+}
+/**
+ * Conservative review signal, not an eligibility verdict: benefits, procedures,
+ * dates and nested legal/form/link context can all carry conditions. Include new
+ * source fields by default; exclude only known view counts and response metadata.
+ * Whole-page XML and capture telemetry are not evidence for this policy's rules.
+ */
+function conditionEvidence(row: Row): Row {
+  return Object.fromEntries(
+    Object.entries(row).filter(
+      ([key]) => !["inqNum", "resultCode", "resultMessage"].includes(key),
+    ),
+  );
 }
 function rows(value: unknown): Row[] {
   if (value == null || value === "") return [];

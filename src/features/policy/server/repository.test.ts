@@ -27,6 +27,22 @@ test("Data API sends private headers only to configured host and hides upstream 
       repository.command("current", { externalId: "id" }),
       (e) => e instanceof Error && e.message === "database-http-403",
     );
+    let applied: Record<string, unknown> = {};
+    const writer = createRepository(async (_url, init) => {
+      applied = JSON.parse(String(init?.body)).p_payload;
+      return Response.json({ status: "SUCCESS" });
+    });
+    await writer.command("apply", {
+      normalized: {
+        display: { name: "어업경영자금 지원", target_text: "어업 경영자" },
+      },
+      relevance: { status: "RELATED" },
+    });
+    assert.equal(
+      (applied.relevance as { status: string }).status,
+      "UNRELATED",
+      "all apply callers receive evaluated relevance, not a caller-provided label",
+    );
     process.env.SUPABASE_URL = "https://example.supabase.co.attacker.invalid";
     assert.throws(() => createRepository(), /invalid-supabase-url/);
   } finally {

@@ -1,6 +1,8 @@
 # 복지로 수집·저장 결과와 재개 안내
 
-기준일: 2026-09-08 · **중앙 2개·서울 중구 2개 개발 DB 저장 완료**
+기준일: 2026-09-08 · **중앙 2개·서울 중구 2개 개발 DB 저장 및 v2 재처리 완료**
+
+최신 자동 범위 확장과 품질 저장 결과는 [자동 수집·품질 운영 계약](./policy-automatic-quality.md)을 참조한다. 아래 4개 표본·12개 레코드 건수는 최초 구현 시점의 기록이며 현재 전체 건수가 아니다.
 
 ## 현재 결과
 
@@ -63,15 +65,53 @@ POLICY_SYNC_ENABLED=true npm run policy:sync:bokjiro -- --provider local --resum
 남은 한계:
 
 - rawHash에는 해당 목록 페이지의 전체 XML도 포함된다. 다른 목록 행·조회수 변화가 해당 정책의 새 원본 스냅샷을 만들 수 있다. 정확히 같은 저장 원본 재처리의 중복 방지는 확인했으며, 의미 기준 중복 제거와는 다르다.
-- conditionsHash는 현재 대상·선정기준·분류만 비교한다. 지원내용·신청방법 속 조건 변화까지 포괄하지 않으므로, **향후 검색 규칙 재검수 여부를 이 해시만으로 결정하면 안 된다.** 원본 변경을 보수적으로 확인하고 조건 근거 범위를 확장해야 한다.
+- v1 조건 해시의 대상·선정기준·분류 한정 문제는 v2의 목록·상세 근거 확장으로 보완하고 원격 4개에 반영했다. **해시 일치만으로 규칙 검수 완료를 유지하지 않는다.** 원본 변경·공식 근거의 현행성은 별도로 확인한다.
 - 중앙은 기준연도만 있어 동일 연도 내 수정의 선후 관계를 보장하지 않는다. 지자체는 목록·상세 수정일의 달력 형식과 역전을 검사한다. 공식 접수·현행 자격 유효성은 별도 검수다.
 - 실패 항목은 원본·표시가 유지되지만, 실행 중단 전에 소비한 호출 수는 finish 성공 여부에 따라 기록이 부족할 수 있다. 포털 호출량이 기준이다.
 - 이번 저장은 표본 4개다. 전체 복지로 수집·출처 간 동일 정책 병합·검색 규칙 검수·UI·예약 실행은 미완료다.
 
-## 내일 시작할 작업
+## 다음 작업
 
-1. **오늘 변경사항 diff 검토 후 커밋:** 마지막 기존 커밋은 `887ac7c`; 이후 환경변수 한글 정리와 복지로 구현·마이그레이션·fixture·문서 변경은 아직 커밋하지 않았다. 원격 DB 적용은 이미 완료됐으므로 Git 미커밋과 혼동하지 않는다.
-2. **복지로 4개 적합성 검증:** 원본과 저장 표시값을 FR-06~10으로 대조한다. Gov24와 겹치는 중구 2개는 조건·금액·시점 차이를 기록하고 자동 병합하지 않는다.
-3. **변경 판별 보완:** conditionsHash의 근거 필드를 지원내용·신청방법 등으로 넓히고 정제 버전을 올린 뒤 저장 원본 재처리한다. 목록 전체 XML을 증거 영역에 분리할 경우 해시·충돌 검사 계약을 함께 설계한다.
-4. **검수된 비교 규칙 준비:** 인물·지역·월령·소득·임신/출산·하위 서비스·급여 분기를 근거 문장과 연결한다. 모호한 값은 미해결로 유지한다.
-5. 표본 검증 후 수집 범위 확대, 이후 두 단계 검색 입력·비교 기능·UI 연결을 진행한다. 예약 배포는 플랫폼·URL·호출 예산 확인 후 별도 진행한다.
+1. **복지로 구현 커밋 완료:** `8cefec8`에 수집·마이그레이션·fixture·문서를 커밋했다. 현재 `origin/dev`를 fetch해 작업 브랜치에 포함됨을 확인했다. 원격 마이그레이션은 재적용하지 않는다.
+2. **4개 표본 적합성 대조 완료:** [검토 결과](./policy-bokjiro-fitness.md)와 [기계 대조](../fixtures/bokjiro/fitness/stored-audit.json)를 참조한다. 커밋 XML과 저장 표시값 56개를 대조했다. 현재 DB와 저장 검증 파일의 표시값·스냅샷·버전 일치는 원본을 내보내지 않는 [boolean 검사](../fixtures/bokjiro/fitness/current-display-validation.json)로 확인했다. 원격 적용 원본 전체 대조와 혼동하지 않는다.
+3. **원격 원본 감사·v2 재처리 완료:** 사용자 승인 후 `policy-dev`의 선정 4개를 Git 제외 파일로 읽어 기존 전체 v1 정제 일치와 v2 예상 변경을 확인했다. 출처별 dry-run 후 기존 수집기로 반영했으며 전체 v2 재실행 일치, 원본·표시·적용 스냅샷 불변, 스냅샷 수 유지, Gov24 불변·잠금 해제를 확인했다. [원본/정제 감사](../fixtures/bokjiro/fitness/reprocess-v2-audit.json), [DB 검증](../fixtures/bokjiro/fitness/reprocess-v2-database.json)을 참조한다.
+4. **조건 근거 후보·미해결 항목:** 복지로 4개 후보는 검토 문서에 인물·범위·단위·경계·기준일과 연결했다. 중구 장애인 지원금의 경증 금액(100/120만원)과 거주·신청 시점 차이는 공식 근거 검수 전 병합하지 않는다. 검수 완료 비교 규칙은 아직 없다.
+5. 공식 근거 검수와 표본 검증을 마친 뒤 수집 범위 확대, 두 단계 검색 입력·비교 기능·UI 연결을 진행한다. 예약 배포는 플랫폼·URL·호출 예산 확인 후 별도 진행한다.
+
+### 정제 v2 변경 계약
+
+`conditionsHash`는 선택된 정책의 파싱된 목록·상세 전체에서 `inqNum`, `resultCode`, `resultMessage`만 제외한 값을 해시한다. 지원내용·신청방법·시행/기준/수정 시점·법령·서식·미지 신규 필드까지 보수적으로 변경을 감지한다. 해시 변경은 재검수 신호이며 자격이 실제 변경되었다는 판정은 아니다. 원본 변경도 계속 확인하며, 이 해시만으로 검수 완료를 유지하지 않는다.
+
+목록 페이지 전체 XML과 수집 evidence는 조건 해시에서 제외한다. 기존 `rawHash` 계약은 유지하므로 다른 행·조회수 변화가 새 스냅샷을 만들 수 있는 기존 한계는 남는다. 이 변경으로 DB 스키마를 추가하거나 기존 스냅샷을 교체하지 않는다.
+
+```bash
+# 오프라인 표본 감사: API·DB·인증키 사용 없음
+node --experimental-strip-types scripts/policy/audit-bokjiro.ts \
+  docs/fixtures/bokjiro/stored-validation.json /tmp/bokjiro-audit.json
+
+# 승인 후 실행 완료한 v2 재처리 명령 (완료 확인을 위해 반복 실행할 필요 없음)
+npm run policy:sync:bokjiro -- --provider central --reprocess --dry-run
+npm run policy:sync:bokjiro -- --provider local --reprocess --dry-run
+POLICY_SYNC_ENABLED=true npm run policy:sync:bokjiro -- --provider central --reprocess
+POLICY_SYNC_ENABLED=true npm run policy:sync:bokjiro -- --provider local --reprocess
+```
+
+### 이번 로컬 검증 (2026-09-08)
+
+- `npm run policy:test`: 기존 10개 파일 모두 통과. v2 근거 필드 변화·재실행 안정성·조회수/페이지 XML 분리 회귀 검증 포함.
+- `npx tsc --noEmit`, `npm run lint`: 통과.
+- 오프라인 감사: 표시 재실행 4/4 일치, 56필드 중 공백 외 차이 3개는 숫자 문자 참조 디코딩으로 설명되며 미설명 차이 0개. 신청기한을 1년에서 2년으로 바꾼 임시 입력은 정확히 1개 차이와 exit 1로 거절했다.
+- 이번에는 전체 빌드를 실행하지 않았다. 기존 빌드 환경 제한이나 배포 성공을 해결했다고 보고하지 않는다.
+- 원격 재처리: 중앙 `08dbb860-cdac-4172-91eb-90a4d1334f26`, 지역 `0a402082-1e3a-46a4-840f-616ccde0afb5`, 각각 SUCCESS 2·API 0회·실패/미완료 0. DB에서 종료 시각과 잠금 해제 확인.
+- 원본 해시·전체 원본·수집 시각·적용 스냅샷·표시 해시는 4/4 유지, 조건 해시·정제 버전만 변경. 전체 v1/v2 정제 재실행 일치 4/4. 스냅샷 총 12개 유지, Gov24 8개 전체 행 지문 불변.
+- 첫 샌드박스 dry-run은 DNS `EAI_AGAIN`으로 실패했고 DB 쓰기는 없었다. 네트워크 권한으로 동일 dry-run을 재실행해 통과한 뒤 반영했다.
+- 검증 스크립트는 반영 후 지원내용을 훼손한 임시 입력을 거절했다. 새 스크립트 추가 후 TypeScript·해당 ESLint 통과. 제품 코드 입력이 같아 이미 통과한 정책 테스트는 반복하지 않았다.
+
+원격 내보내기는 `.local/policy-sync/fitness/bokjiro-v1-before.json`, `bokjiro-v2-after.json`에 권한 600으로 보관하며 Git에서 제외한다. 공개 근거 파일에는 원본 대신 ID·해시·동등성 결과만 기록했다.
+
+```bash
+node --experimental-strip-types scripts/policy/verify-bokjiro-reprocess.ts \
+  .local/policy-sync/fitness/bokjiro-v1-before.json \
+  .local/policy-sync/fitness/bokjiro-v2-after.json \
+  /tmp/bokjiro-v2-verification.json
+```

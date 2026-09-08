@@ -1,0 +1,35 @@
+{
+  "verifiedAt": "2026-09-08 05:14:45 UTC",
+  "projectRef": "visumyadkxleiqtxokqg",
+  "scope": "Read-only DB equality against committed stored-validation.json: current applied snapshot, full display JSON and normalizer version. No raw export or DB mutation.",
+  "policies": [
+    {
+      "provider": "BOKJIRO_CENTRAL",
+      "external_id": "WLF00000024",
+      "snapshot_matches": true,
+      "display_matches": true,
+      "version_matches": true
+    },
+    {
+      "provider": "BOKJIRO_CENTRAL",
+      "external_id": "WLF00000030",
+      "snapshot_matches": true,
+      "display_matches": true,
+      "version_matches": true
+    },
+    {
+      "provider": "BOKJIRO_LOCAL",
+      "external_id": "WLF00002249",
+      "snapshot_matches": true,
+      "display_matches": true,
+      "version_matches": true
+    },
+    {
+      "provider": "BOKJIRO_LOCAL",
+      "external_id": "WLF00002340",
+      "snapshot_matches": true,
+      "display_matches": true,
+      "version_matches": true
+    }
+  ]
+}

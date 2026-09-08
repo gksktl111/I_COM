@@ -39,6 +39,9 @@ yarn-error.log*
 /.local/policy-prepared/
 /.local/policy-sync/
 
+# Local administrator provisioning credentials
+/.local/admin/
+
 # vercel
 .vercel
 

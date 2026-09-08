@@ -1,3 +1,4 @@
+import { evaluatePolicyQuality, failureQuality } from "./quality.ts";
 import { randomUUID } from "node:crypto";
 import { collectSelection, validateSelection } from "./collect.ts";
 import type { CollectionOptions, Selection } from "./collect.ts";
@@ -120,6 +121,7 @@ export async function syncPolicies(options: SyncOptions) {
         externalId: selection.id,
         errorCode,
         evidence,
+        quality: failureQuality(errorCode),
       });
     items.push({ id: selection.id, status: "FAILED", error: errorCode });
   };
@@ -169,6 +171,27 @@ export async function syncPolicies(options: SyncOptions) {
       await fail(selection, hold, bundle.evidence);
       return;
     }
+    const quality = evaluatePolicyQuality(
+      bundle,
+      normalized,
+      current?.normalized,
+    );
+    if (quality.status === "ERROR") {
+      if (!dryRun)
+        await repository.command("fail", {
+          ...fence,
+          externalId: selection.id,
+          errorCode: "quality-check-failed",
+          evidence: bundle.evidence,
+          quality,
+        });
+      items.push({
+        id: selection.id,
+        status: "FAILED",
+        error: "quality-check-failed",
+      });
+      return;
+    }
     const changes = compareNormalized(current?.normalized ?? null, normalized);
     try {
       if (!dryRun)
@@ -178,6 +201,7 @@ export async function syncPolicies(options: SyncOptions) {
           snapshotId,
           normalized,
           changes,
+          quality,
         });
     } catch {
       await fail(selection, "policy-apply-failed", bundle.evidence);

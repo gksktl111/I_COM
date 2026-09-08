@@ -1,0 +1,6 @@
+{
+  "filters": { "srchKeyCode": "003", "searchWrd": "양육" },
+  "perPage": 5,
+  "maxPages": 1000,
+  "dailyLimit": 100
+}

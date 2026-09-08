@@ -1,4 +1,4 @@
-# 정책 수집 저장 계약 v1
+# 정책 수집 저장 계약 v1 및 자동 수집 확장
 
 추가 적용: `20260907192856_policy_multiple_providers.sql`에서 provider에 BOKJIRO_CENTRAL/BOKJIRO_LOCAL을 허용하고 runs.provider와 출처별 잠금을 추가했다. RPC payload.provider는 생략 시 GOV24이며 모든 읽기·쓰기·재개에서 출처를 구분한다. 복지로 raw는 list/detail의 servId와 원문 XML을 검증한다. 기존 Gov24 계약은 유지한다. 상세 실행은 [복지로 안내](./policy-bokjiro-runbook.md)를 따른다. 아래 초기 테이블 설명의 GOV24 단일 제약은 이 추가 마이그레이션으로 확장됐다.
 
@@ -35,3 +35,16 @@
 모든 쓰기는 동일 잠금 행을 FOR UPDATE로 잠그고 소유자·세대·유효기간을 다시 확인한다. 종료된 실행의 뒤늦은 쓰기는 거부한다. HTTP 동안 DB 트랜잭션을 유지하지 않고 API 요청 전 heartbeat를 수행한다. 프로세스 중단은 임대 만료 후 동일 실행 재개, SUCCESS 항목은 건너뛰고 나머지는 세 API를 새로 수집한다. 미완료 원본을 새 응답과 섞지 않는다.
 
 원격 적용·생성 타입·역할별 권한·실제 수집 재실행·동시 실행 결과는 [검증 보고서](./policy-sync-validation.md)에 기록했다. 로컬 PGlite는 PostgreSQL SQL 의미 검증에 사용하되 단일 연결이므로 실제 다중 연결 경합을 검증했다고 주장하지 않는다. Supabase Data API 권한과 네트워크 통합도 별도로 검증한다.
+
+## 자동 수집·품질 확장 (2026-09-08)
+
+`20260908053334_policy_automatic_quality.sql` 적용 완료. [자동 수집·품질 운영 계약](./policy-automatic-quality.md)이 확장 동작의 기준이다.
+
+- `policy_auto_jobs`: 자동 실행별 설정·다음 페이지·기대/발견 건수·전체 탐색 완료·정지 사유.
+- `policy_auto_pages`: 실행/페이지별 원본 목록·ID·캡처 시점. 페이지 저장과 동적 항목 생성이 원자적이다.
+- `policy_api_daily_usage`: 출처/UTC 일별 보수적 호출 예약량·설정 상한.
+- `policy_quality_observations`: 실행 항목별 누적 품질 관찰, 스냅샷 연결·평가 버전·상태·필수값 통계·구조화 이슈.
+- 실행에 `collection_mode` 추가, 자동 탐색 전 빈 scope 허용. 기존 선택 수집의 비어 있지 않은 scope 제약 유지.
+- 새 RPC wrapper는 기존 `policy_sync_command_v2`의 잠금·원본·반영 로직을 재사용한다. apply/fail과 품질 관찰은 같은 트랜잭션이다. 자동 finish는 전체 탐색 완료·미완료 항목 0을 요구한다.
+- `policy_admin_report`는 overview/runs/quality 서버 조회와 커서 페이지를 제공하며 raw·XML·normalized를 반환하지 않는다.
+- 새 테이블 RLS 활성화, anon/authenticated 권한 없음, service_role만 호출 가능. FK·실행/출처/상태·커서·이슈 조회 인덱스를 둔다.

@@ -156,6 +156,88 @@ test("normalization rejects mismatched identity and preserves lists and effectiv
   assert.throws(() => normalizeBokji(r), /name mismatch/);
 });
 
+for (const provider of ["BOKJIRO_LOCAL", "BOKJIRO_CENTRAL"] as const) {
+  test(`${provider} condition evidence detects benefit, procedure, date and source context changes`, () => {
+    const original = raw();
+    original.provider = provider;
+    const baseline = normalizeBokji(original);
+    const changes = [
+      ["detail", "alwServCn", "출생 후 12개월 이내 신청 시 100만원 지급"],
+      ["detail", "aplyMtdCn", "출생 후 6개월 이내 주민센터 방문 신청"],
+      [
+        "detail",
+        "applmetList",
+        [{ servSeDetailNm: "30일 이내 신청", servSeDetailLink: "https://example.org/apply" }],
+      ],
+      ["detail", "enfcBgngYmd", "20260701"],
+      ["detail", "enfcEndYmd", "20261231"],
+      ["list", "crtrYr", "2027"],
+      ["detail", "lastModYmd", "20260908"],
+      ["list", "lastModYmd", "20260909"],
+      [
+        "detail",
+        "baslawList",
+        [{ wlfareInfoReldNm: "지원 조례", wlfareInfoReldCn: "거주 6개월 이상" }],
+      ],
+      [
+        "detail",
+        "basfrmList",
+        [{ wlfareInfoReldNm: "신청서", wlfareInfoReldCn: "거주 확인서 첨부" }],
+      ],
+      ["list", "servDgst", "중구 거주 6개월 이상 가구 지원"],
+      ["detail", "ctpvNm", "서울특별시"],
+      ["detail", "sprtCycNm", "월"],
+      ["detail", "lifeArray", "영유아"],
+      ["detail", "newConditionField", "소득 기준 추가"],
+    ] as const;
+    for (const [endpoint, field, value] of changes) {
+      const changed = structuredClone(original);
+      const row = endpoint === "list" ? changed.list : changed.detail[0];
+      row[field] = value;
+      assert.notEqual(
+        normalizeBokji(changed).conditionsHash,
+        baseline.conditionsHash,
+        `${endpoint}.${field} must trigger review`,
+      );
+    }
+    const replay = structuredClone(original);
+    replay.list = Object.fromEntries(Object.entries(replay.list).reverse());
+    replay.detail[0] = Object.fromEntries(
+      Object.entries(replay.detail[0]).reverse(),
+    );
+    assert.equal(normalizeBokji(replay).conditionsHash, baseline.conditionsHash);
+    assert.equal(normalizeBokji(replay).rawHash, baseline.rawHash);
+    assert.equal(baseline.normalizerVersion, "bokjiro-2");
+  });
+}
+
+test("condition evidence excludes telemetry and page XML while preserving raw snapshot identity", () => {
+  const original = raw();
+  original.list.inqNum = "100";
+  original.detail[0].inqNum = "100";
+  original.detail[0].resultCode = "0";
+  original.detail[0].resultMessage = "정상";
+  const baseline = normalizeBokji(original);
+  const changed = structuredClone(original);
+  changed.list.inqNum = "101";
+  changed.detail[0].inqNum = "102";
+  changed.detail[0].resultMessage = "정상 처리";
+  changed.xml.list = "page containing changed unrelated service rows";
+  changed.evidence = [{ capturedAt: "2026-09-08T00:00:00Z", status: 200 }];
+  const next = normalizeBokji(changed);
+  assert.equal(next.conditionsHash, baseline.conditionsHash);
+  assert.equal(next.displayHash, baseline.displayHash);
+  assert.notEqual(next.rawHash, baseline.rawHash);
+
+  const recaptured = structuredClone(original);
+  recaptured.evidence = changed.evidence;
+  assert.equal(normalizeBokji(recaptured).rawHash, baseline.rawHash);
+  const pageChanged = structuredClone(original);
+  pageChanged.xml.list = changed.xml.list;
+  assert.notEqual(normalizeBokji(pageChanged).rawHash, baseline.rawHash);
+  assert.equal(normalizeBokji(pageChanged).conditionsHash, baseline.conditionsHash);
+});
+
 for (const [provider, prefix, id, listFile, expected] of [
   [
     "BOKJIRO_CENTRAL",

@@ -1,0 +1,91 @@
+{
+  "verifiedAt": "2026-09-08 05:21:27 UTC",
+  "projectRef": "visumyadkxleiqtxokqg",
+  "gov24Unchanged": true,
+  "beforeCounts": [
+    {
+      "provider": "BOKJIRO_CENTRAL",
+      "policies": 2,
+      "policy_fingerprint": "cdd4dbaaa81e81fe70f1bffb2e5b281e",
+      "snapshots": 2
+    },
+    {
+      "provider": "BOKJIRO_LOCAL",
+      "policies": 2,
+      "policy_fingerprint": "588cc4019ee5da1573a3d074d4d6d293",
+      "snapshots": 2
+    },
+    {
+      "provider": "GOV24",
+      "policies": 8,
+      "policy_fingerprint": "a2bdc79f9ec89b042bdeb7df84cd29c2",
+      "snapshots": 8
+    }
+  ],
+  "runs": [
+    {
+      "id": "08dbb860-cdac-4172-91eb-90a4d1334f26",
+      "calls": 0,
+      "status": "SUCCESS",
+      "summary": {
+        "failed": 0,
+        "status": "SUCCESS",
+        "pending": 0,
+        "success": 2,
+        "errorCode": null
+      },
+      "trigger": "reprocess",
+      "provider": "BOKJIRO_CENTRAL",
+      "finished_at": "2026-09-08T05:20:21.894335+00:00"
+    },
+    {
+      "id": "0a402082-1e3a-46a4-840f-616ccde0afb5",
+      "calls": 0,
+      "status": "SUCCESS",
+      "summary": {
+        "failed": 0,
+        "status": "SUCCESS",
+        "pending": 0,
+        "success": 2,
+        "errorCode": null
+      },
+      "trigger": "reprocess",
+      "provider": "BOKJIRO_LOCAL",
+      "finished_at": "2026-09-08T05:20:38.527954+00:00"
+    }
+  ],
+  "locks": [
+    {
+      "name": "BOKJIRO_CENTRAL",
+      "owner": null
+    },
+    {
+      "name": "BOKJIRO_LOCAL",
+      "owner": null
+    },
+    {
+      "name": "GOV24",
+      "owner": null
+    }
+  ],
+  "counts": [
+    {
+      "policies": 2,
+      "provider": "BOKJIRO_CENTRAL",
+      "snapshots": 2,
+      "policy_fingerprint": "937a922a152ab60f59d1236812a27a1c"
+    },
+    {
+      "policies": 2,
+      "provider": "BOKJIRO_LOCAL",
+      "snapshots": 2,
+      "policy_fingerprint": "5374277437cac334317cdd62d3221827"
+    },
+    {
+      "policies": 8,
+      "provider": "GOV24",
+      "snapshots": 8,
+      "policy_fingerprint": "a2bdc79f9ec89b042bdeb7df84cd29c2"
+    }
+  ]
+}
