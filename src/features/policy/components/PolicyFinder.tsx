@@ -1,119 +1,218 @@
-import { FileText, Search, Calendar, Users, Heart } from "lucide-react";
+"use client";
+import Link from "next/link";
+import { useMemo, useState } from "react";
+import {
+  ArrowRight,
+  MapPin,
+  RotateCcw,
+  Search,
+  SlidersHorizontal,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Chip } from "@/components/ui/chip";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-
-// 정책 찾기 메인 컴포넌트
+import { Select } from "@/components/ui/select";
+import {
+  INTERESTS,
+  matchesInterests,
+  policyText,
+  REGIONS,
+} from "../public/types";
+import {
+  CatalogState,
+  Pagination,
+  PolicyCard,
+  PolicyNotice,
+  usePolicyCatalog,
+} from "./PolicyShared";
 export function PolicyFinder() {
-  // 인기 정책 카테고리 정의
-  const policyCategories = [
-    "육아휴직",
-    "보육료 지원",
-    "출산 지원금",
-    "아동수당",
-    "의료비 지원",
-    "양육수당",
-  ];
-
+  const catalog = usePolicyCatalog();
+  const [query, setQuery] = useState("");
+  const [keyword, setKeyword] = useState("");
+  const [interest, setInterest] = useState("");
+  const [region, setRegion] = useState("");
+  const [sort, setSort] = useState("name");
+  const [page, setPage] = useState(1);
+  const filtered = useMemo(
+    () =>
+      catalog.items
+        .filter(
+          (policy) =>
+            policyText(policy).toLowerCase().includes(keyword.toLowerCase()) &&
+            matchesInterests(policy, interest ? [interest] : []) &&
+            (!region ||
+              policyText(policy).includes(
+                region.replace(/특별자치도|특별자치시|특별시|광역시|도$/g, ""),
+              )),
+        )
+        .sort((a, b) =>
+          sort === "updated"
+            ? (b.updated_at ?? "").localeCompare(a.updated_at ?? "")
+            : a.name.localeCompare(b.name, "ko"),
+        ),
+    [catalog.items, keyword, interest, region, sort],
+  );
+  function reset() {
+    setQuery("");
+    setKeyword("");
+    setInterest("");
+    setRegion("");
+    setPage(1);
+  }
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* 페이지 헤더 */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">정책 찾기</h1>
-          <p className="text-lg text-gray-600">
-            육아와 가족을 위한 정부 지원 정책을 쉽게 찾아보세요
+    <main
+      id="main-content"
+      className="mx-auto max-w-[1200px] px-5 py-8 md:px-8 md:py-12"
+    >
+      <div className="mb-8 flex flex-wrap items-end justify-between gap-5">
+        <div>
+          <p className="text-primary mb-2 text-xs font-semibold">
+            우리 가족을 위한 공공 지원 정보
+          </p>
+          <h1 className="text-[28px] leading-tight font-bold">정책 둘러보기</h1>
+          <p className="mt-3 text-sm text-slate-500">
+            정부와 지자체의 다양한 육아·가족 지원 정책을 한곳에서 살펴보세요.
           </p>
         </div>
-
-        {/* 검색 영역 */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
-          <div className="relative max-w-2xl mx-auto">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <Input
-              type="text"
-              placeholder="지원 정책명이나 키워드를 입력하세요"
-              className="pl-12 pr-4 py-3 text-lg"
-            />
-            <Button
-              size="lg"
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-sky-500 hover:bg-sky-600"
-            >
-              검색
-            </Button>
-          </div>
-        </div>
-
-        {/* 인기 정책 카테고리 */}
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4 text-center">
-            인기 정책 분야
-          </h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {policyCategories.map((category, index) => (
-              <Badge
-                key={index}
-                variant="secondary"
-                className="bg-sky-50 text-sky-700 hover:bg-sky-100 cursor-pointer transition-colors px-4 py-2 rounded-full border border-sky-200"
-              >
-                {category}
-              </Badge>
+        <Button asChild variant="outline">
+          <Link href="/policy/match">
+            우리 가족 맞춤 정책 찾기
+            <ArrowRight />
+          </Link>
+        </Button>
+      </div>
+      <section
+        aria-label="정책 검색 필터"
+        className="mb-8 rounded-xl border bg-white p-5 md:p-6"
+      >
+        <div className="flex flex-wrap items-center gap-3">
+          <label
+            htmlFor="policy-region"
+            className="flex items-center gap-2 text-sm font-semibold"
+          >
+            <MapPin className="text-primary size-4" />
+            지역 키워드
+          </label>
+          <Select
+            id="policy-region"
+            value={region}
+            onChange={(event) => {
+              setRegion(event.target.value);
+              setPage(1);
+            }}
+            className="w-48"
+          >
+            <option value="">전체 지역</option>
+            {REGIONS.map((name) => (
+              <option key={name}>{name}</option>
             ))}
-          </div>
+          </Select>
+          <Button
+            variant="ghost"
+            className="ml-auto text-slate-500"
+            onClick={reset}
+          >
+            <RotateCcw />
+            필터 초기화
+          </Button>
         </div>
-
-        {/* 정책 카테고리 그리드 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <Heart className="w-6 h-6 text-blue-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              출산 및 육아 지원
-            </h3>
-            <p className="text-gray-600 text-sm">
-              출산 지원금, 육아휴직, 보육료 지원 등
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer">
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-              <Users className="w-6 h-6 text-green-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              가족 복지
-            </h3>
-            <p className="text-gray-600 text-sm">
-              아동수당, 가족돌봄휴가, 양육수당 등
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer">
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-              <Calendar className="w-6 h-6 text-purple-600" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              의료 및 건강
-            </h3>
-            <p className="text-gray-600 text-sm">
-              의료비 지원, 건강검진, 예방접종 등
-            </p>
-          </div>
+        <div className="my-5 flex flex-wrap items-center gap-2">
+          <span className="mr-3 text-sm font-semibold">관심 분야</span>
+          {["전체", ...INTERESTS].map((name) => (
+            <Chip
+              key={name}
+              selected={interest === (name === "전체" ? "" : name)}
+              onClick={() => {
+                setInterest(name === "전체" ? "" : name);
+                setPage(1);
+              }}
+            >
+              {name}
+            </Chip>
+          ))}
         </div>
-
-        {/* 최신 정책 뉴스 */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            최신 정책 소식
-          </h2>
-          <div className="text-center py-8">
-            <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-500">
-              최신 정책 정보가 업데이트될 예정입니다
-            </p>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            setKeyword(query.trim());
+            setPage(1);
+          }}
+          className="flex gap-2"
+        >
+          <div className="relative flex-1">
+            <Search className="absolute top-3.5 left-3 size-4 text-slate-400" />
+            <Input
+              aria-label="정책 검색어"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="정책명, 지원 내용, 기관명으로 검색해 보세요"
+              className="pl-10"
+            />
           </div>
+          <Button type="submit">검색</Button>
+        </form>
+        <p className="mt-3 text-xs leading-5 text-slate-500">
+          지역과 분야는 정책 원문 속 단어로 검색합니다. 실제 적용 지역과 신청
+          자격은 상세 요건을 확인해 주세요.
+        </p>
+      </section>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm font-semibold" aria-live="polite">
+          검색 결과{" "}
+          <span className="text-primary">
+            {filtered.length.toLocaleString()}
+          </span>
+          건
+          {catalog.nextOffset !== null && (
+            <span className="ml-2 font-normal text-slate-500">
+              불러온 정책 기준
+            </span>
+          )}
+        </p>
+        <div className="flex items-center gap-2">
+          <SlidersHorizontal className="size-4 text-slate-400" />
+          <Select
+            aria-label="정책 정렬"
+            value={sort}
+            onChange={(event) => {
+              setSort(event.target.value);
+              setPage(1);
+            }}
+            className="w-40"
+          >
+            <option value="name">정책명순</option>
+            <option value="updated">저장 정보 변경순</option>
+          </Select>
         </div>
       </div>
-    </div>
+      <CatalogState
+        loading={catalog.loading}
+        error={catalog.error}
+        empty={!filtered.length}
+        retry={catalog.reload}
+      />
+      {!catalog.loading &&
+        !catalog.error &&
+        filtered
+          .slice((page - 1) * 8, page * 8)
+          .map((policy) => <PolicyCard key={policy.id} policy={policy} />)}
+      <Pagination
+        page={page}
+        total={Math.ceil(filtered.length / 8)}
+        onChange={setPage}
+      />
+      {catalog.nextOffset !== null && (
+        <div className="mt-6 text-center">
+          <Button
+            variant="outline"
+            disabled={catalog.loading}
+            onClick={catalog.loadMore}
+          >
+            다음 정책 더 불러오기
+          </Button>
+        </div>
+      )}
+      <PolicyNotice />
+    </main>
   );
 }

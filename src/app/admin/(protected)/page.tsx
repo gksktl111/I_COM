@@ -1,4 +1,11 @@
 import Link from "next/link";
+import {
+  CircleAlert,
+  ClipboardCheck,
+  Files,
+  RefreshCw,
+  Users,
+} from "lucide-react";
 import { requireAdmin } from "@/features/admin/server/auth";
 import { policyOverview, collectionRuns } from "@/features/admin/server/policy";
 import { listUsers, catalogOverview } from "@/features/admin/server/data";
@@ -24,7 +31,8 @@ export default async function Dashboard() {
         title="운영 현황"
         description={`마지막 조회 ${dateTime(new Date().toISOString())} KST`}
         action={
-          <Link className="admin-button" href="/admin">
+          <Link className="admin-button admin-button-secondary" href="/admin">
+            <RefreshCw size={15} aria-hidden="true" />
             새로고침
           </Link>
         }
@@ -32,6 +40,8 @@ export default async function Dashboard() {
       <div className="admin-grid-stats">
         <StatCard
           label="등록 사용자"
+          icon={<Users aria-hidden="true" />}
+          tone="blue"
           value={`${users.items.length}${users.hasNext ? "+" : ""}명`}
           hint={
             users.hasNext
@@ -41,16 +51,20 @@ export default async function Dashboard() {
         />
         <StatCard
           label="활성화된 정책"
+          icon={<Files aria-hidden="true" />}
           value={`${catalog.active}개`}
           hint="출처별 레코드 · 중복 포함"
         />
         <StatCard
           label="검토 대기"
+          icon={<ClipboardCheck aria-hidden="true" />}
+          tone="amber"
           value={`${catalog.review}개`}
           hint="정책 관리에서 검토 대기 상태인 정책"
         />
         <StatCard
           label="반영 보류 오류"
+          icon={<CircleAlert aria-hidden="true" />}
           value={`${errors}개`}
           hint="현재 표시값에 대응하는 품질 평가"
         />
@@ -99,6 +113,7 @@ export default async function Dashboard() {
                 </div>
                 <progress
                   className="w-full accent-teal-700"
+                  aria-label={`${source.name} 활성화 정책 비중`}
                   value={source.count}
                   max={Math.max(1, catalog.active)}
                 />
@@ -117,7 +132,7 @@ export default async function Dashboard() {
             <Link href="/admin/policies?tab=quality">품질 이력 보기 →</Link>
           }
         >
-          <div className="mb-6 grid grid-cols-3 gap-3 text-center">
+          <div className="admin-quality-counts mb-6 grid grid-cols-3 gap-3 text-center">
             <div>
               추가 확인
               <strong className="block text-2xl text-amber-600">
@@ -134,7 +149,7 @@ export default async function Dashboard() {
               </strong>
             </div>
           </div>
-          <div className="rounded-lg bg-teal-50 p-4 text-sm text-teal-800">
+          <div className="admin-quality-summary">
             필수 항목 존재{" "}
             <strong className="float-right">
               {present} / {required}

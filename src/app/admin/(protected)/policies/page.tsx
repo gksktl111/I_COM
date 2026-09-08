@@ -1,9 +1,17 @@
+import { Select } from "@/components/ui/select";
 import Link from "next/link";
+import { PolicyDetailDialog } from "@/features/admin/components/PolicyDetailDialog";
+import { Archive, ClipboardCheck, Files, Layers } from "lucide-react";
 import { POLICY_RELEVANCE_CATEGORIES } from "@/features/policy/server/relevance";
 import { requireAdmin } from "@/features/admin/server/auth";
 import { listPolicies, relevanceOverview } from "@/features/admin/server/data";
 import { qualityRows } from "@/features/admin/server/policy";
-import { PageHeading, Panel, EmptyState } from "@/features/admin/components";
+import {
+  PageHeading,
+  Panel,
+  EmptyState,
+  StatCard,
+} from "@/features/admin/components";
 import { dateTime, providerNames } from "@/features/admin/format";
 
 type Params = {
@@ -97,10 +105,45 @@ export default async function PoliciesPage({
   return (
     <>
       <PageHeading
-        title="정책 관리"
-        description="저장된 정책과 정제 품질을 확인합니다. 자격 검수·서비스 공개 상태와는 구분됩니다."
+        title={quality ? "데이터 품질" : "정책 관리"}
+        description={
+          quality
+            ? "정책별 정제 품질과 평가 이력을 확인합니다."
+            : "수집된 정책의 보관 상태와 원문을 확인합니다."
+        }
       />
-      <nav className="admin-tabs">
+      {overview && (
+        <div className="admin-grid-stats">
+          <StatCard
+            label="전체 보관"
+            value={`${overview.total.toLocaleString("ko-KR")}건`}
+            icon={<Layers aria-hidden="true" />}
+            tone="blue"
+            hint="원본 보존 기준 · 목록 필터와 별도"
+          />
+          <StatCard
+            label="활성 후보"
+            value={`${overview.related.toLocaleString("ko-KR")}건`}
+            icon={<Files aria-hidden="true" />}
+            hint="서비스 관련성이 확인된 정책"
+          />
+          <StatCard
+            label="검토 대기"
+            value={`${(overview.review + overview.unassessed).toLocaleString("ko-KR")}건`}
+            icon={<ClipboardCheck aria-hidden="true" />}
+            tone="amber"
+            hint="미평가 정책 포함"
+          />
+          <StatCard
+            label="제외 보관"
+            value={`${overview.unrelated.toLocaleString("ko-KR")}건`}
+            icon={<Archive aria-hidden="true" />}
+            tone="violet"
+            hint="서비스 무관 정책 · 원본 보존"
+          />
+        </div>
+      )}
+      <nav className="admin-tabs" aria-label="정책 관리 보기">
         <Link
           aria-current={!quality ? "page" : undefined}
           href="/admin/policies"
@@ -114,42 +157,18 @@ export default async function PoliciesPage({
           품질 이력
         </Link>
       </nav>
-      {overview && (
-        <Panel title="정책 보관 현황">
-          <p className="admin-muted">
-            원본을 보존한 전체 보관 기준 · 목록 필터와 별도
-          </p>
-          <dl className="flex flex-wrap gap-6 py-3">
-            {(
-              [
-                ["전체 보관", overview.total],
-                ["활성 후보", overview.related],
-                [
-                  "검토 대기 (미평가 포함)",
-                  overview.review + overview.unassessed,
-                ],
-                ["제외 보관", overview.unrelated],
-              ] as const
-            ).map(([label, count]) => (
-              <div key={label}>
-                <dt className="admin-muted">{label}</dt>
-                <dd className="text-xl font-semibold">
-                  {count.toLocaleString("ko-KR")}건
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </Panel>
-      )}
-      <Panel title={quality ? "정제 품질 이력" : "정책 목록"}>
-        {!quality && (
-          <p className="admin-muted">
-            기본 목록은 서비스 관련성이 확인된 활성 후보입니다. 검토 대기와 제외
-            보관 정책도 원본을 보존하며 보관 상태를 선택하면 확인할 수 있습니다.
-            활성 후보는 신청 자격 판정이나 서비스 공개 승인을 뜻하지 않습니다.
-          </p>
-        )}
-        <form className="admin-filters">
+      <Panel
+        title={quality ? "정제 품질 이력" : "정책 목록"}
+        description={
+          result
+            ? `${result.items.length}건 표시 · ${page}페이지`
+            : "평가별 필수값과 확인 항목을 살펴보세요."
+        }
+      >
+        <form
+          key={`${filters.toString()}:${status ?? ""}:${quality}`}
+          className="admin-filters"
+        >
           <input
             type="hidden"
             name="tab"
@@ -165,8 +184,8 @@ export default async function PoliciesPage({
               maxLength={100}
             />
           )}
-          <select
-            className="admin-field"
+          <Select
+            className="admin-select"
             name="provider"
             aria-label="출처"
             defaultValue={provider ?? ""}
@@ -177,10 +196,10 @@ export default async function PoliciesPage({
                 {name}
               </option>
             ))}
-          </select>
+          </Select>
           {quality && (
-            <select
-              className="admin-field"
+            <Select
+              className="admin-select"
               name="status"
               aria-label="품질 상태"
               defaultValue={status ?? ""}
@@ -190,12 +209,12 @@ export default async function PoliciesPage({
               <option value="REVIEW">추가 확인</option>
               <option value="ERROR">반영 보류</option>
               <option value="NOT_EVALUATED">미평가</option>
-            </select>
+            </Select>
           )}
           {!quality && (
             <>
-              <select
-                className="admin-field"
+              <Select
+                className="admin-select"
                 name="catalogStatus"
                 aria-label="보관 상태"
                 defaultValue={catalogStatus}
@@ -205,9 +224,9 @@ export default async function PoliciesPage({
                     {label}
                   </option>
                 ))}
-              </select>
-              <select
-                className="admin-field"
+              </Select>
+              <Select
+                className="admin-select"
                 name="relevanceStatus"
                 aria-label="서비스 관련성"
                 defaultValue={relevanceStatus ?? ""}
@@ -218,9 +237,9 @@ export default async function PoliciesPage({
                     {label}
                   </option>
                 ))}
-              </select>
-              <select
-                className="admin-field"
+              </Select>
+              <Select
+                className="admin-select"
                 name="category"
                 aria-label="관련 분야"
                 defaultValue={category}
@@ -231,22 +250,41 @@ export default async function PoliciesPage({
                     {label}
                   </option>
                 ))}
-              </select>
+              </Select>
             </>
           )}
           <button className="admin-button">조회</button>
-          <Link href={quality ? "?tab=quality" : "/admin/policies"}>
+          <Link
+            className="admin-button admin-button-secondary"
+            href={quality ? "?tab=quality" : "/admin/policies"}
+          >
             초기화
           </Link>
         </form>
+        <details className="admin-disclosure mb-4">
+          <summary>
+            {quality ? "품질 평가 안내" : "보관 상태와 관련성 안내"}
+          </summary>
+          <div className="admin-detail-body admin-muted">
+            {quality ? (
+              <p>정제 품질은 신청 자격 검수·서비스 공개 상태와 구분됩니다.</p>
+            ) : (
+              <p>
+                기본 목록은 서비스 관련성이 확인된 활성 후보입니다. 검토 대기와
+                제외 보관 정책도 원본을 보존하며 보관 상태를 선택하면 확인할 수
+                있습니다. 활성 후보는 신청 자격 판정이나 서비스 공개 승인을
+                뜻하지 않습니다.
+              </p>
+            )}
+          </div>
+        </details>
         {result &&
           (result.items.length ? (
             <div className="admin-table-wrap">
               <table className="admin-table">
                 <thead>
                   <tr>
-                    <th>정책명·상세</th>
-                    <th>기관</th>
+                    <th>정책명·기관</th>
                     <th>보관 상태</th>
                     <th>서비스 관련성</th>
                     <th>출처</th>
@@ -256,100 +294,133 @@ export default async function PoliciesPage({
                 <tbody>
                   {result.items.map((policy) => (
                     <tr key={policy.id}>
-                      <td className="max-w-xl min-w-72">
-                        <details>
-                          <summary className="cursor-pointer font-semibold">
-                            {policy.name || policy.external_id}
-                          </summary>
-                          <div className="space-y-3 py-4 text-sm font-normal">
-                            <p className="admin-muted">{policy.external_id}</p>
-                            <div>
-                              <strong>
-                                서비스 관련성 ·{" "}
+                      <td className="admin-table-title">
+                        <strong>{policy.name || policy.external_id}</strong>
+                        <p className="admin-record-meta">
+                          {policy.provider_name || "기관 정보 없음"}
+                        </p>
+                        <div className="mt-2">
+                          <PolicyDetailDialog
+                            title={policy.name || policy.external_id}
+                          >
+                            <p className="admin-muted mb-3">
+                              {policy.provider_name || "기관 정보 없음"} · 정책
+                              원문
+                            </p>
+                            <div className="admin-record-meta flex flex-wrap gap-x-3 gap-y-1">
+                              <span>정책 ID · {policy.external_id}</span>
+                              {policy.source_url && (
+                                <a
+                                  href={policy.source_url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  공식 출처 열기 ↗
+                                </a>
+                              )}
+                            </div>
+                            <dl className="my-5 space-y-5">
+                              <div>
+                                <dt className="mb-2 font-semibold">
+                                  지원 내용
+                                </dt>
+                                <dd className="whitespace-pre-wrap">
+                                  {policy.benefit_text || "원문 정보 확인 필요"}
+                                </dd>
+                              </div>
+                              <div>
+                                <dt className="mb-2 font-semibold">
+                                  지원 대상
+                                </dt>
+                                <dd className="whitespace-pre-wrap">
+                                  {policy.target_text || "원문 정보 확인 필요"}
+                                </dd>
+                              </div>
+                            </dl>
+                            {[
+                              ["요약", policy.summary],
+                              ["선정 기준", policy.criteria_text],
+                              ["신청 방법", policy.application_method_text],
+                              ["신청 기간", policy.application_period_text],
+                            ].map(([label, value]) => (
+                              <details className="admin-disclosure" key={label}>
+                                <summary>{label}</summary>
+                                <p className="admin-detail-body whitespace-pre-wrap">
+                                  {value || "원문 정보 확인 필요"}
+                                </p>
+                              </details>
+                            ))}
+                            <details className="admin-disclosure">
+                              <summary>
+                                관련성 평가 ·{" "}
                                 {
                                   relevanceNames[
                                     policy.relevance?.status ?? "UNASSESSED"
                                   ]
                                 }
-                              </strong>
-                              {policy.relevance ? (
-                                <>
-                                  <p>
-                                    관련 분야:{" "}
-                                    {policy.relevance.categories.join(", ") ||
-                                      "해당 없음"}
-                                  </p>
-                                  <p>{policy.relevance.reason}</p>
-                                  {policy.relevance.truncated && (
-                                    <p className="admin-muted">
-                                      긴 평가 내용은 일부만 표시합니다.
+                              </summary>
+                              <div className="admin-detail-body">
+                                {policy.relevance ? (
+                                  <>
+                                    <p>
+                                      관련 분야:{" "}
+                                      {policy.relevance.categories.join(", ") ||
+                                        "해당 없음"}
                                     </p>
-                                  )}
-                                  <ul className="space-y-2 py-2">
-                                    {policy.relevance.evidence.map(
-                                      (evidence, i) => (
-                                        <li key={i}>
-                                          <p className="whitespace-pre-wrap">
-                                            {evidence.excerpt}
-                                          </p>
-                                          <p className="admin-muted">
-                                            {evidence.field} · {evidence.rule}
-                                          </p>
-                                        </li>
-                                      ),
+                                    <p>{policy.relevance.reason}</p>
+                                    {policy.relevance.truncated && (
+                                      <p className="admin-muted">
+                                        긴 평가 내용은 일부만 표시합니다.
+                                      </p>
                                     )}
-                                  </ul>
-                                  <p className="admin-muted">
-                                    {policy.relevance.version} ·{" "}
-                                    {dateTime(policy.relevance_assessed_at)} KST
+                                    <ul className="space-y-3 py-3">
+                                      {policy.relevance.evidence.map(
+                                        (evidence, i) => (
+                                          <li key={i}>
+                                            <p className="whitespace-pre-wrap">
+                                              {evidence.excerpt}
+                                            </p>
+                                            <p className="admin-record-meta">
+                                              {evidence.field} · {evidence.rule}
+                                            </p>
+                                          </li>
+                                        ),
+                                      )}
+                                    </ul>
+                                    <p className="admin-record-meta">
+                                      {policy.relevance.version} ·{" "}
+                                      {dateTime(policy.relevance_assessed_at)}{" "}
+                                      KST
+                                    </p>
+                                  </>
+                                ) : (
+                                  <p>
+                                    아직 서비스 관련성을 평가하지 않았습니다.
                                   </p>
-                                </>
-                              ) : (
-                                <p>아직 서비스 관련성을 평가하지 않았습니다.</p>
-                              )}
-                            </div>
-                            {[
-                              ["요약", policy.summary],
-                              ["지원 대상", policy.target_text],
-                              ["선정 기준", policy.criteria_text],
-                              ["지원 내용", policy.benefit_text],
-                              ["신청 방법", policy.application_method_text],
-                              ["신청 기간", policy.application_period_text],
-                            ].map(([label, value]) => (
-                              <div key={label}>
-                                <strong>{label}</strong>
-                                <p className="whitespace-pre-wrap">
-                                  {value || "원문 정보 확인 필요"}
-                                </p>
+                                )}
                               </div>
-                            ))}
-                            {policy.source_url && (
-                              <a
-                                href={policy.source_url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                공식 출처 열기 ↗
-                              </a>
-                            )}
-                          </div>
-                        </details>
+                            </details>
+                          </PolicyDetailDialog>
+                        </div>
                       </td>
-                      <td>{policy.provider_name || "—"}</td>
                       <td>
-                        <span className="admin-badge">
+                        <span
+                          className={`admin-badge ${policy.catalog_status === "REVIEW" ? "admin-badge-warning" : policy.catalog_status === "EXCLUDED" ? "admin-badge-neutral" : ""}`}
+                        >
                           {catalogNames[policy.catalog_status]}
                         </span>
                       </td>
                       <td>
-                        <span className="admin-badge">
+                        <span
+                          className={`admin-badge ${policy.relevance?.status === "RELATED" ? "" : policy.relevance?.status === "UNRELATED" ? "admin-badge-neutral" : "admin-badge-warning"}`}
+                        >
                           {
                             relevanceNames[
                               policy.relevance?.status ?? "UNASSESSED"
                             ]
                           }
                         </span>
-                        <p className="admin-muted">
+                        <p className="admin-muted max-w-44 whitespace-normal">
                           {policy.relevance?.categories.join(", ")}
                         </p>
                       </td>
@@ -385,7 +456,9 @@ export default async function PoliciesPage({
                       <td>{row.external_id}</td>
                       <td>{providerNames[row.provider]}</td>
                       <td>
-                        <span className="admin-badge">
+                        <span
+                          className={`admin-badge ${row.status === "ERROR" ? "admin-badge-danger" : row.status === "REVIEW" ? "admin-badge-warning" : row.status === "NOT_EVALUATED" ? "admin-badge-neutral" : ""}`}
+                        >
                           {
                             {
                               PASS: "기술 검사 통과",
@@ -403,21 +476,34 @@ export default async function PoliciesPage({
                         {row.present_count}/{row.required_count}
                       </td>
                       <td>
-                        <details>
-                          <summary>{row.issues.length}개 항목 확인</summary>
-                          <ul className="max-w-lg space-y-2 py-3">
-                            {row.issues.map((issue, i) => (
-                              <li key={i}>
-                                <strong>{issue.code}</strong>
-                                <p>{issue.message}</p>
-                              </li>
-                            ))}
-                          </ul>
-                          <p className="admin-muted">
-                            {row.evaluator_version} ·{" "}
-                            {dateTime(row.assessed_at)} KST
-                          </p>
-                        </details>
+                        <p className="admin-record-meta">
+                          {dateTime(row.assessed_at)} KST
+                        </p>
+                        {row.issues.length ? (
+                          <details className="admin-disclosure">
+                            <summary>{row.issues.length}개 항목 확인</summary>
+                            <ul className="admin-detail-body max-w-lg space-y-3">
+                              {row.issues.map((issue, i) => (
+                                <li key={i}>
+                                  <p>{issue.message}</p>
+                                  <p className="admin-record-meta">
+                                    {issue.code}
+                                  </p>
+                                </li>
+                              ))}
+                            </ul>
+                            <p className="admin-record-meta">
+                              {row.evaluator_version}
+                            </p>
+                          </details>
+                        ) : (
+                          <>
+                            <p className="admin-muted">확인 항목 없음</p>
+                            <p className="admin-record-meta">
+                              {row.evaluator_version}
+                            </p>
+                          </>
+                        )}
                       </td>
                     </tr>
                   ))}

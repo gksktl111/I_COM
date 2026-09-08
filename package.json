@@ -13,6 +13,7 @@
     "policy:prepare": "node --experimental-strip-types scripts/policy/prepare.ts",
     "policy:sync:bokjiro": "node --experimental-strip-types scripts/policy/sync-bokjiro.ts",
     "policy:auto": "node --experimental-strip-types scripts/policy/automatic.ts",
+    "policy:label": "node --experimental-strip-types scripts/policy/label.ts",
     "policy:quality": "node --experimental-strip-types scripts/policy/quality-report.ts"
   },
   "dependencies": {

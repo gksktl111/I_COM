@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { useLocationStore } from "../store/location.store";
 
@@ -10,6 +10,7 @@ type ReverseGeocodeResponse = {
 };
 
 export function useGeolocation(options?: { auto?: boolean }) {
+  const attemptedAutoLocation = useRef(false);
   const {
     location,
     address,
@@ -47,6 +48,7 @@ export function useGeolocation(options?: { auto?: boolean }) {
   );
 
   const fetchLocation = useCallback(() => {
+    if (useLocationStore.getState().locating) return;
     if (!navigator.geolocation) {
       console.error("이 브라우저는 Geolocation API를 지원하지 않습니다.");
       toast.error("이 브라우저에서는 위치 정보를 사용할 수 없습니다.");
@@ -77,7 +79,13 @@ export function useGeolocation(options?: { auto?: boolean }) {
 
   // auto 옵션: 최초 마운트/변경 시 자동으로 위치를 가져옵니다.
   useEffect(() => {
-    if (options?.auto && !location && !locating) {
+    if (
+      options?.auto &&
+      !location &&
+      !locating &&
+      !attemptedAutoLocation.current
+    ) {
+      attemptedAutoLocation.current = true;
       fetchLocation();
     }
   }, [options?.auto, location, locating, fetchLocation]);

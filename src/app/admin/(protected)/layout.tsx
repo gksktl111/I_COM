@@ -1,3 +1,5 @@
+import "@/features/admin/admin.css";
+import "@/features/admin/admin-chrome.css";
 import { requireAdmin } from "@/features/admin/server/auth";
 import { AdminShell } from "@/features/admin/components/AdminShell";
 

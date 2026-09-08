@@ -1,53 +1,50 @@
-"use client";
-
-// 사용하지 않는 import 제거
-import { BabyIcon } from "lucide-react";
+import Link from "next/link";
+import { Compass, ArrowRight } from "lucide-react";
 import { SocialLoginButtons } from "./SocialLoginButtons";
+import { Card } from "@/components/ui/card";
+import { Notice } from "@/components/ui/feedback";
+import { Footer } from "@/components/common/Footer";
 
-// 로그인 폼 컴포넌트
 export function LoginForm() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-sky-50 to-blue-50 p-4">
-      <div className="w-full max-w-md">
-        {/* 로고 및 헤딩 */}
-        <div className="mb-8 text-center">
-          <div className="mb-4 flex justify-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-500">
-              <BabyIcon className="h-10 w-10 text-white" />
-            </div>
+    <>
+      <main
+        id="main-content"
+        className="page-container flex min-h-[640px] items-center justify-center py-14"
+      >
+        <Card className="w-full max-w-lg px-6 py-10 sm:px-10">
+          <div className="mb-8 text-center">
+            <Compass className="text-primary mx-auto mb-4 size-10" />
+            <h1 className="text-[1.75rem] font-bold">아이콤 로그인</h1>
+            <p className="text-muted-foreground mt-3 text-sm leading-6">
+              우리 아이 맞춤 복지와 보육 정보를
+              <br />
+              아이콤에서 함께 찾아보세요.
+            </p>
           </div>
-          <h1 className="mb-2 text-2xl font-bold text-gray-900">
-            아이콤에 로그인
-          </h1>
-          <p className="text-gray-600">
-            로그인 후 아이콤의 더 많은 기능을 이용해보세요!
-          </p>
-        </div>
-
-        {/* 소셜 로그인 폼 */}
-        <div className="rounded-2xl bg-white p-8 shadow-lg">
-          {/* 안내 메시지 */}
-          <div className="mb-6 text-center">
-            <p className="text-gray-600">간편하게 소셜 계정으로 로그인하세요</p>
-          </div>
-
-          {/* 소셜 로그인 버튼들 */}
           <SocialLoginButtons />
-
-          {/* 이용약관 */}
-          <p className="mt-6 text-center text-xs leading-relaxed text-gray-500">
-            로그인 시{" "}
-            <a href="#" className="text-sky-600 underline hover:text-sky-500">
-              이용약관
-            </a>{" "}
-            및{" "}
-            <a href="#" className="text-sky-600 underline hover:text-sky-500">
-              개인정보처리방침
-            </a>
-            에 동의하게 됩니다.
-          </p>
-        </div>
-      </div>
-    </div>
+          <div className="my-7 border-y py-5 text-center">
+            <p className="text-sm font-semibold">
+              회원가입 없이 혜택을 먼저 둘러보세요
+            </p>
+            <p className="text-muted-foreground mt-1 text-xs">
+              맞춤 정책 탐색은 로그인 없이 이용할 수 있어요.
+            </p>
+            <Link
+              href="/policy/match"
+              className="text-primary mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-bold"
+            >
+              비회원으로 정책 찾기
+              <ArrowRight className="size-4" />
+            </Link>
+          </div>
+          <Notice className="border-0 py-0 text-xs">
+            간편 로그인 연결을 준비하고 있습니다. 지금은 회원가입 없이 정책
+            탐색과 주변 시설 찾기를 이용해 주세요.
+          </Notice>
+        </Card>
+      </main>
+      <Footer />
+    </>
   );
 }

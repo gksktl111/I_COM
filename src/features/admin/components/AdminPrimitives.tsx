@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Inbox } from "lucide-react";
+import { EmptyState as SharedEmptyState } from "@/components/ui/feedback";
 
 export function PageHeading({
   title,
@@ -89,13 +89,6 @@ export function EmptyState({
   action?: ReactNode;
 }) {
   return (
-    <div className="admin-empty">
-      <span>
-        <Inbox size={27} aria-hidden="true" />
-      </span>
-      <h3>{title}</h3>
-      {description && <p>{description}</p>}
-      {action}
-    </div>
+    <SharedEmptyState title={title} description={description} action={action} />
   );
 }

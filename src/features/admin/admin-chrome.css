@@ -1,0 +1,346 @@
+/* Shared admin chrome: 운영 현황 (디자인 시스템 반영 개정안). */
+.admin-app .admin-chrome-sidebar {
+  padding: 0;
+  overflow: hidden;
+}
+.admin-app .admin-chrome-sidebar .admin-sidebar-heading {
+  height: 64px;
+  min-height: 64px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--admin-line);
+}
+.admin-app .admin-chrome-sidebar .admin-brand {
+  width: 100%;
+  gap: 10px;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+.admin-app .admin-chrome-sidebar .admin-brand-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px #0f172a0d;
+}
+.admin-app .admin-chrome-sidebar .admin-brand-badge {
+  margin-left: auto;
+  padding: 2px 8px;
+  border: 1px solid #99f6e4;
+  border-radius: 4px;
+  background: #f0fdfa;
+  color: var(--admin-teal);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.admin-app .admin-chrome-sidebar .admin-navigation {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+.admin-app .admin-chrome-sidebar .admin-nav-label {
+  margin: 0;
+  padding: 20px 16px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.6px;
+}
+.admin-app .admin-chrome-sidebar .admin-nav {
+  gap: 4px;
+  padding: 0 12px 16px;
+  margin: 0;
+}
+.admin-app .admin-chrome-sidebar .admin-nav a,
+.admin-app .admin-chrome-sidebar .admin-nav-unavailable {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+}
+.admin-app .admin-chrome-sidebar .admin-nav a svg,
+.admin-app .admin-chrome-sidebar .admin-nav-unavailable svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.admin-app .admin-chrome-sidebar .admin-nav a.is-active {
+  color: var(--admin-teal);
+  background: #f0fdfa;
+  border-color: #99f6e480;
+  font-weight: 700;
+}
+.admin-app .admin-chrome-sidebar .admin-nav a:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+.admin-app .admin-chrome-sidebar .admin-nav a.is-active:hover {
+  background: #e6f7f3;
+  color: var(--admin-teal);
+}
+.admin-app .admin-chrome-sidebar .admin-nav-unavailable {
+  color: #64748b;
+  cursor: default;
+}
+.admin-app .admin-chrome-sidebar .admin-nav-unavailable small {
+  margin-left: auto;
+  font-size: 9px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+.admin-app .admin-chrome-sidebar .admin-nav-group + .admin-nav-group {
+  margin-top: auto;
+  border-top: 1px solid var(--admin-line);
+  padding-top: 12px;
+}
+.admin-app .admin-chrome-sidebar .admin-nav-group + .admin-nav-group .admin-nav-label {
+  padding-top: 4px;
+  margin: 0;
+}
+.admin-app .admin-chrome-sidebar .admin-nav-group + .admin-nav-group .admin-nav {
+  padding-bottom: 12px;
+}
+.admin-app .admin-chrome-header {
+  height: 64px;
+  min-height: 64px;
+  padding: 0 32px;
+  gap: 16px;
+}
+.admin-chrome-header .admin-breadcrumb {
+  gap: 8px;
+  font-size: 14px;
+  min-width: 0;
+}
+.admin-chrome-header .admin-breadcrumb a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+.admin-chrome-header .admin-breadcrumb strong {
+  color: #0f172a;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.admin-breadcrumb-separator {
+  color: #cbd5e1;
+}
+.admin-chrome-header .admin-header-tools {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+.admin-environment {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid #a7f3d0cc;
+  border-radius: 999px;
+  color: #047857;
+  background: #ecfdf5;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.admin-environment > span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+.admin-header-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--admin-line);
+}
+.admin-environment-divider {
+  height: 16px;
+}
+.admin-notification-link {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #475569;
+}
+.admin-notification-link:hover {
+  background: #f1f5f9;
+}
+.admin-account-control {
+  position: relative;
+}
+.admin-profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 0 0 4px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+.admin-profile-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--admin-teal);
+  color: white;
+  box-shadow: 0 0 0 2px #f0fdfa;
+}
+.admin-profile-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+  min-width: 0;
+}
+.admin-profile-text strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+.admin-profile-text small {
+  display: block;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font:
+    11px/1.5 ui-monospace,
+    monospace;
+  color: #94a3b8;
+}
+.admin-profile-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 240px;
+  max-width: calc(100vw - 32px);
+  padding: 8px;
+  border: 1px solid var(--admin-line);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 8px 28px #0f172a1a;
+  z-index: 30;
+}
+.admin-profile-menu > p {
+  margin: 0 0 6px;
+  padding: 8px 10px;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  color: #64748b;
+  border-bottom: 1px solid var(--admin-line);
+}
+.admin-profile-menu a,
+.admin-profile-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 13px;
+  color: #475569;
+  text-align: left;
+}
+.admin-profile-menu a:hover,
+.admin-profile-menu button:hover {
+  background: #f1f5f9;
+}
+@media (max-width: 1100px) {
+  .admin-profile-text small {
+    max-width: 160px;
+  }
+  .admin-app .admin-chrome-header {
+    padding-inline: 24px;
+  }
+  .admin-chrome-header .admin-header-tools {
+    gap: 12px;
+  }
+}
+@media (max-width: 850px) {
+  .admin-app .admin-chrome-sidebar .admin-sidebar-heading {
+    padding-inline: 12px;
+  }
+  .admin-app .admin-chrome-sidebar .admin-nav a,
+  .admin-app .admin-chrome-sidebar .admin-nav-unavailable {
+    gap: 10px;
+    padding-inline: 10px;
+    font-size: 13px;
+  }
+  .admin-profile-text {
+    display: none;
+  }
+  .admin-environment,
+  .admin-environment-divider {
+    display: none;
+  }
+}
+@media (max-width: 620px) {
+  .admin-app .admin-chrome-sidebar {
+    overflow: visible;
+  }
+  .admin-app .admin-chrome-sidebar .admin-sidebar-heading {
+    padding-inline: 16px;
+    border-bottom: 0;
+  }
+  .admin-app .admin-chrome-sidebar .admin-brand {
+    width: auto;
+    gap: 8px;
+  }
+  .admin-app .admin-chrome-sidebar .admin-brand-badge {
+    margin-left: 4px;
+  }
+  .admin-app .admin-chrome-sidebar .admin-navigation {
+    display: none;
+    overflow: visible;
+  }
+  .admin-app .admin-chrome-sidebar.is-menu-open .admin-navigation {
+    display: flex;
+  }
+  .admin-app .admin-chrome-sidebar.is-menu-open .admin-nav-label {
+    display: block;
+    margin: 0;
+    padding: 16px 16px 8px;
+  }
+  .admin-app .admin-chrome-sidebar .admin-nav {
+    flex-direction: column;
+  }
+  .admin-app .admin-chrome-sidebar .admin-nav-group + .admin-nav-group {
+    margin-top: 0;
+  }
+  .admin-app .admin-chrome-header {
+    height: 56px;
+    min-height: 56px;
+    padding: 0 16px;
+    gap: 10px;
+  }
+  .admin-chrome-header .admin-breadcrumb {
+    font-size: 12px;
+  }
+  .admin-chrome-header .admin-header-tools {
+    gap: 8px;
+  }
+}
