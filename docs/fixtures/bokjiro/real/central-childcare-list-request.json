@@ -1,0 +1,13 @@
+{
+  "kind": "central",
+  "endpoint": "https://apis.data.go.kr/B554287/NationalWelfareInformationsV001/NationalWelfarelistV001",
+  "params": {
+    "callTp": "L",
+    "pageNo": "1",
+    "numOfRows": "10",
+    "srchKeyCode": "003",
+    "searchWrd": "양육"
+  },
+  "status": 200,
+  "at": "2026-09-07T19:23:46.345910+00:00"
+}

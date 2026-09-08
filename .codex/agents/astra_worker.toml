@@ -1,7 +1,7 @@
 name = "astra_worker"
-description = "Astra low for bounded implementation, code investigation, and reviews requiring judgment. Keep short edits and difficult design decisions with the parent."
+description = "Astra medium for bounded implementation, code investigation, and reviews requiring judgment. Keep short edits and difficult design decisions with the parent."
 model = "gpt-6-astra"
-model_reasoning_effort = "low"
+model_reasoning_effort = "medium"
 developer_instructions = """
 Complete the parent's bounded assignment; do not spawn agents.
 

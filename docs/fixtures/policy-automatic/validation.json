@@ -1,0 +1,400 @@
+{
+  "verifiedAt": "2026-09-08 05:52:36 UTC",
+  "projectRef": "visumyadkxleiqtxokqg",
+  "migration": "20260908053334_policy_automatic_quality",
+  "initialPause": {
+    "reason": "ITEM_LIMIT",
+    "processed": 3,
+    "calls": 4
+  },
+  "resume": {
+    "processed": 37,
+    "calls": 46,
+    "successfulItemsPreserved": true
+  },
+  "run": {
+    "id": "10de6f39-f559-4881-96fb-1683817db36d",
+    "calls": 50,
+    "config": {
+      "filters": {
+        "searchWrd": "양육",
+        "srchKeyCode": "003"
+      },
+      "perPage": 5,
+      "maxPages": 1000,
+      "dailyLimit": 100
+    },
+    "status": "SUCCESS",
+    "summary": {
+      "failed": 0,
+      "status": "SUCCESS",
+      "pending": 0,
+      "success": 40,
+      "errorCode": null
+    },
+    "nextPage": 10,
+    "provider": "BOKJIRO_CENTRAL",
+    "startedAt": "2026-09-08T05:47:51.418018+00:00",
+    "discovered": 40,
+    "finishedAt": "2026-09-08T05:49:26.215153+00:00",
+    "stopReason": null,
+    "expectedTotal": 40,
+    "discoveryComplete": true
+  },
+  "items": [
+    {
+      "id": "WLF00000024",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "22c92ff3-9962-4d67-8349-43585eaf5a50"
+    },
+    {
+      "id": "WLF00000030",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "df41fae3-c522-4e87-880d-47d21e66b217"
+    },
+    {
+      "id": "WLF00000037",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "b78d2774-6337-4c7a-8f42-1c7bcd180460"
+    },
+    {
+      "id": "WLF00000043",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "9ba10ab8-50f9-4ac5-a888-761265a5c915"
+    },
+    {
+      "id": "WLF00000044",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "910f84f3-d222-498a-8992-0738e0e2b4d6"
+    },
+    {
+      "id": "WLF00000087",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "112065d1-8a28-4d15-8010-5bc67734704b"
+    },
+    {
+      "id": "WLF00000091",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "2a68bc25-9e51-44ac-837f-9ef7add6d3e8"
+    },
+    {
+      "id": "WLF00000837",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "cee41f78-9914-4d5d-be5f-7121b245b617"
+    },
+    {
+      "id": "WLF00000969",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "003d4ef3-fde8-4303-9cfa-a20137d3d4da"
+    },
+    {
+      "id": "WLF00001021",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "c8d9c29e-0188-43ff-8d7a-09b4df0c69a5"
+    },
+    {
+      "id": "WLF00001068",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "95e8e4c8-a1f0-450d-846d-361a8da7b631"
+    },
+    {
+      "id": "WLF00001080",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "d2c808d6-e44d-4cc6-85d3-6c1447a74125"
+    },
+    {
+      "id": "WLF00001109",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "69074dfc-242c-430c-afbc-bbfe4ce365f8"
+    },
+    {
+      "id": "WLF00001116",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "554c46d6-ec25-4a49-9d76-d8aebfffc6f1"
+    },
+    {
+      "id": "WLF00001121",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "57d032a5-dc8d-40b2-98f7-79793c63ac34"
+    },
+    {
+      "id": "WLF00001138",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "eb1fa8ff-0002-4e67-8a4b-08356befb2fb"
+    },
+    {
+      "id": "WLF00001175",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "b16784b1-bc70-4e4e-8c04-672950b0ce87"
+    },
+    {
+      "id": "WLF00003172",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "1e064cb1-8f94-4606-bb3f-337f774372dc"
+    },
+    {
+      "id": "WLF00003186",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "3c9f1ff9-c384-49af-82df-922d1868e035"
+    },
+    {
+      "id": "WLF00003223",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "f4757994-7d6b-4737-9df8-d9aa666d0d81"
+    },
+    {
+      "id": "WLF00003235",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "e30d4c3f-a2d2-4d6a-aa34-0ec783e3177a"
+    },
+    {
+      "id": "WLF00003244",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "427a3edf-521c-4b7f-8e1f-4fc31c1eb1d8"
+    },
+    {
+      "id": "WLF00003250",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "7e1dcf85-500e-413e-97c4-54ca15385acf"
+    },
+    {
+      "id": "WLF00003253",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "43c9c01f-8e95-4cb4-87af-ed643776675c"
+    },
+    {
+      "id": "WLF00003258",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "5e708462-c2de-4951-acb7-183e137c7b79"
+    },
+    {
+      "id": "WLF00003262",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "42ab677e-161a-4294-8d59-59238a02ba9b"
+    },
+    {
+      "id": "WLF00003269",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "608bfc9e-be49-4e86-b850-ef7a445f20fd"
+    },
+    {
+      "id": "WLF00003270",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "c26eec5c-2246-4421-b73a-64067dc4d98e"
+    },
+    {
+      "id": "WLF00003283",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "ab8af468-bdcf-4d47-b65a-9886588e7e4f"
+    },
+    {
+      "id": "WLF00004650",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "c0eacf03-a602-4831-9c48-4ce35a1d7480"
+    },
+    {
+      "id": "WLF00004656",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "2f92abe0-ee88-4195-90ce-2d0322c125d4"
+    },
+    {
+      "id": "WLF00004657",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "5fb7cabe-f813-41a9-991c-8dcdc6e3cc3d"
+    },
+    {
+      "id": "WLF00005023",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "035c79d8-465f-4d47-98eb-1a785e29a7c9"
+    },
+    {
+      "id": "WLF00005442",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "80b0d7c5-2856-4e99-8f4a-454d9f8a3ea6"
+    },
+    {
+      "id": "WLF00005856",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "3f730d9a-6aea-4009-9ed6-2321297aeebd"
+    },
+    {
+      "id": "WLF00006264",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "cc79b170-5368-4b56-924a-022006a64ad8"
+    },
+    {
+      "id": "WLF00006278",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "2a6ad75c-9be6-46a4-abc1-130732d103c3"
+    },
+    {
+      "id": "WLF00006289",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "25161893-f317-410e-8cf8-d875ef1748a7"
+    },
+    {
+      "id": "WLF00006304",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "65d63b9f-c061-47e5-9df7-5e076b474017"
+    },
+    {
+      "id": "WLF00006307",
+      "status": "SUCCESS",
+      "attempts": 1,
+      "snapshotId": "8565ed6a-eddb-4962-854e-66c8ed925004"
+    }
+  ],
+  "locks": [
+    {
+      "name": "BOKJIRO_CENTRAL",
+      "owner": null
+    },
+    {
+      "name": "BOKJIRO_LOCAL",
+      "owner": null
+    },
+    {
+      "name": "GOV24",
+      "owner": null
+    }
+  ],
+  "qualityCount": 50,
+  "sourceCounts": [
+    {
+      "policies": 40,
+      "provider": "BOKJIRO_CENTRAL"
+    },
+    {
+      "policies": 2,
+      "provider": "BOKJIRO_LOCAL"
+    },
+    {
+      "policies": 8,
+      "provider": "GOV24"
+    }
+  ],
+  "qualityIssues": [
+    {
+      "code": "DEDICATED_FIELD_MISSING_TEXT_RETAINED",
+      "policies": 2,
+      "occurrences": 2
+    },
+    {
+      "code": "ELIGIBILITY_UNVERIFIED",
+      "policies": 40,
+      "occurrences": 40
+    },
+    {
+      "code": "MODIFIED_DATE_MISSING",
+      "policies": 40,
+      "occurrences": 80
+    },
+    {
+      "code": "RAW_SOURCE_CHANGED",
+      "policies": 2,
+      "occurrences": 2
+    },
+    {
+      "code": "SOURCE_ACCESS_UNVERIFIED",
+      "policies": 40,
+      "occurrences": 40
+    },
+    {
+      "code": "SOURCE_FIELD_MISSING",
+      "policies": 40,
+      "occurrences": 78
+    },
+    {
+      "code": "SOURCE_OFFICIALITY_UNVERIFIED",
+      "policies": 40,
+      "occurrences": 40
+    }
+  ],
+  "overview": {
+    "quality": [
+      {
+        "count": 50,
+        "status": "REVIEW",
+        "missing": 0,
+        "present": 300,
+        "required": 300
+      }
+    ],
+    "policies": 50,
+    "dailyUsage": [
+      {
+        "day": "2026-09-08",
+        "provider": "BOKJIRO_CENTRAL",
+        "reserved_calls": 50,
+        "configured_limit": 100
+      }
+    ],
+    "comparisonReady": 0,
+    "unassessedCurrent": 0
+  },
+  "qualityRows": 50,
+  "allMatchCurrent": true,
+  "permissions": [
+    {
+      "role_name": "anon",
+      "admin_report": false,
+      "sync": false,
+      "quality_read": false,
+      "raw_pages_read": false
+    },
+    {
+      "role_name": "authenticated",
+      "admin_report": false,
+      "sync": false,
+      "quality_read": false,
+      "raw_pages_read": false
+    },
+    {
+      "role_name": "service_role",
+      "admin_report": true,
+      "sync": true,
+      "quality_read": true,
+      "raw_pages_read": true
+    }
+  ],
+  "scope": "Real BOKJIRO_CENTRAL 양육 filtered scope 40 items; GOV24 8 and BOKJIRO_LOCAL 2 stored samples reprocessed without upstream calls. Not whole-provider coverage or verified eligibility."
+}

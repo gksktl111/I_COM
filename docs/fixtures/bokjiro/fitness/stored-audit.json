@@ -1,0 +1,970 @@
+{
+  "auditedAt": "2026-09-08T05:14:16.386Z",
+  "storedVerifiedAt": "2026-09-07T19:32:50.748Z",
+  "scope": "Committed public XML fixtures versus historical stored-validation display values. No live raw export; no claim of current DB raw-hash or full normalized replay equality. Whitespace comparison and normalizer display replay are separate checks; semantic review remains required.",
+  "summary": {
+    "policies": 4,
+    "displayReplayEqual": 4,
+    "fields": 56,
+    "whitespaceDifferences": 3,
+    "unexplainedDifferences": 0
+  },
+  "policies": [
+    {
+      "provider": "BOKJIRO_CENTRAL",
+      "externalId": "WLF00000024",
+      "snapshotId": "5b015e6c-9dbc-43e6-9fe3-4f95cf50063a",
+      "storedNormalizerVersion": "bokjiro-1",
+      "replayNormalizerVersion": "bokjiro-2",
+      "fixtures": [
+        {
+          "file": "central-childcare-list.xml",
+          "sha256": "aab9c2b6362a8853a88e27260c367e029a50747985fcfe2564e2c6b0df4def2c"
+        },
+        {
+          "file": "central-WLF00000024-detail.xml",
+          "sha256": "fd75c50b19c3c44097371d81c0ec5f6f75035734216a839e6731a77605ee55b3"
+        }
+      ],
+      "displayReplayEqual": true,
+      "fixtureRawHash": "25f7f4e07e37de52440a9b01a8e40af0ab64009eb1e87873bd3c40ef3c6d54c0",
+      "fixtureConditionsHash": "72f12e1b2600059cac7641b8150e3d21d3e4d383803e639c47a8ebf2a12e776f",
+      "fields": [
+        {
+          "field": "name",
+          "path": "detail.servNm",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "summary",
+          "path": "list.servDgst",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "purpose_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "target_text",
+          "path": "detail.tgtrDtlCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": false,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "criteria_text",
+          "path": "detail.slctCritCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": false,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "benefit_text",
+          "path": "detail.alwServCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": false,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_method_text",
+          "path": "detail.applmetList[*]",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_period_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "required_documents_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "provider_name",
+          "path": "detail.jurMnofNm",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "reception_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "contact_text",
+          "path": "detail.rprsCtadr",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "source_url",
+          "path": "list.servDtlLink",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_url",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        }
+      ],
+      "display": {
+        "name": "아이돌봄서비스",
+        "summary": "맞벌이를 하거나 갑자기 아이를 돌볼 수 없는 일이 생겼을 때 육아 도우미가 방문하여 12세 이하 자녀의 양육을 도와줍니다.",
+        "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000024&wlfareInfoReldBztpCd=01",
+        "target_text": "정부 지원 대상자 자격기준은 다음과 같습니다.\n아동의 연령이 12세 이하\n부모의 취업 등으로 양육공백 발생\n자녀양육 정부지원 중복 금지 기준\n가구 기준중위소득 250% 이하인 가정\n상기 ①, ②, ③ 의 조건 충족 시 정부지원이 가능하며, ④의 가구 소득에 따라 서비스 유형별 정부지원의 범위가 달라집니다.",
+        "benefit_text": "취업 부모 등의 12세 이하 자녀에 대해, 아이돌보미가 대상자의 집으로 찾아가 돌봄서비스를 제공합니다.\n시간제 아이돌봄: 부모가 올 때까지 임시보육, 놀이 활동, 보육시설 및 초등학교 등하원(교) 동행, 준비된 식사와 간식 챙겨주기 등의 서비스 제공 ＊ 영아를 대상으로 시간제 돌봄 시, 영아 종일제 아이돌봄 업무 병행\n영아 종일제 아이돌봄: 이유식 먹이기, 젖병 소독, 기저귀 갈기, 목욕 등의 서비스 지원\n2026년 아이돌봄 서비스의 1시간 당 정부지원금은 아래와 같습니다.\n＊ A형: '19.1.1. 이후 출생 아동 /B형: '18.12.31. 이전 출생 아동\n＊ 지원금은 소득수준에 따라 차등 지원\n일반가정 시간제 아이돌봄\n① 가형(기준 중위소득 75%): 시간당 A형 10,872원, B형 10,232원 지원\n② 나형(기준 중위소득 120%): 시간당 A형 7,674원, B형 6,396원 지원\n③ 다형(기준 중위소득 150%): 시간당 A형 3,838원, B형 3,198원 지원 ④ 라형(기준 중위소득 250%): 시간당 A형 1,920원, B형 1,280원 지원\n한부모, 장애부모, 장애아동, 청소년부모 시간제 아이돌봄\n① 가형(기준 중위소득 75%): 시간당 A형 11,512원, B형 10,872원 지원\n② 나형(기준 중위소득 120%): 시간당 A형 7,674원, B형 6,396원 지원\n③ 다형(기준 중위소득 150%): 시간당 A형 3,838원, B형 3,198원 지원 ④ 라형(기준 중위소득 250%): 시간당 A형 1,920원, B형 1,280원 지원\n청소년(한)부모, 0~1세 자녀 양육 가정 시간제 아이돌봄 ① 가형~라형(기준 중위소득 250%이하): 시간당 11,512원 지원\n일반가정 영아종일제\n① 가형(기준 중위소득 75%): 시간당 10,872원 지원\n② 나형(기준 중위소득 120%): 시간당 7,674원 지원\n③ 다형(기준 중위소득 150%): 시간당 3,838원 지원 ④ 라형(기준 중위소득 250%): 시간당 1,920원 지원\n한부모, 장애부모, 장애아동, 청소년부모 영아종일제\n① 가형(기준 중위소득 75%): 시간당 11,512원 지원\n② 나형(기준 중위소득 120%): 시간당 7,674원 지원\n③ 다형(기준 중위소득 150%): 시간당 3,838원 지원 ④ 라형(기준 중위소득 250%): 시간당 1,920원 지원\n청소년(한)부모, 0~1세 자녀 양육 가정 영아종일제 ① 가형~라형(기준 중위소득 250%이하): 시간당 11,512원 지원",
+        "contact_text": "1577-8136",
+        "purpose_text": null,
+        "criteria_text": "대상아동의 연령 기준은 아래와 같습니다.\n시간제 서비스 : 생후 3개월~12세 이하의 아동\n영아종일제 서비스 : 생후 3개월~36개월 이하의 영아\n※ 이른둥이(미숙아*)의 경우, 40개월까지 이용 가능   * 임신기간 37주 미만이거나 출생당시 2.5kg 미만\n정부지원이 가능한 양육공백 가정 기준 및 우선순위는 아래와 같습니다. * 단, 부모 모두 비취업 등으로 양육공백이 없어 가정에서 아동을 양육하는 경우는 아이돌봄서비스 지원대상에서 제외\n① 맞벌이 가정, 취업 한부모가정(조손가족 포함)\n② 장애부모 가정(가정에서 아동을 양육하는 부 또는 모가 '장애인복지법 제2조'의 규정에 의한 장애인인 경우)\n③ 다자녀가정 - 12세 이하 아동이 2명 이상\n④ 다문화 가정 - 다문화가족지원법 제2조 제1호에 해당하는 다문화가정으로서 12세 이하 아동 2명 이상인 가정\n⑤ 기타 양육부담 가정\n- 아버지 또는 어머니가 입증 가능한 장기입원 등의 질병을 앓고 있는 경우\n- 아버지 또는 어머니가 학교에 재학 중이거나 취업준비 중(입증 가능해야 함)인 경우\n- 어머니의 출산으로 출생 아동의 형제ㆍ자매를 돌볼 수 없을 경우 - 아동학대 피해 위기 아동 가정(아동학대 전담공무원 또는 아동보호전분기관의 사례관리 중 양육공백을 인정받은 경우)\n가구 소득기준은 기준 중위소득 250%이하인 가정으로 가구원수별 소득기준 금액은 아래와 같습니다.\n2026년 가구원수별 소득기준 금액은 다음과 같습니다. (4인 가족 월소득 기준)\n- 기준 중위소득 75% : 4,872,000원\n- 기준 중위소득 120% : 7,794,000원\n- 기준 중위소득 150% : 9,743,000원- 기준 중위소득 250% : 16,237,000원\n가구 소득은 건강보험료 본인부담금 고지액을 기준으로 산정하며 건강보험 미가입 사업장에 취업한 사람의 소득은 별도로 파악합니다.\n가구원의 범위는 세대별 주민등록표에 기재된 자로서 생계와 주거를 같이 하는 아동의 2촌 이내의 가족, 직계존비속 및 배우자를 말합니다.\n소득합산 대상자의 범위는 가구원의 범위와 동일합니다.\n아버지 또는 어머니가 아동과 주민등록상 거주지가 다르고 생계와 주거를 같이 하지 않는 경우에도 소득은 합산하며 가구원 수에 포함합니다.\n부부가 이혼한 경우에는 아동의 기본증명서 상의 친권자이거나 실거주를 함께하는 아버지 또는 어머니의 소득만 산정하고 가구원 수에 포함합니다.",
+        "provider_name": "성평등가족부 아이돌봄지원과",
+        "reception_text": null,
+        "application_url": null,
+        "application_method_text": "신청기관연락처목록 거주지 읍/면/동 주민센터, 읍면동 주민센터 또는 복지로 웹사이트(PC/모바일앱)에서 ‘서비스 신청’\n신청기관연락처목록 거주지 읍/면/동 주민센터, 읍면동 주민센터 또는 복지로 웹사이트(PC/모바일앱)에서 ‘서비스 신청’\n조사기관연락처목록 담당 시/군/구청 또는 시군구청에서 조사 및 심사\n결정기관연락처목록  담당 시/군/구청 또는 지정 서비스 제공기관에서 보장 결정\n이의신청접수기관연락처목록  이의가 있을 경우, 담당 시/군/구청 또는 성평등가족부, 지자체에 이의 신청 접수",
+        "application_period_text": null,
+        "required_documents_text": null
+      },
+      "dates": {
+        "crtrYr": {
+          "list": null,
+          "detail": "2026"
+        },
+        "svcfrstRegTs": {
+          "list": "20210903",
+          "detail": null
+        },
+        "lastModYmd": {
+          "list": null,
+          "detail": null
+        },
+        "enfcBgngYmd": {
+          "list": null,
+          "detail": null
+        },
+        "enfcEndYmd": {
+          "list": null,
+          "detail": null
+        }
+      },
+      "classification": {
+        "lifeArray": "영유아, 아동, 청소년",
+        "trgterIndvdlArray": "다문화·탈북민, 다자녀, 장애인, 한부모·조손",
+        "intrsThemaArray": "보호·돌봄, 보육"
+      },
+      "additional": {
+        "applmetList": [
+          {
+            "servSeCode": "070",
+            "servSeDetailLink": "거주지 읍/면/동 주민센터, 읍면동 주민센터 또는 복지로 웹사이트(PC/모바일앱)에서 ‘서비스 신청’",
+            "servSeDetailNm": "신청기관연락처목록"
+          },
+          {
+            "servSeCode": "070",
+            "servSeDetailLink": "거주지 읍/면/동 주민센터, 읍면동 주민센터 또는 복지로 웹사이트(PC/모바일앱)에서 ‘서비스 신청’",
+            "servSeDetailNm": "신청기관연락처목록"
+          },
+          {
+            "servSeCode": "070",
+            "servSeDetailLink": "담당 시/군/구청 또는 시군구청에서 조사 및 심사",
+            "servSeDetailNm": "조사기관연락처목록"
+          },
+          {
+            "servSeCode": "070",
+            "servSeDetailLink": "담당 시/군/구청 또는 지정 서비스 제공기관에서 보장 결정",
+            "servSeDetailNm": "결정기관연락처목록 "
+          },
+          {
+            "servSeCode": "070",
+            "servSeDetailLink": "이의가 있을 경우, 담당 시/군/구청 또는 성평등가족부, 지자체에 이의 신청 접수",
+            "servSeDetailNm": "이의신청접수기관연락처목록 "
+          }
+        ],
+        "inqplCtadrList": {
+          "servSeCode": "010",
+          "servSeDetailLink": "1577-8136",
+          "servSeDetailNm": "아이돌봄 지원사업"
+        },
+        "inqplHmpgReldList": {
+          "servSeCode": "020",
+          "servSeDetailLink": "https://idolbom.go.kr/",
+          "servSeDetailNm": "아이돌봄 지원사업"
+        },
+        "basfrmList": [
+          {
+            "servSeCode": "040",
+            "servSeDetailLink": "https://bokjiro.go.kr/ssis-tbu/CmmFileUtil/getDownload.do?atcflId=20260325UUWBM1356560182126744&atcflSn=1",
+            "servSeDetailNm": "사회보장급여 신청(변경)서.pdf"
+          },
+          {
+            "servSeCode": "040",
+            "servSeDetailLink": "https://bokjiro.go.kr/ssis-tbu/CmmFileUtil/getDownload.do?atcflId=20260327UUWBM1419290182494439&atcflSn=1",
+            "servSeDetailNm": "2026년 아이돌봄 지원사업 안내.pdf"
+          },
+          {
+            "servSeCode": "040",
+            "servSeDetailLink": "https://bokjiro.go.kr/ssis-tbu/CmmFileUtil/getDownload.do?atcflId=20260327UUWBM1419290182494439&atcflSn=2",
+            "servSeDetailNm": "2026년 아이돌봄 지원사업 안내.pdf"
+          }
+        ],
+        "baslawList": {
+          "servSeCode": "030",
+          "servSeDetailNm": "아이돌봄 지원법"
+        }
+      },
+      "urls": {
+        "source_url": {
+          "raw": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000024&wlfareInfoReldBztpCd=01",
+          "value": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000024&wlfareInfoReldBztpCd=01",
+          "status": "valid",
+          "endpoint": "list",
+          "field": "servDtlLink"
+        },
+        "application_url": {
+          "raw": null,
+          "value": null,
+          "status": "empty",
+          "endpoint": "detail",
+          "field": "applicationUrl"
+        }
+      }
+    },
+    {
+      "provider": "BOKJIRO_CENTRAL",
+      "externalId": "WLF00000030",
+      "snapshotId": "bea50480-514d-459d-914e-5db8a035be7b",
+      "storedNormalizerVersion": "bokjiro-1",
+      "replayNormalizerVersion": "bokjiro-2",
+      "fixtures": [
+        {
+          "file": "central-childcare-list.xml",
+          "sha256": "aab9c2b6362a8853a88e27260c367e029a50747985fcfe2564e2c6b0df4def2c"
+        },
+        {
+          "file": "central-WLF00000030-detail.xml",
+          "sha256": "80ad0a60e419dd39ba29fb3ed5f35d9f8ccf35d02772423c530e57ec01f5cb9f"
+        }
+      ],
+      "displayReplayEqual": true,
+      "fixtureRawHash": "4d000c173cc9801a22400bb3348cbb0211d6592724c638f7c0e9954ee9b54fcd",
+      "fixtureConditionsHash": "a0754021887bc2a22b4ad30ee608fe982260a5eb7524942950ff17341c2e5faa",
+      "fields": [
+        {
+          "field": "name",
+          "path": "detail.servNm",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "summary",
+          "path": "list.servDgst",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "purpose_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "target_text",
+          "path": "detail.tgtrDtlCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "criteria_text",
+          "path": "detail.slctCritCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "benefit_text",
+          "path": "detail.alwServCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_method_text",
+          "path": "detail.applmetList[*]",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_period_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "required_documents_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "provider_name",
+          "path": "detail.jurMnofNm",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "reception_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "contact_text",
+          "path": "detail.rprsCtadr",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "source_url",
+          "path": "list.servDtlLink",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_url",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        }
+      ],
+      "display": {
+        "name": "육아종합지원서비스 제공",
+        "summary": "영유아와 부모를 위한 종합적인 육아종합서비스를 제공하는 육아종합지원센터 운영비를 지원합니다.",
+        "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000030&wlfareInfoReldBztpCd=01",
+        "target_text": "육아종합지원센터를 이용하는 영유아 및 보호자, 어린이집 보육교직원 등을 대상으로 합니다.",
+        "benefit_text": "중앙육아종합지원센터* 운영비를 지원합니다.* 시설보육 및 가정양육 상담, 부모교육, 시간제 보육서비스, 장난감 도서대여, 교재 및 교구대여, 놀이공간 제공 등 One-stop 육아지원 서비스 제공",
+        "contact_text": "02-6901-0202",
+        "purpose_text": null,
+        "criteria_text": "지원대상의 내용을 참고해주시기 바랍니다.",
+        "provider_name": "교육부 영유아정책총괄과",
+        "reception_text": null,
+        "application_url": null,
+        "application_method_text": "조사기관연락처목록 담당 시/군/구청 또는 교육부 영유아정책총괄과에서 조사 및 심사\n결정기관연락처목록  담당 시/군/구청 또는 교육부 영유아정책총괄과에서 보장 결정\n지급기관연락처목록  담당 시/군/구청 또는 중앙(교육부), 지방(해당 시도,시군구)에서 대상자에게 서비스 제공\n사후관리기관목록 담당 시/군/구청 또는 한국보육진흥원에서 서비스 제공 이후 대상자의 상황 관리",
+        "application_period_text": null,
+        "required_documents_text": null
+      },
+      "dates": {
+        "crtrYr": {
+          "list": null,
+          "detail": "2026"
+        },
+        "svcfrstRegTs": {
+          "list": "20210903",
+          "detail": null
+        },
+        "lastModYmd": {
+          "list": null,
+          "detail": null
+        },
+        "enfcBgngYmd": {
+          "list": null,
+          "detail": null
+        },
+        "enfcEndYmd": {
+          "list": null,
+          "detail": null
+        }
+      },
+      "classification": {
+        "lifeArray": "영유아",
+        "intrsThemaArray": "보육"
+      },
+      "additional": {
+        "applmetList": [
+          {
+            "servSeCode": "070",
+            "servSeDetailLink": "담당 시/군/구청 또는 교육부 영유아정책총괄과에서 조사 및 심사",
+            "servSeDetailNm": "조사기관연락처목록"
+          },
+          {
+            "servSeCode": "070",
+            "servSeDetailLink": "담당 시/군/구청 또는 교육부 영유아정책총괄과에서 보장 결정",
+            "servSeDetailNm": "결정기관연락처목록 "
+          },
+          {
+            "servSeCode": "070",
+            "servSeDetailLink": "담당 시/군/구청 또는 중앙(교육부), 지방(해당 시도,시군구)에서 대상자에게 서비스 제공",
+            "servSeDetailNm": "지급기관연락처목록 "
+          },
+          {
+            "servSeCode": "070",
+            "servSeDetailLink": "담당 시/군/구청 또는 한국보육진흥원에서 서비스 제공 이후 대상자의 상황 관리",
+            "servSeDetailNm": "사후관리기관목록"
+          }
+        ],
+        "inqplCtadrList": {
+          "servSeCode": "010",
+          "servSeDetailLink": "02-6901-0202",
+          "servSeDetailNm": "중앙육아종합지원센터 센터지원팀"
+        },
+        "basfrmList": {
+          "servSeCode": "040",
+          "servSeDetailLink": "https://bokjiro.go.kr/ssis-tbu/CmmFileUtil/getDownload.do?atcflId=20260319UUWBM1603140181336882&atcflSn=1",
+          "servSeDetailNm": "1-1. 2026년도 보육사업안내_본문.pdf"
+        },
+        "baslawList": {
+          "servSeCode": "030",
+          "servSeDetailNm": "영유아보육법"
+        }
+      },
+      "urls": {
+        "source_url": {
+          "raw": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000030&wlfareInfoReldBztpCd=01",
+          "value": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000030&wlfareInfoReldBztpCd=01",
+          "status": "valid",
+          "endpoint": "list",
+          "field": "servDtlLink"
+        },
+        "application_url": {
+          "raw": null,
+          "value": null,
+          "status": "empty",
+          "endpoint": "detail",
+          "field": "applicationUrl"
+        }
+      }
+    },
+    {
+      "provider": "BOKJIRO_LOCAL",
+      "externalId": "WLF00002249",
+      "snapshotId": "d761c7f5-80de-498c-94fb-dcccecffe65d",
+      "storedNormalizerVersion": "bokjiro-1",
+      "replayNormalizerVersion": "bokjiro-2",
+      "fixtures": [
+        {
+          "file": "local-list.xml",
+          "sha256": "2daec0b452a37543d31d226717ad4dc7541f8a2f6ad253e903f6df17ccb03b59"
+        },
+        {
+          "file": "local-WLF00002249-detail.xml",
+          "sha256": "21401631e2b20cc60d09db503750007da3799e36742801b432eb27b8e5cae6bf"
+        }
+      ],
+      "displayReplayEqual": true,
+      "fixtureRawHash": "0280a136cefe7e6e541ad78afcaa675f9d763720694101b3e7065cd435a74901",
+      "fixtureConditionsHash": "374c744b891c5242f7d8f9dfd7c5b8870f0f29a53d80fdd55429facfb634a2f4",
+      "fields": [
+        {
+          "field": "name",
+          "path": "detail.servNm",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "summary",
+          "path": "list.servDgst",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "purpose_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "target_text",
+          "path": "detail.sprtTrgtCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "criteria_text",
+          "path": "detail.slctCritCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "benefit_text",
+          "path": "detail.alwServCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_method_text",
+          "path": "detail.aplyMtdCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_period_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "required_documents_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "provider_name",
+          "path": "detail.bizChrDeptNm",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "reception_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "contact_text",
+          "path": "detail.inqplCtadrList[*]",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "source_url",
+          "path": "list.servDtlLink",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_url",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        }
+      ],
+      "display": {
+        "name": "장애인가정 출산지원금 지급",
+        "summary": "장애인가구에 출산비용을 지원함으로써 경제적 부담을 경감하고 출산 친화적 문화조성을 통한 삶의 질 개선에 기여하는 것을 목적으로 함.",
+        "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00002249&wlfareInfoReldBztpCd=02",
+        "target_text": "- 지원대상 : 신생아 출생일을 기준으로 6개월 전부터 신청일 현재까지 계속하여 관내에 주민등록을 두고 거주하는 장애인가정",
+        "benefit_text": "부, 모 경증장애인: 100만원부. 모 중증장애인: 150만원",
+        "contact_text": "중구 어르신장애인복지과 02-3396-5373",
+        "purpose_text": null,
+        "criteria_text": "출산여성장애인, 배우자가 출산한 남성장애인, 신청일 기준 중구관내에 6개월 이상 주소를 둔 자",
+        "provider_name": "서울특별시 중구 복지환경국 어르신장애인복지과",
+        "reception_text": null,
+        "application_url": null,
+        "application_method_text": "- 신청자격 : 출산한 장애인가정의 부 또는 모- 신청장소 : 관할 동 주민센터- 제출서류 : 장애인가정 출산지원금 신청서, 통장사본, 개인정보 제공 및 활용 동의서                 (출산 및 장애인 여부 확인 서류는 신청시 동 주민센터에서 확인)- 신청기한 : 신생아 출생일로부터 1년 이내",
+        "application_period_text": null,
+        "required_documents_text": null
+      },
+      "dates": {
+        "crtrYr": {
+          "list": null,
+          "detail": null
+        },
+        "svcfrstRegTs": {
+          "list": null,
+          "detail": null
+        },
+        "lastModYmd": {
+          "list": "20260820",
+          "detail": "20260820"
+        },
+        "enfcBgngYmd": {
+          "list": null,
+          "detail": "20130101"
+        },
+        "enfcEndYmd": {
+          "list": null,
+          "detail": "99991231"
+        }
+      },
+      "classification": {
+        "lifeNmArray": "영유아, 아동, 청소년, 청년, 중장년, 노년, 임신 · 출산",
+        "trgterIndvdlNmArray": "장애인",
+        "intrsThemaNmArray": "임신·출산, 서민금융"
+      },
+      "additional": {
+        "inqplCtadrList": {
+          "wlfareInfoDtlCd": "010",
+          "wlfareInfoReldCn": "02-3396-5373",
+          "wlfareInfoReldNm": "중구 어르신장애인복지과"
+        },
+        "baslawList": {
+          "wlfareInfoDtlCd": "030",
+          "wlfareInfoReldNm": "서울특별시 중구 장애인가정 출산지원금 지급 조례"
+        },
+        "basfrmList": {
+          "wlfareInfoDtlCd": "040",
+          "wlfareInfoReldCn": "https://www.bokjiro.go.kr/ssis-tbu/CmmFileUtil/siteQnaInfoDownload.do?atcflId=5759GOWF16GOWF165759&atcflSn=1",
+          "wlfareInfoReldNm": "장애인가정 출산비용 지원 백데이터.pdf"
+        }
+      },
+      "urls": {
+        "source_url": {
+          "raw": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00002249&wlfareInfoReldBztpCd=02",
+          "value": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00002249&wlfareInfoReldBztpCd=02",
+          "status": "valid",
+          "endpoint": "list",
+          "field": "servDtlLink"
+        },
+        "application_url": {
+          "raw": null,
+          "value": null,
+          "status": "empty",
+          "endpoint": "detail",
+          "field": "applicationUrl"
+        }
+      }
+    },
+    {
+      "provider": "BOKJIRO_LOCAL",
+      "externalId": "WLF00002340",
+      "snapshotId": "79c5aefd-c757-4562-9c44-3303b46162f5",
+      "storedNormalizerVersion": "bokjiro-1",
+      "replayNormalizerVersion": "bokjiro-2",
+      "fixtures": [
+        {
+          "file": "local-childcare-list-page2.xml",
+          "sha256": "192077fc2a0ab6c80fc74d1df980d589b78d41e8860f4e12c60256503c2722a9"
+        },
+        {
+          "file": "local-WLF00002340-detail.xml",
+          "sha256": "2a17c0223396155c9d2d5cf4151d77107954a6e686caf47e25c2d1a132f41276"
+        }
+      ],
+      "displayReplayEqual": true,
+      "fixtureRawHash": "5f34223da4f5b9d3eb75e2ca83361cc9c36c471669330154880d58397c5f00b8",
+      "fixtureConditionsHash": "0c0d332a858332ae65ab4d1c2e0912f7a786ee140a49fccb7db839392f9a000a",
+      "fields": [
+        {
+          "field": "name",
+          "path": "detail.servNm",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "summary",
+          "path": "list.servDgst",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "purpose_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "target_text",
+          "path": "detail.sprtTrgtCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "criteria_text",
+          "path": "detail.slctCritCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "benefit_text",
+          "path": "detail.alwServCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_method_text",
+          "path": "detail.aplyMtdCn",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_period_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "required_documents_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "provider_name",
+          "path": "detail.bizChrDeptNm",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "reception_text",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        },
+        {
+          "field": "contact_text",
+          "path": "detail.inqplCtadrList[*]",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "source_url",
+          "path": "list.servDtlLink",
+          "dedicatedFieldProvided": true,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": false
+        },
+        {
+          "field": "application_url",
+          "path": null,
+          "dedicatedFieldProvided": false,
+          "whitespaceOnlyEquivalent": true,
+          "numericEntityAndWhitespaceEquivalent": true,
+          "replayEqual": true,
+          "empty": true
+        }
+      ],
+      "display": {
+        "name": "출산양육지원금 지급",
+        "summary": "서울시 최초 「출산양육지원금 최대 1천만원 확대지원」을 통해 구민의 자녀 양육으로 인한 경제적 부담을 경감하고 저출산에 대한 국가 책임성을 강화하여 출산장려 분위기를 조성하고자 함",
+        "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00002340&wlfareInfoReldBztpCd=02",
+        "target_text": "1) 지원대상  - 신생아 출생일 현재 12개월이상 중구에 주민등록이 되어있는 실제 거주 중인 신생아의 부모  - 신생아 출생일 현재 중구에 12개월 미만 중구 관내에 주민등록이 되어있는 실제 거주기간이 12개월 이상 경과해야 지원 가능2)지원규모  - 첫째아 100만원, 둘째아 200만원, 셋째아 300만원, 넷째아 500만원, 다섯째아 이상 1,000만원   ※ 23.1.1.부터 지원금액 확대                                                                                                                                                                                (기존 : 첫째아 20만원, 둘째아 100만원, 셋째아 200만원, 넷째아 300만원, 다섯째아 이상 500만원)3) 지원절차  - 신청권자 : 신생아의 부모(친권자 또는 후견인)  - 신청방법 : 출생신고일로부터 6개월 이내 거주지 주민센터 방문 신청",
+        "benefit_text": "1) 지급금액 - 첫째아: 100만원 - 둘째아: 200만원 - 셋째아: 300만원 - 넷째아: 500만원 - 다섯째아 이상: 1,000만원",
+        "contact_text": "중구청 가족정책과 02-3396-5434",
+        "purpose_text": null,
+        "criteria_text": "신생아 출생일 기준 중구에 주민등록이 되어있는 12개월 이상 실제 거주 중인 신생아의 부모",
+        "provider_name": "서울특별시 중구 복지환경국 가족정책과",
+        "reception_text": null,
+        "application_url": null,
+        "application_method_text": "1) 신청기한    - 신생아 출생신고일로부터 6개월 이내      2) 신청장소 : 거주지(주민등록지) 동 주민센터",
+        "application_period_text": null,
+        "required_documents_text": null
+      },
+      "dates": {
+        "crtrYr": {
+          "list": null,
+          "detail": null
+        },
+        "svcfrstRegTs": {
+          "list": null,
+          "detail": null
+        },
+        "lastModYmd": {
+          "list": "20260716",
+          "detail": "20260716"
+        },
+        "enfcBgngYmd": {
+          "list": null,
+          "detail": "20070401"
+        },
+        "enfcEndYmd": {
+          "list": null,
+          "detail": "99991231"
+        }
+      },
+      "classification": {
+        "lifeNmArray": "영유아, 임신 · 출산",
+        "intrsThemaNmArray": "임신·출산, 서민금융"
+      },
+      "additional": {
+        "inqplCtadrList": {
+          "wlfareInfoDtlCd": "010",
+          "wlfareInfoReldCn": "02-3396-5434",
+          "wlfareInfoReldNm": "중구청 가족정책과"
+        },
+        "baslawList": {
+          "wlfareInfoDtlCd": "030",
+          "wlfareInfoReldNm": "서울특별시 중구 출산양육 지원에 관한 조례"
+        },
+        "basfrmList": {
+          "wlfareInfoDtlCd": "040",
+          "wlfareInfoReldCn": "https://www.bokjiro.go.kr/ssis-tbu/CmmFileUtil/siteQnaInfoDownload.do?atcflId=20231019UUWBM0947260053650107&atcflSn=1",
+          "wlfareInfoReldNm": "서울특별시 중구 출산양육 지원에 관한 조례(2023.3.27.개정).hwp"
+        }
+      },
+      "urls": {
+        "source_url": {
+          "raw": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00002340&wlfareInfoReldBztpCd=02",
+          "value": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00002340&wlfareInfoReldBztpCd=02",
+          "status": "valid",
+          "endpoint": "list",
+          "field": "servDtlLink"
+        },
+        "application_url": {
+          "raw": null,
+          "value": null,
+          "status": "empty",
+          "endpoint": "detail",
+          "field": "applicationUrl"
+        }
+      }
+    }
+  ]
+}

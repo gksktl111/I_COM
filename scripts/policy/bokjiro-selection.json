@@ -1,0 +1,26 @@
+{
+  "BOKJIRO_CENTRAL": [
+    {
+      "id": "WLF00000024",
+      "reason": "중앙 아이돌봄 대상·소득·돌봄 조건 표본",
+      "filters": { "srchKeyCode": "003", "searchWrd": "양육" }
+    },
+    {
+      "id": "WLF00000030",
+      "reason": "중앙 육아 지원 서비스·신청 절차 표본",
+      "filters": { "srchKeyCode": "003", "searchWrd": "양육" }
+    }
+  ],
+  "BOKJIRO_LOCAL": [
+    {
+      "id": "WLF00002249",
+      "reason": "서울 중구 장애인가정 출산 지원, Gov24 교차 출처 검토 후보",
+      "filters": { "ctpvNm": "서울특별시", "sggNm": "중구" }
+    },
+    {
+      "id": "WLF00002340",
+      "reason": "서울 중구 출산양육 지원, 출생순위·거주 조건 표본",
+      "filters": { "ctpvNm": "서울특별시", "sggNm": "중구" }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "endpoint": "serviceDetail",
+  "page": 2,
+  "perPage": 1,
+  "filters": {
+    "cond[서비스ID::EQ]": "174000000029"
+  },
+  "at": "2026-09-07T17:54:48.209Z",
+  "attempt": 1,
+  "status": 200,
+  "body": {
+    "currentCount": 0,
+    "data": [],
+    "matchCount": 1,
+    "page": 2,
+    "perPage": 1,
+    "totalCount": 10956
+  },
+  "anomalies": []
+}

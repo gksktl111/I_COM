@@ -1,0 +1,6 @@
+{
+  "filters": {},
+  "perPage": 50,
+  "maxPages": 1000,
+  "dailyLimit": 100
+}

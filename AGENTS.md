@@ -33,7 +33,7 @@ agent. Keep tightly coupled work local when delegation would delay the next deci
 ### Roles and models
 
 - Default to `agent_type = "astra_worker"` for bounded implementation, code
-  investigation, and reviews requiring judgment. Its config supplies Astra low;
+  investigation, and reviews requiring judgment. Its config supplies Astra medium;
   omit model/effort overrides.
 - Use Luna only through `agent_type = "luna_runner"` for supplied commands/scripts
   whose runtime or output warrants handoff, with known inputs, outputs and completion

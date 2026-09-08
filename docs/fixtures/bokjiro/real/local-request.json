@@ -1,0 +1,13 @@
+{
+  "kind": "local",
+  "endpoint": "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations/LcgvWelfarelist",
+  "params": {
+    "callTp": "L",
+    "pageNo": "1",
+    "numOfRows": "10",
+    "ctpvNm": "서울특별시",
+    "sggNm": "중구"
+  },
+  "status": 200,
+  "at": "2026-09-07T19:21:24.677Z"
+}

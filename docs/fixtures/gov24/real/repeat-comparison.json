@@ -1,0 +1,194 @@
+[
+  {
+    "first": "first/request-001.json",
+    "repeat": "repeat/request-001.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-002.json",
+    "repeat": "repeat/request-002.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-003.json",
+    "repeat": "repeat/request-003.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-004.json",
+    "repeat": "repeat/request-004.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-005.json",
+    "repeat": "repeat/request-005.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-006.json",
+    "repeat": "repeat/request-006.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-007.json",
+    "repeat": "repeat/request-007.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-008.json",
+    "repeat": "repeat/request-008.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-009.json",
+    "repeat": "repeat/request-009.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-010.json",
+    "repeat": "repeat/request-010.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-011.json",
+    "repeat": "repeat/request-011.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-012.json",
+    "repeat": "repeat/request-012.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-013.json",
+    "repeat": "repeat/request-013.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-014.json",
+    "repeat": "repeat/request-014.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-015.json",
+    "repeat": "repeat/request-015.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-016.json",
+    "repeat": "repeat/request-016.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-017.json",
+    "repeat": "repeat/request-017.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-018.json",
+    "repeat": "repeat/request-018.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-019.json",
+    "repeat": "repeat/request-019.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-020.json",
+    "repeat": "repeat/request-020.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-021.json",
+    "repeat": "repeat/request-021.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-022.json",
+    "repeat": "repeat/request-022.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-023.json",
+    "repeat": "repeat/request-023.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-024.json",
+    "repeat": "repeat/request-024.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-025.json",
+    "repeat": "repeat/request-025.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-026.json",
+    "repeat": "repeat/request-026.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-027.json",
+    "repeat": "repeat/request-027.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-028.json",
+    "repeat": "repeat/request-028.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-029.json",
+    "repeat": "repeat/request-029.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-030.json",
+    "repeat": "repeat/request-030.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-031.json",
+    "repeat": "repeat/request-031.json",
+    "sameData": true,
+    "sameCounts": true
+  },
+  {
+    "first": "first/request-032.json",
+    "repeat": "repeat/request-032.json",
+    "sameData": true,
+    "sameCounts": true
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "kind": "central",
+  "endpoint": "https://apis.data.go.kr/B554287/NationalWelfareInformationsV001/NationalWelfaredetailedV001",
+  "params": {
+    "callTp": "D",
+    "servId": "WLF00000030"
+  },
+  "status": 200,
+  "at": "2026-09-07T19:24:16.388860+00:00"
+}

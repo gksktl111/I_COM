@@ -1,0 +1,378 @@
+{
+  "source": "https://infuser.odcloud.kr/api/stages/44436/api-docs?1684891964110",
+  "retrievedAt": "2026-09-08",
+  "apiVersion": "v3",
+  "evidence": "official specification; not authenticated response",
+  "models": {
+    "serviceList": {
+      "서비스ID": {
+        "type": "string",
+        "description": ""
+      },
+      "지원유형": {
+        "type": "string",
+        "description": ""
+      },
+      "서비스명": {
+        "type": "string",
+        "description": ""
+      },
+      "서비스목적요약": {
+        "type": "string",
+        "description": ""
+      },
+      "지원대상": {
+        "type": "string",
+        "description": ""
+      },
+      "선정기준": {
+        "type": "string",
+        "description": ""
+      },
+      "지원내용": {
+        "type": "string",
+        "description": ""
+      },
+      "신청방법": {
+        "type": "string",
+        "description": ""
+      },
+      "신청기한": {
+        "type": "string",
+        "description": ""
+      },
+      "상세조회URL": {
+        "type": "string",
+        "description": ""
+      },
+      "소관기관코드": {
+        "type": "string",
+        "description": ""
+      },
+      "소관기관명": {
+        "type": "string",
+        "description": ""
+      },
+      "부서명": {
+        "type": "string",
+        "description": ""
+      },
+      "조회수": {
+        "type": "integer",
+        "description": ""
+      },
+      "소관기관유형": {
+        "type": "string",
+        "description": ""
+      },
+      "사용자구분": {
+        "type": "string",
+        "description": ""
+      },
+      "서비스분야": {
+        "type": "string",
+        "description": ""
+      },
+      "접수기관": {
+        "type": "string",
+        "description": ""
+      },
+      "전화문의": {
+        "type": "string",
+        "description": ""
+      },
+      "등록일시": {
+        "type": "string",
+        "description": ""
+      },
+      "수정일시": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "serviceDetail": {
+      "서비스ID": {
+        "type": "string",
+        "description": ""
+      },
+      "지원유형": {
+        "type": "string",
+        "description": ""
+      },
+      "서비스명": {
+        "type": "string",
+        "description": ""
+      },
+      "서비스목적": {
+        "type": "string",
+        "description": ""
+      },
+      "신청기한": {
+        "type": "string",
+        "description": ""
+      },
+      "지원대상": {
+        "type": "string",
+        "description": ""
+      },
+      "선정기준": {
+        "type": "string",
+        "description": ""
+      },
+      "지원내용": {
+        "type": "string",
+        "description": ""
+      },
+      "신청방법": {
+        "type": "string",
+        "description": ""
+      },
+      "구비서류": {
+        "type": "string",
+        "description": ""
+      },
+      "접수기관명": {
+        "type": "string",
+        "description": ""
+      },
+      "문의처": {
+        "type": "string",
+        "description": ""
+      },
+      "온라인신청사이트URL": {
+        "type": "string",
+        "description": ""
+      },
+      "수정일시": {
+        "type": "string",
+        "description": ""
+      },
+      "소관기관명": {
+        "type": "string",
+        "description": ""
+      },
+      "행정규칙": {
+        "type": "string",
+        "description": ""
+      },
+      "자치법규": {
+        "type": "string",
+        "description": ""
+      },
+      "법령": {
+        "type": "string",
+        "description": ""
+      },
+      "공무원확인구비서류": {
+        "type": "string",
+        "description": ""
+      },
+      "본인확인필요구비서류": {
+        "type": "string",
+        "description": ""
+      }
+    },
+    "supportConditions": {
+      "서비스ID": {
+        "type": "string",
+        "description": "공공서비스 고유 식별자"
+      },
+      "JA0101": {
+        "type": "string",
+        "description": "남성"
+      },
+      "JA0102": {
+        "type": "string",
+        "description": "여성"
+      },
+      "JA0110": {
+        "type": "integer",
+        "description": "대상연령(시작)"
+      },
+      "JA0111": {
+        "type": "integer",
+        "description": "대상연령(종료)"
+      },
+      "JA0201": {
+        "type": "string",
+        "description": "중위소득 0~50%"
+      },
+      "JA0202": {
+        "type": "string",
+        "description": "중위소득 51~75%"
+      },
+      "JA0203": {
+        "type": "string",
+        "description": "중위소득 76~100%"
+      },
+      "JA0204": {
+        "type": "string",
+        "description": "중위소득 101~200%"
+      },
+      "JA0205": {
+        "type": "string",
+        "description": "중위소득 200% 초과"
+      },
+      "JA0301": {
+        "type": "string",
+        "description": "예비부모/난임"
+      },
+      "JA0302": {
+        "type": "string",
+        "description": "임산부"
+      },
+      "JA0303": {
+        "type": "string",
+        "description": "출산/입양"
+      },
+      "JA0313": {
+        "type": "string",
+        "description": "농업인"
+      },
+      "JA0314": {
+        "type": "string",
+        "description": "어업인"
+      },
+      "JA0315": {
+        "type": "string",
+        "description": "축산업인"
+      },
+      "JA0316": {
+        "type": "string",
+        "description": "임업인"
+      },
+      "JA0317": {
+        "type": "string",
+        "description": "초등학생"
+      },
+      "JA0318": {
+        "type": "string",
+        "description": "중학생"
+      },
+      "JA0319": {
+        "type": "string",
+        "description": "고등학생"
+      },
+      "JA0320": {
+        "type": "string",
+        "description": "대학생/대학원생"
+      },
+      "JA0322": {
+        "type": "string",
+        "description": "해당사항없음"
+      },
+      "JA0326": {
+        "type": "string",
+        "description": "근로자/직장인"
+      },
+      "JA0327": {
+        "type": "string",
+        "description": "구직자/실업자"
+      },
+      "JA0401": {
+        "type": "string",
+        "description": "다문화가족"
+      },
+      "JA0402": {
+        "type": "string",
+        "description": "북한이탈주민"
+      },
+      "JA0403": {
+        "type": "string",
+        "description": "한부모가정/조손가정"
+      },
+      "JA0404": {
+        "type": "string",
+        "description": "1인가구"
+      },
+      "JA0410": {
+        "type": "string",
+        "description": "해당사항없음"
+      },
+      "JA0411": {
+        "type": "string",
+        "description": "다자녀가구"
+      },
+      "JA0412": {
+        "type": "string",
+        "description": "무주택세대"
+      },
+      "JA0413": {
+        "type": "string",
+        "description": "신규전입"
+      },
+      "JA0414": {
+        "type": "string",
+        "description": "확대가족"
+      },
+      "JA1101": {
+        "type": "string",
+        "description": "예비창업자"
+      },
+      "JA1102": {
+        "type": "string",
+        "description": "영업중"
+      },
+      "JA1103": {
+        "type": "string",
+        "description": "생계곤란/폐업예정자"
+      },
+      "JA1201": {
+        "type": "string",
+        "description": "음식적업"
+      },
+      "JA1202": {
+        "type": "string",
+        "description": "제조업"
+      },
+      "JA1299": {
+        "type": "string",
+        "description": "기타업종"
+      },
+      "JA2101": {
+        "type": "string",
+        "description": "중소기업"
+      },
+      "JA2102": {
+        "type": "string",
+        "description": "사회복지시설"
+      },
+      "JA2103": {
+        "type": "string",
+        "description": "기관/단체"
+      },
+      "JA2201": {
+        "type": "string",
+        "description": "제조업"
+      },
+      "JA2202": {
+        "type": "string",
+        "description": "농업,임업 및 어업"
+      },
+      "JA2203": {
+        "type": "string",
+        "description": "정보통신업"
+      },
+      "JA2299": {
+        "type": "string",
+        "description": "기타업종"
+      },
+      "JA0328": {
+        "type": "string",
+        "description": "장애인"
+      },
+      "JA0329": {
+        "type": "string",
+        "description": "국가보훈대상자"
+      },
+      "JA0330": {
+        "type": "string",
+        "description": "질병/질환자"
+      },
+      "서비스명": {
+        "type": "string",
+        "description": "서비스명"
+      }
+    }
+  }
+}

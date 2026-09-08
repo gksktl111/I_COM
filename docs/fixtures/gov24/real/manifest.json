@@ -1,0 +1,34 @@
+{
+  "source": "https://api.odcloud.kr/api/gov24/v3/",
+  "evidence": "authenticated real responses; public service descriptions; no synthetic changes",
+  "runs": {
+    "first": {
+      "startedAt": "2026-09-07T17:54:13.100Z",
+      "finishedAt": "2026-09-07T17:54:14.841Z",
+      "calls": 32,
+      "perPage": 5,
+      "envelopeAnomalies": 0,
+      "incompleteOrAnomalous": false,
+      "originalLocalDirectory": ".local/policy-probe/2026-09-07T17-54-13-098Z-70587633-c4f7-48d2-824e-06f51ddbff1d"
+    },
+    "repeat": {
+      "startedAt": "2026-09-07T17:54:47.493Z",
+      "finishedAt": "2026-09-07T17:54:49.152Z",
+      "calls": 32,
+      "perPage": 1,
+      "envelopeAnomalies": 0,
+      "incompleteOrAnomalous": false,
+      "originalLocalDirectory": ".local/policy-probe/2026-09-07T17-54-47-492Z-ae560a0c-b37a-4df0-bd24-e9e6ab18a0a8"
+    }
+  },
+  "selection": "selection.json",
+  "selectionSources": {
+    ".local/policy-probe/2026-09-07T17-51-13-861Z-d6f6b209-ca7c-43e5-908d-f2cfebac2c0d/request-001.json": "selection-sources/source-01.json",
+    ".local/policy-probe/2026-09-07T17-53-04-842Z-75e30cc4-87b7-4e7f-9a5b-e16b7dfd0095/request-001.json": "selection-sources/source-02.json",
+    ".local/policy-probe/2026-09-07T17-53-42-337Z-9c46aa0f-061f-4a2f-8a22-16420d3ebfaa/request-001.json": "selection-sources/source-03.json"
+  },
+  "statistics": "field-statistics.json",
+  "conditions": "condition-observations.json",
+  "allRepeatDataEqual": true,
+  "pagination": "pagination/summary.json"
+}
