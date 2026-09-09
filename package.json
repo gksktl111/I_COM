@@ -14,7 +14,8 @@
     "policy:sync:bokjiro": "node --experimental-strip-types scripts/policy/sync-bokjiro.ts",
     "policy:auto": "node --experimental-strip-types scripts/policy/automatic.ts",
     "policy:label": "node --experimental-strip-types scripts/policy/label.ts",
-    "policy:quality": "node --experimental-strip-types scripts/policy/quality-report.ts"
+    "policy:quality": "node --experimental-strip-types scripts/policy/quality-report.ts",
+    "policy:recommendation:test": "node --experimental-strip-types --test --test-isolation=none --test-reporter=spec src/features/policy/recommendation/*.test.ts"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

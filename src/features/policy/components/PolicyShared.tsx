@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import {
   ArrowRight,
@@ -11,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { EmptyState, Notice, Skeleton } from "@/components/ui/feedback";
 import type { PublicPolicy } from "../public/types";
+import { PolicyDetailModal } from "./PolicyDetailModal";
 
 export function PolicyNotice() {
   return (
@@ -97,28 +97,76 @@ export function PolicyBookmark({ id }: { id: string }) {
 export function PolicyCard({
   policy,
   personalized = false,
+  recommendation,
 }: {
   policy: PublicPolicy;
   personalized?: boolean;
+  recommendation?: { rank: number; reasons: string[]; tags: string[] };
 }) {
+  const [detailOpen, setDetailOpen] = useState(false);
   return (
     <article className="mb-4 space-y-4 rounded-xl border bg-white p-5 sm:p-6">
+      {recommendation && (
+        <div className="flex flex-wrap items-center gap-2 text-sm">
+          <span
+            className={
+              recommendation.rank <= 5
+                ? "rounded bg-slate-900 px-2.5 py-1 font-semibold text-white"
+                : "font-semibold text-slate-600"
+            }
+          >
+            {recommendation.rank <= 5
+              ? `우선 추천 ${recommendation.rank}`
+              : `추천 ${recommendation.rank}`}
+          </span>
+          {[
+            ...new Set([
+              "추가 확인 필요",
+              ...recommendation.tags.filter(
+                (tag) => tag !== "잠정 추천" && !tag.includes("추가 확인"),
+              ),
+            ]),
+          ].map((tag) => (
+            <span
+              key={tag}
+              className="rounded border border-slate-200 px-2.5 py-1 text-slate-600"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-xs text-slate-500">
         <span>{policy.provider_name || "소관 기관 확인 필요"}</span>
         <span className="rounded bg-slate-100 px-2 py-1">
           신청 일정 원문 확인
         </span>
       </div>
-      <Link href={`/policy/${policy.id}`} className="group block">
-        <h2 className="group-hover:text-primary text-lg leading-7 font-bold">
+      <h2 className="text-lg leading-7 font-bold">
+        <button
+          type="button"
+          aria-haspopup="dialog"
+          onClick={() => setDetailOpen(true)}
+          className="hover:text-primary focus-visible:outline-primary min-h-11 cursor-pointer rounded text-left [overflow-wrap:anywhere] break-keep focus-visible:outline-2 focus-visible:outline-offset-4"
+        >
           {policy.name}
-        </h2>
-      </Link>
+        </button>
+      </h2>
       <p className="line-clamp-2 text-sm leading-6 text-slate-600">
         {policy.summary ||
           policy.purpose_text ||
           "상세 화면에서 정책의 지원 내용을 확인해 주세요."}
       </p>
+      {recommendation && recommendation.reasons.length > 0 && (
+        <div className="border-t border-slate-200 pt-4 text-sm leading-6 text-slate-700">
+          <p className="mb-1 font-semibold text-slate-900">추천 이유</p>
+          <ul className="list-disc space-y-1 pl-5">
+            {recommendation.reasons.slice(0, 3).map((reason) => (
+              <li key={reason}>{reason}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       {personalized && (
         <div className="space-y-3 border-y py-4 text-sm leading-6">
           <p className="text-primary flex gap-2">
@@ -139,14 +187,24 @@ export function PolicyCard({
         </p>
         <div className="ml-auto flex flex-wrap items-center justify-end gap-2">
           <PolicyBookmark id={policy.id} />
-          <Button asChild size="sm" className="min-h-11">
-            <Link href={`/policy/${policy.id}`}>
-              상세 요건 및 신청 안내
-              <ArrowRight />
-            </Link>
+          <Button
+            type="button"
+            size="sm"
+            className="min-h-11"
+            aria-haspopup="dialog"
+            aria-label={`${policy.name} 상세 요건 및 신청 안내`}
+            onClick={() => setDetailOpen(true)}
+          >
+            상세 요건 및 신청 안내
+            <ArrowRight />
           </Button>
         </div>
       </div>
+      <PolicyDetailModal
+        policy={detailOpen ? policy : null}
+        onClose={() => setDetailOpen(false)}
+        tags={recommendation ? ["추가 확인 필요", ...recommendation.tags] : []}
+      />
     </article>
   );
 }

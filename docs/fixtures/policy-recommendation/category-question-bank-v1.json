@@ -1,0 +1,1053 @@
+{
+  "version": "category-question-bank-v1",
+  "status": "WIRED_PROVISIONAL_RELEVANCE",
+  "categories": [
+    {
+      "id": "pregnancy",
+      "label": "임신·출산"
+    },
+    {
+      "id": "childcare",
+      "label": "양육·보육"
+    },
+    {
+      "id": "care",
+      "label": "돌봄"
+    },
+    {
+      "id": "health",
+      "label": "의료·건강"
+    },
+    {
+      "id": "education",
+      "label": "아동 교육"
+    },
+    {
+      "id": "housing",
+      "label": "주거·생활지원"
+    }
+  ],
+  "answerStates": [
+    "UNASKED",
+    "PROVIDED",
+    "DONT_KNOW",
+    "SKIPPED",
+    "NOT_APPLICABLE"
+  ],
+  "questions": [
+    {
+      "id": "C-TIMING",
+      "version": "1",
+      "categories": [
+        "pregnancy",
+        "childcare",
+        "care",
+        "health",
+        "education",
+        "housing"
+      ],
+      "prompt": "이 지원은 언제부터 필요하신가요?",
+      "required": "BASIC",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "NOW",
+          "label": "지금 필요해요"
+        },
+        {
+          "value": "WITHIN_3_MONTHS",
+          "label": "3개월 이내"
+        },
+        {
+          "value": "LATER",
+          "label": "3개월 이후"
+        },
+        {
+          "value": "UNDECIDED",
+          "label": "시기를 정하지 않았어요"
+        }
+      ],
+      "fact": {
+        "attribute": "support.desiredTiming",
+        "subject": "SELECTED_SCOPE",
+        "basis": "USER_DESIRED_USE_WINDOW",
+        "reference": "RELATIVE_TO_ANSWER_TIME"
+      },
+      "when": [],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "신청 마감일이나 지급 예정일이 아닌 이용 희망 시점. 여러 자녀의 시점이 다르면 자녀별로 분리한다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "P01",
+      "version": "1",
+      "categories": ["pregnancy"],
+      "prompt": "임신·출산 지원을 받을 분은 누구인가요?",
+      "required": "BASIC",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "SELF",
+          "label": "본인"
+        },
+        {
+          "value": "PARTNER",
+          "label": "배우자"
+        },
+        {
+          "value": "OTHER_FAMILY",
+          "label": "다른 가족"
+        }
+      ],
+      "fact": null,
+      "when": [],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "여기서 익명 대상자 ID를 정한다. 배우자나 가족을 사용자 본인으로 저장하지 않는다.",
+      "kind": "SCOPE_SELECTION",
+      "uses": [],
+      "rankingFeature": null,
+      "scopeKey": "support.recipient"
+    },
+    {
+      "id": "P02",
+      "version": "1",
+      "categories": ["pregnancy"],
+      "prompt": "지원받을 분은 현재 어떤 상황인가요?",
+      "required": "BASIC",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "PLANNING",
+          "label": "임신을 준비하고 있어요"
+        },
+        {
+          "value": "PREGNANT",
+          "label": "현재 임신 중이에요"
+        },
+        {
+          "value": "POSTPARTUM",
+          "label": "출산 후 지원을 찾고 있어요"
+        },
+        {
+          "value": "OTHER",
+          "label": "그 외 상황이에요"
+        }
+      ],
+      "fact": {
+        "attribute": "pregnancy.stage",
+        "subject": "SELECTED_PERSON",
+        "basis": "SELF_REPORTED_EVENT_STAGE",
+        "reference": "AT_ANSWER_TIME"
+      },
+      "when": [],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "이번 탐색의 대상 사건이다. 다른 자녀·다른 임신 사건이 없다는 뜻으로 해석하지 않는다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": "LIFE_STAGE"
+    },
+    {
+      "id": "P03",
+      "version": "1",
+      "categories": ["pregnancy"],
+      "prompt": "현재 임신 몇 주차인가요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "BEFORE_12",
+          "label": "12주 미만"
+        },
+        {
+          "value": "W12_TO_27",
+          "label": "12주 이상 28주 미만"
+        },
+        {
+          "value": "W28_TO_36",
+          "label": "28주 이상 37주 미만"
+        },
+        {
+          "value": "W37_PLUS",
+          "label": "37주 이상"
+        }
+      ],
+      "fact": {
+        "attribute": "pregnancy.gestationalWeeks",
+        "subject": "PREGNANCY_EVENT",
+        "basis": "GESTATIONAL_WEEKS",
+        "reference": "AT_ANSWER_TIME"
+      },
+      "when": [
+        {
+          "questionId": "P02",
+          "values": ["PREGNANT"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "구간 정밀도만 보존한다. 특정 주수 경계를 걸치는 정책은 추가 확인하며 정확한 주수나 예정일을 역산하지 않는다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": "LIFE_STAGE"
+    },
+    {
+      "id": "P04",
+      "version": "1",
+      "categories": ["pregnancy"],
+      "prompt": "출산한 지 얼마나 지났나요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "UNDER_1_MONTH",
+          "label": "1개월 미만"
+        },
+        {
+          "value": "M1_TO_2",
+          "label": "1개월 이상 3개월 미만"
+        },
+        {
+          "value": "M3_TO_5",
+          "label": "3개월 이상 6개월 미만"
+        },
+        {
+          "value": "M6_TO_11",
+          "label": "6개월 이상 12개월 미만"
+        },
+        {
+          "value": "M12_PLUS",
+          "label": "12개월 이상"
+        }
+      ],
+      "fact": {
+        "attribute": "birth.elapsedWindow",
+        "subject": "BIRTH_EVENT",
+        "basis": "CALENDAR_MONTHS_SINCE_BIRTH",
+        "reference": "AT_ANSWER_TIME"
+      },
+      "when": [
+        {
+          "questionId": "P02",
+          "values": ["POSTPARTUM"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "정확한 출산일로 환산하지 않는다. 지급 기한이 날짜 단위라면 별도 확인한다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": "LIFE_STAGE"
+    },
+    {
+      "id": "B01",
+      "version": "1",
+      "categories": ["childcare"],
+      "prompt": "이 자녀는 현재 주로 어디에서 보육을 받고 있나요?",
+      "required": "BASIC",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "HOME",
+          "label": "가정에서 돌보고 있어요"
+        },
+        {
+          "value": "DAYCARE",
+          "label": "어린이집"
+        },
+        {
+          "value": "KINDERGARTEN",
+          "label": "유치원"
+        },
+        {
+          "value": "SCHOOL",
+          "label": "학교에 다니고 있어요"
+        },
+        {
+          "value": "OTHER",
+          "label": "그 외 방식"
+        }
+      ],
+      "fact": {
+        "attribute": "child.currentCareSetting",
+        "subject": "EACH_CHILD",
+        "basis": "ACTUAL_PRIMARY_CARE_SETTING",
+        "reference": "AT_ANSWER_TIME"
+      },
+      "when": [],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "시설 이용 사실이며 특정 급여 수급 여부나 중복지원 여부는 아니다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["ELIGIBILITY", "RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "B02",
+      "version": "1",
+      "categories": ["childcare"],
+      "prompt": "현재 보육 방식을 유지할 계획인가요?",
+      "required": "BASIC",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "KEEP",
+          "label": "현재 방식을 유지할 예정이에요"
+        },
+        {
+          "value": "CHANGE",
+          "label": "새로 이용하거나 변경할 예정이에요"
+        },
+        {
+          "value": "UNDECIDED",
+          "label": "아직 정하지 않았어요"
+        }
+      ],
+      "fact": {
+        "attribute": "child.careChangePlan",
+        "subject": "EACH_CHILD",
+        "basis": "USER_PLAN",
+        "reference": "AT_ANSWER_TIME"
+      },
+      "when": [],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "B03",
+      "version": "1",
+      "categories": ["childcare"],
+      "prompt": "앞으로 어떤 보육 방식을 원하시나요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "HOME",
+          "label": "가정 양육"
+        },
+        {
+          "value": "DAYCARE",
+          "label": "어린이집"
+        },
+        {
+          "value": "KINDERGARTEN",
+          "label": "유치원"
+        },
+        {
+          "value": "OTHER",
+          "label": "그 외 방식"
+        },
+        {
+          "value": "UNDECIDED",
+          "label": "아직 정하지 않았어요"
+        }
+      ],
+      "fact": {
+        "attribute": "child.desiredCareSetting",
+        "subject": "EACH_CHILD",
+        "basis": "DESIRED_CARE_SETTING",
+        "reference": "PLANNED_USE"
+      },
+      "when": [
+        {
+          "questionId": "B02",
+          "values": ["CHANGE"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "원하는 이용 방식이다. 입소 확정이나 현재 이용 사실로 바꾸지 않는다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "D01",
+      "version": "1",
+      "categories": ["care"],
+      "prompt": "이 자녀에게 주로 언제 돌봄이 필요한가요?",
+      "required": "BASIC",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "WEEKDAY_DAY",
+          "label": "평일 낮"
+        },
+        {
+          "value": "AFTER_SCHOOL",
+          "label": "하원·하교 후"
+        },
+        {
+          "value": "EVENING_NIGHT",
+          "label": "저녁·야간"
+        },
+        {
+          "value": "WEEKEND",
+          "label": "주말·공휴일"
+        },
+        {
+          "value": "VARIABLE",
+          "label": "일정하지 않아요"
+        }
+      ],
+      "fact": {
+        "attribute": "care.preferredTime",
+        "subject": "EACH_CHILD",
+        "basis": "PRIMARY_DESIRED_TIME",
+        "reference": "PLANNED_USE"
+      },
+      "when": [],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "주된 시간 선호다. 선택하지 않은 시간은 이용 불가가 아니다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "D02",
+      "version": "1",
+      "categories": ["care"],
+      "prompt": "어떤 돌봄 방식을 우선으로 찾고 있나요?",
+      "required": "BASIC",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "HOME_VISIT",
+          "label": "집으로 찾아오는 돌봄"
+        },
+        {
+          "value": "CENTER",
+          "label": "돌봄센터·기관 이용"
+        },
+        {
+          "value": "AFTER_SCHOOL",
+          "label": "학교·방과 후 돌봄"
+        },
+        {
+          "value": "ANY",
+          "label": "방식은 상관없어요"
+        }
+      ],
+      "fact": {
+        "attribute": "care.preferredDelivery",
+        "subject": "EACH_CHILD",
+        "basis": "PREFERRED_SERVICE_DELIVERY",
+        "reference": "PLANNED_USE"
+      },
+      "when": [],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "D03",
+      "version": "1",
+      "categories": ["care"],
+      "prompt": "돌봄이 얼마나 자주 필요한가요?",
+      "required": "BASIC",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "REGULAR",
+          "label": "정기적으로 필요해요"
+        },
+        {
+          "value": "OCCASIONAL",
+          "label": "필요할 때 가끔"
+        },
+        {
+          "value": "SHORT_TERM",
+          "label": "일정 기간만"
+        },
+        {
+          "value": "UNDECIDED",
+          "label": "아직 정하지 않았어요"
+        }
+      ],
+      "fact": {
+        "attribute": "care.preferredFrequency",
+        "subject": "EACH_CHILD",
+        "basis": "USER_DESIRED_FREQUENCY",
+        "reference": "PLANNED_USE"
+      },
+      "when": [],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "H01",
+      "version": "1",
+      "categories": ["health"],
+      "prompt": "의료·건강 지원을 받을 분은 누구인가요?",
+      "required": "BASIC",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "SELF",
+          "label": "본인"
+        },
+        {
+          "value": "CHILD",
+          "label": "입력한 자녀"
+        },
+        {
+          "value": "OTHER_FAMILY",
+          "label": "다른 가족"
+        }
+      ],
+      "fact": null,
+      "when": [],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "자녀 선택 시 입력된 자녀를 한 명 이상 지정한다. 다른 가족은 별도 익명 대상자 ID가 필요하다. 다른 가족의 연령을 자녀 출생연도에서 추정하지 않는다.",
+      "kind": "SCOPE_SELECTION",
+      "uses": [],
+      "rankingFeature": null,
+      "scopeKey": "support.healthRecipient"
+    },
+    {
+      "id": "H02",
+      "version": "1",
+      "categories": ["health"],
+      "prompt": "검진·진료·치료는 현재 어느 단계인가요?",
+      "required": "BASIC",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "PLANNED",
+          "label": "앞으로 받을 예정이에요"
+        },
+        {
+          "value": "ONGOING",
+          "label": "현재 이용·치료 중이에요"
+        },
+        {
+          "value": "PAID",
+          "label": "이미 이용하고 비용을 지출했어요"
+        },
+        {
+          "value": "EXPLORING",
+          "label": "아직 필요한 지원을 알아보는 중이에요"
+        }
+      ],
+      "fact": {
+        "attribute": "health.serviceStage",
+        "subject": "SELECTED_PERSON",
+        "basis": "SELF_REPORTED_SERVICE_STAGE",
+        "reference": "AT_ANSWER_TIME"
+      },
+      "when": [],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "진단·의뢰·장애 인정 여부를 뜻하지 않는다. 의료비 지원의 신청 전·후 구분은 정책 규칙에서 따로 확인한다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["ELIGIBILITY", "RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "H03",
+      "version": "1",
+      "categories": ["health"],
+      "prompt": "의료비 지원 대상자의 의료보장 유형을 알고 있나요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "HEALTH_INSURANCE",
+          "label": "건강보험"
+        },
+        {
+          "value": "MEDICAL_AID",
+          "label": "의료급여"
+        },
+        {
+          "value": "OTHER",
+          "label": "그 외 유형"
+        }
+      ],
+      "fact": {
+        "attribute": "health.coverageType",
+        "subject": "SELECTED_PERSON",
+        "basis": "SELF_REPORTED_HEALTH_COVERAGE",
+        "reference": "AT_ANSWER_TIME"
+      },
+      "when": [
+        {
+          "needsAny": ["medical-costs"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "의료비 지원을 선택했을 때만 묻는다. 보험료·소득 수준을 이 답변으로 추정하지 않는다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["ELIGIBILITY", "RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "E01",
+      "version": "1",
+      "categories": ["education"],
+      "prompt": "이 자녀는 현재 어떤 교육 상황인가요?",
+      "required": "BASIC",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "ENROLLED",
+          "label": "학교에 다니고 있어요"
+        },
+        {
+          "value": "ENTERING",
+          "label": "입학을 앞두고 있어요"
+        },
+        {
+          "value": "OUT_OF_SCHOOL",
+          "label": "현재 학교에 다니지 않아요"
+        },
+        {
+          "value": "OTHER",
+          "label": "그 외 교육과정이에요"
+        }
+      ],
+      "fact": {
+        "attribute": "education.enrollmentStatus",
+        "subject": "EACH_CHILD",
+        "basis": "SELF_REPORTED_ENROLLMENT",
+        "reference": "AT_ANSWER_TIME"
+      },
+      "when": [],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "학교 밖 상태를 모든 교육 지원의 탈락 조건으로 사용하지 않는다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["ELIGIBILITY", "RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "E02",
+      "version": "1",
+      "categories": ["education"],
+      "prompt": "재학 중이거나 입학할 학교급은 무엇인가요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "ELEMENTARY",
+          "label": "초등학교"
+        },
+        {
+          "value": "MIDDLE",
+          "label": "중학교"
+        },
+        {
+          "value": "HIGH",
+          "label": "고등학교"
+        },
+        {
+          "value": "OTHER",
+          "label": "그 외 학교·교육기관"
+        }
+      ],
+      "fact": {
+        "attribute": "education.schoolStage",
+        "subject": "EACH_CHILD",
+        "basis": "CURRENT_OR_PLANNED_INSTITUTION",
+        "reference": "SELECTED_ENROLLMENT_EVENT"
+      },
+      "when": [
+        {
+          "questionId": "E01",
+          "values": ["ENROLLED", "ENTERING", "OTHER"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "생년에서 학교급을 추정하지 않는다. 현재 재학과 입학 예정 중 어떤 사건인지 E01과 함께 보존한다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["ELIGIBILITY", "RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "E03",
+      "version": "1",
+      "categories": ["education"],
+      "prompt": "현재 또는 입학 예정 학년은 몇 학년인가요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "G1",
+          "label": "1학년"
+        },
+        {
+          "value": "G2",
+          "label": "2학년"
+        },
+        {
+          "value": "G3",
+          "label": "3학년"
+        },
+        {
+          "value": "G4",
+          "label": "4학년"
+        },
+        {
+          "value": "G5",
+          "label": "5학년"
+        },
+        {
+          "value": "G6",
+          "label": "6학년"
+        },
+        {
+          "value": "NO_GRADE",
+          "label": "학년 구분이 없어요"
+        }
+      ],
+      "fact": {
+        "attribute": "education.grade",
+        "subject": "EACH_CHILD",
+        "basis": "SELF_REPORTED_GRADE",
+        "reference": "SELECTED_ENROLLMENT_EVENT"
+      },
+      "when": [
+        {
+          "questionId": "E02",
+          "values": ["ELEMENTARY", "MIDDLE", "HIGH", "OTHER"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "중·고등학교에서는 1~3학년만 제시한다. 학교급 변경 시 학년 답변을 초기화한다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["ELIGIBILITY", "RANKING"],
+      "rankingFeature": null,
+      "optionConditions": {
+        "G4": [
+          {
+            "questionId": "E02",
+            "values": ["ELEMENTARY", "OTHER"]
+          }
+        ],
+        "G5": [
+          {
+            "questionId": "E02",
+            "values": ["ELEMENTARY", "OTHER"]
+          }
+        ],
+        "G6": [
+          {
+            "questionId": "E02",
+            "values": ["ELEMENTARY", "OTHER"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "E04",
+      "version": "1",
+      "categories": ["education"],
+      "prompt": "학교 또는 교육기관은 어느 지역에 있나요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "REGION",
+      "options": [],
+      "fact": {
+        "attribute": "education.schoolRegion",
+        "subject": "EACH_CHILD",
+        "basis": "INSTITUTION_LOCATION",
+        "reference": "SELECTED_ENROLLMENT_EVENT"
+      },
+      "when": [
+        {
+          "questionId": "E01",
+          "values": ["ENROLLED", "ENTERING", "OTHER"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "거주지와 별도다. 시·도/구군 사전을 재사용하며 학교명·상세 주소는 받지 않는다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["ELIGIBILITY", "RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "E05",
+      "version": "1",
+      "categories": ["education"],
+      "prompt": "이번 입학은 어떤 유형인가요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "FIRST",
+          "label": "해당 학교급에 처음 입학"
+        },
+        {
+          "value": "TRANSFER",
+          "label": "전학"
+        },
+        {
+          "value": "REENTRY",
+          "label": "재입학"
+        },
+        {
+          "value": "OTHER",
+          "label": "그 외 유형"
+        }
+      ],
+      "fact": {
+        "attribute": "education.entryType",
+        "subject": "EACH_CHILD",
+        "basis": "SELF_REPORTED_ENTRY_EVENT",
+        "reference": "SELECTED_ENTRY_EVENT"
+      },
+      "when": [
+        {
+          "needsAny": ["uniform", "entry-preparation"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "해당 사건이 없는 경우 NOT_APPLICABLE로 기록한다. 특정 유형 제외 여부는 검수된 정책 규칙이 결정한다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["ELIGIBILITY", "RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "L01",
+      "version": "1",
+      "categories": ["housing"],
+      "prompt": "현재 어떤 형태의 집에 살고 있나요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "OWNED",
+          "label": "자가"
+        },
+        {
+          "value": "JEONSE",
+          "label": "전세"
+        },
+        {
+          "value": "MONTHLY_RENT",
+          "label": "월세"
+        },
+        {
+          "value": "PUBLIC_RENT",
+          "label": "공공임대"
+        },
+        {
+          "value": "TEMPORARY",
+          "label": "임시 거처·지인 집 등"
+        },
+        {
+          "value": "OTHER",
+          "label": "그 외 형태"
+        }
+      ],
+      "fact": {
+        "attribute": "housing.currentTenure",
+        "subject": "HOUSEHOLD",
+        "basis": "CURRENT_DWELLING_TENURE",
+        "reference": "AT_ANSWER_TIME"
+      },
+      "when": [
+        {
+          "needsAny": ["housing-costs", "housing-search"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "월세·공공임대 거주를 가구 전체 무주택으로 해석하지 않는다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["ELIGIBILITY", "RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "L02",
+      "version": "1",
+      "categories": ["housing"],
+      "prompt": "현재 거주지의 임대차 계약자는 누구인가요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "SELF",
+          "label": "본인"
+        },
+        {
+          "value": "CORESIDENT_FAMILY",
+          "label": "함께 사는 가족"
+        },
+        {
+          "value": "OTHER",
+          "label": "그 외 사람"
+        },
+        {
+          "value": "NO_CONTRACT",
+          "label": "해당하는 임대차 계약이 없어요"
+        }
+      ],
+      "fact": {
+        "attribute": "housing.leaseHolderRelation",
+        "subject": "HOUSEHOLD",
+        "basis": "RELATION_TO_LEASEHOLDER",
+        "reference": "CURRENT_LEASE"
+      },
+      "when": [
+        {
+          "questionId": "L01",
+          "values": ["JEONSE", "MONTHLY_RENT", "PUBLIC_RENT"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "계약자 관계만 수집한다. 명의자의 상세 정보나 계약서를 받지 않는다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["ELIGIBILITY", "RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "L03",
+      "version": "1",
+      "categories": ["housing"],
+      "prompt": "현재 집에 대한 지원과 새 집 마련 중 무엇이 우선인가요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "CURRENT",
+          "label": "현재 집의 주거비·생활 지원"
+        },
+        {
+          "value": "MOVING",
+          "label": "이사·새로운 집 마련"
+        },
+        {
+          "value": "UNDECIDED",
+          "label": "아직 정하지 않았어요"
+        }
+      ],
+      "fact": {
+        "attribute": "housing.supportStage",
+        "subject": "HOUSEHOLD",
+        "basis": "PRIMARY_HOUSING_GOAL",
+        "reference": "PLANNED_USE"
+      },
+      "when": [
+        {
+          "needsAny": ["housing-costs", "housing-search"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "주된 목적만 나타내며 나머지 지원의 자격을 부정하지 않는다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "L04",
+      "version": "1",
+      "categories": ["housing"],
+      "prompt": "이사나 입주할 시기가 정해졌나요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "WITHIN_1_MONTH",
+          "label": "1개월 이내"
+        },
+        {
+          "value": "M1_TO_3",
+          "label": "1개월 이후 3개월 이내"
+        },
+        {
+          "value": "AFTER_3_MONTHS",
+          "label": "3개월 이후"
+        },
+        {
+          "value": "UNDECIDED",
+          "label": "아직 정하지 않았어요"
+        }
+      ],
+      "fact": {
+        "attribute": "housing.moveWindow",
+        "subject": "HOUSEHOLD",
+        "basis": "PLANNED_MOVE_WINDOW",
+        "reference": "RELATIVE_TO_ANSWER_TIME"
+      },
+      "when": [
+        {
+          "questionId": "L03",
+          "values": ["MOVING"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "현재 입주 상태·계약 체결·신청일로 바꾸지 않는다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": null
+    },
+    {
+      "id": "L05",
+      "version": "1",
+      "categories": ["housing"],
+      "prompt": "생활지원은 어떤 형태로 받는 것이 도움이 될까요?",
+      "required": "WHEN_APPLICABLE",
+      "answerType": "SINGLE_CHOICE",
+      "options": [
+        {
+          "value": "CASH",
+          "label": "현금성 지원"
+        },
+        {
+          "value": "BILL_REDUCTION",
+          "label": "공과금·이용요금 감면"
+        },
+        {
+          "value": "GOODS_FOOD",
+          "label": "생필품·식료품·식사 지원"
+        },
+        {
+          "value": "ANY",
+          "label": "형태는 상관없어요"
+        }
+      ],
+      "fact": {
+        "attribute": "living.preferredDelivery",
+        "subject": "HOUSEHOLD",
+        "basis": "PREFERRED_BENEFIT_DELIVERY",
+        "reference": "PLANNED_USE"
+      },
+      "when": [
+        {
+          "needsAny": ["living-costs", "meals"]
+        }
+      ],
+      "unknownAllowed": true,
+      "skipAllowed": true,
+      "notes": "생활비·식생활 지원을 찾을 때 묻는다. 주거 지원만 찾는 사용자에게 강제로 묻지 않는다.",
+      "kind": "FACT_QUESTION",
+      "uses": ["RANKING"],
+      "rankingFeature": null
+    }
+  ]
+}

@@ -11,6 +11,9 @@
 | 관리자 인증·운영·화면·검증 | [관리자 콘솔](./admin-console.md) |
 | 공개 화면의 최신 UI 구조와 시안 | [공개 UI 적용 기준](./ui/stitch-implementation.md) |
 | 관심 분야별 입력·답변 보존 | [분야별 맞춤 입력](./ui/interest-questions.md) |
+| 맞춤 추천에 필요한 질문·정책 정보 대응 | [추천 입력 대응표](./policy/policy-recommendation-input-mapping.md) |
+| 정책의 공개·검수·자격 판단 기준 | [추천 정책 처리 결정](./policy/policy-recommendation-policy-handling.md) |
+| 동적 질문·추천 순위·API 구현 설계 | [적응형 추천 구현 설계](./policy/policy-adaptive-recommendation-design.md) |
 | 거주지 목록의 출처·갱신 방법 | [행정구역 선택 데이터](./ui/district-data.md) |
 | 정책 수집·계약·분류·검수·운영 | [정책 문서 색인](./policy/README.md) |
 
