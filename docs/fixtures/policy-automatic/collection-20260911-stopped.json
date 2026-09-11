@@ -1,0 +1,109 @@
+{
+  "kind": "USER_STOPPED_COLLECTION",
+  "stoppedAt": "2026-09-11T14:55:24.232Z",
+  "verifiedAt": "2026-09-11T15:01:36.977Z",
+  "processExitCode": 0,
+  "allRestored": true,
+  "initialPolicyCount": 4632,
+  "finalPolicyCount": 5895,
+  "newPolicyCount": 1263,
+  "newByProvider": {
+    "GOV24": 1140,
+    "BOKJIRO_CENTRAL": 73,
+    "BOKJIRO_LOCAL": 50
+  },
+  "temporaryGov24Limit": 100000,
+  "restoredGov24JobLimit": 100,
+  "dailyUsage": [
+    {
+      "day": "2026-09-11",
+      "provider": "BOKJIRO_CENTRAL",
+      "reserved_calls": 100,
+      "configured_limit": 100
+    },
+    {
+      "day": "2026-09-11",
+      "provider": "BOKJIRO_LOCAL",
+      "reserved_calls": 100,
+      "configured_limit": 100
+    },
+    {
+      "day": "2026-09-11",
+      "provider": "GOV24",
+      "reserved_calls": 10400,
+      "configured_limit": 100
+    }
+  ],
+  "runs": [
+    {
+      "id": "430461c2-e846-43d6-ac8d-2e98962aa361",
+      "provider": "BOKJIRO_LOCAL",
+      "calls": 100,
+      "status": "PARTIAL",
+      "summary": {
+        "calls": 100,
+        "failed": 0,
+        "reason": "CALL_BUDGET",
+        "status": "PAUSED",
+        "pending": 25,
+        "success": 50,
+        "excluded": 142,
+        "skippedExisting": 733
+      },
+      "stop_reason": "CALL_BUDGET",
+      "lease_active": false,
+      "next_page": 20,
+      "expected_total": 4818,
+      "discovered": 950
+    },
+    {
+      "id": "9216ed5b-2b00-474b-a9b5-f646d85cc414",
+      "provider": "BOKJIRO_CENTRAL",
+      "calls": 100,
+      "status": "PARTIAL",
+      "summary": {
+        "calls": 100,
+        "failed": 0,
+        "reason": "CALL_BUDGET",
+        "status": "PAUSED",
+        "pending": 9,
+        "success": 73,
+        "excluded": 62,
+        "skippedExisting": 106
+      },
+      "stop_reason": "CALL_BUDGET",
+      "lease_active": false,
+      "next_page": 6,
+      "expected_total": 461,
+      "discovered": 250
+    },
+    {
+      "id": "6d2476ea-95c0-4875-8e26-b774f55561ef",
+      "provider": "GOV24",
+      "calls": 10399,
+      "status": "PARTIAL",
+      "summary": {
+        "calls": 10399,
+        "excluded": 3347,
+        "failed": 0,
+        "pending": 44,
+        "precedingPauseReason": "CALL_BUDGET",
+        "reason": "USER_STOPPED",
+        "skippedExisting": 3769,
+        "status": "PAUSED",
+        "success": 1140,
+        "userStoppedAt": "2026-09-11T15:03:44.259374+00:00"
+      },
+      "stop_reason": "USER_STOPPED",
+      "lease_active": false,
+      "next_page": 167,
+      "expected_total": 10939,
+      "discovered": 8300
+    }
+  ],
+  "limitations": [
+    "사용자 요청으로 중단했으며 실제 API 한도 소진이나 전체 수집 완료가 아님.",
+    "정부24 당일 예약 10400회는 본 실행10399회와 앞선 SOURCE_DRIFT 1회를 포함.",
+    "정책의 REVIEW→ACTIVE 전환389건은 신규 수집 수에 합산하지 않음."
+  ]
+}

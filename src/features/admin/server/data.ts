@@ -32,7 +32,7 @@ export type AdminPolicy = {
   relevance_assessed_at: string | null;
 };
 export type AdminRelevance = {
-  version: "policy-relevance-1" | "policy-relevance-2" | "policy-relevance-3";
+  version: "policy-relevance-1" | "policy-relevance-2" | "policy-relevance-3" | "policy-relevance-review-1" | "policy-relevance-review-2" | "policy-relevance-review-3";
   status: "RELATED" | "UNRELATED" | "REVIEW";
   categories: string[];
   evidence: { field: string; excerpt: string; rule: string }[];
@@ -97,7 +97,7 @@ function relevanceProjection(value: unknown): AdminRelevance | null {
   if (value == null) return null;
   const row = record(value);
   if (
-    !["policy-relevance-1", "policy-relevance-2", "policy-relevance-3"].includes(
+    !["policy-relevance-1", "policy-relevance-2", "policy-relevance-3", "policy-relevance-review-1", "policy-relevance-review-2", "policy-relevance-review-3"].includes(
       String(row.version),
     ) ||
     !["RELATED", "UNRELATED", "REVIEW"].includes(String(row.status)) ||

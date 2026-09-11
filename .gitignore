@@ -39,6 +39,8 @@ yarn-error.log*
 /.local/policy-prepared/
 /.local/policy-sync/
 /.local/policy-labeling/
+/.local/policy-review/
+/.local/policy-recommendation/
 
 # Local administrator provisioning credentials
 /.local/admin/

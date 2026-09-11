@@ -306,6 +306,10 @@ before(async () => {
     "20260908082550_policy_relevance_v2",
     "20260908091150_policy_relevance_v3",
     "20260909091358_policy_new_only_collection",
+    "20260911141935_policy_review_activation",
+    "20260911145539_policy_review_disposition",
+    "20260911150947_policy_review_pending_notes",
+    "20260911152220_policy_review_correction",
   ]) {
     await db.exec(
       await readFile(
@@ -1270,4 +1274,141 @@ test("v3 child counseling reassessment activates a legacy review with original a
   assert.equal((await db.query<{ count: number }>(
     "select count(*)::int as count from public.policy_source_snapshots",
   )).rows[0].count, 1);
+});
+
+async function pendingReviewActivation(display = {
+  name: "지역 학생 이용 지원", target: "초등학생 및 중학생", benefit: "체육시설 사용료 감면",
+}) {
+  const lease = await start();
+  await save(lease, page(1, ["review-a"], 1));
+  const bundle = raw("review-a", display.name);
+  bundle.detail[0].tgtrDtlCn = display.target;
+  bundle.detail[0].alwServCn = display.benefit;
+  const normalized = normalizeBokji(bundle);
+  const { snapshotId } = await command<{ snapshotId: string }>("snapshot", {
+    ...lease, externalId: "review-a", raw: bundle, rawHash: normalized.rawHash,
+    hashVersion: normalized.hashVersion, evidence: [],
+  });
+  const previousRelevance = { version: "policy-relevance-3", status: "REVIEW", categories: [], evidence: [], reason: "이전 자동 분류 미확정" };
+  await command("apply", {
+    ...lease, externalId: "review-a", snapshotId, normalized,
+    quality: evaluatePolicyQuality(bundle, normalized), changes: { displayChanged: true }, relevance: previousRelevance,
+  });
+  const sourceId = (await db.query<{ source_id: string }>("select source_id from public.policies")).rows[0].source_id;
+  return {
+    sourceId, snapshotId, displayHash: normalized.displayHash, normalizerVersion: normalized.normalizerVersion,
+    reviewOnly: true, expectedNormalized: normalized, previousRelevance,
+    relevance: {
+      version: "policy-relevance-review-1", status: "RELATED", categories: ["아동 돌봄"],
+      evidence: [
+        { field: "target_text", excerpt: display.target, rule: "실제 지원 대상" },
+        { field: "benefit_text", excerpt: display.benefit, rule: "실제 지원 내용" },
+      ],
+      reason: "저장 원문의 아동 대상 시설 이용 지원 경로를 재검토함. 자격 승인은 아님.",
+    },
+  };
+}
+
+test("review-only activation preserves source and old history, retries idempotently and resists legacy downgrade", async () => {
+  const payload = await pendingReviewActivation();
+  const sourcesBefore = await dump(["policies", "policy_source_snapshots"]);
+  assert.equal((await command("relevance_store", payload)).status, "RELATED");
+  assert.equal((await command("relevance_store", payload)).replayed, true);
+  assert.equal((await command("relevance_store", { ...payload, relevance: payload.previousRelevance })).preservedReviewed, true);
+  const current = (await db.query<{ catalog_status: string; normalized: unknown; relevance: unknown }>("select catalog_status,normalized,relevance from public.policies")).rows[0];
+  assert.equal(current.catalog_status, "ACTIVE");
+  assert.deepEqual(current.normalized, payload.expectedNormalized);
+  assert.deepEqual(current.relevance, payload.relevance);
+  assert.deepEqual((await dump(["policy_source_snapshots"]))[0], sourcesBefore[1]);
+  assert.equal((await db.query<{ count: number }>("select count(*)::int as count from public.policy_relevance_observations")).rows[0].count, 2);
+});
+
+test("review-only activation rejects changed source, changed decision and invented evidence without side effects", async () => {
+  const payload = await pendingReviewActivation();
+  const beforeState = await dump();
+  for (const [modified, reason] of [
+    [{ ...payload, reviewOnly: false }, /INVALID_REVIEW_ACTIVATION/],
+    [{ ...payload, expectedNormalized: { ...payload.expectedNormalized, extra: "changed" } }, /STALE_REVIEW_SOURCE/],
+    [{ ...payload, previousRelevance: { ...payload.previousRelevance, reason: "different" } }, /STALE_REVIEW_DECISION/],
+    [{ ...payload, relevance: { ...payload.relevance, evidence: [{ field: "target_text", excerpt: "NOT PRESENT", rule: "invalid" }] } }, /INVALID_REVIEW_EVIDENCE/],
+    [{ ...payload, relevance: { ...payload.relevance, categories: ["invented"] } }, /INVALID_REVIEW_EVIDENCE/],
+  ] as const) {
+    await assert.rejects(command("relevance_store", modified), reason);
+    assert.deepEqual(await dump(), beforeState);
+  }
+  await command("relevance_store", { ...payload, relevance: { ...payload.previousRelevance, version: "policy-relevance-2", status: "UNRELATED", reason: "별도 분류 완료" } });
+  await assert.rejects(command("relevance_store", payload), /STALE_REVIEW_DECISION/);
+});
+
+test("changing normalized content invalidates review activation even when display identity is unchanged", async () => {
+  const payload = await pendingReviewActivation();
+  await command("relevance_store", payload);
+  await admin("update public.policies set normalized=normalized||'{\"sourceShapeChanged\":true}'::jsonb");
+  const current = (await db.query<{ catalog_status: string; relevance: unknown }>("select catalog_status,relevance from public.policies")).rows[0];
+  assert.equal(current.catalog_status, "REVIEW");
+  assert.equal(current.relevance, null);
+  await assert.rejects(command("relevance_store", payload), /STALE_REVIEW_SOURCE/);
+});
+
+test("review v2 excludes a pending business policy without deleting source or previous assessments", async () => {
+  const original = await pendingReviewActivation({ name: "소상공인 시설 지원", target: "사업자등록을 한 소상공인", benefit: "사업장 시설 개선비 지원" });
+  const payload = { ...original, relevance: { ...original.relevance, version: "policy-relevance-review-2", status: "UNRELATED", categories: [], reason: "사업장 시설 개선 지원이며 가족·아동 지원 경로 없음" } };
+  const before = await dump(["policy_source_snapshots"]);
+  assert.equal((await command("relevance_store", payload)).status, "UNRELATED");
+  assert.equal((await command("relevance_store", payload)).replayed, true);
+  assert.equal((await command("relevance_store", { ...payload, relevance: original.previousRelevance })).preservedReviewed, true);
+  const row = (await db.query<{ catalog_status: string; normalized: unknown }>("select catalog_status,normalized from public.policies")).rows[0];
+  assert.equal(row.catalog_status, "EXCLUDED");
+  assert.deepEqual(row.normalized, payload.expectedNormalized);
+  assert.deepEqual(await dump(["policy_source_snapshots"]), before);
+  assert.equal((await db.query<{ n: number }>("select count(*)::int n from public.policy_relevance_observations")).rows[0].n, 2);
+  assert.equal((await db.query<{ n: number }>("select count(*)::int n from public.policy_active_candidates")).rows[0].n, 0);
+});
+
+test("review v2 requires direct source evidence and rejects invalid excluded categories and stale sources", async () => {
+  const original = await pendingReviewActivation();
+  const payload = { ...original, relevance: { ...original.relevance, version: "policy-relevance-review-2" } };
+  const before = await dump();
+  for (const [modified, reason] of [
+    [{ ...payload, relevance: { ...payload.relevance, evidence: [{ field: "name", excerpt: "지역 학생 이용 지원", rule: "이름만 확인" }] } }, /INVALID_REVIEW_EVIDENCE/],
+    [{ ...payload, relevance: { ...payload.relevance, status: "UNRELATED" } }, /INVALID_REVIEW_ACTIVATION/],
+    [{ ...payload, relevance: { ...payload.relevance, status: "REVIEW" } }, /INVALID_REVIEW_ACTIVATION/],
+    [{ ...payload, expectedNormalized: { ...payload.expectedNormalized, invented: true } }, /STALE_REVIEW_SOURCE/],
+  ] as const) {
+    await assert.rejects(command("relevance_store", modified), reason);
+    assert.deepEqual(await dump(), before);
+  }
+  assert.equal((await command("relevance_store", payload)).status, "RELATED");
+});
+
+test("review v2 stores a pending reason without approving or excluding the policy", async () => {
+  const original = await pendingReviewActivation({ name: "일반 주민 의료지원", target: "지역 주민", benefit: "의료비 지원" });
+  const payload = { ...original, relevance: { version: "policy-relevance-review-2", status: "REVIEW", categories: [], evidence: [], reason: "일반 주민 의료지원으로 아동·가족의 별도 지원 대상 확인 필요" } };
+  assert.equal((await command("relevance_store", payload)).status, "REVIEW");
+  assert.equal((await command("relevance_store", payload)).replayed, true);
+  const row = (await db.query<{ catalog_status: string; relevance: unknown; normalized: unknown }>("select catalog_status,relevance,normalized from public.policies")).rows[0];
+  assert.equal(row.catalog_status, "REVIEW");
+  assert.deepEqual(row.relevance, payload.relevance);
+  assert.deepEqual(row.normalized, payload.expectedNormalized);
+  assert.equal((await db.query<{ n: number }>("select count(*)::int n from public.policy_relevance_observations")).rows[0].n, 2);
+  const changed = { ...payload, previousRelevance: payload.relevance, relevance: { ...payload.relevance, reason: "다른 판정으로 덮어쓰기" } };
+  await assert.rejects(command("relevance_store", changed), /RELEVANCE_VERSION_CONFLICT/);
+});
+
+test("v3 correction returns only a source-matched v2 exclusion to pending and preserves the exclusion history", async () => {
+  const original = await pendingReviewActivation();
+  const excluded = { ...original, relevance: { version: "policy-relevance-review-2", status: "UNRELATED", categories: [], evidence: original.relevance.evidence, reason: "합성 제외 판정" } };
+  await command("relevance_store", excluded);
+  const correction = { ...original, correction: true, previousRelevance: excluded.relevance,
+    relevance: { version: "policy-relevance-review-3", status: "REVIEW", categories: [], evidence: [], reason: "명확한 범위 밖으로 단정할 근거가 부족하여 추가 확인 유지" } };
+  await assert.rejects(command("relevance_store", { ...correction, correction: false }), /INVALID_REVIEW_ACTIVATION/);
+  await assert.rejects(command("relevance_store", { ...correction, previousRelevance: original.previousRelevance }), /STALE_REVIEW_DECISION/);
+  await assert.rejects(command("relevance_store", { ...correction, relevance: { ...correction.relevance, status: "RELATED", categories: ["아동 돌봄"] } }), /INVALID_REVIEW_ACTIVATION/);
+  assert.equal((await command("relevance_store", correction)).status, "REVIEW");
+  assert.equal((await command("relevance_store", correction)).replayed, true);
+  assert.equal((await command("relevance_store", { ...original, relevance: original.previousRelevance })).preservedReviewed, true);
+  const row = (await db.query<{ catalog_status: string; normalized: unknown }>("select catalog_status,normalized from public.policies")).rows[0];
+  assert.equal(row.catalog_status, "REVIEW");
+  assert.deepEqual(row.normalized, original.expectedNormalized);
+  assert.equal((await db.query<{ n: number }>("select count(*)::int n from public.policy_relevance_observations")).rows[0].n, 3);
 });

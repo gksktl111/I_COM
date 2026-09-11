@@ -1,0 +1,2103 @@
+{
+  "schemaVersion": "six-field-refinement-draft-1",
+  "checkedAt": "2026-09-11T12:57:46.419Z",
+  "reviewedAt": "2026-09-11",
+  "kind": "SOURCE_REFINEMENT_NOT_PUBLICATION",
+  "items": [
+    {
+      "sampleId": "R01",
+      "category": "pregnancy",
+      "source": {
+        "policy": {
+          "id": "040edff8-35ed-47a4-83c8-b633cd25a46f",
+          "name": "장애인가정 출산지원금 지원",
+          "summary": "성북구에서 출산한 장애인가정에 출산지원금 지급",
+          "provider_name": "서울특별시 성북구",
+          "purpose_text": "비장애인에 비해 임신과 출산시 비용이 추가 소요되는 장애인에게 출산비용을 지원하여 경제적 부담을 경감하고 출산 친화적인 문화 조성",
+          "target_text": "○ 신생아를 출산한 가정의 부 또는 모가 심한장애를 가진 등록장애인\n\n○ 신생아의 출생일 기준으로 1년 이상 계속하여 성북구에 주민등록을 두고 실제 거주\n\n○ 신생아와 부, 모 또는 보호자가 주민등록상 동일 세대원인 경우",
+          "criteria_text": null,
+          "benefit_text": "- 지원금액 : 출산한 자녀 1인 기준 50만원 지급\n- 지급방법 : 신청시 제출한 장애인 명의 계좌 입금\n- 신청장소 : 주소지 읍·면·동 주민센터",
+          "application_method_text": "○ 방문 신청\n- 주민센터 : 주소지 동주민센터",
+          "application_period_text": "상시신청",
+          "required_documents_text": "신청자 신분증, 신청서, 출생증명서 또는 출생사실이 기재된 주민등록등본(가족관계등록부), 등록장애인 본인 명의 입금계좌 통장 사본\n* 개인정보제공 및 활용에 동의한 경우 주민등록등본(가족관계등록부) 제출 불필요",
+          "reception_text": null,
+          "contact_text": "어르신·장애인복지과/02-2241-2512",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/307000000109",
+          "application_url": null,
+          "updated_at": "2026-09-08T08:56:46.860034+00:00"
+        },
+        "source": {
+          "snapshotId": "0566f899-cee6-4562-8cd3-fac66d0d9af1",
+          "normalizerVersion": "1",
+          "displayHash": "2c36410f49abbd53651ffb0bfa33ff619946368409610c637b19917905af21b1",
+          "normalizedFingerprint": "8cc3ce87396b5dc21fad783ecc0856d6da2720a960ca6b2be14008f2f1155b51"
+        }
+      },
+      "recipe": {
+        "sampleId": "R01",
+        "policyId": "040edff8-35ed-47a4-83c8-b633cd25a46f",
+        "category": "pregnancy",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "장애 조건 대상은 신생아가 아닌 부 또는 모. 두 부모 모두 장애인일 것을 요구하지 않음. 현재 주소를 출생일 주소로 대체하지 않음."
+        ],
+        "paths": [
+          {
+            "purpose": "birth-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "eitherParentSeverelyRegisteredDisabled",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "부 또는 모 중 한 명 이상이 심한 장애로 등록되어 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "부 또는 모가 심한장애를 가진 등록장애인"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "birthDateSeongbukResidence",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_AND_ACTUAL_RESIDENCE_AT_BIRTH",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "출생일 기준 성북구 주민등록·실거주 1년 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "신생아의 출생일 기준으로 1년 이상 계속하여 성북구에 주민등록을 두고 실제 거주"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "sameRegisteredHousehold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "신생아와 부·모 또는 보호자가 주민등록상 같은 세대인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "신생아와 부, 모 또는 보호자가 주민등록상 동일 세대원인 경우"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R01-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "R02",
+      "category": "pregnancy",
+      "source": {
+        "policy": {
+          "id": "0457fc14-4fd8-4f95-b34b-7565d920471e",
+          "name": "산후조리비용 지원",
+          "summary": "성동구에 거주하고 있는 출산가정에 산후조리비용을 지원함",
+          "provider_name": "서울특별시 성동구",
+          "purpose_text": null,
+          "target_text": "○ 신청일 기준, 부 또는 모가 성동구에 주민등록을 두고 실제 거주하고 있는 출산가정\n○ 신생아 출생일 기준 60일 이내 신청가능\n○ 성동구에 출생신고를 한 가정",
+          "criteria_text": null,
+          "benefit_text": "○ 성동구 거주 출산가구에 소득수준에 관계없이 산후조리비용 정액 50만원 지원",
+          "application_method_text": "○ 방문신청: 거주지 동 주민센터 신청(출생신고시 동시 신청)\n○ 온라인신청: 정부24(www.gov.kr) '혜택알리미' 신청\n○ 신청자:  산모 또는 배우자",
+          "application_period_text": "상시신청",
+          "required_documents_text": "○ 방문신청: 출산서비스 통합처리 신청서(주민센터 비치) 신분증, 입금계좌통장사본(산모명의)\n○ 온라인신청:  주민등록등초본, 가족관계증명서",
+          "reception_text": null,
+          "contact_text": "건강관리과/02-2286-7151",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/303000000114",
+          "application_url": null,
+          "updated_at": "2026-09-08T08:54:15.228303+00:00"
+        },
+        "source": {
+          "snapshotId": "542d67e6-be84-42e2-8e61-945dc0f9d428",
+          "normalizerVersion": "1",
+          "displayHash": "140c329dd895cb590288cec0bf6da764a21990d0dcdd05335b96ca4a1e18d006",
+          "normalizedFingerprint": "c3416392f5bd253692c1d43f436393b5d417a2e3d1650fe69b384e79a29a60ff"
+        }
+      },
+      "recipe": {
+        "sampleId": "R02",
+        "policyId": "0457fc14-4fd8-4f95-b34b-7565d920471e",
+        "category": "pregnancy",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "부모 거주지와 신생아 출생신고 지역을 별개로 구조화. 신청기한은 자격 나이와 분리."
+        ],
+        "paths": [
+          {
+            "purpose": "postpartum-costs",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "parentSeongdongAtApplication",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_AND_ACTUAL_RESIDENCE_AT_APPLICATION",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "신청일에 부 또는 모가 성동구 주민등록·실거주 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "신청일 기준, 부 또는 모가 성동구에 주민등록을 두고 실제 거주하고 있는 출산가정"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "birthRegisteredSeongdong",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "신생아의 출생신고를 성동구에 했나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "성동구에 출생신고를 한 가정"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "신생아 출생일 기준 60일 이내는 신청기한. 개월 수·임신 주차 하드필터로 변환 금지.",
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R02-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "R03",
+      "category": "childcare",
+      "source": {
+        "policy": {
+          "id": "024970d2-1739-4ce4-9127-ccec3405d408",
+          "name": "다자녀가정 종량제봉투 지원",
+          "summary": "2자녀 이상 가정 종량제봉투 지원",
+          "provider_name": "경기도 남양주시",
+          "purpose_text": "다자녀가 양육가정의 경제적 부담 완화 및 우대",
+          "target_text": "○ 부 또는 모와 함께 거주하며 남양주시에 주소를 둔 2자녀 이상 가정(막내가 만 18세 이하)",
+          "criteria_text": null,
+          "benefit_text": "○ 지원대상 :  남양주시에 주소를 둔 2자녀 이상 가정(막내가 만18세 이하)\n○ 지원내용 :  일반용 종량제봉투(20L 또는 10L) 최대 40매 차등 지급 (세대당 연1회)\n- 2자녀 가정 : 20L 종량제봉투 20매 또는 10L 종량제봉투 40매\n- 3자녀 가정 : 20L 종량제봉투 30매 또는 10L 종량제봉투 60매\n- 4자녀 이상 가정 : 20L 종량제봉투 40매 또는 10L 종량제봉투 80매",
+          "application_method_text": "○ 신청방법 : 관할 읍면동 행정복지센터 복지부서 방문 신청(신분증 지참)\n\n○ 지급방법 : 신청 즉시 현장 지급",
+          "application_period_text": "상시신청",
+          "required_documents_text": "신청자의 신분증",
+          "reception_text": null,
+          "contact_text": "남양주시청 정책기획과/031-590-0987",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/399000000122",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:32:58.072326+00:00"
+        },
+        "source": {
+          "snapshotId": "2af1e882-ea3b-4271-8036-a1ed1db45287",
+          "normalizerVersion": "1",
+          "displayHash": "434aaa41656403da4858da2cb9fdd66dd591a21515ef7a15977f36ab8a5306fa",
+          "normalizedFingerprint": "697939c21a699ff61864f823529542561cd6554829041a1dc6546c10f62c0a10"
+        }
+      },
+      "recipe": {
+        "sampleId": "R03",
+        "policyId": "024970d2-1739-4ce4-9127-ccec3405d408",
+        "category": "childcare",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "18세 제한은 막내의 만 나이. 신청자 나이·선택한 각 자녀 나이에 일괄 적용하지 않음. 선택한 자녀 수는 총자녀 수가 아님."
+        ],
+        "paths": [
+          {
+            "purpose": "household-supplies",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "namyangjuFamilyResidence",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "FAMILY_RESIDENCE",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "부 또는 모와 함께 거주하며 남양주시에 주소를 두고 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "부 또는 모와 함께 거주하며 남양주시에 주소를 둔"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_NUMBER_RANGE",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "qualifyingChildCount",
+                  "min": 2,
+                  "max": null,
+                  "minInclusive": true,
+                  "maxInclusive": false,
+                  "unit": "PERSONS",
+                  "basis": "POLICY_METHOD_UNCONFIRMED",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 대상·산정방법·기준일로 확인한 값은 얼마인가요?"
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "2자녀 이상 가정"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_NUMBER_RANGE",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "youngestChildAgeYears",
+                  "min": null,
+                  "max": 18,
+                  "minInclusive": false,
+                  "maxInclusive": true,
+                  "unit": "AGE_YEARS",
+                  "basis": "YOUNGEST_CHILD_COMPLETED_AGE",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 대상·산정방법·기준일로 확인한 값은 얼마인가요?"
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "막내가 만 18세 이하"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R03-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "R04",
+      "category": "childcare",
+      "source": {
+        "policy": {
+          "id": "04a65a94-24f4-48cf-a01c-e2e971ef83a6",
+          "name": "둘째아 이상 가정 체육시설 이용료 50%감면",
+          "summary": "다자녀 지원 정책 사업",
+          "provider_name": "전북특별자치도 정읍시 관광체육국 시설운영과",
+          "purpose_text": null,
+          "target_text": "둘쨰아 이상 가정 체육시설 이용료 50%감면",
+          "criteria_text": "18세 미만의 자녀(가족관계등록부 기록을 기준으로 하고, 양자 및 배우자의 자녀를 포함하되, 입양된 자녀는 친생부모의 자녀 수에는 포함하지 않음) 2명 이상을 양육하는 자",
+          "benefit_text": "둘째아 이상 가정 체육시설 이용료 50%감면",
+          "application_method_text": "서류 구비 후 방문 신청",
+          "application_period_text": null,
+          "required_documents_text": null,
+          "reception_text": null,
+          "contact_text": "정읍시청 시설운영과 063-539-5442",
+          "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005841&wlfareInfoReldBztpCd=02",
+          "application_url": null,
+          "updated_at": "2026-09-08T08:22:41.037799+00:00"
+        },
+        "source": {
+          "snapshotId": "c3441fb1-b203-488f-9da3-18af19740311",
+          "normalizerVersion": "bokjiro-2",
+          "displayHash": "f56dfc8de8a380a62ea47ab13f084b1a3fd3f4ab6d00d892bda05466e83231e3",
+          "normalizedFingerprint": "876a5bac56790eea7a7e33096078db589c1a0e1b8ca0db29e2d2b3cf05c9c046"
+        }
+      },
+      "recipe": {
+        "sampleId": "R04",
+        "policyId": "04a65a94-24f4-48cf-a01c-e2e971ef83a6",
+        "category": "childcare",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "18세 미만인 자녀 2명 이상을 세는 조건. 가구의 모든 자녀가 18세 미만이어야 한다는 조건이 아님. 양자·배우자의 자녀 포함, 친생부모에게서 입양된 자녀 제외 규칙을 산정 기준에 보존."
+        ],
+        "paths": [
+          {
+            "purpose": "family-facility-discount",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_NUMBER_RANGE",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "qualifyingUnder18Children",
+                  "min": 2,
+                  "max": null,
+                  "minInclusive": true,
+                  "maxInclusive": false,
+                  "unit": "PERSONS",
+                  "basis": "REGISTERED_UNDER18_CHILDREN_WITH_ADOPTION_RULES",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 대상·산정방법·기준일로 확인한 값은 얼마인가요?"
+                },
+                "evidence": [
+                  {
+                    "field": "criteria_text",
+                    "quote": "18세 미만의 자녀(가족관계등록부 기록을 기준으로 하고, 양자 및 배우자의 자녀를 포함하되, 입양된 자녀는 친생부모의 자녀 수에는 포함하지 않음) 2명 이상"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R04-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "R05",
+      "category": "care",
+      "source": {
+        "policy": {
+          "id": "29b3935b-b58a-4dd3-b947-af32d5e4e637",
+          "name": "파주시 아빠 육아휴직 장려금 지원",
+          "summary": "지급 기준을 모두 충족한 대상자에게 월 30만원씩 3개월 간 현금 지급(최대 90만원)",
+          "provider_name": "경기도 파주시",
+          "purpose_text": "남성의 육아휴직 사용 장려로 부모 공동육아 문화 확산, 자녀 돌봄의 성평등 기반 마련 및 가족친화적 지역사회 조성",
+          "target_text": "□ 파주시 아빠 육아휴직 장려금 지원사업 안내\n○ 지원대상 : 2026.1.1. 이후 남성 휴직자 중 아래의 기준을 모두 충족한 자\n- 신청일 기준 파주시에 1년 이상 계속하여 주민등록되어 있으며, 대상 자녀도 파주시에 주민등록 되어 있는 경우\n- 고용보험법 제70조에 따른 육아휴직 급여 수급자로, 1개월 이상 휴직자\n* 공무원 등 고용보험 미가입자는 미해당\n※ 타 지자체 육아휴직 장려금, 고용보험법 시행령 제95조의2에 따른 6+6 특례 대상자 중복지원불가 (단, 6+6 특례는 특례적용기간을 제외하고 지원)",
+          "criteria_text": null,
+          "benefit_text": "□ 지급개요\n\n○ 지급시기 : ′26. 3월부터(‘26.1.1. 이후 육아휴직자부터 1월분 소급 지급)\n\n○ 지원내용 : 월 300,000원씩 3개월 간 지급(최대 900,000원)\n※ 파주시 아빠 육아휴직 장려금 지원 조례 제3조 제1항에 따라 예산의 범위내에서 지원됩니다.\n○ 지급대상\n- 2026. 1 .1. 이후 남성 휴직자 중 아래의 기준을 모두 충족한 자\n① 신청일 기준 파주시에 1년 이상 계속하여 주민등록되어 있으며, 해당자녀도 파주시에 주민등록 되어 있는 경우\n② 「고용보험법」 제70조에 따른 육아휴직 급여 수급자로 1개월 이상 휴직자 *공무원 등 고용보험 미가입자는 미해당\n※ 타 지자체 육아휴직 장려금,  「고용보험법 시행령」제95조의2에 따른 육아휴직 급여의 특례자(이하 6+6 특례) 중복지원불가\n(단, 6+6특례는 특례적용기간을 제외하고 지원)",
+          "application_method_text": "○ 신청방법 : 정부24(www.gov.kr) 접속(공동인증서 본인인증)\n\n링크: https://www.gov.kr/svc/406000000538\n\n○ 시 행 일 : 2026년 3월(2026년 1월 1일 이후 육아휴직자부터 1월분 소급 지급)\n\n○ 지급시기 및 지급방법\n-  지급시기 : 15일 이전 접수 건은 신청한 달의 마지막 평일에 지급 / 16일 이후 접수 건은 신청한 달의 다음달 마지막 평일에 지급\n-  지급방법 : 신청시 작성한 수급 희망 계좌로 현금 지급",
+          "application_period_text": "2026년 3월부터 접수예정",
+          "required_documents_text": "○ 신규 신청자 제출서류\n- 개인정보 수집·이용 및 제공 동의서(신청시 동의 여부 체크)\n- 개인정보 제3자 제공동의서(신청시 동의 여부  체크)\n- 육아휴직확인서(고용24 통해 발급)\n- 매월 발행된 육아휴직급여지급결정통지서(고용24 통해 발급)\n- 통장사본\n- 신분증",
+          "reception_text": null,
+          "contact_text": "파주시청 여성가족과/0319404492",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/406000000538",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:36:20.690304+00:00"
+        },
+        "source": {
+          "snapshotId": "5f05eb87-b75c-4e5b-95d9-0e499a4fd4df",
+          "normalizerVersion": "1",
+          "displayHash": "bbb5312d2ad102ce5d4404b542cfeb093a23b5beabd88cff02aaddf88c03c3b1",
+          "normalizedFingerprint": "e80298312722c48f4475daa3cf136f47d8fde6aa7e81f474ec4d4b485b116d77"
+        }
+      },
+      "recipe": {
+        "sampleId": "R05",
+        "policyId": "29b3935b-b58a-4dd3-b947-af32d5e4e637",
+        "category": "care",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "남성 휴직자 PERSON과 대상 자녀의 주민등록을 분리. 기존 자녀 입력만으로 신청자 사실 생성 금지."
+        ],
+        "paths": [
+          {
+            "purpose": "parental-leave-support",
+            "subject": "PERSON",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "eligibleMaleLeaveSince2026",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "2026년 1월 1일 이후 남성 휴직자 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "2026.1.1. 이후 남성 휴직자"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "applicantPajuResidence",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_RESIDENCE_AT_APPLICATION",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "신청일 기준 신청자가 파주시에 1년 이상 계속 주민등록되어 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "신청일 기준 파주시에 1년 이상 계속하여 주민등록되어 있으며"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "targetChildPajuResidence",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "대상 자녀도 파주시에 주민등록되어 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "대상 자녀도 파주시에 주민등록 되어 있는 경우"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "insuredLeaveRecipient",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "고용보험 육아휴직 급여 수급자이며 1개월 이상 휴직했나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "고용보험법 제70조에 따른 육아휴직 급여 수급자로, 1개월 이상 휴직자"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "6+6 특례는 특례적용기간 제외 후 지원 가능. 특례 이용 이력 전체를 영구 탈락 조건으로 만들지 않음.",
+              "타 지자체 육아휴직 장려금 중복지원 불가·고용보험 미가입자 제외 검수 필요.",
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R05-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "R06",
+      "category": "care",
+      "source": {
+        "policy": {
+          "id": "910f792a-67e9-408d-a35a-e7f3e74a46db",
+          "name": "공동육아나눔터 동동 운영",
+          "summary": "공동육아나눔터 운영",
+          "provider_name": "대구광역시 서구",
+          "purpose_text": null,
+          "target_text": "○  만18세 미만 자녀를 둔 가정이라면 누구나 이용가능",
+          "criteria_text": null,
+          "benefit_text": "○ 자녀돌봄을 위한 안전한 공간 제공(도서/장난감)\n○ 발달단계별 다양한 프로그램 운영\n○ 자녀돌봄품앗이(그룹) 활동 지원",
+          "application_method_text": "○서구가족센터 홈페이지 신청\n\n○방문신청\n\n- 서구가족센터전화문의(053-355-8042)",
+          "application_period_text": "사전예약",
+          "required_documents_text": "해당없음",
+          "reception_text": null,
+          "contact_text": "아동보육과/053-663-2784||서구가족센터/053-355-8042",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/343000000128",
+          "application_url": "https://daeguseogu.familynet.or.kr/center/",
+          "updated_at": "2026-09-08T09:07:38.085411+00:00"
+        },
+        "source": {
+          "snapshotId": "5b43114c-b4d2-45ff-a68a-975068dfc86e",
+          "normalizerVersion": "1",
+          "displayHash": "1c919540e455d24cb9f2657c8ebc29f0f02cfbadabdb041c77544aca31224f6e",
+          "normalizedFingerprint": "687e60e2f6c7c70858672fd317f8a31bac32cc63fab6e4b4303e1fbb33976b1a"
+        }
+      },
+      "recipe": {
+        "sampleId": "R06",
+        "policyId": "910f792a-67e9-408d-a35a-e7f3e74a46db",
+        "category": "care",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "가정에 만18세 미만 자녀가 한 명 이상 있는 조건. 막내의 만 나이로 표현하며 선택한 개별 자녀나 신청자 나이로 대체하지 않음. 기관 이름·주소에서 별도 거주 제한을 발명하지 않음."
+        ],
+        "paths": [
+          {
+            "purpose": "shared-childcare-space",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_NUMBER_RANGE",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "youngestChildAgeYears",
+                  "min": null,
+                  "max": 18,
+                  "minInclusive": false,
+                  "maxInclusive": false,
+                  "unit": "AGE_YEARS",
+                  "basis": "YOUNGEST_CHILD_COMPLETED_AGE",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 대상·산정방법·기준일로 확인한 값은 얼마인가요?"
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "만18세 미만 자녀"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R06-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "R07",
+      "category": "health",
+      "source": {
+        "policy": {
+          "id": "0a7d90a2-0b28-4efc-843e-75a858596867",
+          "name": "저소득주민 국민건강보험료 지원",
+          "summary": "65세이상 노인, 장애인 세대, 한부모가족 세대에 국민건강보험료 및 장기요양보험료 지원",
+          "provider_name": "인천광역시 부평구",
+          "purpose_text": null,
+          "target_text": "○ 인천광역시부평구에 주소를 두고 거주하는 국민건강보험공단 부평구 지역가입자 중 월 보험료가 최저보험료 미만인 65세 이상 노인 세대, 등록장애인 세대, 한부모가족 세대",
+          "criteria_text": null,
+          "benefit_text": "○ 부평구 지역가입자 중 건강보험료 부과금액이 월 최저보험료 미만인 만 65세 이상 노인 세대, 등록장애인세대, 한부모가족 세대에게 국민건강보험료 및 장기요양보험료 지원\n(※ 예산 범위 내에서 지원하며, 보건복지부 고시에 따라 보험료 경감대상이 되는 경우에는 경감되기 전의 보험료를 기준으로 하되, 지원금액은 경감한 나머지 금액)",
+          "application_method_text": "○ 개인 신청절차 없음\n- 신청불필요(국민건강보험공단 부평지사에서 선정기준에 따라 보험료 지원 대상자를 선정하여 매월 납기 5일 전까지 별지서식 또는 전산자료로 인천광역시부평구청장에게 통보 함)",
+          "application_period_text": "상시신청",
+          "required_documents_text": "해당없음",
+          "reception_text": null,
+          "contact_text": "사회보장과/032-509-6467",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/354000000105",
+          "application_url": null,
+          "updated_at": "2026-09-08T09:10:01.336957+00:00"
+        },
+        "source": {
+          "snapshotId": "543aff8d-72e0-43d8-86cd-5fe48c19eac0",
+          "normalizerVersion": "1",
+          "displayHash": "24cafb34d681e1760a6e24eda4731e73397d48e6c37ea8e521363654ec44e61f",
+          "normalizedFingerprint": "dddd52ca59dda602a446e34b9502f685725e50a0f8c1653ab8101a74924d0a0a"
+        }
+      },
+      "recipe": {
+        "sampleId": "R07",
+        "policyId": "0a7d90a2-0b28-4efc-843e-75a858596867",
+        "category": "health",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "노인·등록장애인·한부모는 대체 경로. 비장애인·65세 미만이라는 이유만으로 정책 전체 탈락 금지.",
+          "보험료와 소득인정액·중위소득은 서로 환산하지 않음. 최저보험료의 미만/이하 경계를 구분."
+        ],
+        "paths": [
+          {
+            "purpose": "insurance-premium-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "bupyeongResidenceAndSubscriber",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_RESIDENCE_AND_POLICY_INSURANCE_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 지역 거주·원문에 명시된 가입자 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "인천광역시부평구에 주소를 두고 거주하는 국민건강보험공단 부평구 지역가입자"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "premiumThreshold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "HEALTH_INSURANCE_PREMIUM_STRICT_LT",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "건강보험료가 정책의 최저보험료 기준에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "월 보험료가 최저보험료 미만"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "elderlyHousehold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 가구 유형에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "65세 이상 노인 세대"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R07-path-1"
+          },
+          {
+            "purpose": "insurance-premium-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "bupyeongResidenceAndSubscriber",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_RESIDENCE_AND_POLICY_INSURANCE_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 지역 거주·원문에 명시된 가입자 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "인천광역시부평구에 주소를 두고 거주하는 국민건강보험공단 부평구 지역가입자"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "premiumThreshold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "HEALTH_INSURANCE_PREMIUM_STRICT_LT",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "건강보험료가 정책의 최저보험료 기준에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "월 보험료가 최저보험료 미만"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "registeredDisabilityHousehold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 가구 유형에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "등록장애인 세대"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R07-path-2"
+          },
+          {
+            "purpose": "insurance-premium-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "bupyeongResidenceAndSubscriber",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_RESIDENCE_AND_POLICY_INSURANCE_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 지역 거주·원문에 명시된 가입자 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "인천광역시부평구에 주소를 두고 거주하는 국민건강보험공단 부평구 지역가입자"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "premiumThreshold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "HEALTH_INSURANCE_PREMIUM_STRICT_LT",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "건강보험료가 정책의 최저보험료 기준에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "월 보험료가 최저보험료 미만"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "singleParentHousehold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 가구 유형에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "한부모가족 세대"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R07-path-3"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "R08",
+      "category": "health",
+      "source": {
+        "policy": {
+          "id": "22b53291-a23c-48a3-953f-97034adbfebb",
+          "name": "저소득층 국민건강보험료 지원",
+          "summary": "저소득 노인, 장애인세대 등에게 건강보험료 지원",
+          "provider_name": "인천광역시 계양구",
+          "purpose_text": null,
+          "target_text": "○ 계양구에 주소를 두고 거주하며, 건강보험료 부과액이 최저보험료 이하 납부자 중 65세 이상 노인 세대, 「장애인복지법」에 따라 등록 장애인이 있는 세대, 「한부모가족지원법」에 따른 한부모가족",
+          "criteria_text": null,
+          "benefit_text": "○ 계양구에 주소를 두고 거주하며,  보험료의 월 부과금액이 최저보험료 이하인 소액납부자 중 65세 이상 노인 세대, 「장애인복지법」에 따라 등록 장애인이 있는 세대, 「한부모가족지원법」에 따른 한부모가족에 대해 건강보험료 지원",
+          "application_method_text": "○ 개인 신청절차 없음\n- 신청 절차 없으며 국민건강보험공단에서 추출된 명단 중 기준 적합 대상 지원",
+          "application_period_text": "신청불필요",
+          "required_documents_text": "해당없음",
+          "reception_text": null,
+          "contact_text": "사회보장과/032-450-5375",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/355000000104",
+          "application_url": null,
+          "updated_at": "2026-09-08T09:10:08.555383+00:00"
+        },
+        "source": {
+          "snapshotId": "2d812af6-9356-4a31-9775-155578bf7df5",
+          "normalizerVersion": "1",
+          "displayHash": "f0501aa93570ed11ea65b964d41fcc40cb54499ca7c570a8904bcf1ac97a77a5",
+          "normalizedFingerprint": "6c73be7098c6009c5b08b3ccb51d5e191abc345e479e30170b0f4d5472f1d61d"
+        }
+      },
+      "recipe": {
+        "sampleId": "R08",
+        "policyId": "22b53291-a23c-48a3-953f-97034adbfebb",
+        "category": "health",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "노인·등록장애인·한부모는 대체 경로. 비장애인·65세 미만이라는 이유만으로 정책 전체 탈락 금지.",
+          "보험료와 소득인정액·중위소득은 서로 환산하지 않음. 최저보험료의 미만/이하 경계를 구분."
+        ],
+        "paths": [
+          {
+            "purpose": "insurance-premium-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "gyeyangResidence",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_RESIDENCE_AND_POLICY_INSURANCE_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 지역 거주·원문에 명시된 가입자 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "계양구에 주소를 두고 거주하며"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "premiumThreshold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "HEALTH_INSURANCE_PREMIUM_LTE",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "건강보험료가 정책의 최저보험료 기준에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "건강보험료 부과액이 최저보험료 이하"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "elderlyHousehold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 가구 유형에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "65세 이상 노인 세대"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R08-path-1"
+          },
+          {
+            "purpose": "insurance-premium-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "gyeyangResidence",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_RESIDENCE_AND_POLICY_INSURANCE_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 지역 거주·원문에 명시된 가입자 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "계양구에 주소를 두고 거주하며"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "premiumThreshold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "HEALTH_INSURANCE_PREMIUM_LTE",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "건강보험료가 정책의 최저보험료 기준에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "건강보험료 부과액이 최저보험료 이하"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "registeredDisabilityHousehold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 가구 유형에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "「장애인복지법」에 따라 등록 장애인이 있는 세대"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R08-path-2"
+          },
+          {
+            "purpose": "insurance-premium-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "gyeyangResidence",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_RESIDENCE_AND_POLICY_INSURANCE_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 지역 거주·원문에 명시된 가입자 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "계양구에 주소를 두고 거주하며"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "premiumThreshold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "HEALTH_INSURANCE_PREMIUM_LTE",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "건강보험료가 정책의 최저보험료 기준에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "건강보험료 부과액이 최저보험료 이하"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "singleParentHousehold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "해당 가구 유형에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "「한부모가족지원법」에 따른 한부모가족"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R08-path-3"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "R09",
+      "category": "education",
+      "source": {
+        "policy": {
+          "id": "00c3fcc7-a67e-457c-812a-1e2a29046fa1",
+          "name": "시흥시 초·중·고 입학준비금 지원",
+          "summary": "입학일 기준 시흥시에 거주하는  초·중·고등학교 신입생에게 입학에 필요한 비용 지원",
+          "provider_name": "경기도 시흥시",
+          "purpose_text": "시흥시 초·중·고등학교 신입생에게 배움의 첫걸음을 응원하기 위하여,\n입학을 준비하는데 필요한 비용을 보편적으로 지원함으로써 교육 기본권을 강화하고자 함",
+          "target_text": "입학일 기준 시흥시에 주민등록(외국인은 체류지 등록)이 되어있는 2026년 초·중·고등학교 1학년에 입학하는 신입생\n※ 초·중등교육법 제2조에 따른 학교 및 등록 대안교육기관 신입생 포함\n※ 입학일 이후 전입 신입생 불가",
+          "criteria_text": null,
+          "benefit_text": "○ 지원금액 : 초·중·고등학교 1학년에 입학하는 신입생 1인당 100,000원\n○ 지급방법 : 시흥 지역화폐 '시루' 정책포인트 지급\n※ 지역상품권 chak(시루 앱) 회원가입(지역선택 ‘시흥시’) 필수\n○ 신청기간 : 2026. 3. 3.(화) ~ 10. 30.(금)\n○ 신청자격: 지원대상자(학생)의 보호자(부모, 후견인 등)\n○ 사용기간 및 사용처\n- 사용기간 : 2026. 11. 30.(월)까지\n- 사 용 처 : 체육복, 각종 학원, 독서실, 문구용품점, 서적, 문구, 학습용 태블릿 등\n※ 사용 제한 업종 : 병원, 약국, 음식점, 레저, 숙박 등\n○ 문의 : 시흥시 교육자치과(☎031-310-3497)",
+          "application_method_text": "○ 신청방법\n- (온라인) 보호자가‘부 또는 모’(내국인)인 경우\n· 정부24 접속 → 검색창‘시흥시 초·중·고 입학준비금 지원’검색 → 신청\n- (오프라인) 보호자가 부모 외인 경우, 보호자가 외국인인 경우\n· 학생 주소지 관할 동 행정복지센터 방문 신청(신분증 지참 필수)\n○ 지급시기 및 지급방법\n- 지급시기: 신청일로부터 2개월 내 순차지급\n- 지급방법: 모바일 시흥사랑상품권\n(지역상품권 앱 'Chak' 가입 필수)",
+          "application_period_text": "2026.03.03~2026.10.30",
+          "required_documents_text": "○ 신청인 제출서류\n- 신분증\n- 신청서\n- 가족관계증명서(학생과 신청인의 주민등록상 주소가 다른 경우, 학생 주소지 세대주가 신청자 또는 배우자가 아닌 경우)\n- 재학증명서(시흥시 관외 학교 또는 대안교육기관 입학생인 경우)\n- 외국인등록사실증명(관내 주소를 체류지로 외국인등록을 한 경우)",
+          "reception_text": null,
+          "contact_text": "시흥시 교육자치과/031-310-3494",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/401000000513",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:34:21.705202+00:00"
+        },
+        "source": {
+          "snapshotId": "15e44364-7cf4-4048-a47a-8aff7a247df3",
+          "normalizerVersion": "1",
+          "displayHash": "3e32c114698167dc0fecd4a28960ab71f677ca4209719d1ecfed9bca2f440584",
+          "normalizedFingerprint": "72e269f634201327e4ec59f59fb83dec067cc059bfac3662f190c5bf0273ec46"
+        }
+      },
+      "recipe": {
+        "sampleId": "R09",
+        "policyId": "00c3fcc7-a67e-457c-812a-1e2a29046fa1",
+        "category": "education",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "초·중·고 대체 대상과 외국인 체류 등록 경로 보존. 출생연도로 학년 추정 금지."
+        ],
+        "paths": [
+          {
+            "purpose": "school-entry-costs",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "siheungResidenceAtEntry",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_OR_FOREIGN_RESIDENCE_AT_ENTRY",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "입학일에 시흥시 주민등록 또는 외국인 체류지 등록이 되어 있었나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "입학일 기준 시흥시에 주민등록(외국인은 체류지 등록)이 되어있는"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "schoolEntry2026",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SCHOOL_ENTRY_EVENT_2026",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "2026년 초·중·고 1학년 신입학 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "2026년 초·중·고등학교 1학년에 입학하는 신입생"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "등록 대안교육기관 신입생 포함. 초·중등교육법 제2조 학교 및 인정 기관 범위 확인.",
+              "입학일 이후 전입 불가. 현재 거주지로 입학일 거주 조건을 대체하지 않음.",
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R09-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "R10",
+      "category": "education",
+      "source": {
+        "policy": {
+          "id": "020dc51e-2663-435c-830b-abd7b2c43fa6",
+          "name": "고교 신입생 입학준비금 지원",
+          "summary": "홍성군에 주민등록이 되어 있는 고등학교 신입생에게 입학준비금 300,000원 지원",
+          "provider_name": "충청남도 홍성군",
+          "purpose_text": null,
+          "target_text": "○ 홍성군에 주민등록이 되어 있는 고등학교 신입생\n- 소득수준 무관\n- 법령이나 다른 조례에 따라 지원을 받고 있는 경우 지원 제외",
+          "criteria_text": null,
+          "benefit_text": "○ 홍성군 고교 신입생 입학준비금 지원\n- 지원대상 : 홍성군에 주민등록이 되어 있는 고등학교 신입생\n- 지원금액 : 1인 300,000원(소득수준 무관)\n- 신 청 인 : 학생의 보호자(학부모, 법정대리인 등)\n- 제출서류 : 신청서, 통장사본, 재학증명서(관외 고교 입학생), 주민등록 초본 등\n- 지원제외 : 법령이나 다른 조례에 따라 지원을 받고 있는 경우",
+          "application_method_text": "○ 방문신청 : 고등학교 및 주소지 읍·면 행정복지센터",
+          "application_period_text": "2026. 3. 3. ~ 3. 20.    /   2026. 5. 1. ~ 5. 22.",
+          "required_documents_text": "신청서, 통장사본, 재학증명서(관외 고교 입학생), 주민등록초본 등",
+          "reception_text": null,
+          "contact_text": "자치행정과 평생교육팀/041-630-1539",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/460000000167",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:51:52.880028+00:00"
+        },
+        "source": {
+          "snapshotId": "eb1275d4-6422-44ed-8f0c-d46d481a91a4",
+          "normalizerVersion": "1",
+          "displayHash": "44e5f9eea262a583e82b0cb48a11623b26cae555f74fd0997b67505f7b1cee22",
+          "normalizedFingerprint": "321802148809d0ca7bfa60cff15f7456054849b34e0a23e7aaba20a3090c237e"
+        }
+      },
+      "recipe": {
+        "sampleId": "R10",
+        "policyId": "020dc51e-2663-435c-830b-abd7b2c43fa6",
+        "category": "education",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "소득수준 무관: 소득 하드필터를 생성하지 않음. 다른 조례 지원의 부정 조건 별도 보존."
+        ],
+        "paths": [
+          {
+            "purpose": "school-entry-costs",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "hongseongRegistered",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_RESIDENCE",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "이 자녀는 정책 기준일에 홍성군에 주민등록되어 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "홍성군에 주민등록이 되어 있는"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "highSchoolEntrant",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SCHOOL_ENTRY_EVENT",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "이 자녀는 고등학교 신입생인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "고등학교 신입생"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "otherLegalEntryAid",
+                  "values": [
+                    "NO"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "같은 지원에 대해 법령·다른 조례에 따른 지원을 받고 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "법령이나 다른 조례에 따라 지원을 받고 있는 경우 지원 제외"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "중복지원의 정확한 범위·적용연도 확인 필요. 모든 타 복지 수급을 금지하지 않음.",
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R10-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "R11",
+      "category": "housing",
+      "source": {
+        "policy": {
+          "id": "007effb7-542a-4a01-baa0-efbe8f34ddef",
+          "name": "서울시 저소득 중증장애인 전세주택 제공사업",
+          "summary": "저소득 중증장애인이 월세 부담에서 벗어나 전세주택에 입주할 수 있도록  최장 6년간 무상으로 전세보증금을 지원하여 주거환경 개선 및 지역사회 자립기반 마련에 도움을 주고자 함",
+          "provider_name": "서울특별시 은평구 주민복지국 장애인복지과",
+          "purpose_text": null,
+          "target_text": "아래 요건을 모두 충족하는자 - 장애등급 : 세대주가 장애의 정도가 심한 장애인인 가구  (장애의 정도가 심한 미성년 자녀를 둔 한부모가구 지원 가능)- 소득기준 : 국민기초생활보장법에 의한 수급권자 및 차상위 계층※ 신청자 중 선정기준표에 의해 높은 점수를 얻은 가구를 선정",
+          "criteria_text": "소득수준, 신청자연령, 세대원 중 장애인 유무, 세대원 구성, 세대원 중 65세 이상 직계존속 유무, 서울시 계속 거주기간",
+          "benefit_text": "은평구청장이 집주인과 계약하고 장애인을 입주자로 지정하여 입주- 지원금액 : 전세보증금 1가구당 190백만원 ~ 200백만원- 지원기간 : 2년 원칙, 부득이한 경우 2회한 연장(최장 6년)",
+          "application_method_text": "연초 거주지 동 주민센터에 방문신청",
+          "application_period_text": null,
+          "required_documents_text": null,
+          "reception_text": null,
+          "contact_text": "은평구청 장애인복지과 02-351-7313",
+          "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00002109&wlfareInfoReldBztpCd=02",
+          "application_url": null,
+          "updated_at": "2026-09-08T08:22:39.278908+00:00"
+        },
+        "source": {
+          "snapshotId": "8bd92ab4-f68d-480e-81ef-c355af6dc141",
+          "normalizerVersion": "bokjiro-2",
+          "displayHash": "05a0f587f68797d58c104dce03ae7ce99c7f5604c476f78e2610eef05b46356b",
+          "normalizedFingerprint": "41deb6dc6449588a905b12d7d7caf8df0fbceda05b05892604ec70c499f4a31d"
+        }
+      },
+      "recipe": {
+        "sampleId": "R11",
+        "policyId": "007effb7-542a-4a01-baa0-efbe8f34ddef",
+        "category": "housing",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "세대주 장애 경로와 미성년 자녀 장애+한부모 경로를 분리. 세대주 비장애만으로 두 번째 경로 탈락 금지.",
+          "criteria_text의 신청자연령·65세 이상 직계존속·거주기간은 선정 점수 항목. 나이 65세 하드필터를 생성하지 않음.",
+          "제목의 서울시를 현행 주민등록 요건으로 확정하지 않음. 실제 거주 자격·기간 별도 공식 검수."
+        ],
+        "paths": [
+          {
+            "purpose": "rental-housing",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "recipientOrNearPoor",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "법정 수급권자 또는 차상위 계층에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "국민기초생활보장법에 의한 수급권자 및 차상위 계층"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "severelyDisabledHead",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "세대주가 장애의 정도가 심한 장애인인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "세대주가 장애의 정도가 심한 장애인인 가구"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R11-path-1"
+          },
+          {
+            "purpose": "rental-housing",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "recipientOrNearPoor",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "법정 수급권자 또는 차상위 계층에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "국민기초생활보장법에 의한 수급권자 및 차상위 계층"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "singleParentWithSeverelyDisabledMinor",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "장애의 정도가 심한 미성년 자녀를 둔 한부모가구인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "장애의 정도가 심한 미성년 자녀를 둔 한부모가구 지원 가능"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R11-path-2"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "R12",
+      "category": "housing",
+      "source": {
+        "policy": {
+          "id": "15fdd3cd-5085-4b57-8c4f-c1dd1d271712",
+          "name": "부여군 청년셰어하우스 운영",
+          "summary": "지역 청년에게 저렴한 월세로 주거지원",
+          "provider_name": "충청남도 부여군",
+          "purpose_text": "청년, 신혼부부의 자립기반 형성 및 지역 정착을 위한 주거 안정 지원",
+          "target_text": "관내 주민등록을 두고 거주하거나 전입하고자 하는 무주택자 중 기준 중위소득 150%이하인 18~39세 청년 또는 신혼부부",
+          "criteria_text": null,
+          "benefit_text": "지역 청년에게 저렴한 월세로 주거지원\n1. 대상 : 관내 주민등록을 두고 거주하거나 전입하고자 하는 무주택자인 18~39세 청년 또는 신혼부부\n2. 내용 : 1인 1실, 1년(1년 연장 가능, 최대2년)",
+          "application_method_text": "부여군청 전략사업과 인구청년팀 방문신청",
+          "application_period_text": "홈페이지 공고를 통한 모집",
+          "required_documents_text": "1. 입주신청서, 개인정보수집 이용 및 제공 동의서, 무주택자 확인각서 각 1부\n2. 가족관계증명서(상세) 1부\n3. 주민등록 등본 1부\n4. 건강보험 자격득실 확인서 1부\n5. 건강보험료 납부 확인서 1부\n6. 혼인관계증명서(상세) 1부(신혼부부인 경우에만 제출)\n7. 지방세 세목별 과세증명서(전국 단위)\n8. 소득 입증 서류 1부",
+          "reception_text": null,
+          "contact_text": "부여군청 전략사업과/041-830-2483",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/457000000157",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:51:02.062812+00:00"
+        },
+        "source": {
+          "snapshotId": "0d55af3d-c0e9-45ee-b637-c75a32a1282f",
+          "normalizerVersion": "1",
+          "displayHash": "70cbf8e54cda7ed8b2efe3510e612341f0b41c73009030c0c1b7b80bfa4ddfd0",
+          "normalizedFingerprint": "e80763d194bd904198227e784943081e0f6d7ed712e3b5307dc418d40639ef2e"
+        }
+      },
+      "recipe": {
+        "sampleId": "R12",
+        "policyId": "15fdd3cd-5085-4b57-8c4f-c1dd1d271712",
+        "category": "housing",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "관내 거주 OR 전입 예정: 현재 타지역 거주를 일괄 제외하면 안 됨.",
+          "18~39세 청년 OR 신혼부부: 신혼부부에게 청년 나이를 자동 전파하지 않음. 원문의 또는 범위와 신혼부부 정의 공식 검수 필요.",
+          "관내 범위는 제목만으로 확정하지 않고 공식 공고 확인까지 보류."
+        ],
+        "paths": [
+          {
+            "purpose": "shared-housing",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "residentOrPlanningMove",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "RESIDENCE_OR_PLANNED_MOVE",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "관내 주민등록·거주 또는 전입 예정 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "관내 주민등록을 두고 거주하거나 전입하고자 하는"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "nonHomeowner",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 무주택자 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "무주택자"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "incomeUnder150",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "MEDIAN_INCOME_CALCULATION_UNCONFIRMED",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 기준 중위소득 150% 이하 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "기준 중위소득 150%이하인"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_NUMBER_RANGE",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "youngApplicantAge",
+                  "min": 18,
+                  "max": 39,
+                  "minInclusive": true,
+                  "maxInclusive": true,
+                  "unit": "AGE_YEARS",
+                  "basis": "APPLICANT_AGE_METHOD_UNCONFIRMED",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 대상·산정방법·기준일로 확인한 값은 얼마인가요?"
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "18~39세 청년"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R12-path-1"
+          },
+          {
+            "purpose": "shared-housing",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "residentOrPlanningMove",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "RESIDENCE_OR_PLANNED_MOVE",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "관내 주민등록·거주 또는 전입 예정 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "관내 주민등록을 두고 거주하거나 전입하고자 하는"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "nonHomeowner",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 무주택자 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "무주택자"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "incomeUnder150",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "MEDIAN_INCOME_CALCULATION_UNCONFIRMED",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 기준 중위소득 150% 이하 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "기준 중위소득 150%이하인"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "newlywedHousehold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책에서 정한 신혼부부에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "또는 신혼부부"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "R12-path-2"
+          }
+        ]
+      }
+    }
+  ]
+}

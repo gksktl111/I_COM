@@ -280,7 +280,7 @@ test("admin reads guard before privileged requests, validate filters, and return
   });
   assert.equal(related.items[0].relevance_assessed_at, "2026-09-08T00:00:00Z");
   assert.ok(!JSON.stringify(related).includes("excluded"));
-  for (const version of ["policy-relevance-2", "policy-relevance-3"]) {
+  for (const version of ["policy-relevance-2", "policy-relevance-3", "policy-relevance-review-1", "policy-relevance-review-2", "policy-relevance-review-3"]) {
     response = Response.json([{ ...policy, relevance: { ...relevance, version } }]);
     assert.equal((await listPolicies()).items[0].relevance?.version, version);
   }

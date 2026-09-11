@@ -1,0 +1,1745 @@
+{
+  "schemaVersion": "six-field-refinement-draft-1",
+  "checkedAt": "2026-09-11T12:57:46.419Z",
+  "reviewedAt": "2026-09-11",
+  "kind": "SOURCE_REFINEMENT_NOT_PUBLICATION",
+  "items": [
+    {
+      "sampleId": "RF01",
+      "category": "pregnancy",
+      "source": {
+        "policy": {
+          "id": "0140ec1a-f88f-4d29-bb4d-69c55bc21f01",
+          "name": "출산축하금 지원",
+          "summary": "이천시 출산가정에 출산축하금 지급",
+          "provider_name": "경기도 이천시",
+          "purpose_text": "출산율 저하에 따른 사회문제에 적극 대처하고 출산을 장려하기 위함",
+          "target_text": "이천시에 출생신고를 한 출생아로 아래 거주요건에 해당하는 경우 (2023년 출생아부터 해당)\n(기본지원)\n- 거주요건 충족 : 출생일 기준 부 또는 모가 6개월 이전부터 이천시에 주민등록을 두고 실제 거주(6개월 미만 거주한 경우, 출생일부터 계속하여 1년이상 이천시에 주민  등록을 두고 실제 거주)\n- 부 또는 모가 출생일과 신청일에 이천시에 주민등록을 두고 거주할 것\n(예외지원)\n- 부 또는 모가 출산하기 전에 이천시로 전입할 계획이 있었으나, 출산예정일보다 이른 출산으로 출생아의 출생일 당시 이천시에 주민등록을 두고 있지 않은 경우 출생아가 이천시에 출생신고 된 날로부터 주민등록을 두고 1년 이상 계속 거주한 경우\n- 부 또는 모가 신청일에 이천시에 주민등록을 두고 거주할 것\n*신청기한은 지급대상 요건을 충족한 날부터 1년 이내입니다.",
+          "criteria_text": null,
+          "benefit_text": "○ 이천시에 출생등록을 한 2023년 1월 이후 출생아에게 출산축하금(지역화폐) 지급\n- 첫째아 100만원 축하금 지급\n- 둘째아 200만원 축하금 지급\n- 셋째아 300만원 축하금 지급\n- 넷째아이상 500만원 축하금 지급",
+          "application_method_text": "○ 방문 신청 : 출생아동 주소지 관할 읍·면·동 주민센터 방문\n○ 온라인 신청 : 정부24",
+          "application_period_text": "상시신청",
+          "required_documents_text": "신분증, 출생증명서, 등본, 가족관계증명서 등",
+          "reception_text": null,
+          "contact_text": "이천시보건소 모자건강팀/031-6190-7201",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/407000000118",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:36:29.19234+00:00"
+        },
+        "source": {
+          "snapshotId": "f39e13cc-17ee-4699-9f0d-cc122aa3bf58",
+          "normalizerVersion": "1",
+          "displayHash": "85301db2d130518de24e2ffed0f0c9febc5b50bebbe9898e7ac1416b808555f3",
+          "normalizedFingerprint": "8171b968001abd86dbf5077f58b78f9d3bc02618cb7de806cc41600e3540d0d5"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF01",
+        "policyId": "0140ec1a-f88f-4d29-bb4d-69c55bc21f01",
+        "category": "pregnancy",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "출생일 6개월 이전 거주를 정책 전체 필수로 만들지 않음. 출생 후 거주 충족과 조기 출산 전입 예외를 보존. 신청기한 요건 충족일부터 1년은 별도 확인."
+        ],
+        "paths": [
+          {
+            "purpose": "birth-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "icheonBirthRegistrationSince2023",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "2023년 이후 출생아이며 이천시에 출생신고한 가정인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "이천시에 출생신고를 한 출생아로 아래 거주요건에 해당하는 경우 (2023년 출생아부터 해당)"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "parentIcheonAtApplication",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_AND_ACTUAL_RESIDENCE_AT_APPLICATION",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "신청일에 부 또는 모가 이천시에 주민등록을 두고 거주하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "부 또는 모가 신청일에 이천시에 주민등록을 두고 거주할 것"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "sixMonthsBeforeBirth",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_AND_ACTUAL_RESIDENCE_BEFORE_BIRTH",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "출생일 기준 부 또는 모가 6개월 이전부터 이천시에 주민등록·실거주했나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "출생일 기준 부 또는 모가 6개월 이전부터 이천시에 주민등록을 두고 실제 거주"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF01-path-1"
+          },
+          {
+            "purpose": "birth-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "icheonBirthRegistrationSince2023",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "2023년 이후 출생아이며 이천시에 출생신고한 가정인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "이천시에 출생신고를 한 출생아로 아래 거주요건에 해당하는 경우 (2023년 출생아부터 해당)"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "parentIcheonAtApplication",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_AND_ACTUAL_RESIDENCE_AT_APPLICATION",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "신청일에 부 또는 모가 이천시에 주민등록을 두고 거주하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "부 또는 모가 신청일에 이천시에 주민등록을 두고 거주할 것"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "shortResidenceOneYearAfterBirth",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "CONTINUOUS_RESIDENCE_SINCE_BIRTH",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "6개월 미만 거주자로 출생일부터 1년 이상 계속 이천시 주민등록·실거주했나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "6개월 미만 거주한 경우, 출생일부터 계속하여 1년이상 이천시에 주민  등록을 두고 실제 거주"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF01-path-2"
+          },
+          {
+            "purpose": "birth-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "icheonBirthRegistrationSince2023",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "2023년 이후 출생아이며 이천시에 출생신고한 가정인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "이천시에 출생신고를 한 출생아로 아래 거주요건에 해당하는 경우 (2023년 출생아부터 해당)"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "parentIcheonAtApplication",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_AND_ACTUAL_RESIDENCE_AT_APPLICATION",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "신청일에 부 또는 모가 이천시에 주민등록을 두고 거주하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "부 또는 모가 신청일에 이천시에 주민등록을 두고 거주할 것"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "earlyBirthMoveException",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "EARLY_BIRTH_PLANNED_MOVE_EXCEPTION",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "예정보다 이른 출산으로 전입하지 못한 예외 요건과 출생신고일부터 1년 이상 계속 거주 요건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "부 또는 모가 출산하기 전에 이천시로 전입할 계획이 있었으나, 출산예정일보다 이른 출산으로 출생아의 출생일 당시 이천시에 주민등록을 두고 있지 않은 경우 출생아가 이천시에 출생신고 된 날로부터 주민등록을 두고 1년 이상 계속 거주한 경우"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF01-path-3"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "RF02",
+      "category": "pregnancy",
+      "source": {
+        "policy": {
+          "id": "04d1c671-e404-4b8a-844a-3199f5a9f4bb",
+          "name": "장애인가정 출산지원금 지원",
+          "summary": "출산한 장애인가정에 출산지원금 지급",
+          "provider_name": "서울특별시 강남구",
+          "purpose_text": "○ 장애인 가정에 출산비용을 지원하여 경제적 부담을 경감하고 저출산 사회문제를 해소하여 출산 친화적 문화 조성",
+          "target_text": "○ 출산한 등록 장애인가정\n- 출산일 기준 1년 전부터 계속하여 신청일 현재까지 계속하여 강남구에  주민등록을 두고  거주\n*강남구에 거주한 기간이 1년 미만인 사람의 경우 계속하여 거주한 기간이 1년이 지나면 지원대상이 됨",
+          "criteria_text": null,
+          "benefit_text": "○ 강남구 장애인가정 출산지원금 지원금액\n- 장애정도가 심한 장애인 : 신생아 1인당 100만원\n- 장애정도가 심하지 않은 장애인 : 신생아  1인당 70만원\n* 부모가 모두 장애인인 경우 중복하여 지원할 수 없으며, 부모 중 지원액인 많은 금액으로 지원",
+          "application_method_text": "○ 방문 신청\n- 주민센터 : 거주지 관할 주민센터에 방문 신청",
+          "application_period_text": "상시신청",
+          "required_documents_text": "신청서 및 개인정보제공동의서\n신분증 사본\n장애인 본인 명의 입금계좌 통장 사본",
+          "reception_text": null,
+          "contact_text": "장애인복지과/02-3423-5893",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/322000000120",
+          "application_url": null,
+          "updated_at": "2026-09-08T09:04:21.934527+00:00"
+        },
+        "source": {
+          "snapshotId": "fe68581c-7a3c-47eb-9191-162e834623f3",
+          "normalizerVersion": "1",
+          "displayHash": "363e9bc14e6aa13efc798bf36c85964f66b27a99591d6bf65763aefc799e7b5b",
+          "normalizedFingerprint": "904a8acd5569ac023f3ee775e6b54df1e7d215f853d0cf01050ceb76e334b101"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF02",
+        "policyId": "04d1c671-e404-4b8a-844a-3199f5a9f4bb",
+        "category": "pregnancy",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "출산일 당시 1년 거주 미달만으로 영구 제외 금지. 장애 구성원의 정확한 범위·대리 신청자는 미확인."
+        ],
+        "paths": [
+          {
+            "purpose": "birth-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "registeredDisabledBirthFamily",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "출산한 등록 장애인가정에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "출산한 등록 장애인가정"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "gangnamBeforeBirthThroughApplication",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_RESIDENCE_BEFORE_BIRTH_THROUGH_APPLICATION",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "출산일 1년 전부터 신청일까지 강남구에 계속 주민등록·거주했나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "출산일 기준 1년 전부터 계속하여 신청일 현재까지 계속하여 강남구에  주민등록을 두고  거주"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF02-path-1"
+          },
+          {
+            "purpose": "birth-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "registeredDisabledBirthFamily",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "출산한 등록 장애인가정에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "출산한 등록 장애인가정"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "gangnamLaterOneYearQualification",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "DEFERRED_CONTINUOUS_RESIDENCE_QUALIFICATION",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "1년 미만 거주자로 이후 계속 거주기간 1년을 충족했나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "강남구에 거주한 기간이 1년 미만인 사람의 경우 계속하여 거주한 기간이 1년이 지나면 지원대상이 됨"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF02-path-2"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "RF03",
+      "category": "pregnancy",
+      "source": {
+        "policy": {
+          "id": "08215c72-84c0-4c9f-883f-6fe76a154b99",
+          "name": "출산장려금 지원",
+          "summary": "출생아의 출산장려금 지원",
+          "provider_name": "충청북도 음성군",
+          "purpose_text": "출산율 저하로 발생되는 인구감소 및 사회문제에 적극 대처하기 위함은 물론 음성군의 출산장려 분위기를 조성하고 출산에 따른 경제적 부담을 줄이고자 함",
+          "target_text": "○ 부 또는 모가 자녀의 출생일 기준 3개월 이상 주민등록이 음성군에 등재되어 거주하고 있으면서 신생아가 군에 출생신고 되어있는 둘째 이상 자녀\n* 3개월 미만인 경우, 3개월이 속하는 달까지 계속해서 부 또는 모의 주민등록이 음성군에 등재되어 있을 경우 지원 가능",
+          "criteria_text": null,
+          "benefit_text": "○ 현금 지원\n- 둘째 자녀: 50만원(일시 지급)\n- 셋째 자녀 : 100만원(4개월 분할 지급)\n- 넷째 자녀 : 500만원(10개월 분할 지급)\n- 다섯째 이후 자녀 : 1,000만원(10개월 분할 지급)",
+          "application_method_text": "○ 방문 신청\n- 주민센터 : 출생신고시 읍면 행정복지센터 출산서비스 통합처리 신청(행복출산)\n○ 온라인 신청\n- 정부24홈페이지 내 출산 관련 서비스 통합처리 신청(행복출산) 신청",
+          "application_period_text": "출생신고 및 입양신고 후 3개월 이내",
+          "required_documents_text": "출생증명서, 신분증, 통장사본, (재혼가정일 경우) 자녀 명의 기본증명서(상세)",
+          "reception_text": null,
+          "contact_text": "음성군보건소 건강증진과/043-871-2173",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/447000000116",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:46:22.08379+00:00"
+        },
+        "source": {
+          "snapshotId": "ac9062db-540c-414e-9c41-22ec67bbecdb",
+          "normalizerVersion": "1",
+          "displayHash": "da82254a83187ec278004311edabc9eaa409851b891c0a290f18356eae9a5768",
+          "normalizedFingerprint": "1828a0e76f94f99a619990de0e09e7aebae8a241448d46f3f4503d88853052e4"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF03",
+        "policyId": "08215c72-84c0-4c9f-883f-6fe76a154b99",
+        "category": "pregnancy",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "3개월은 부모 거주기간으로 신생아 월령이 아님. 출생 순서와 현재 사용자가 입력한 자녀 수를 구분."
+        ],
+        "paths": [
+          {
+            "purpose": "birth-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "eumseongSecondOrLaterRegisteredBirth",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "음성군에 출생신고된 둘째 이상 자녀인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "신생아가 군에 출생신고 되어있는 둘째 이상 자녀"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "parentResidenceThreeMonthsBeforeBirth",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_RESIDENCE_BEFORE_BIRTH",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "출생일 기준 부 또는 모가 음성군에 3개월 이상 주민등록·거주했나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "부 또는 모가 자녀의 출생일 기준 3개월 이상 주민등록이 음성군에 등재되어 거주하고 있으면서"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF03-path-1"
+          },
+          {
+            "purpose": "birth-support",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "eumseongSecondOrLaterRegisteredBirth",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "음성군에 출생신고된 둘째 이상 자녀인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "신생아가 군에 출생신고 되어있는 둘째 이상 자녀"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "parentContinuesUntilThirdMonth",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "DEFERRED_RESIDENCE_THIRD_MONTH",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "거주 3개월 미만이었다면 3개월이 속하는 달까지 부모 주민등록이 음성군에 계속 등재되었나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "3개월 미만인 경우, 3개월이 속하는 달까지 계속해서 부 또는 모의 주민등록이 음성군에 등재되어 있을 경우 지원 가능"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF03-path-2"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "RF04",
+      "category": "childcare",
+      "source": {
+        "policy": {
+          "id": "003bb324-aeae-4ac7-90d5-dc25f581f6e4",
+          "name": "가정위탁 위문금(명절,연말)",
+          "summary": "연 3회 1인당 30,000원",
+          "provider_name": "서울특별시 구로구",
+          "purpose_text": "명절,연말을 맞아 가정위탁 아동들이 따뜻한 명절을 맞이할 수 있도록 위문금 지원",
+          "target_text": "구로구에서 보호중인 가정위탁아동",
+          "criteria_text": null,
+          "benefit_text": "연 3회(설날,추석,연말) 1인당 30,000원",
+          "application_method_text": "구청에서 취합",
+          "application_period_text": "구청에서 취합함",
+          "required_documents_text": "해당없음",
+          "reception_text": null,
+          "contact_text": "아동청소년과/02-860-5416",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/316000000143",
+          "application_url": null,
+          "updated_at": "2026-09-08T09:02:06.258101+00:00"
+        },
+        "source": {
+          "snapshotId": "ba9eeb43-2f9a-462f-a612-bed9c3f9b39e",
+          "normalizerVersion": "1",
+          "displayHash": "e5d4050896e5df7664b3a7b8ae6a07930980b129457d10efcc56c5877435d1d2",
+          "normalizedFingerprint": "42abdca2d5519118f2db32e333da187a7af86348b2e151a193228b1a6d4af9e2"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF04",
+        "policyId": "003bb324-aeae-4ac7-90d5-dc25f581f6e4",
+        "category": "childcare",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "구로구 보호 담당 자격을 구로구 현 거주 조건으로 바꾸지 않음."
+        ],
+        "paths": [
+          {
+            "purpose": "foster-family-support",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "guroProtectedFosterChild",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "LOCAL_AUTHORITY_FOSTER_PROTECTION",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "구로구에서 보호 중인 가정위탁아동인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "구로구에서 보호중인 가정위탁아동"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF04-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "RF05",
+      "category": "childcare",
+      "source": {
+        "policy": {
+          "id": "02904431-f702-4b19-b1fb-100a988931b8",
+          "name": "가정위탁아동 양육수당 지원",
+          "summary": "요보호 아동을 보호,양육하기를 희망하는 가정에 위탁 양육함으로써 가정적인 분위기에서 건전한 사회인으로 자랄수 있도록 함.",
+          "provider_name": "강원특별자치도 양구군 행정복지국 사회복지과",
+          "purpose_text": null,
+          "target_text": "가정위탁 및 소년소녀가정",
+          "criteria_text": "신청아동 실태조사후 사례결정위원회를 통한 선정",
+          "benefit_text": "가정위탁아동양육수당 지급",
+          "application_method_text": "수시 신청",
+          "application_period_text": null,
+          "required_documents_text": null,
+          "reception_text": null,
+          "contact_text": "양구군청 사회복지과 여성아동팀 033-480-2490",
+          "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003490&wlfareInfoReldBztpCd=02",
+          "application_url": null,
+          "updated_at": "2026-09-08T08:52:25.671623+00:00"
+        },
+        "source": {
+          "snapshotId": "7a1ce8f0-399e-47e5-b0a1-64b9c36f873a",
+          "normalizerVersion": "bokjiro-2",
+          "displayHash": "4b30a8d9944404ea80cf2d12c6ce487a2b3160950b1ea7e5e1c4d6b57ce69415",
+          "normalizedFingerprint": "1686aff44d1b3082c33b1af69556c1855b209fdc56a1133344c43590908a89f1"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF05",
+        "policyId": "02904431-f702-4b19-b1fb-100a988931b8",
+        "category": "childcare",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "가정위탁 및 소년소녀가정은 서로 다른 지원 대상. 신청 후 조사·위원회 선정을 신청 전 필수조건으로 만들지 않음."
+        ],
+        "paths": [
+          {
+            "purpose": "foster-family-support",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "fosterChild",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "가정위탁 지원 대상인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "가정위탁"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED",
+              "신청 후 아동 실태조사·사례결정위원회 선정 절차가 필요함. 이미 선정된 상태를 신청 전 자격으로 요구하지 않음."
+            ],
+            "id": "RF05-path-1"
+          },
+          {
+            "purpose": "foster-family-support",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "childHeadedHousehold",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "소년소녀가정 지원 대상인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "소년소녀가정"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED",
+              "신청 후 아동 실태조사·사례결정위원회 선정 절차가 필요함. 이미 선정된 상태를 신청 전 자격으로 요구하지 않음."
+            ],
+            "id": "RF05-path-2"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "RF06",
+      "category": "childcare",
+      "source": {
+        "policy": {
+          "id": "0213968e-e248-4654-aeb9-d3bed14f1dfb",
+          "name": "여수형 농어촌 아동수당",
+          "summary": "농어촌지역 만 8세 미만 아동(농어촌 읍면지역에 주소)을 위해 아동수당 지급",
+          "provider_name": "전남광주통합특별시 여수시",
+          "purpose_text": "도서지역이 많은 우리 시 특성상 농어촌지역 아동양육 환경 및 정주여건이 열악하여 아동 양육에 어려움이 있어 추가 지원하고자 함",
+          "target_text": "○ 만 8세 미만* 농어촌(읍·면**) 지역에 주소를 둔 아동\n- 연령 : 만 8세 미만(출생월 ~ 2016년생 생일 전달까지)\n- 읍·면지역(일부 제외) : 돌산읍, 소라·율촌·화양·남·화정·삼산면\n단, 돌산우두택지(5, 13~16통) 및 죽림1·2지구단위계획구역(31~46통) 제외",
+          "criteria_text": null,
+          "benefit_text": "○ 농어촌 아동수당 지급 : 1인, 월 5만원",
+          "application_method_text": "○ 개인 신청절차 없음 : 신청 불필요",
+          "application_period_text": "상시신청",
+          "required_documents_text": "구비서류 없음",
+          "reception_text": null,
+          "contact_text": "여성가족과/061-659-3751",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/481000000120",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:59:07.501063+00:00"
+        },
+        "source": {
+          "snapshotId": "f3968c17-04e3-46a9-8e06-a0886f0e67e1",
+          "normalizerVersion": "1",
+          "displayHash": "4461428b20d90eb12c1e0d324ed3dd5461a60caaff3777806136eb47cc4bdf8d",
+          "normalizedFingerprint": "80cfaf61486165e878047767ad8a2f443f30a67d1352edd7fc682cc6eb950c41"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF06",
+        "policyId": "0213968e-e248-4654-aeb9-d3bed14f1dfb",
+        "category": "childcare",
+        "disposition": "HOLD",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "연령·생년 범위의 기준연도 충돌 의심과 읍면 내 제외구역으로 상위 필터 작성 보류. 출처수정일을 자격 기준일로 대체하지 않음."
+        ],
+        "paths": [
+          {
+            "purpose": "rural-child-allowance",
+            "subject": "CHILD",
+            "conditions": [],
+            "gaps": [
+              "만 8세 미만과 2016년생 생일 전달까지의 기준연도 불일치 의심. 현행 공고 재확인 필요.",
+              "읍면 전체가 아님: 돌산우두택지 5·13~16통 및 죽림1·2지구 31~46통 제외. 주소 세부구역 없이는 판정 불가.",
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF06-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "RF07",
+      "category": "care",
+      "source": {
+        "policy": {
+          "id": "0225cef4-2016-4658-a3a5-2ed13dd0c825",
+          "name": "저소득 한부모가족 유급 자녀돌봄휴가비 지원",
+          "summary": "한부모가족 근로자 자녀돌봄휴가비 연 최대 80만 원 지원(1일 8만 원, 최대 10일)",
+          "provider_name": "서울특별시 성동구",
+          "purpose_text": "저소득 한부모 근로자가 경제적 부담을 덜고 자녀 돌봄을 병행할 수 있도록 자녀돌봄휴가비를 지원하여 양육 환경 조성 및 생활안정에 기여하고자 함",
+          "target_text": "18세 미만 자녀를 양육하는 기준 중위소득 65%이하 한부모가족 근로자 중 무급 자녀돌봄휴가 사용자",
+          "criteria_text": null,
+          "benefit_text": "○ 유급 자녀돌봄휴가비 지원\n- 연 최대 80만 원 지원(1일 8만 원, 최대 10일)\n· 단시간 근로자는 시간비례 지원\n· 소정 근로시간 주 20시간 이하는 1일 4만 원 정액 지원\n· 타 기관(고용노동부 등) 자녀양육 가족돌봄 휴가비 지원 대상자 제외",
+          "application_method_text": "○ 온라인접수: 성동구청 홈페이지 > 성동참여 > 자녀돌봄휴가비 검색\n○ 이메일접수: jeong2026@sd.go.kr\n○ 방문 접수: 동 주민센터, 성동구청",
+          "application_period_text": "상시신청",
+          "required_documents_text": "○ 자녀돌봄휴가비 지원 신청서\n○ 개인정보제공동의서\n○ 자녀돌봄휴가 확인서 또는 자녀돌봄휴가 확약서\n○ 자녀돌봄 증명서류\n- 가정통신문\n- 입원확인서, 진단서\n- 휴원증명서, 휴교통지서 등",
+          "reception_text": null,
+          "contact_text": "성평등가족과/02-2286-6840",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/303000000346",
+          "application_url": "https://www.sd.go.kr/booking/bookingOnlineRcepDetail.do?progrmNo=450&amp;sc2=%EC%9E%90%EB%85%80%EB%8F%8C%EB%B4%84&amp;sc3=202511&amp;rcpp=9&amp;key=4871",
+          "updated_at": "2026-09-08T08:54:29.559696+00:00"
+        },
+        "source": {
+          "snapshotId": "0fed3524-c7a4-4928-a537-5416b014cca6",
+          "normalizerVersion": "1",
+          "displayHash": "000481f3899abcb049fa084ae67d2d8e695c3ca89922d3af9bb6a7137366b61b",
+          "normalizedFingerprint": "653d8fe31b3c13c4ed12f851d296195d0136bf59b42793e6ac41cc4f42b8bce5"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF07",
+        "policyId": "0225cef4-2016-4658-a3a5-2ed13dd0c825",
+        "category": "care",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "근로자 PERSON이 18세 미만 자녀를 실제 양육하며 무급휴가를 사용한 관계를 보존. 다른 가구원의 어린 자녀와 신청자의 휴가 사용을 합치지 않음. 유급지원 상품명을 유급휴가 사용자 자격으로 해석하지 않음."
+        ],
+        "paths": [
+          {
+            "purpose": "parental-care-leave",
+            "subject": "PERSON",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "singleParentIncome65",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SINGLE_PARENT_MEDIAN_INCOME",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 소득 산정 기준으로 중위소득 65% 이하 한부모가족인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "기준 중위소득 65%이하 한부모가족"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "workerCaringForUnder18ChildUsingUnpaidLeave",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "APPLICANT_CARES_FOR_UNDER18_CHILD_AND_USES_UNPAID_LEAVE",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "본인이 18세 미만 자녀를 양육하는 근로자이며 무급 자녀돌봄휴가를 사용했나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "18세 미만 자녀를 양육하는"
+                  },
+                  {
+                    "field": "target_text",
+                    "quote": "근로자 중 무급 자녀돌봄휴가 사용자"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF07-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "RF08",
+      "category": "care",
+      "source": {
+        "policy": {
+          "id": "0fc77ade-36a5-4f9e-8caa-900947678df8",
+          "name": "무주형 아이돌봄 본인부담금 지원",
+          "summary": "무주형 아이돌봄 본인부담금 지원",
+          "provider_name": "전북특별자치도 무주군",
+          "purpose_text": "가정의 아이돌봄을 지원하여 일·가정 양립 및 양육 환경 조성",
+          "target_text": "부모가 무주군에 주민등록상 주소를 두고, 실제 거주하면서 양육공백이 발생하여 아이돌봄 서비스를 이용하는 가정",
+          "criteria_text": null,
+          "benefit_text": "부모가 무주군에 주민등록상 주소를 두고, 실제 거주하면서 3개월 ~12세 아동이 있는 양육 공백 가정을 대상으로\n시간제(기본형) 및 영아종일제 돌봄 서비스 이용시 본인부담금의 90%를 군비로 추가 지원",
+          "application_method_text": "읍면 행정복지센터 방문 신청",
+          "application_period_text": "상시신청",
+          "required_documents_text": "해당없음",
+          "reception_text": null,
+          "contact_text": "무주군 인구활력과/063-320-2072",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/474100000033",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:56:41.73998+00:00"
+        },
+        "source": {
+          "snapshotId": "e79b3c50-542b-48c6-8ad6-4a158daa7d1b",
+          "normalizerVersion": "1",
+          "displayHash": "b1bf7be9c1175eb8026d00118bd39cc7becd7f6afc682660caa02d5029ac5fb2",
+          "normalizedFingerprint": "cb42db83a89a65977848ac98a28705c924b8dfa8d41f3dc2cbc0e67b9a5363d6"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF08",
+        "policyId": "0fc77ade-36a5-4f9e-8caa-900947678df8",
+        "category": "care",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "부모 모두인지 한 명인지 원문에서 확정하지 않음. 서비스 희망과 실제 이용을 구분."
+        ],
+        "paths": [
+          {
+            "purpose": "childcare-service-costs",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "parentMujuRegisteredAndActualResidence",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "PARENT_REGISTERED_AND_ACTUAL_RESIDENCE",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "부모가 무주군 주민등록·실거주 조건에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "부모가 무주군에 주민등록상 주소를 두고, 실제 거주하면서"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "careGapAndServiceUse",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "양육공백이 발생하여 아이돌봄서비스를 실제 이용하고 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "양육공백이 발생하여 아이돌봄 서비스를 이용하는 가정"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF08-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "RF09",
+      "category": "care",
+      "source": {
+        "policy": {
+          "id": "2756c3d6-86f5-442a-ac6e-7d25dcc2aabc",
+          "name": "수원새빛돌봄 초등 저학년 등하교 동행돌봄서비스",
+          "summary": "동행이 필요한 초등 저학년 아동과 새빛돌보미가 등하교 동행하는 서비스",
+          "provider_name": "경기도 수원시",
+          "purpose_text": "동행이 필요한 초등 저학년 아동과 새빛돌보미가 등하교 동행하는 서비스",
+          "target_text": "수원시에 거주하는 초등 1~3학년 자녀를 둔 가정\n- 긴급하고 일시적인 돌봄 공백이 있는 경우 (맞벌이 가정 신청 가능)\n- 기존 돌봄서비스(아이돌봄지원사업 등)을 이용하지 않는 경우",
+          "criteria_text": null,
+          "benefit_text": "○ 대상: 수원시에 거주하는 초등학교 1~3학년 둔 가정\n- 긴급하고 일시적인 돌봄 공백이 있는 경우 (맞벌이 가정 신청 가능)\n- 기존 돌봄서비스(아이돌봄지원사업 등)을 이용하지 않는 경우\n○ 내용\n- 아동 이동 시 동행돌봄 제공\n- 학교 ↔ 돌봄기관 ↔ 교육기관 이동 (도보로 이동이 가능한 거리 내 서비스 제공)\n○ 기준: 중위소득 150%이하 가구 연 100만원 이내 서비스 제공(초과자는 본인부담)\n○ 이용시간: 평일(월 ~ 금) 8시 ~ 20시\n○ 신청 및 문의: 동 행정복지센터",
+          "application_method_text": "동 행정복지센터에 방문 접수",
+          "application_period_text": "2026.03.03.~선착순마감",
+          "required_documents_text": "해당없음",
+          "reception_text": null,
+          "contact_text": "돌봄정책과/031-5191-2746",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/374000000582",
+          "application_url": null,
+          "updated_at": "2026-09-08T09:27:10.789379+00:00"
+        },
+        "source": {
+          "snapshotId": "4058d980-e464-44ef-91e3-94dd39b53fca",
+          "normalizerVersion": "1",
+          "displayHash": "d9f40858b3b6e81bef78c4fa07c91bf93a08cedba26cd4945060214733e0a07c",
+          "normalizedFingerprint": "cfc5106986621e44cb1eff1f3135d80bcfd966d48c93244ef67466bc503b5458"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF09",
+        "policyId": "2756c3d6-86f5-442a-ac6e-7d25dcc2aabc",
+        "category": "care",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "맞벌이는 허용 예시이며 맞벌이만 허용하는 필수 조건이 아님. 서비스 중복범위와 해당 자녀·가구 적용은 현행 공고 검수 필요."
+        ],
+        "paths": [
+          {
+            "purpose": "school-commute-care",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "suwonPrimaryLowerGradeFamily",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "RESIDENCE_AND_ANY_PRIMARY_GRADE1_TO3_CHILD",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "수원시에 거주하는 초등 1~3학년 자녀가 있는 가정인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "수원시에 거주하는 초등 1~3학년 자녀를 둔 가정"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "urgentTemporaryCareGap",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "긴급하고 일시적인 돌봄 공백이 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "긴급하고 일시적인 돌봄 공백이 있는 경우"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "otherCareServiceUse",
+                  "values": [
+                    "NO"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "기존 돌봄서비스를 이용 중인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "기존 돌봄서비스(아이돌봄지원사업 등)을 이용하지 않는 경우"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF09-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "RF10",
+      "category": "education",
+      "source": {
+        "policy": {
+          "id": "057c4e8f-c3e1-4437-86b2-340b6981d315",
+          "name": "안산시 초등학교 입학준비금 지원",
+          "summary": "입학준비금 10만원 지급",
+          "provider_name": "경기도 안산시",
+          "purpose_text": "안산시 관내 초등학교에 최초 입학하는 1학년 학생을 대상으로 입학준비금을 지원하여 교육비 절감, 교육 공공성 강화 및 교육복지 실현",
+          "target_text": "입학일부터 신청일까지 안산시에 주민등록(외국인의 경우 체류지 등록)을 두고 관내 초등학교에 최초 입학하는 학생\n※ 타 시·군 및 국외에서 전입하는 1학년 학생 및 학교 밖 청소년 포함",
+          "criteria_text": null,
+          "benefit_text": "○ 지원금액 : 1인당 10만원 (신청인의 안산지역화폐 '다온' 으로 지급)\n※ 서적, 문구, 안경, 신발, 가방, 의류 등 입학 관련 물품에 한정\n※ 사용 가능한 가맹점 목록은 시청 홈페이지 게시\n\n○ 지급일자 : 신청일 기준 익월부터 순차 지급  (지급 후 카카오톡 또는 문자 안내 예정)\n\n○ 사용기한 : 2026. 9. 30.까지  (기한 내 미사용 시 자동 소멸)",
+          "application_method_text": "○ 신 청 인 : 부모 또는 보호자\n\n○ 신청방법\n- (온라인)  정부24(www.gov.kr) →  '안산시 입학준비금' 검색\n- (방    문) 학생 거주지 관할 행정복지센터 방문 (신분증 지참)\n※ 외국인의 경우 방문 신청만 가능",
+          "application_period_text": "2026.03.03~2026.08.31",
+          "required_documents_text": "○ 제출서류\n① 신분증\n② 입학준비금 지원 신청서\n③ 주민등록 등본  ※ 외국인의 경우 외국인등록사실증명 또는 국내거소사실증명\n④ 재학증명서\n※ 행정정보공동이용 사전동의한 경우 ③~④ 제출 생략\n\n○ 추가 제출서류\n- (입학생과 신청인의 주소가 다른 경우) 가족관계증명서 및 기본증명서\n- (대안교육기관에 입학한 경우) 재학증명서 및 교육과정확인서",
+          "reception_text": null,
+          "contact_text": "안산시 민원콜센터/1666-1234||안산시 교육청소년과/031-481-3462",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/393000000273",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:31:54.951539+00:00"
+        },
+        "source": {
+          "snapshotId": "1f236687-87f1-4004-bd0e-4d1fd8d9abda",
+          "normalizerVersion": "1",
+          "displayHash": "e5d6f887db69fd5608912b762376c671bde92e4755017896c0eca0a47c400095",
+          "normalizedFingerprint": "bccd57fa5b282ea4d8c0e8ec0f741c8a13b5f0c905c84bc43280297ebc93268e"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF10",
+        "policyId": "057c4e8f-c3e1-4437-86b2-340b6981d315",
+        "category": "education",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "학교 밖 청소년에게 관내 초등학교 최초입학을 요구하지 않음. 전입 예외의 입학일 정의는 공고 확인."
+        ],
+        "paths": [
+          {
+            "purpose": "school-entry-costs",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "ansanResidenceFromEntryToApplication",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_OR_FOREIGN_RESIDENCE_ENTRY_THROUGH_APPLICATION",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "입학일부터 신청일까지 안산시에 주민등록 또는 외국인 체류지 등록이 유지되었나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "입학일부터 신청일까지 안산시에 주민등록(외국인의 경우 체류지 등록)을 두고"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "firstLocalPrimaryEntry",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "관내 초등학교에 최초 입학하는 학생인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "관내 초등학교에 최초 입학하는 학생"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF10-path-1"
+          },
+          {
+            "purpose": "school-entry-costs",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "transferredFirstGrade",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "타 시군 또는 국외에서 전입하는 1학년 학생인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "타 시·군 및 국외에서 전입하는 1학년 학생"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED",
+              "타지역·국외 전입 예외에 적용되는 입학일·거주 시작일이 불명확. 일반 경로의 입학일부터 안산 거주를 그대로 강제하지 않고 공식 예외 기준 확인까지 보류."
+            ],
+            "id": "RF10-path-2"
+          },
+          {
+            "purpose": "school-entry-costs",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "outOfSchoolYouth",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "학교 밖 청소년 지원 대상인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "학교 밖 청소년 포함"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "학교 밖 청소년의 입학일 대체 기준일과 거주기간·연령·신청기간은 원문에 없어 별도 확인.",
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF10-path-3"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "RF11",
+      "category": "education",
+      "source": {
+        "policy": {
+          "id": "0bb3bb70-abcd-4c93-93c6-fa1bf9a69352",
+          "name": "무안군 초‧중‧고등학생 입학 축하금 지원사업",
+          "summary": "학교 입학생이 있는 모든 가정의 교육비 부담을 덜어주고 입학을 축하하는 의미로 입학 축하금을 지원하여 학부모들의 교육비 부담을 경감하고 교육의 공공성 강화와 교육복지 증진을 위함",
+          "provider_name": "전남광주통합특별시 무안군 자치행정과",
+          "purpose_text": null,
+          "target_text": "입학일 기준으로 무안군에 주민등록 또는 체류지 등록이 되어있는 초중고등학교 입학생",
+          "criteria_text": "초중고등학교 신입생",
+          "benefit_text": "지역상품권(무안사랑상품권)",
+          "application_method_text": "학생의 부모 또는 보호자가 신청서 및 신분증(중고등학생의 경우 주민등록등본, 학생과 주소가 다를경우 가족관계증명서, 관외학교 재학시 재학증명서 추가)을 지참하여 신입생 주소지 읍면사무소 방문신청",
+          "application_period_text": null,
+          "required_documents_text": null,
+          "reception_text": null,
+          "contact_text": "무안군청 자치행정과 061-450-5338",
+          "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005083&wlfareInfoReldBztpCd=02",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:06:39.913396+00:00"
+        },
+        "source": {
+          "snapshotId": "85798d9e-c4a5-497a-ba71-15ae8ec5b81b",
+          "normalizerVersion": "bokjiro-2",
+          "displayHash": "5e4082bec2e8ea9eed65052a844ec8a766338bc2af5b7f5beebc08d863b42fe1",
+          "normalizedFingerprint": "43973d3c2f641b57e4f04cab0b1e01d7d7246b7c36d410091af2ff337ef05e29"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF11",
+        "policyId": "0bb3bb70-abcd-4c93-93c6-fa1bf9a69352",
+        "category": "education",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "학교 소재지와 학생 주민등록을 구분. 외국인 체류지 등록 경로 유지."
+        ],
+        "paths": [
+          {
+            "purpose": "school-entry-costs",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "muanResidenceAtEntry",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "REGISTERED_OR_FOREIGN_RESIDENCE_AT_ENTRY",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "입학일 기준 무안군 주민등록 또는 체류지 등록이 되어 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "입학일 기준으로 무안군에 주민등록 또는 체류지 등록이 되어있는"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "primaryMiddleHighFirstEntry",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SCHOOL_ENTRY_EVENT",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "초·중·고등학교 신입생인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "criteria_text",
+                    "quote": "초중고등학교 신입생"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF11-path-1"
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "RF12",
+      "category": "education",
+      "source": {
+        "policy": {
+          "id": "164f44be-5f6a-44a6-bf18-4556c6d48487",
+          "name": "경주시 교복구입비 지원",
+          "summary": "교복구입비 지원",
+          "provider_name": "경상북도 경주시",
+          "purpose_text": null,
+          "target_text": "○ 부모 또는 학생이 2026. 3.3 현재 경주시에 주민등록을 두고, 교복을 입는 중·고등학교에 입학하는 신입생",
+          "criteria_text": null,
+          "benefit_text": "○ 교복구입비 1인 300,000원 지원(중복지원 불가)",
+          "application_method_text": "○ 신청방법\n- 관내 소재 중·고등학교 신입생 :  온라인(정부24) 또는 재학 중인 학교에 신청\n- 관외 소재 중·고등학교 신입생 : 온라인(정부24) 또는 주민등록 주소지 행정복지센터에 신청\n\n○ 지급시기 및 지급방법\n- 지급시기 :  4월 이후 순차적 지급\n- 지급방법 : 신청 계좌로 입금",
+          "application_period_text": "2026. 3. 3.(화) ~ 2026. 12. 4.(금)",
+          "required_documents_text": "통장사본, 재학증명서(관외학교 신입생) 등",
+          "reception_text": null,
+          "contact_text": "대외소통협력관/054-760-2606",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/505000000102",
+          "application_url": null,
+          "updated_at": "2026-09-09T10:07:40.28971+00:00"
+        },
+        "source": {
+          "snapshotId": "665d7668-02b9-41d4-8b8f-e771f11c385a",
+          "normalizerVersion": "1",
+          "displayHash": "97e8c53cb8bc982f4e5c22cc2e4d7e2cc9e889d7a8c64f940c55caf79fa434dc",
+          "normalizedFingerprint": "ae1cc3e04674aeced9ebec82e79288b2cda5b7acb712bcbbea9d609c2c45f44b"
+        }
+      },
+      "recipe": {
+        "sampleId": "RF12",
+        "policyId": "164f44be-5f6a-44a6-bf18-4556c6d48487",
+        "category": "education",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "수집 원문 재정제 초안. 현행 공식 기준 검수·공개 승인 없음. 조건 인용은 고정 원본과 결합.",
+          "부모 또는 학생 중 하나의 거주 경로를 보존. 현재 주소로 과거 2026-03-03 주소를 추정하지 않음."
+        ],
+        "paths": [
+          {
+            "purpose": "school-uniform-costs",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "parentOrStudentGyeongjuReference",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "PARENT_OR_STUDENT_REGISTERED_RESIDENCE_20260303",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "부모 또는 학생이 2026년 3월 3일 경주시에 주민등록되어 있었나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "부모 또는 학생이 2026. 3.3 현재 경주시에 주민등록을 두고"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "uniformMiddleHighFirstEntry",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SCHOOL_ENTRY_EVENT",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "교복을 입는 중·고등학교 신입생인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "교복을 입는 중·고등학교에 입학하는 신입생"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "OFFICIAL_CURRENT_TERMS_UNCONFIRMED",
+              "POLICY_REFERENCE_AND_EXCEPTIONS_REVIEW_REQUIRED"
+            ],
+            "id": "RF12-path-1"
+          }
+        ]
+      }
+    }
+  ]
+}

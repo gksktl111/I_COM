@@ -2,6 +2,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import familyA from "../../../../docs/fixtures/policy-recommendation/family-fields-a-20260911.json" with { type: "json" };
 import familyB from "../../../../docs/fixtures/policy-recommendation/family-fields-b-20260911.json" with { type: "json" };
+import coarseRefinement from "../../../../docs/fixtures/policy-recommendation/coarse-refinement-20260911.json" with { type: "json" };
+import familyRefinement from "../../../../docs/fixtures/policy-recommendation/coarse-refinement-family-20260911.json" with { type: "json" };
+import healthHousingRefinement from "../../../../docs/fixtures/policy-recommendation/coarse-refinement-health-housing-20260911.json" with { type: "json" };
 import {
   prepareSixFieldCatalog,
   sixFieldPreparedCatalog,
@@ -92,7 +95,11 @@ test("actual bank profiles reach only their field and beneficiary in the six-fie
         field.id,
       );
       for (const path of card.pathResults) {
-        if (field.id === "housing")
+        const expectedKind = catalog.policies
+          .find((p) => p.id === card.policyId)!.paths
+          .find((p) => p.id === path.pathId)!.subject;
+        assert.equal(path.subject.kind, expectedKind);
+        if (expectedKind === "HOUSEHOLD")
           assert.deepEqual(path.subject, {
             kind: "HOUSEHOLD",
             id: "HOUSEHOLD",
@@ -116,6 +123,9 @@ test("source/category identity mismatch fails and a bad quote quarantines only i
   const entries = structuredClone([
     ...familyA.items,
     ...familyB.items,
+    ...coarseRefinement.items,
+    ...familyRefinement.items,
+    ...healthHousingRefinement.items,
   ]) as unknown as NonNullable<Parameters<typeof prepareSixFieldCatalog>[0]>;
   const wrong = structuredClone(entries);
   wrong[0].category = "housing";
@@ -141,6 +151,9 @@ test("official excerpts bind draft evidence hashes without changing source versi
   const entries = structuredClone([
     ...familyA.items,
     ...familyB.items,
+    ...coarseRefinement.items,
+    ...familyRefinement.items,
+    ...healthHousingRefinement.items,
   ]) as unknown as NonNullable<Parameters<typeof prepareSixFieldCatalog>[0]>;
   const entry = entries.find((row) => row.sampleId === "B01")!;
   const original = prepareSixFieldCatalog(entries);

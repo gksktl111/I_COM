@@ -20,7 +20,7 @@
 
 | 기록 | 확인할 내용 |
 | --- | --- |
-| [수집 이력](../records/collection-history.md) | 2026-09-08~11 실행·상한·실패·복구. 9월 11일 신규 탐색은 내부 일일 한도에서 중단 |
+| [수집 이력](../records/collection-history.md) | 2026-09-08~11 실행·상한·복구. 9월 11일 추가 수집은 사용자 요청으로 종료·상한 100 복구 |
 | [정부24 검증](../records/gov24-validation.md) | 표본·반복 API 관찰, 조건 코드의 한계, DB 최초/반복 저장 검증 |
 | [데이터 적합성 감사](../records/data-fitness.md) | 정부24·복지로 정책별 원문·표시·조건 공백과 출처 충돌 |
 | [교육 분석·검수 근거](../records/education-review.md) | 교육 20건, E03·E04 공개 검토, 원본 버전과 미해결 항목 |
@@ -28,6 +28,8 @@
 | [교육 20건 전후 비교](../records/education-comparison-20260911.md) | 9개 입력 사례·분류 교정 전후·규칙 미구현과 자격 탈락 구분 |
 | [2026-09-11 추천 연결 구현](../records/recommendation-integration-20260911.md) | 답변·조건·추가 질문·화면 연결, 원문 버전 검증, 실제 정책 공개 전 남은 작업 |
 | [분류·운영 검증 이력](../records/classification-and-operations-history.md) | 라벨·수집 구현 시점의 적용·테스트 기록 |
+| [관리자 검토 대기 재정제](../records/catalog-review-20260911.md) | 원래 REVIEW 1,930건 점검, 상세 666건, 실제 ACTIVE 전환 389건 |
+| [수집 중단 후 전체 정제](../records/catalog-review-20260912.md) | REVIEW 2,088건 전부 상세 검토, 추가 활성 213·제외 444·보류 1,431건 반영 |
 | [초기 API·화면 조사](../records/provider-and-ui-research.md) | 복지로 연결 전 공식 명세 조사, 시안과 데이터의 차이. 현행 동작으로 사용 금지 |
 
 원본 응답과 검증 JSON은 `docs/fixtures/`에 보존한다. `.local/`·`/tmp/` 자료는 다른 환경에서 존재한다고 가정하지 않는다. 기록의 건수·API 상태·빌드 결과는 해당 날짜와 범위에만 적용한다.

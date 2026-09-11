@@ -1,5 +1,8 @@
 import familyA from "../../../../../docs/fixtures/policy-recommendation/family-fields-a-20260911.json" with { type: "json" };
 import familyB from "../../../../../docs/fixtures/policy-recommendation/family-fields-b-20260911.json" with { type: "json" };
+import coarseRefinement from "../../../../../docs/fixtures/policy-recommendation/coarse-refinement-20260911.json" with { type: "json" };
+import familyRefinement from "../../../../../docs/fixtures/policy-recommendation/coarse-refinement-family-20260911.json" with { type: "json" };
+import healthHousingRefinement from "../../../../../docs/fixtures/policy-recommendation/coarse-refinement-health-housing-20260911.json" with { type: "json" };
 import educationSources from "../../../../../docs/fixtures/policy-recommendation/education-template-sources-20260911.json" with { type: "json" };
 import {
   educationPreparedCatalog,
@@ -27,6 +30,9 @@ type FieldEntry = {
 const fieldEntries = [
   ...familyA.items,
   ...familyB.items,
+  ...coarseRefinement.items,
+  ...familyRefinement.items,
+  ...healthHousingRefinement.items,
 ] as unknown as FieldEntry[];
 
 /** Offline drafts across all six fields. Assembly never grants publication or rule approval. */
@@ -49,7 +55,6 @@ export function prepareSixFieldCatalog(entries: FieldEntry[] = fieldEntries) {
       typeof entry.source.source.normalizerVersion !== "string" ||
       !entry.source.source.normalizerVersion.trim() ||
       !RECOMMENDATION_FIELDS.some((field) => field.id === entry.category) ||
-      entry.category === "education" ||
       entry.category !== entry.recipe.category ||
       entry.sampleId !== entry.recipe.sampleId ||
       entry.source.policy.id !== entry.recipe.policyId ||

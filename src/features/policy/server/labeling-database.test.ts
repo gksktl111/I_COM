@@ -179,6 +179,10 @@ before(async () => {
     "20260908082550_policy_relevance_v2",
     "20260908091150_policy_relevance_v3",
     "20260908120844_policy_interest_labeling",
+    "20260911141935_policy_review_activation",
+    "20260911145539_policy_review_disposition",
+    "20260911150947_policy_review_pending_notes",
+    "20260911152220_policy_review_correction",
   ]) {
     await db.exec(
       await readFile(
@@ -198,6 +202,27 @@ beforeEach(async () => {
 });
 after(async () => {
   await db?.close();
+});
+
+test("review activation creates label proposals without claiming human verification", async () => {
+  const f = await fixture(false);
+  const payload = {
+    sourceId: f.sourceId, snapshotId: f.snapshotId,
+    displayHash: f.normalized.displayHash,
+    normalizerVersion: f.normalized.normalizerVersion,
+    reviewOnly: true, expectedNormalized: f.normalized, previousRelevance: null,
+    relevance: { ...f.relevance, version: "policy-relevance-review-1",
+      evidence: [{ field: "target_text", excerpt: "영유아 자녀가 있는 가정", rule: "영유아 보육 지원 대상 확인" }] },
+  };
+  await command("relevance_store", payload);
+  const [row] = await current();
+  assert.equal(row.assessment.status, "PROPOSED");
+  assert.ok(row.assessment.labels.length > 0);
+  assert.equal(row.review_id, null);
+  assert.equal(await count("policy_label_reviews"), 0);
+  await command("relevance_store", payload);
+  assert.equal(await count("policy_label_observations"), 1);
+  assert.deepEqual(await current(), [row]);
 });
 
 test("apply and relevance activation immediately create proposals and backfill is idempotent", async () => {

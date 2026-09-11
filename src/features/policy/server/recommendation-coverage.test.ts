@@ -19,8 +19,8 @@ test("coverage distinguishes current drafts, changed snapshots and missing activ
   const input = inventory();
   const before = JSON.stringify(prepared);
   const first = auditRecommendationCoverage(input, prepared);
-  assert.equal(first.summary.currentDraftCount, 24);
-  assert.equal(first.summary.noDraftCount, 6);
+  assert.equal(first.summary.currentDraftCount, sixFieldPreparedCatalog.policies.length);
+  assert.equal(first.summary.noDraftCount, 7);
   const id = sixFieldPreparedCatalog.policies[0].id;
   input.items.find((r) => r.policy.id === id)!.source.snapshotId =
     "00000000-0000-0000-0000-000000000001";
@@ -76,4 +76,18 @@ test("months and income bases stay separate review signals, and multi-field disc
       ),
     );
   assert(!("rules" in row));
+});
+
+test("disability alternatives and historical subject restrictions are review priorities, not automatic hard filters", () => {
+  const input = inventory();
+  input.items = [input.items[0]];
+  const p = input.items[0].policy;
+  p.target_text = "출생일 기준 부 또는 모가 등록장애인 또는 한부모인 가구";
+  p.criteria_text = p.target_text;
+  const report = auditRecommendationCoverage(input, prepared);
+  for (const kind of ["DISABILITY", "ALTERNATIVE_PATH", "RESIDENCE_REFERENCE", "SUBJECT_SCOPE"]) {
+    assert.equal(report.reviewPriorities.find((row) => row.kind === kind)?.policyCount, 1);
+    assert.equal(report.rows[0].conditionSignals.filter((signal) => signal.kind === kind).length, 2);
+  }
+  assert.ok(!("rules" in report.rows[0]));
 });

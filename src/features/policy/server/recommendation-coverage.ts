@@ -14,6 +14,10 @@ const signals = {
   INCOME: /소득|건강보험료|수급자|차상위/,
   HOUSEHOLD: /가구|한부모|다문화|다자녀|신혼|부부/,
   RESIDENCE: /거주|주민등록|주소|관내/,
+  DISABILITY: /장애인|장애의 정도|등록장애|심한장애/,
+  ALTERNATIVE_PATH: /또는|하거나|예외지원|지원 가능/,
+  RESIDENCE_REFERENCE: /출생일|입학일|신청일|공고일|전입|계속하여|계속 거주/,
+  SUBJECT_SCOPE: /부 또는 모|막내|세대주|직계존속|신혼부부|미성년 자녀/,
   SCHOOL: /재학|입학|학교|학년/,
   EXCEPTION: /제외|중복|단,|다만|예외/,
   APPLICATION: /신청일|공고일|기준일|신청기간/,
@@ -152,6 +156,12 @@ export function auditRecommendationCoverage(
         .map((p) => p.id),
     },
     fields,
+    reviewPriorities: Object.keys(signals).map((kind) => ({
+      kind,
+      policyCount: rows.filter((row) =>
+        row.conditionSignals.some((signal) => signal.kind === kind),
+      ).length,
+    })),
     rows,
     limitations: [
       "분야는 문구 기반 후보이며 중복될 수 있습니다.",
