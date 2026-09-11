@@ -14,6 +14,36 @@ const fields = [
   "reception_text",
   "contact_text",
 ] as const;
+/** Public display projection only; callers keep all source metadata server-side. */
+export function projectPublicPolicy(input: unknown): PublicPolicy | null {
+  if (!input || typeof input !== "object" || Array.isArray(input)) return null;
+  const row = input as Record<string, unknown>;
+  const normalized = row.normalized;
+  if (!normalized || typeof normalized !== "object") return null;
+  const display = (normalized as Record<string, unknown>).display;
+  if (!display || typeof display !== "object") return null;
+  const values = display as Record<string, unknown>;
+  if (
+    typeof row.source_id !== "string" ||
+    typeof values.name !== "string" ||
+    !values.name.trim()
+  )
+    return null;
+  return {
+    id: row.source_id,
+    name: values.name,
+    ...Object.fromEntries(
+      fields.map((field) => [
+        field,
+        typeof values[field] === "string" ? values[field] : null,
+      ]),
+    ),
+    source_url: safePolicyUrl(values.source_url),
+    application_url: safePolicyUrl(values.application_url),
+    updated_at: typeof row.updated_at === "string" ? row.updated_at : null,
+  } as PublicPolicy;
+}
+
 export async function readPublicPolicies({
   id,
   offset = 0,
@@ -61,31 +91,9 @@ export async function readPublicPolicies({
   if (!response.ok) throw new Error("policy-data-unavailable");
   const rows: unknown = await response.json();
   if (!Array.isArray(rows)) throw new Error("policy-data-unavailable");
-  const items: PublicPolicy[] = rows.flatMap((row) => {
-    const display = row?.normalized?.display;
-    if (
-      typeof row?.source_id !== "string" ||
-      !display ||
-      typeof display.name !== "string" ||
-      !display.name.trim()
-    )
-      return [];
-    // Only public display text crosses the server boundary; never snapshots or assessment metadata.
-    return [
-      {
-        id: row.source_id,
-        name: display.name,
-        ...Object.fromEntries(
-          fields.map((field) => [
-            field,
-            typeof display[field] === "string" ? display[field] : null,
-          ]),
-        ),
-        source_url: safePolicyUrl(display.source_url),
-        application_url: safePolicyUrl(display.application_url),
-        updated_at: typeof row.updated_at === "string" ? row.updated_at : null,
-      } as PublicPolicy,
-    ];
+  const items = rows.flatMap((row) => {
+    const policy = projectPublicPolicy(row);
+    return policy ? [policy] : [];
   });
   return {
     items,

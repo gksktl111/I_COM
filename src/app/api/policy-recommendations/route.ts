@@ -3,7 +3,8 @@ import {
   createCategoryRecommendationService,
   createCompletePublicCatalogLoader,
 } from "../../../features/policy/server/category-recommendation.ts";
-import { readRecommendationCatalog } from "../../../features/policy/server/recommendation-release.ts";
+import { readReviewedRecommendationCatalog as readRecommendationCatalog } from "../../../features/policy/server/released-catalog.ts";
+import { createGuidedRecommendationService } from "../../../features/policy/server/guided-recommendation.ts";
 import {
   createRecommendationService,
   readRecommendationRequest,
@@ -13,8 +14,12 @@ import {
 const recommend = createRecommendationService({
   loadCatalog: readRecommendationCatalog,
 });
-const recommendCategory = createCategoryRecommendationService({
+const recommendProvisional = createCategoryRecommendationService({
   loadPolicies: createCompletePublicCatalogLoader(readPublicPolicies),
+});
+const recommendCategory = createGuidedRecommendationService({
+  loadCatalog: readRecommendationCatalog,
+  recommendProvisional,
 });
 export async function POST(request: Request) {
   try {

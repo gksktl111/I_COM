@@ -1,0 +1,323 @@
+{
+  "schemaVersion": "education-official-review-1",
+  "status": "PENDING_HUMAN_REVIEW",
+  "checkedAt": "2026-09-11T11:14:20Z",
+  "scope": "E03/E04의 2026년 공식 공지·첨부를 확인한 검수 후보. HUMAN 승인, 경로 완전성, 현재 접수 성공 또는 예산 잔액을 증명하지 않는다.",
+  "method": "보존 교육 표본과 검토 기록 대조 후 공식 사이트 브라우징. 기장 PDF는 시각 확인, 안내문 이미지는 시각 확인, 관악 HWP는 공식 뷰어의 텍스트와 화면 확인. 원본 사이트·DB 변경 없음.",
+  "items": [
+    {
+      "sampleId": "E03",
+      "status": "PENDING_HUMAN_REVIEW",
+      "policyName": "기장군 신입생 교복구입비 지원",
+      "sources": [
+        {
+          "id": "gijang-notice",
+          "url": "https://www.gijang.go.kr/board/view.gijang?boardId=BBS_0000002&dataSid=243259&menuCd=DOM_000000101001001000&paging=ok&startPage=1",
+          "title": "2026학년도 기장군 신입생 교복구입비 지원사업 안내",
+          "publishedOn": "2026-02-24",
+          "observedVia": "공식 HTML 본문"
+        },
+        {
+          "id": "gijang-guide",
+          "url": "https://www.gijang.go.kr/upload_data/board_data/BBS_0000002/177190743886989.jpg",
+          "title": "2026학년도 기장군 교복구입비 지원안내",
+          "parentSourceId": "gijang-notice",
+          "observedVia": "공식 첨부 이미지 시각 확인"
+        },
+        {
+          "id": "gijang-form",
+          "url": "https://www.gijang.go.kr/board/SynapViewer.gijang?boardId=BBS_0000002&menuCd=DOM_000000101001001000&paging=ok&startPage=1&dataSid=243259&command=update&fileSid=97159",
+          "title": "교복구입비 지원 신청서",
+          "parentSourceId": "gijang-notice",
+          "observedVia": "공식 PDF 뷰어 1쪽 시각 확인"
+        }
+      ],
+      "criteria": [
+        {
+          "summary": "수혜 학생의 주민등록지가 2026-03-01 기장군이어야 한다. 현재 주소와 구분한다.",
+          "evidence": {
+            "sourceId": "gijang-notice",
+            "section": "지원대상"
+          }
+        },
+        {
+          "summary": "교복을 입는 고등학교, 부산 밖 중학교 또는 학교 외 교육기관(대안교육기관)에 2026년 신입학한 학생 경로를 안내한다.",
+          "evidence": {
+            "sourceId": "gijang-notice",
+            "section": "지원대상"
+          }
+        }
+      ],
+      "exceptions": [
+        {
+          "summary": "전학·재입학, 부산 안 중학교 신입생, 성인 대상 평생교육시설 성인반을 제외하며 과거 학년도 소급지원은 하지 않는다.",
+          "evidence": {
+            "sourceId": "gijang-notice",
+            "section": "지원대상 각주"
+          }
+        },
+        {
+          "summary": "타기관·다른 사업의 중복지원이 확인되면 교복구입비 환수 대상이다. 구체적 사업 범위·부분 지원 처리까지 정한 근거는 아니다.",
+          "evidence": {
+            "sourceId": "gijang-notice",
+            "section": "지원금액 각주"
+          }
+        }
+      ],
+      "benefitAndSchedule": [
+        {
+          "summary": "동·하복 통합 1인 340000원이며 최초 구입 1회에 한한다.",
+          "evidence": {
+            "sourceId": "gijang-notice",
+            "section": "지원금액"
+          }
+        },
+        {
+          "summary": "신청 날짜 범위는 2026-03-03부터 2026-12-11까지다. 이 자료에서는 시작·종료 시각을 확인하지 못했다.",
+          "evidence": {
+            "sourceId": "gijang-notice",
+            "section": "신청기간"
+          }
+        },
+        {
+          "summary": "신청한 달의 다음 달 중순 이후 지급하며 지연될 수 있다. 군 예산 사정 등에 따라 지원사항이 변경될 수 있다.",
+          "evidence": {
+            "sourceId": "gijang-guide",
+            "section": "지급시기 / 신청기간 각주"
+          }
+        }
+      ],
+      "application": [
+        {
+          "summary": "학생의 부모·보호자·본인이 신청 가능하다. 보호자는 친권자·후견인 및 실제로 아동을 보호·양육하는 사람을 포함한다.",
+          "evidence": {
+            "sourceId": "gijang-guide",
+            "section": "신청자격"
+          }
+        },
+        {
+          "summary": "주소지 읍면 행정복지센터 방문 또는 정부24에서 해당 정책을 검색해 온라인 신청하도록 안내한다.",
+          "evidence": {
+            "sourceId": "gijang-guide",
+            "section": "신청방법"
+          }
+        },
+        {
+          "summary": "신청서와 부모·보호자 또는 학생 본인 통장 사본, 방문 신청 시 신분증이 필요하다.",
+          "evidence": {
+            "sourceId": "gijang-guide",
+            "section": "구비서류 1~3"
+          }
+        },
+        {
+          "summary": "부모·보호자 신청 시 학생과 주소가 다르면 가족관계증명서가 필요하다. 부산 밖 학교 또는 학교 외 교육기관 입학생은 재학증명서가 필요하며 보호자 확인 서류를 추가 요청할 수 있다.",
+          "evidence": {
+            "sourceId": "gijang-guide",
+            "section": "구비서류 4~5 및 각주"
+          }
+        },
+        {
+          "summary": "신청서에는 중복지원 여부와 받은 금액을 기입한다. 행정정보 공동이용 비동의 또는 학생 주민등록번호 미기재 시 관련 서류 직접 제출을 안내한다.",
+          "evidence": {
+            "sourceId": "gijang-form",
+            "section": "중복 수혜 여부 / 행정정보 공동이용 사전동의"
+          }
+        },
+        {
+          "summary": "신청서의 개인정보 수집·이용·제3자 제공 동의 거부 시 공식 교복비 신청이 불가하다고 안내한다. 이는 추천 서비스의 개인정보 수집 요구가 아니다.",
+          "evidence": {
+            "sourceId": "gijang-form",
+            "section": "개인정보 수집·이용 및 제3자 제공 동의"
+          }
+        }
+      ],
+      "unknowns": [
+        {
+          "summary": "공지·안내문은 학생 본인 신청과 통장을 허용하나 신청서 서명·통장 사본 표기는 부모/보호자 중심이다. 본인 신청 절차의 우선 근거를 검수해야 한다.",
+          "evidenceRefs": [
+            {
+              "sourceId": "gijang-guide",
+              "section": "신청자격 / 구비서류"
+            },
+            {
+              "sourceId": "gijang-form",
+              "section": "신청인 서명 / 제출서류"
+            }
+          ]
+        },
+        {
+          "summary": "중복지원 대상 사업·시점·부분 지원 차감, 대안교육기관 인정 범위와 입학 전 전학 등 세부 예외는 확인 자료만으로 확정하지 않는다.",
+          "evidenceRefs": [
+            {
+              "sourceId": "gijang-notice",
+              "section": "지원대상 / 지원금액 각주"
+            }
+          ]
+        },
+        {
+          "summary": "저장 데이터의 신청 시작 09:00·종료 18:00은 이번 공식 자료에서 재확인하지 못했다. 현재 예산·실접수 성공·변경 공고 부재도 검증하지 않았다.",
+          "evidenceRefs": [
+            {
+              "sourceId": "gijang-guide",
+              "section": "신청기간 및 변경 가능성 각주"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sampleId": "E04",
+      "status": "PENDING_HUMAN_REVIEW",
+      "policyName": "관악구 타 시·도 초·중·고등학교 신입생 입학준비금 지원",
+      "sources": [
+        {
+          "id": "gwanak-notice",
+          "url": "https://www.gwanak.go.kr/site/gwanak/ex/bbs/View.do?cbIdx=239&bcIdx=191543&parentSeq=191543",
+          "title": "2026년 타 시·도 소재 초·중·고 신입생 입학준비금 지원 신청 안내",
+          "publishedOn": "2026-03-03",
+          "observedVia": "브라우저로 관악구 게시판 검색 후 공식 HTML 본문 확인; web open 오류와 구분"
+        },
+        {
+          "id": "gwanak-form",
+          "url": "https://www.gwanak.go.kr/synapView.do?bcIdx=191543&cbIdx=239&streFileNm=1ce50444-4e46-4f8d-b39d-4bf49b71f3d3.hwp",
+          "downloadUrl": "https://www.gwanak.go.kr/common/board/Download.do?bcIdx=191543&cbIdx=239&streFileNm=1ce50444-4e46-4f8d-b39d-4bf49b71f3d3.hwp",
+          "title": "입학준비금 지원 신청서",
+          "parentSourceId": "gwanak-notice",
+          "observedVia": "공식 HWP 뷰어 앞쪽·뒤쪽 텍스트 및 화면 확인"
+        }
+      ],
+      "criteria": [
+        {
+          "summary": "다음 세 요건을 모두 요구한다: 실제 신청일 학생의 관악구 주민등록, 서울 밖 초·중·고 1학년 2026년 신입학, 타 시·도 입학준비금·교복지원금·무상교복 등 유사 지원 미수급.",
+          "evidence": {
+            "sourceId": "gwanak-notice",
+            "section": "신청대상 1~3"
+          }
+        },
+        {
+          "summary": "초·중등교육법 제2조 각 호의 학교만 해당하며 그 외 학교는 지원하지 않는다. 법적 학교 유형 확인이 필요하다.",
+          "evidence": {
+            "sourceId": "gwanak-notice",
+            "section": "유의사항 첫째 항목"
+          }
+        }
+      ],
+      "exceptions": [
+        {
+          "summary": "이미 다른 시·도에서 유사 입학준비 지원을 받았다면 중복지원하지 않으며 지역별 지원액 차액도 지급하지 않는다.",
+          "evidence": {
+            "sourceId": "gwanak-notice",
+            "section": "유의사항 둘째 항목"
+          }
+        },
+        {
+          "summary": "중복수혜가 확인되면 지급한 입학준비금을 환수한다.",
+          "evidence": {
+            "sourceId": "gwanak-form",
+            "section": "앞쪽 중복 수혜 여부"
+          }
+        }
+      ],
+      "benefitAndSchedule": [
+        {
+          "summary": "초등학생 1인 200000원, 중·고등학생 1인 300000원을 제로페이 모바일 포인트로 지급하며 서울시 내 해당 가맹점에서 사용한다.",
+          "evidence": {
+            "sourceId": "gwanak-notice",
+            "section": "지원금액 / 지급방법 / 사용처"
+          }
+        },
+        {
+          "summary": "신청 날짜 범위는 2026-03-09부터 2026-10-30까지다.",
+          "evidence": {
+            "sourceId": "gwanak-notice",
+            "section": "신청기간"
+          }
+        },
+        {
+          "summary": "중복지원·재학 여부를 확인한 뒤 신청한 달의 익월 중 지급하고 최소 3주가 소요되며 지급 안내 문자를 발송한다.",
+          "evidence": {
+            "sourceId": "gwanak-notice",
+            "section": "지원일"
+          }
+        },
+        {
+          "summary": "지급된 포인트의 사용 마감일까지 지정 가맹점에서 사용하며 잔액은 자동 반납되고 환불·이월되지 않는다. 달력상 정확한 마감일은 이 서식에 없다.",
+          "evidence": {
+            "sourceId": "gwanak-form",
+            "section": "뒤쪽 유의사항 2~3"
+          }
+        }
+      ],
+      "application": [
+        {
+          "summary": "신청서, 발급 1주 내 주민등록등본, 발급 1주 내 재학증명서를 안내한다. 저장 자료의 잘린 재학증명서 문구를 보완할 근거다.",
+          "evidence": {
+            "sourceId": "gwanak-notice",
+            "section": "신청서류"
+          }
+        },
+        {
+          "summary": "담당자 이메일 tequiero@ga.go.kr 또는 관악구청 본관 4층 교육지원과 방문으로 신청한다. 문의는 02-879-5655다.",
+          "evidence": {
+            "sourceId": "gwanak-notice",
+            "section": "신청방법 / 전화번호"
+          }
+        },
+        {
+          "summary": "기본 신청인은 부모·보호자다. 앞쪽 각주는 부모·보호자가 없는 경우 학생이 신청할 수 있으며 학생 신청 시 법정대리인 동의를 요구한다.",
+          "evidence": {
+            "sourceId": "gwanak-form",
+            "section": "앞쪽 신청인 각주 / 법정대리인 동의란"
+          }
+        },
+        {
+          "summary": "뒤쪽 유의사항은 학생이 신청할 때 법정대리인 동의가 필요하다고 안내한다. 행정정보 공동이용 비동의는 관련 서류 직접 제출로 대체한다.",
+          "evidence": {
+            "sourceId": "gwanak-form",
+            "section": "뒤쪽 유의사항 1 / 행정정보 공동이용 사전동의"
+          }
+        },
+        {
+          "summary": "개인정보 수집·이용과 제3자 제공 동의 거부 시 공식 입학준비금 지원이 불가하다고 안내한다. 이는 추천 서비스의 증빙·동의 수집 요구가 아니다.",
+          "evidence": {
+            "sourceId": "gwanak-form",
+            "section": "뒤쪽 개인정보 수집·이용 및 제3자 제공 동의서"
+          }
+        }
+      ],
+      "unknowns": [
+        {
+          "summary": "학생 직접 신청에 대한 앞쪽의 부모·보호자가 없는 경우라는 제한과 뒤쪽의 일반적인 법정대리인 동의 설명을 함께 검수해야 한다.",
+          "evidenceRefs": [
+            {
+              "sourceId": "gwanak-form",
+              "section": "앞쪽 신청인 각주 / 뒤쪽 유의사항 1"
+            }
+          ]
+        },
+        {
+          "summary": "정확한 포인트 사용 마감일·신청 종료 시각·전편입 및 재입학 허용 여부는 확인 자료에 명시되지 않았다. 합성 fixture의 FIRST 조건을 확정 규칙으로 복사하지 않는다.",
+          "evidenceRefs": [
+            {
+              "sourceId": "gwanak-notice",
+              "section": "신청기간 / 신청대상"
+            },
+            {
+              "sourceId": "gwanak-form",
+              "section": "뒤쪽 유의사항 3"
+            }
+          ]
+        },
+        {
+          "summary": "공식 본문은 이메일·방문을 안내하지만 저장 자료에는 정부24도 있다. 정부24 신청 경로의 작동·현행성은 확인하지 못했다. 현재 예산·실접수 성공·변경 공고 부재도 검증하지 않았다.",
+          "evidenceRefs": [
+            {
+              "sourceId": "gwanak-notice",
+              "section": "신청방법"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

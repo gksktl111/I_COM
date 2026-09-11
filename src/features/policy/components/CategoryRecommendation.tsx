@@ -18,20 +18,13 @@ import {
   type BankAnswer,
 } from "../recommendation/category-bank";
 import { DISTRICTS_BY_REGION } from "../public/districts";
-import type { PublicPolicy } from "../public/types";
+import type {
+  GuidedRecommendationResponse,
+  RuleAnswer,
+} from "../server/guided-recommendation";
 import styles from "./recommendation-playground.module.css";
 
-type Results = {
-  flow: "CATEGORY_BANK_V1";
-  revision: number;
-  policies: {
-    policy: PublicPolicy;
-    score: number;
-    reasons: string[];
-    tags: string[];
-  }[];
-  candidateCount: number;
-};
+type Results = GuidedRecommendationResponse;
 const action =
   "min-h-12 rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white hover:bg-[#005f5a] disabled:cursor-not-allowed disabled:opacity-40";
 const secondary =
@@ -45,7 +38,7 @@ const emptyResidence: ResidenceScope = {
 
 export function CategoryRecommendation() {
   const [stage, setStage] = useState<
-    "INTRO" | "SETUP" | "QUESTIONS" | "LOADING" | "RESULTS"
+    "INTRO" | "SETUP" | "QUESTIONS" | "RULES" | "LOADING" | "RESULTS"
   >("INTRO");
   const [category, setCategory] = useState("");
   const [residence, setResidence] = useState(emptyResidence);
@@ -54,7 +47,19 @@ export function CategoryRecommendation() {
   const [answers, setAnswers] = useState<BankAnswer[]>([]);
   const [editing, setEditing] = useState<string | null>(null);
   const [results, setResults] = useState<Results | null>(null);
+  const [guidance, setGuidance] = useState<Results | null>(null);
+  const [ruleAnswers, setRuleAnswers] = useState<RuleAnswer[]>([]);
+  const [questionCount, setQuestionCount] = useState(0);
+  const [ruleContext, setRuleContext] = useState<{
+    catalogVersion: string;
+    contextKey: string;
+  } | null>(null);
+  const [requestPhase, setRequestPhase] = useState<"QUESTIONING" | "RESULTS">(
+    "RESULTS",
+  );
+  const returnStage = useRef<"QUESTIONS" | "RULES" | "RESULTS">("QUESTIONS");
   const [error, setError] = useState("");
+  const [contextChanged, setContextChanged] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const nextId = useRef(1);
   const revision = useRef(0);
@@ -68,10 +73,11 @@ export function CategoryRecommendation() {
   const question =
     questions.find((q) => q.key === editing) ??
     questions.find((q) => !answered(q));
+  const ruleQuestion = guidance?.nextQuestion;
 
   useEffect(() => {
     heading.current?.focus();
-  }, [stage, question?.key]);
+  }, [stage, question?.key, ruleQuestion?.key]);
   useEffect(() => {
     if (stage !== "LOADING") return;
     const controller = new AbortController();
@@ -89,27 +95,54 @@ export function CategoryRecommendation() {
         revision: requestRevision,
         ...context,
         bankAnswers: active,
-        phase: "RESULTS",
+        phase: requestPhase,
+        ruleAnswers,
+        questionCount,
+        ...(ruleContext ?? {}),
       }),
     })
       .then(async (response) => {
+        if (response.status === 409) {
+          const failure = await response.json();
+          if (failure.error === "recommendation-context-changed" && current) {
+            setContextChanged(true);
+            setError(
+              "정책 기준이나 기본 입력이 바뀌었어요. 기본 답변을 유지하고 추가 조건을 다시 확인해 주세요.",
+            );
+            return;
+          }
+        }
         if (!response.ok) throw new Error("unavailable");
         const data = (await response.json()) as Results;
         if (
           data.flow !== "CATEGORY_BANK_V1" ||
           data.revision !== requestRevision ||
-          !Array.isArray(data.policies)
+          !Array.isArray(data.policies) ||
+          !["PROVISIONAL", "VERIFIED", "MIXED"].includes(data.method) ||
+          typeof data.catalogVersion !== "string" ||
+          typeof data.contextKey !== "string"
         )
           throw new Error("stale");
-        if (!current) return;
+        if (!current || revision.current !== requestRevision) return;
         const minimum = window.matchMedia("(prefers-reduced-motion: reduce)")
           .matches
-          ? 250
-          : 2200;
+          ? 0
+          : requestPhase === "QUESTIONING"
+            ? 150
+            : 600;
         delay = setTimeout(() => {
-          if (current) {
-            setResults(data);
-            setStage("RESULTS");
+          if (current && revision.current === requestRevision) {
+            setRuleContext({
+              catalogVersion: data.catalogVersion,
+              contextKey: data.contextKey,
+            });
+            if (requestPhase === "QUESTIONING") {
+              setGuidance(data);
+              setStage("RULES");
+            } else {
+              setResults(data);
+              setStage("RESULTS");
+            }
           }
         }, minimum);
       })
@@ -128,7 +161,17 @@ export function CategoryRecommendation() {
     };
     // A completed questionnaire is immutable while loading; edits leave this stage.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stage, attempt]);
+  }, [stage, attempt, requestPhase]);
+
+  function invalidateRules() {
+    revision.current++;
+    setRuleAnswers([]);
+    setQuestionCount(0);
+    setRuleContext(null);
+    setGuidance(null);
+    setResults(null);
+    setContextChanged(false);
+  }
 
   function addChild() {
     setProfiles((previous) => [
@@ -138,6 +181,7 @@ export function CategoryRecommendation() {
   }
   function respond(state: BankAnswer["state"], value?: string) {
     if (!question) return;
+    invalidateRules();
     const previous = active.find(
       (a) => a.questionId === question.id && a.subjectId === question.subjectId,
     );
@@ -187,7 +231,10 @@ export function CategoryRecommendation() {
     setError("");
     if (stage === "SETUP") {
       setStage("INTRO");
-    } else if (stage === "LOADING" || stage === "RESULTS") {
+    } else if (stage === "LOADING") {
+      revision.current++;
+      setStage(returnStage.current);
+    } else if (stage === "RESULTS" || stage === "RULES") {
       setEditing(null);
       setStage("QUESTIONS");
     } else if (stage === "QUESTIONS") {
@@ -203,10 +250,35 @@ export function CategoryRecommendation() {
     }
   }
 
-  function load() {
+  function load(phase: "QUESTIONING" | "RESULTS" = "RESULTS") {
     setError("");
-    setResults(null);
+    setContextChanged(false);
+    returnStage.current =
+      stage === "RULES" || stage === "RESULTS" ? stage : "QUESTIONS";
+    setRequestPhase(phase);
     setStage("LOADING");
+  }
+
+  function respondRule(state: RuleAnswer["state"], value?: string) {
+    if (!ruleQuestion) return;
+    const sameQuestion = (a: RuleAnswer) =>
+      a.questionId === ruleQuestion.id &&
+      a.version === ruleQuestion.version &&
+      a.subject.kind === ruleQuestion.subject.kind &&
+      a.subject.id === ruleQuestion.subject.id;
+    const previous = ruleAnswers.find(sameQuestion);
+    setRuleAnswers([
+      ...ruleAnswers.filter((a) => !sameQuestion(a)),
+      {
+        questionId: ruleQuestion.id,
+        version: ruleQuestion.version,
+        subject: ruleQuestion.subject,
+        state,
+        ...(state === "PROVIDED" ? { value } : {}),
+      },
+    ]);
+    if (!previous) setQuestionCount((count) => Math.min(5, count + 1));
+    load("QUESTIONING");
   }
 
   return (
@@ -239,10 +311,13 @@ export function CategoryRecommendation() {
         {stage === "INTRO"
           ? "1. 거주지와 분야"
           : stage === "SETUP"
-            ? "2. 기본 정보"
+            ? "2. 상세 정보 · 기본 정보"
             : stage === "QUESTIONS"
-              ? "3. 상세 질문"
-              : "추천 결과"}
+              ? "2. 상세 정보 · 기본 질문"
+              : stage === "RULES" ||
+                  (stage === "LOADING" && requestPhase === "QUESTIONING")
+                ? "2. 상세 정보 · 추가 조건"
+                : "3. 추천 결과"}
       </p>
       <h1
         ref={heading}
@@ -255,17 +330,26 @@ export function CategoryRecommendation() {
             ? `${field?.label ?? "지원"}에 필요한 정보를 알려 주세요`
             : stage === "QUESTIONS"
               ? (question?.prompt ?? "입력한 정보를 확인해 주세요")
-              : stage === "LOADING"
-                ? "나에게 맞는 정책을 찾고 있어요"
-                : "맞춤 정책 추천"}
+              : stage === "RULES"
+                ? (ruleQuestion?.prompt ??
+                  (guidance?.stopReason === "QUESTION_LIMIT"
+                    ? "추가 조건 5개를 확인했어요"
+                    : "추가로 확인할 질문이 없어요"))
+                : stage === "LOADING"
+                  ? "나에게 맞는 정책을 찾고 있어요"
+                  : "맞춤 정책 추천"}
       </h1>
       {stage === "INTRO" && (
         <>
           <RecommendationIntake
             category={category}
             residence={residence}
-            onResidence={setResidence}
+            onResidence={(value) => {
+              invalidateRules();
+              setResidence(value);
+            }}
             onCategory={(value) => {
+              invalidateRules();
               setCategory(value);
               setNeeds([]);
               setAnswers([]);
@@ -301,10 +385,12 @@ export function CategoryRecommendation() {
             <RecommendationChildren
               profiles={profiles}
               onChange={(value) => {
+                invalidateRules();
                 setProfiles(value);
                 setAnswers([]);
               }}
               onAdd={() => {
+                invalidateRules();
                 addChild();
                 setAnswers([]);
               }}
@@ -317,6 +403,7 @@ export function CategoryRecommendation() {
                 type="checkbox"
                 checked={profiles.length > 0}
                 onChange={(e) => {
+                  invalidateRules();
                   if (e.target.checked) addChild();
                   else setProfiles([]);
                   setAnswers([]);
@@ -329,9 +416,7 @@ export function CategoryRecommendation() {
             <legend className="px-1 text-lg font-bold">
               지금 필요한 지원{" "}
               <span className="ml-2 text-sm font-normal text-slate-600">
-                {category === "housing"
-                  ? "필수 · 한 개 이상 선택"
-                  : "여러 개 선택 가능"}
+                선택 사항 · 여러 개 선택 가능
               </span>
             </legend>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -345,6 +430,7 @@ export function CategoryRecommendation() {
                     type="checkbox"
                     checked={needs.includes(need.id)}
                     onChange={() => {
+                      invalidateRules();
                       setNeeds((old) =>
                         old.includes(need.id)
                           ? old.filter((id) => id !== need.id)
@@ -364,10 +450,7 @@ export function CategoryRecommendation() {
             </button>
             <button
               className={action}
-              disabled={
-                (!!field?.children && !profiles.length) ||
-                (category === "housing" && !needs.length)
-              }
+              disabled={!!field?.children && !profiles.length}
               onClick={() => setStage("QUESTIONS")}
             >
               상세 질문 시작하기
@@ -484,12 +567,89 @@ export function CategoryRecommendation() {
               기본 정보 변경
             </button>
             {!question && (
-              <button className={action} onClick={load}>
-                추천 결과 보기
+              <button className={action} onClick={() => load("QUESTIONING")}>
+                추가 조건 확인하기
               </button>
             )}
+            <button className={secondary} onClick={() => load("RESULTS")}>
+              추천 결과 보기
+            </button>
           </div>
         </>
+      )}
+      {stage === "RULES" && (
+        <section aria-label="추가 조건 질문" className="mt-6">
+          {ruleQuestion ? (
+            <>
+              <p className="font-semibold">{ruleQuestion.subjectLabel}</p>
+              <p className="mt-2 text-base leading-7 text-slate-600">
+                {ruleQuestion.whyAsked}
+              </p>
+              <p className="mt-2 text-sm text-slate-600">
+                이번 추가 질문 {Math.min(5, questionCount + 1)} / 5
+              </p>
+              <BankChoices
+                key={ruleQuestion.key}
+                question={ruleQuestion}
+                initial={
+                  ruleAnswers.find(
+                    (a) =>
+                      a.questionId === ruleQuestion.id &&
+                      a.version === ruleQuestion.version &&
+                      a.subject.kind === ruleQuestion.subject.kind &&
+                      a.subject.id === ruleQuestion.subject.id,
+                  )?.value
+                }
+                onSubmit={(value) => respondRule("PROVIDED", value)}
+              />
+              <div className="mt-3 flex gap-6">
+                <button
+                  className="min-h-11 text-sm underline underline-offset-4"
+                  onClick={() => respondRule("DONT_KNOW")}
+                >
+                  잘 모르겠어요
+                </button>
+                <button
+                  className="min-h-11 text-sm underline underline-offset-4"
+                  onClick={() => respondRule("SKIPPED")}
+                >
+                  건너뛰기
+                </button>
+              </div>
+            </>
+          ) : (
+            <p className="text-base leading-7 text-slate-600">
+              {guidance?.stopReason === "QUESTION_LIMIT"
+                ? "지금까지 답변으로 결과를 보거나, 남은 조건을 더 확인할 수 있어요."
+                : guidance?.method === "PROVISIONAL"
+                  ? "현재 이 분야는 입력한 필요와 정책 내용의 관련성을 바탕으로 추천해요. 자세한 지원 조건은 공식 안내에서 확인해 주세요."
+                  : "지금 답변으로 비교할 수 있는 조건을 확인했어요. 미확인 조건은 결과에서 함께 안내해요."}
+            </p>
+          )}
+          <p className="mt-5 text-sm text-slate-600">
+            추가 답변 {ruleAnswers.length}개가 이번 탐색에 반영돼요.
+            모름·건너뛰기는 조건 불일치로 처리하지 않아요.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3 border-t border-slate-200 pt-6">
+            <button className={secondary} onClick={() => setStage("QUESTIONS")}>
+              기본 답변 확인·수정
+            </button>
+            {guidance?.stopReason === "QUESTION_LIMIT" && (
+              <button
+                className={secondary}
+                onClick={() => {
+                  setQuestionCount(0);
+                  load("QUESTIONING");
+                }}
+              >
+                추가 질문 계속하기
+              </button>
+            )}
+            <button className={action} onClick={() => load("RESULTS")}>
+              질문 마치고 결과 보기
+            </button>
+          </div>
+        </section>
       )}
       {stage === "LOADING" && (
         <div className="mt-12 text-center" role="status">
@@ -508,7 +668,7 @@ export function CategoryRecommendation() {
             </p>
           )}
           <div className="mt-8 flex justify-center gap-3">
-            <button className={secondary} onClick={() => setStage("QUESTIONS")}>
+            <button className={secondary} onClick={goBack}>
               답변으로 돌아가기
             </button>
             {error && (
@@ -516,10 +676,14 @@ export function CategoryRecommendation() {
                 className={action}
                 onClick={() => {
                   setError("");
+                  if (contextChanged) {
+                    invalidateRules();
+                    setRequestPhase("QUESTIONING");
+                  }
                   setAttempt((v) => v + 1);
                 }}
               >
-                다시 시도
+                {contextChanged ? "최신 조건으로 다시 확인" : "다시 시도"}
               </button>
             )}
           </div>
@@ -537,6 +701,11 @@ export function CategoryRecommendation() {
               신청 전, 공식 안내를 꼭 확인해 주세요
             </p>
             <p className="mt-2 text-sm leading-7">
+              {results.method === "MIXED"
+                ? "조건을 비교한 정책과 아직 검토 중인 정책을 함께 보여드려요. ‘직접 확인 필요’ 정책은 지원 조건을 공식 안내에서 확인해 주세요. "
+                : results.method === "VERIFIED"
+                  ? "입력한 답변을 확인된 정책 조건과 비교한 결과예요. 아직 확인하지 못한 조건은 따로 표시했어요. "
+                  : "입력한 필요와 정책 내용의 관련성을 바탕으로 한 잠정 추천이에요. 자격과 소득 기준·신청 기간은 추가 확인이 필요해요. "}
               추천 결과가 지원 대상 확정을 의미하지는 않아요. 각 정책의 공식
               안내 또는 담당 기관에서 최신 지원 조건·신청 기간·제출 서류를
               반드시 확인해 주세요.
@@ -546,15 +715,30 @@ export function CategoryRecommendation() {
             관련 정책 {results.candidateCount}개 중 최대 20개를 보여드려요. 상위
             5개를 먼저 살펴보세요.
           </p>
+          {results.withheldPolicyCount > 0 && (
+            <p role="status" className="mb-6 text-sm leading-7 text-slate-700">
+              정책 {results.withheldPolicyCount}건은 기존 조건 기준을 재확인
+              중이에요. 현재 활성 정책 중 지역·분야가 맞는 항목은 ‘직접 확인
+              필요’로 표시될 수 있어요.
+            </p>
+          )}
           {!results.policies.length && (
             <p className="rounded-xl bg-slate-50 p-6">
-              선택한 분야에 관련된 정책을 찾지 못했어요. 분야나 관심 목적을 바꿔
-              다시 찾아보세요.
+              {results.withheldPolicyCount > 0
+                ? "현재 확인된 기준으로 보여드릴 수 있는 정책이 없어요. 재확인 중인 정책은 공식 안내에서 확인해 주세요."
+                : "선택한 분야에 관련된 정책을 찾지 못했어요. 분야나 관심 목적을 바꿔 다시 찾아보세요."}
             </p>
           )}
           <ol className="list-none">
             {results.policies.map((item, index) => (
               <li key={item.policy.id}>
+                {item.reviewStatus === "CHECK_REQUIRED" && (
+                  <p className="mt-5 text-sm leading-6 text-slate-700">
+                    <strong>직접 확인 필요</strong> · 정책 조건을 검토 중입니다.
+                    거주 요건·지원 대상·신청 기간은 공식 안내에서 직접 확인해
+                    주세요.
+                  </p>
+                )}
                 <PolicyCard
                   policy={item.policy}
                   recommendation={{
@@ -576,6 +760,7 @@ export function CategoryRecommendation() {
             <button
               className={secondary}
               onClick={() => {
+                invalidateRules();
                 setCategory("");
                 setResidence(emptyResidence);
                 setProfiles([]);
@@ -600,7 +785,10 @@ function BankChoices({
   initial,
   onSubmit,
 }: {
-  question: ReturnType<typeof getBankQuestions>[number];
+  question: {
+    options: { value: string; label: string }[];
+    answerType?: string;
+  };
   initial?: string;
   onSubmit: (value: string) => void;
 }) {

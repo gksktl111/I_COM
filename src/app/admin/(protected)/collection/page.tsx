@@ -153,6 +153,10 @@ export default async function CollectionPage({
                               : "전체 범위 미확인"}
                           </p>
                           <p>
+                            기존 저장 건너뜀{" "}
+                            {Number(run.summary.skippedExisting ?? 0)}
+                          </p>
+                          <p>
                             무관 제외 {Number(run.summary.excluded ?? 0)} · 대기{" "}
                             {Number(run.summary.pending ?? 0)}
                           </p>

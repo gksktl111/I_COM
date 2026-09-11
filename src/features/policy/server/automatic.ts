@@ -43,6 +43,8 @@ class StorageFailure extends Error {
   }
 }
 export type AutomaticOptions = {
+  /** Omitted only for backwards-compatible refresh runs. CLI defaults to new-only. */
+  mode?: "new-only" | "refresh";
   provider: Provider;
   filters: Record<string, string>;
   perPage: number;
@@ -86,6 +88,11 @@ function bokjiHold(current: BokjiRaw | undefined, next: BokjiRaw): boolean {
 }
 
 export async function runAutomatic(options: AutomaticOptions) {
+  if (
+    options.mode !== undefined &&
+    !["new-only", "refresh"].includes(options.mode)
+  )
+    throw new Error("invalid-automatic-mode");
   for (const [value, max] of [
     [options.callBudget, 100],
     [options.perPage, 100],
@@ -140,6 +147,7 @@ export async function runAutomatic(options: AutomaticOptions) {
       perPage: options.perPage,
       maxPages: options.maxPages,
       dailyLimit: options.dailyLimit,
+      ...(options.mode === undefined ? {} : { mode: options.mode }),
     },
     resumeRunId: options.resumeRunId ?? null,
   });
@@ -212,6 +220,15 @@ export async function runAutomatic(options: AutomaticOptions) {
         const current = await command<Current | null>("current", {
           externalId: id,
         });
+        if (current && options.mode === "new-only") {
+          await command("auto_skip_existing", {
+            ...fence,
+            externalId: id,
+            page: page.page,
+          });
+          processed++;
+          continue;
+        }
         if (!current) {
           const row = page.rows[page.ids.indexOf(id)];
           const relevance = evaluatePolicyRelevance({

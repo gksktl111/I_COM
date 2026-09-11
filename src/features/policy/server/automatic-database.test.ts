@@ -139,6 +139,132 @@ const current = (externalId = "a") =>
     externalId,
   });
 
+const newOnlyConfig = { ...config, mode: "new-only" };
+async function seedExistingPolicy() {
+  const lease = await start();
+  await save(lease, page(1, ["a"], 1));
+  const payload = await staged(lease);
+  await command("apply", {
+    ...payload,
+    relevance: evaluatePolicyRelevance(payload.normalized.display),
+  });
+  await save(lease, page(2, [], 1));
+  await command("finish", { ...lease, calls: 0 });
+}
+
+test("new-only skip survives pause and resume without changing stored policy or observations", async () => {
+  await seedExistingPolicy();
+  const stored = ["policy_sources", "policy_source_snapshots", "policies",
+    "policy_quality_observations", "policy_relevance_observations"];
+  const before = await dump(stored);
+  const lease = await start({ config: newOnlyConfig });
+  await save(lease, page(1, ["a", "b"], 2));
+  const skip = { ...lease, externalId: "a", page: 1 };
+  assert.equal((await command("auto_skip_existing", skip)).status, "SKIPPED_EXISTING");
+  assert.equal((await command("auto_skip_existing", skip)).status, "SKIPPED_EXISTING");
+  assert.deepEqual(await dump(stored), before);
+  const paused = await command("auto_pause", { ...lease, reason: "ITEM_LIMIT" });
+  assert.equal(paused.success, 0);
+  assert.equal(paused.excluded, 0);
+  assert.equal(paused.skippedExisting, 1);
+  assert.equal(paused.pending, 1);
+  const resumed = await start({ config: newOnlyConfig, resumeRunId: lease.runId });
+  assert.deepEqual((await state(resumed)).pendingIds, ["b"]);
+  const item = (await db.query<{ attempts: number; attempt_history: unknown[] }>(
+    "select attempts,attempt_history from policy_sync_items where run_id=$1 and external_id='a'",
+    [lease.runId],
+  )).rows[0];
+  assert.equal(item.attempts, 0);
+  assert.equal(item.attempt_history.length, 1);
+  await assert.rejects(command("snapshot", { ...resumed, externalId: "a" }), /ITEM_ALREADY_SUCCESS/);
+});
+
+test("new-only completion separates skips, exclusions and applied policies in return and report", async () => {
+  await seedExistingPolicy();
+  const lease = await start({ config: { ...newOnlyConfig, perPage: 3 } });
+  await save(lease, page(1, ["a", "b", "c"], 3));
+  await command("auto_skip_existing", { ...lease, externalId: "a", page: 1 });
+  await command("auto_exclude", {
+    ...lease, externalId: "b", page: 1, phase: "LIST",
+    relevance: evaluatePolicyRelevance({ name: "어업경영자금 지원" }),
+  });
+  const payload = await staged(lease, "c");
+  await command("apply", { ...payload, relevance: evaluatePolicyRelevance(payload.normalized.display) });
+  await save(lease, page(2, [], 3));
+  const finished = await command("finish", { ...lease, calls: 0 });
+  assert.equal(finished.status, "SUCCESS");
+  assert.equal(finished.success, 1);
+  assert.equal(finished.excluded, 1);
+  assert.equal(finished.skippedExisting, 1);
+  const report = (await db.query<{ value: { items: Array<{ summary: Record<string, unknown> }> } }>(
+    "select public.policy_admin_report('runs',$1::jsonb) as value", [JSON.stringify({ runId: lease.runId })],
+  )).rows[0].value.items[0].summary;
+  for (const key of ["success", "excluded", "skippedExisting", "failed", "pending"])
+    assert.equal(report[key], finished[key]);
+});
+
+test("all-existing new-only run completes successfully with zero collected policies", async () => {
+  await seedExistingPolicy();
+  const lease = await start({ config: newOnlyConfig });
+  await save(lease, page(1, ["a"], 1));
+  await command("auto_skip_existing", { ...lease, externalId: "a", page: 1 });
+  await save(lease, page(2, [], 1));
+  const result = await command("finish", { ...lease, calls: 0 });
+  assert.equal(result.status, "SUCCESS");
+  assert.equal(result.success, 0);
+  assert.equal(result.excluded, 0);
+  assert.equal(result.skippedExisting, 1);
+});
+
+test("skip requires a current policy in the same provider, saved page and active lease", async () => {
+  await seedExistingPolicy();
+  const lease = await start({ config: newOnlyConfig });
+  await save(lease, page(1, ["a", "b"], 2));
+  const skip = { ...lease, externalId: "a", page: 1 };
+  await assert.rejects(command("auto_skip_existing", { ...skip, page: 2 }), /SKIP_PAGE_MISMATCH/);
+  await assert.rejects(command("auto_skip_existing", { ...skip, generation: lease.generation + 1 }), /STALE_LEASE/);
+  await assert.rejects(command("auto_skip_existing", { ...skip, externalId: "outside" }), /OUTSIDE_SCOPE/);
+  // An unapplied source snapshot is not a saved current policy.
+  await staged(lease, "b");
+  await assert.rejects(command("auto_skip_existing", { ...skip, externalId: "b" }), /EXISTING_POLICY_REQUIRED/);
+  const other = await start({ provider: "BOKJIRO_LOCAL", config: newOnlyConfig });
+  await command("auto_page", { ...other, provider: "BOKJIRO_LOCAL", page: page(1, ["a"], 1) });
+  await assert.rejects(command("auto_skip_existing", {
+    ...other, provider: "BOKJIRO_LOCAL", externalId: "a", page: 1,
+  }), /EXISTING_POLICY_REQUIRED/);
+  await admin("update policy_sync_locks set expires_at=clock_timestamp()-interval '1 second' where name='BOKJIRO_CENTRAL'");
+  await assert.rejects(command("auto_skip_existing", skip), /STALE_LEASE/);
+});
+
+test("direct RPC validates collection mode and prevents skips in legacy or explicit refresh runs", async () => {
+  for (const mode of [null, false, 0, "NEW_ONLY", "", {}])
+    await assert.rejects(start({ config: { ...config, mode } }), /INVALID_AUTO_MODE/);
+  await seedExistingPolicy();
+  for (const refreshConfig of [config, { ...config, mode: "refresh" }]) {
+    const lease = await start({ config: refreshConfig });
+    await save(lease, page(1, ["a"], 1));
+    await assert.rejects(command("auto_skip_existing", { ...lease, externalId: "a", page: 1 }), /NEW_ONLY_REQUIRED/);
+    await command("auto_pause", { ...lease, reason: "CALL_BUDGET" });
+    await assert.rejects(start({ config: newOnlyConfig, resumeRunId: lease.runId }), /AUTO_SCOPE_CHANGED/);
+    const resumed = await start({ config: refreshConfig, resumeRunId: lease.runId });
+    assert.deepEqual((await state(resumed)).pendingIds, ["a"]);
+    await command("auto_pause", { ...resumed, reason: "CALL_BUDGET" });
+  }
+});
+
+test("new-only dispatcher remains an invoker RPC restricted to service role", async () => {
+  const fn = (await db.query<{ prosecdef: boolean; proconfig: string[] }>(
+    "select prosecdef,proconfig from pg_proc where oid='public.policy_sync_command(text,jsonb)'::regprocedure",
+  )).rows[0];
+  assert.equal(fn.prosecdef, false);
+  assert.ok(fn.proconfig.includes("search_path=pg_catalog, public"));
+  for (const role of ["anon", "authenticated"]) {
+    await db.exec(`reset role; set role ${role}`);
+    await assert.rejects(db.query("select public.policy_sync_command('auto_skip_existing','{}')"), /permission denied/);
+  }
+  await db.exec("reset role; set role service_role");
+});
+
 test("automatic discovery persists 1001 policies across pages without the sample ID limit", async () => {
   const lease = await start({ config: { ...config, perPage: 100 } });
   for (let number = 1; number <= 11; number++) {
@@ -179,6 +305,7 @@ before(async () => {
     "20260908080358_policy_catalog_disposition",
     "20260908082550_policy_relevance_v2",
     "20260908091150_policy_relevance_v3",
+    "20260909091358_policy_new_only_collection",
   ]) {
     await db.exec(
       await readFile(

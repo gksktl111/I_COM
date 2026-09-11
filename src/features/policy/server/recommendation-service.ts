@@ -29,6 +29,11 @@ export class RecommendationRequestError extends Error {
     super("invalid-recommendation-request");
   }
 }
+export class RecommendationContextChangedError extends Error {
+  constructor() {
+    super("recommendation-context-changed");
+  }
+}
 function invalid(): never {
   throw new RecommendationRequestError();
 }
@@ -320,12 +325,19 @@ export function recommendationErrorResponse(error: unknown): Response {
   return Response.json(
     {
       error:
-        error instanceof RecommendationRequestError
-          ? "invalid-recommendation-request"
-          : "recommendation-data-unavailable",
+        error instanceof RecommendationContextChangedError
+          ? "recommendation-context-changed"
+          : error instanceof RecommendationRequestError
+            ? "invalid-recommendation-request"
+            : "recommendation-data-unavailable",
     },
     {
-      status: error instanceof RecommendationRequestError ? 400 : 503,
+      status:
+        error instanceof RecommendationContextChangedError
+          ? 409
+          : error instanceof RecommendationRequestError
+            ? 400
+            : 503,
       headers: { "Cache-Control": "private, no-store" },
     },
   );

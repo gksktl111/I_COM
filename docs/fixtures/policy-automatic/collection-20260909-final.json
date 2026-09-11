@@ -1,0 +1,63 @@
+{
+  "verifiedAt": "2026-09-09T10:16:47.381Z",
+  "userRequestedStop": true,
+  "collectorExited": true,
+  "allLimitsRestored": true,
+  "policyCount": 4632,
+  "dailyNetIncrease": 2105,
+  "newOnlyRun": {
+    "id": "6cea7c91-158d-436a-85fc-950060c2aa52",
+    "calls": 12141,
+    "config": {
+      "mode": "new-only",
+      "filters": {},
+      "perPage": 50,
+      "maxPages": 1000,
+      "dailyLimit": 100
+    },
+    "status": "PARTIAL",
+    "summary": {
+      "calls": 12141,
+      "failed": 0,
+      "reason": "USER_STOPPED",
+      "status": "PAUSED",
+      "pending": 0,
+      "success": 1967,
+      "excluded": 2380,
+      "precedingError": "automatic-storage-failed",
+      "skippedExisting": 1803
+    },
+    "trigger": "manual",
+    "provider": "GOV24",
+    "next_page": 124,
+    "discovered": 6150,
+    "started_at": "2026-09-09T09:20:00.56361+00:00",
+    "finished_at": "2026-09-09T10:16:27.307176+00:00",
+    "stop_reason": "USER_STOPPED",
+    "lease_active": false,
+    "expected_total": 10955,
+    "collection_mode": "automatic",
+    "discovery_complete": false
+  },
+  "dailyUsage": [
+    {
+      "day": "2026-09-09",
+      "provider": "GOV24",
+      "reserved_calls": 16041,
+      "configured_limit": 100
+    },
+    {
+      "day": "2026-09-09",
+      "provider": "BOKJIRO_LOCAL",
+      "reserved_calls": 785,
+      "configured_limit": 100
+    },
+    {
+      "day": "2026-09-09",
+      "provider": "BOKJIRO_CENTRAL",
+      "reserved_calls": 106,
+      "configured_limit": 100
+    }
+  ],
+  "fullSourceCollectionComplete": false
+}

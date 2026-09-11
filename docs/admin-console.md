@@ -2,7 +2,7 @@
 
 기준일: 2026-09-09. 관리자 운영·권한·현재 기능의 기준 문서다.
 
-[문서 안내](./README.md) · [후속 작업](./next-steps.md) · [UI 작업·검증 이력](./archive/admin-ui-history-20260909.md)
+[문서 안내](README.md) · [후속 작업](next-steps.md) · [UI 작업·검증 이력](archive/admin-ui-history-20260909.md)
 
 ## 접속과 관리자 계정
 
@@ -43,7 +43,7 @@ node --experimental-strip-types scripts/admin/create-admin.ts --email 실제관�
 
 ## 수집 실행
 
-웹 실행은 `POLICY_SYNC_ENABLED=true`와 해당 출처 API 키가 있어야 한다. 한 번의 요청은 최대 5개 정책 / 10회 API 호출 / 일일 예약 상한 100회로 제한한다. 요청 종료 후 저장된 실행 ID로 재개한다. 웹 요청에 맞춘 작은 배치이며 수천 건을 한 HTTP 요청이나 예약 작업으로 처리하지 않는다. 전체 범위는 검색어를 비워 지정한다. 호출 예산·중단·재개·목록 변경 계약은 [자동 수집 운영 문서](./policy/policy-automatic-quality.md)를 따른다.
+웹 실행은 `POLICY_SYNC_ENABLED=true`와 해당 출처 API 키가 있어야 한다. 한 번의 요청은 최대 5개 정책 / 10회 API 호출 / 일일 예약 상한 100회로 제한한다. 요청 종료 후 저장된 실행 ID로 재개한다. 웹 요청에 맞춘 작은 배치이며 수천 건을 한 HTTP 요청이나 예약 작업으로 처리하지 않는다. 전체 범위는 검색어를 비워 지정한다. 호출 예산·중단·재개·목록 변경 계약은 [자동 수집 운영 문서](policy/work/collection-runbook.md)를 따른다.
 
 수집 액션은 Node 서버에서 실행되며 배포 플랫폼에 충분한 실행 시간이 필요하다(`maxDuration=300`은 플랫폼 지원 시 적용). 프로세스가 중단되면 잠금 만료 후 이력에서 재개한다. 대규모 정기 수집은 별도 작업 실행기 연결이 필요하다. 관리자 UI 검증에서는 새 수집을 실행하지 않았다.
 
@@ -57,7 +57,7 @@ node --experimental-strip-types scripts/admin/create-admin.ts --email 실제관�
 
 ## 화면 구성
 
-[Stitch 아이콤 프로젝트](https://stitch.withgoogle.com/projects/11573763693905046904)의 운영 현황 개정안 `4fbedbe2d7b0433aaca3e30e9f2015be`를 공통 기준으로 삼았다. 시안별 식별자와 순차 변경 기록은 [UI 이력](./archive/admin-ui-history-20260909.md)에 보관한다.
+[Stitch 아이콤 프로젝트](https://stitch.withgoogle.com/projects/11573763693905046904)의 운영 현황 개정안 `4fbedbe2d7b0433aaca3e30e9f2015be`를 공통 기준으로 삼았다. 시안별 식별자와 순차 변경 기록은 [UI 이력](archive/admin-ui-history-20260909.md)에 보관한다.
 
 - 보호된 layout의 `AdminShell`이 공통 헤더·사이드바·본문을 한 번 렌더링한다. `AdminHeader`·`AdminSidebar`가 메뉴 정의를 공유하고 `admin-chrome.css`가 공통 외곽 스타일을 담당한다. 품질 화면은 데이터 품질 메뉴를 활성화한다.
 - 헤더는 현재 위치, 서버 `VERCEL_ENV`/`NODE_ENV`에 따른 환경, 공지·알림 링크, 실제 관리자 역할·이메일을 표시한다. 허구 신규 알림 점이나 총괄 관리자 역할을 만들지 않는다. 계정 메뉴에 관리자 계정·서비스 바로가기·POST 로그아웃을 제공하고 Escape·외부 클릭·초점 이탈로 닫는다.
@@ -68,7 +68,7 @@ node --experimental-strip-types scripts/admin/create-admin.ts --email 실제관�
 
 ## 검증 기록과 재현 범위
 
-아래는 2026-09-08~09 작업 시점의 확인 결과다. 문서 통합 시 제품 코드·원격 DB를 다시 검증하지 않았다. 단계별 상세 결과는 [보관 이력](./archive/admin-ui-history-20260909.md)을 참고한다.
+아래는 2026-09-08~09 작업 시점의 확인 결과다. 문서 통합 시 제품 코드·원격 DB를 다시 검증하지 않았다. 단계별 상세 결과는 [보관 이력](archive/admin-ui-history-20260909.md)을 참고한다.
 
 | 검증 종류 | 확인 범위와 한계 |
 | --- | --- |
@@ -87,4 +87,4 @@ node --experimental-strip-types --test src/features/admin/server/*.test.ts
 npm run build -- --webpack
 ```
 
-미연결 기능의 구현 순서와 운영 검증 할 일은 [후속 작업](./next-steps.md)에서 관리한다.
+미연결 기능의 구현 순서와 운영 검증 할 일은 [후속 작업](next-steps.md)에서 관리한다.

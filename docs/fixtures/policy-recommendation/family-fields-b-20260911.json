@@ -1,0 +1,877 @@
+{
+  "schemaVersion": "family-fields-source-recipes-1",
+  "checkedAt": "2026-09-11T13:01:40.969599Z",
+  "items": [
+    {
+      "sampleId": "P01",
+      "category": "pregnancy",
+      "source": {
+        "policy": {
+          "id": "01540197-1f0a-4781-98b9-02780773f6df",
+          "name": "임신초기검사 및 기형아검사 지원",
+          "summary": "임신부에게 초기검사 및 기형아 검사 지원",
+          "provider_name": "서울특별시 노원구",
+          "purpose_text": null,
+          "target_text": "○ 노원구에 주민등록 주소지를 둔  임산부",
+          "criteria_text": null,
+          "benefit_text": "○ 임신초기검사 : 임신 10주 이내 진행하는 공복 혈액 및 소변검사\n○ 기형아검사(쿼드검사) : 임신 16~18주 사이에 진행하는 혈액검사",
+          "application_method_text": "○ 거주지 관할 보건소 방문신청",
+          "application_period_text": "상시신청",
+          "required_documents_text": "해당없음",
+          "reception_text": null,
+          "contact_text": "생활보건과/02-2116-4193",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/310000000122",
+          "application_url": null,
+          "updated_at": "2026-09-08T08:59:16.307819+00:00"
+        },
+        "source": {
+          "snapshotId": "bd8bb6b6-d823-42a6-8f62-a6e1a214d901",
+          "normalizerVersion": "1",
+          "displayHash": "c05d5d279b615f9ed3e4795ed691229250e5b42d4aced77ae5f50cb1a9fe25ec",
+          "normalizedFingerprint": "a43c279e0b019ae6d21b57bbafbcaf8c26e6e9b72756cf21a6fd471cae8e1d2f"
+        }
+      },
+      "recipe": {
+        "sampleId": "P01",
+        "policyId": "01540197-1f0a-4781-98b9-02780773f6df",
+        "category": "pregnancy",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "READ_ONLY_SOURCE_SAMPLE: 저장 원문에 대한 준비 초안이며 전국 대표성·전체 정책 수집 완료를 뜻하지 않음.",
+          "UNREVIEWED: HUMAN 승인·공개·충분조건 완성 없음.",
+          "OFFICIAL_FOLLOWUP 2026-09-11: family-official-followup-20260911.json의 공개 원문 일부 발췌를 연결. 문서 text는 전체 본문이 아닌 확인 인용문이며 hash도 이 발췌 범위이다. HUMAN 승인·완전성 승격 없음."
+        ],
+        "paths": [
+          {
+            "id": "P01-draft",
+            "purpose": "prenatal",
+            "subject": "PERSON",
+            "conditions": [
+              {
+                "template": "BANK_CODE",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "questionId": "P02",
+                  "values": [
+                    "PREGNANT"
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "임산부"
+                  },
+                  {
+                    "field": "official.nowon-prenatal",
+                    "quote": "관내 임신부(16주~18주) 쿼드검사 실시"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "nowonRegistered",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "지원받을 임산부 본인이 노원구에 주민등록 주소지를 두고 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "노원구에 주민등록 주소지를 둔"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "현행 공고·전체 자격·신청기간·잔여예산 미검수. 원문 누락을 사용자 응답으로 보충하지 않음.",
+              "PERSON은 선택한 임산부이며 임신 EVENT의 주수와 동일 subject로 합치지 않음.",
+              "초기검사 10주 이내와 쿼드검사 16~18주의 별도 EVENT 조건·같은 임신 연결·주수 정밀도는 미구현. 두 검사를 동시에 받을 자격으로 해석하지 않음.",
+              "주민등록 기준일이 원문에 명시되지 않아 UNCONFIRMED로 보존.",
+              "노원구보건소 공식 안내에서 초기검사 10주 이내·쿼드 16~18주와 증빙을 재확인하여 서비스별 창의 근거는 일부 해소. 주소 기준일·일 단위 주수 경계·동일 임신 EVENT 연결과 별도 경로는 미해결. 공식 페이지 수정일 미확인."
+            ]
+          }
+        ]
+      },
+      "evidenceDocuments": {
+        "nowon-prenatal": {
+          "url": "https://nowon.kr/health/healthIncrz/healthIncrz1/healthIncrz1_03.jsp",
+          "text": "관내 임신부(16주~18주) 쿼드검사 실시"
+        }
+      }
+    },
+    {
+      "sampleId": "P02",
+      "category": "pregnancy",
+      "source": {
+        "policy": {
+          "id": "020414b9-0436-4e0d-a7ef-925fe99e317c",
+          "name": "임산부 산전건강관리 지원",
+          "summary": "보건소 등록 임산부에게 산전 건강관리 서비스 지원",
+          "provider_name": "강원특별자치도 태백시",
+          "purpose_text": null,
+          "target_text": "○ 보건소 등록 임산부(관내 주민등록)",
+          "criteria_text": null,
+          "benefit_text": "○ 임산부 산전건강관리 지원\n- 임산부 산전 기형아검사 쿠폰 1회(관내 산부인과)\n- 임산부 산전 초음파검사 쿠폰 5회(관내 산부인과)\n- 임산부 엽산제(임신 15주 이내) 지원\n- 임산부 철분제(임신 16주 이후) 지원\n\n○ 임신 축하용품 지원\n○ 모성혈액검사(풍진검사제외)",
+          "application_method_text": "○ 방문 신청\n- 보건소 : 관할 보건소 방문",
+          "application_period_text": "상시신청",
+          "required_documents_text": "해당없음",
+          "reception_text": null,
+          "contact_text": "태백시보건소/033-550-3033",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/422000000121",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:39:23.26388+00:00"
+        },
+        "source": {
+          "snapshotId": "0a3344dd-3419-4ab7-b804-7b3c3e875dd5",
+          "normalizerVersion": "1",
+          "displayHash": "582caf73ee53549e47d8e225b155602cd7eab149dcb701833e131a3cc57f2cfa",
+          "normalizedFingerprint": "81b47d95998d31b2587ecd36f245d5fb8caf086b2e0d06f8043e1f6d1f84706c"
+        }
+      },
+      "recipe": {
+        "sampleId": "P02",
+        "policyId": "020414b9-0436-4e0d-a7ef-925fe99e317c",
+        "category": "pregnancy",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "READ_ONLY_SOURCE_SAMPLE: 저장 원문에 대한 준비 초안이며 전국 대표성·전체 정책 수집 완료를 뜻하지 않음.",
+          "UNREVIEWED: HUMAN 승인·공개·충분조건 완성 없음.",
+          "OFFICIAL_FOLLOWUP 2026-09-11: family-official-followup-20260911.json의 공개 원문 일부 발췌를 연결. 문서 text는 전체 본문이 아닌 확인 인용문이며 hash도 이 발췌 범위이다. HUMAN 승인·완전성 승격 없음.",
+          "SOURCE_CONFLICT: 저장 정부24의 엽산 임신 15주 이내와 태백시보건소의 12주 이전 등록·최대 2개월분 안내가 충돌. 시행일·우선 적용 근거 미확인으로 어느 주수도 새 자격 규칙으로 확정하지 않음."
+        ],
+        "paths": [
+          {
+            "id": "P02-draft",
+            "purpose": "prenatal",
+            "subject": "PERSON",
+            "conditions": [
+              {
+                "template": "BANK_CODE",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "questionId": "P02",
+                  "values": [
+                    "PREGNANT"
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "임산부"
+                  },
+                  {
+                    "field": "official.taebaek-prenatal",
+                    "quote": "임신 12주 이전 등록 임산부 최대 2개월분 지원"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "healthCenterRegistered",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "지원받을 임산부가 해당 보건소에 등록되어 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "보건소 등록 임산부"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "taebaekRegistered",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "지원받을 임산부가 태백시 관내에 주민등록을 두고 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "관내 주민등록"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "현행 공고·전체 자격·신청기간·잔여예산 미검수. 원문 누락을 사용자 응답으로 보충하지 않음.",
+              "관내는 제공기관 태백시를 기준으로 읽었으며 세부 관할과 등록·주소 기준일 검수 필요.",
+              "엽산·철분의 주수, 검사별 횟수·관내 산부인과 조건은 이 PERSON 공통 초안에 합치지 않음. EVENT 연결과 서비스별 경로 미구현.",
+              "태백 공식 안내로 초음파 20·24·28·32·36주 각 1회, 기형아 16주 1회 및 한마음산부인과 사용처를 확인하여 범위 일부 해소. 엽산 15주 대 12주 충돌, 주소 기준일, EVENT 연결, 철분 산후 1개월 경로는 미해결. 페이지 수정일 미확인."
+            ]
+          }
+        ]
+      },
+      "evidenceDocuments": {
+        "taebaek-prenatal": {
+          "url": "https://www.taebaek.go.kr/health/contents.do?key=1576",
+          "text": "임신 12주 이전 등록 임산부 최대 2개월분 지원"
+        }
+      }
+    },
+    {
+      "sampleId": "H01",
+      "category": "health",
+      "source": {
+        "policy": {
+          "id": "040b492c-40b4-434c-b672-2a41560b7f6c",
+          "name": "(서북구) 저소득층 아동 치과의료비 지원",
+          "summary": "* 충치치료(레진,인레이,크라운,SScr)에 대한 본인부담금 의료비 지원",
+          "provider_name": "충청남도 천안시",
+          "purpose_text": "저소득층 아동에게 치과의료비를 지원하여 구강건강을 증진시킴으로써 건강한 삶을 유지하기 위함",
+          "target_text": "[저소득층 아동 치과의료비 지원]\n- (대상) 18세 미만 아동 중 기초생활수급자, 차상위본인부담경감자, 한부모가정(천안시 1년 이상 거주자)",
+          "criteria_text": null,
+          "benefit_text": "[저소득층 아동 치과의료비 지원]\n- (대상) 18세 미만 아동 중 기초생활수급자, 차상위본인부담경감자, 한부모가정(천안시 1년 이상 거주자)\n- (지원) 충치치료(레진,인레이,크라운,SScr) 본인부담금 지원[1인 50만원 한도]",
+          "application_method_text": "보건소 전화예약-> 방문접수(검진 및 서류작성 등)\n-> 협약 치과 치료-> 보건소에서 협약 치과에 의료비 지급",
+          "application_period_text": "상시신청",
+          "required_documents_text": "기초생활수급자, 차상위본인부담경감자, 한부모가정 증빙 서류 등",
+          "reception_text": null,
+          "contact_text": "서북구보건소(건강관리과)/041-521-5951",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/449000000530",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:47:26.545138+00:00"
+        },
+        "source": {
+          "snapshotId": "03ed7bb1-8a2c-4a34-83d2-845345814f5b",
+          "normalizerVersion": "1",
+          "displayHash": "48da60788029b90c1cbd93bf0364688177d69bea262e066013a8fcb395c8367c",
+          "normalizedFingerprint": "b34b272d08015bfe9e6c74476d98ca184ada5e9e033fdf3da96e37708e08420c"
+        }
+      },
+      "recipe": {
+        "sampleId": "H01",
+        "policyId": "040b492c-40b4-434c-b672-2a41560b7f6c",
+        "category": "health",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "READ_ONLY_SOURCE_SAMPLE: 저장 원문에 대한 준비 초안이며 전국 대표성·전체 정책 수집 완료를 뜻하지 않음.",
+          "UNREVIEWED: HUMAN 승인·공개·충분조건 완성 없음."
+        ],
+        "paths": [
+          {
+            "id": "H01-draft",
+            "purpose": "medical-costs",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_NUMBER_RANGE",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "childAge",
+                  "min": 0,
+                  "max": 18,
+                  "minInclusive": true,
+                  "maxInclusive": false,
+                  "unit": "AGE_YEARS",
+                  "basis": "SOURCE_EXPLICIT_RANGE",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "이 아동이 정책의 나이 기준일에 18세 미만인가요?"
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "18세 미만 아동"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "listedWelfareGroup",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "이 아동은 기초생활수급자·차상위본인부담경감자·한부모가정 중 해당되는 대상인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "기초생활수급자, 차상위본인부담경감자, 한부모가정"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "cheonanResidenceYear",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "원문이 요구하는 천안시 1년 이상 거주 조건을 충족하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "천안시 1년 이상 거주자"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "현행 공고·전체 자격·신청기간·잔여예산 미검수. 원문 누락을 사용자 응답으로 보충하지 않음.",
+              "18세 기준일·만 나이 여부가 명시되지 않아 birthYear에서 임의 계산하지 않음.",
+              "거주 요건의 주민등록/실거주·연속성·대상 구성원 및 괄호가 모든 수급 유형에 적용되는지 검수 필요.",
+              "지원대상 충치치료 종류와 협약치과 진료·사전접수 경로, 서북구 관할 범위 미검수. 소득비율 대신 명시 복지자격 유지."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "H02",
+      "category": "health",
+      "source": {
+        "policy": {
+          "id": "18b2a7bf-da27-46c4-ad6a-c3283b1eb93c",
+          "name": "초등학생 및 저소득층 아동 치과주치의 의료비 지원",
+          "summary": "\"○ 초등학생 1학년, 4학년\n○ 수급자 및 차상위계층 초등학생에게 치과의료비 지원\"",
+          "provider_name": "전남광주통합특별시 무안군",
+          "purpose_text": null,
+          "target_text": "○ 관내 기초생활수급 및 차상위계층 초등학생",
+          "criteria_text": null,
+          "benefit_text": "\"○ 관내 초등학교 1학년, 4학년 대상으로 연 최대 4만원 치과의료비 지원\n○  관내 기초생활수급 및 차상위계층 초등학생에게 초등학교 졸업시까지 연 최대 10만원 치과의료비 지원\"",
+          "application_method_text": "○ 방문 신청\n- 보건소 : 치과진료 전 보건소 신청",
+          "application_period_text": "상시신청",
+          "required_documents_text": "\"­ 초등학생 및 저소득층 아동 치과주치의 의료비 지원사업신청서\n­ 저소득층 증빙자료\n\"",
+          "reception_text": null,
+          "contact_text": "보건소/061-450-5073",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/495000000414",
+          "application_url": null,
+          "updated_at": "2026-09-09T10:05:49.05309+00:00"
+        },
+        "source": {
+          "snapshotId": "95741e1c-961a-4dfd-acb2-f2f5336d2cf5",
+          "normalizerVersion": "1",
+          "displayHash": "4d5262c391beb281d768cc76002d6f9169fc73f486592e974e160180015497d4",
+          "normalizedFingerprint": "fbefcbed01a9d88cfba22a08b3e94e4aa79b13e8f191ad32fafa751389654d16"
+        }
+      },
+      "recipe": {
+        "sampleId": "H02",
+        "policyId": "18b2a7bf-da27-46c4-ad6a-c3283b1eb93c",
+        "category": "health",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "READ_ONLY_SOURCE_SAMPLE: 저장 원문에 대한 준비 초안이며 전국 대표성·전체 정책 수집 완료를 뜻하지 않음.",
+          "UNREVIEWED: HUMAN 승인·공개·충분조건 완성 없음."
+        ],
+        "paths": [
+          {
+            "id": "H02-draft",
+            "purpose": "medical-costs",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "elementaryStudent",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "이 아동은 초등학생인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "초등학생"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "recipientOrNearPoverty",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "이 아동은 기초생활수급 또는 차상위계층에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "기초생활수급 및 차상위계층"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "localEligibility",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "이 아동은 사업에서 정한 관내 대상에 해당하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "관내 기초생활수급 및 차상위계층 초등학생"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "현행 공고·전체 자격·신청기간·잔여예산 미검수. 원문 누락을 사용자 응답으로 보충하지 않음.",
+              "저소득 초등학생 경로만 준비. 별도의 일반 1·4학년 지원을 이 경로의 필수조건으로 결합하지 않음.",
+              "관내가 거주지인지 학교 소재지인지 미확인. 제공기관 행정명 현행성도 미검수.",
+              "학교급 BANK_CODE는 교육 분야용이므로 건강 분야에서는 정책별 선언형 fact로 보존.",
+              "졸업시점·연간 반복지원·사전신청 범위 및 자격 기준일 미확인."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "L01",
+      "category": "housing",
+      "source": {
+        "policy": {
+          "id": "067adff7-4e0d-4eec-9e48-cef08579026b",
+          "name": "신혼부부 주택자금 대출이자 지원",
+          "summary": "결혼 2년이내 부부에게 주택구입 또는 전세자금 대출이자 지원(100만원 한도)",
+          "provider_name": "경상북도 문경시",
+          "purpose_text": "신혼부부의 정주여건 개선을 통해 인구증가 및 저출산 극복에 기여",
+          "target_text": "○ 1년이상 문경시에 주소를 둔 결혼 2년이내 부부",
+          "criteria_text": null,
+          "benefit_text": "○ 주택구입 또는 전세자금 대출이자 연 100만원 한도 지원",
+          "application_method_text": "○ 방문 신청\n- 주민센터 : 주소지 관할 읍면동 주민센터에 방문 신청\n- 구비서류 : 이자납입 증명서, 주민등록초본(부부 각 1부), 혼인관계증명서, 대출증명서, 지방세 세목별 과세증명서(부부 각 1부),가족관계증명서",
+          "application_period_text": "상시신청",
+          "required_documents_text": "이자납입 증명서, 주민등록초본(부부 각 1부-주소변경이력표시), 혼인관계증명서, 대출증명서, 지방세 세목별 과세증명서(부부 각 1부),가족관계증명서,신청서 등",
+          "reception_text": null,
+          "contact_text": "문경시청 건축과/054-550-6813",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/512000000112",
+          "application_url": null,
+          "updated_at": "2026-09-09T10:10:22.768973+00:00"
+        },
+        "source": {
+          "snapshotId": "23c54039-86ac-4e4c-8acf-4d4aaeeae9dd",
+          "normalizerVersion": "1",
+          "displayHash": "9cba9920690af610eaf0b57b26ef0762d5729cff18bd35f9a391edae44946cf1",
+          "normalizedFingerprint": "cd59f07ab6d6eafae0e0dd8a5b3db27537839fdba55941fefad4a3d608fb86ca"
+        }
+      },
+      "recipe": {
+        "sampleId": "L01",
+        "policyId": "067adff7-4e0d-4eec-9e48-cef08579026b",
+        "category": "housing",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "READ_ONLY_SOURCE_SAMPLE: 저장 원문에 대한 준비 초안이며 전국 대표성·전체 정책 수집 완료를 뜻하지 않음.",
+          "UNREVIEWED: HUMAN 승인·공개·충분조건 완성 없음."
+        ],
+        "paths": [
+          {
+            "id": "L01-draft",
+            "purpose": "housing-costs",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "mungyeongResidenceYear",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "이 부부는 원문의 문경시 1년 이상 주소 요건을 충족하나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "1년이상 문경시에 주소를 둔"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "marriedWithinTwoYears",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "이 부부는 정책 기준일에 결혼 2년 이내인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "결혼 2년이내 부부"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "housingLoan",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "이 가구는 지원 대상으로 안내된 주택구입 또는 전세자금 대출이 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "benefit_text",
+                    "quote": "주택구입 또는 전세자금 대출이자"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "현행 공고·전체 자격·신청기간·잔여예산 미검수. 원문 누락을 사용자 응답으로 보충하지 않음.",
+              "주소 유지의 연속성·부부 각각 충족 여부·주소 및 혼인 기준일 미확인. 결혼을 혼인신고일로 자동 치환하지 않음.",
+              "대출·주택·소득·중복지원 세부 심사조건 미확인. 구입과 전세의 예외는 미구현."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "L02",
+      "category": "housing",
+      "source": {
+        "policy": {
+          "id": "1591b63b-e99f-4d6e-8a9c-0ea6ed37c782",
+          "name": "진주시 신혼부부 주택전세자금 대출이자 지원",
+          "summary": "무주택 신혼부부에게 주택 전세자금 대출이자를 지원하여 주거비 부담완화",
+          "provider_name": "경상남도 진주시 도시건설국 주택경관과",
+          "purpose_text": null,
+          "target_text": "지원대상  - 사업 신청일 현재 부부 모두 진주시 동일 주소에 등재  - 혼인신고 7년 이내   - 부부 및 세대원 모두 무주택자이면서, 기준 중위소득 180% 이하    ※ 1년치 건강보험료 본인부담금에 의한 소득 판정(부부 합산)   - 주민등록 주소지와 주택임대차계약서 및 주택전세자금대출 소재지 동일",
+          "criteria_text": "ㅇ대상자 조건충족시 예산범위내 지원ㅇ예산 부족 시, 우선순위에 따라 지원   - 우선순위 순 : 자녀수 많은 가구 > 중위소득 낮은 가구 > 임차보증금 낮은 가구순",
+          "benefit_text": "대출잔액의 1.5% 지원(연1회, 최대100만원)* 자녀 1인당 지원금의 20%가산(최대150만원)",
+          "application_method_text": "거주지 읍면사무소 또는 동행정복지센터 방문신청",
+          "application_period_text": null,
+          "required_documents_text": null,
+          "reception_text": null,
+          "contact_text": "진주시청 주택경관과 055-749-8907",
+          "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003988&wlfareInfoReldBztpCd=02",
+          "application_url": null,
+          "updated_at": "2026-09-08T08:22:45.279695+00:00"
+        },
+        "source": {
+          "snapshotId": "e9851aad-5cf7-49c0-89be-61e19196d792",
+          "normalizerVersion": "bokjiro-2",
+          "displayHash": "37a8fda20bb058bf86e313fb728e4c7eadb4f410eb208a09bb91fd38ee025059",
+          "normalizedFingerprint": "b579cddb9d082f91555131d0cfa7abffbb201e8a229aa28ba5a9b76dad2ff2f0"
+        }
+      },
+      "recipe": {
+        "sampleId": "L02",
+        "policyId": "1591b63b-e99f-4d6e-8a9c-0ea6ed37c782",
+        "category": "housing",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "READ_ONLY_SOURCE_SAMPLE: 저장 원문에 대한 준비 초안이며 전국 대표성·전체 정책 수집 완료를 뜻하지 않음.",
+          "UNREVIEWED: HUMAN 승인·공개·충분조건 완성 없음."
+        ],
+        "paths": [
+          {
+            "id": "L02-draft",
+            "purpose": "housing-costs",
+            "subject": "HOUSEHOLD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "coupleRegisteredJinju",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "ACTUAL_APPLICATION_DATE",
+                  "prompt": "사업 신청일 현재 부부 모두 진주시 동일 주소에 등재되어 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "사업 신청일 현재 부부 모두 진주시 동일 주소에 등재"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "marriageRegistrationSevenYears",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "정책 기준일에 혼인신고 7년 이내인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "혼인신고 7년 이내"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "allMembersNoHome",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "부부와 세대원 모두 무주택자인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "부부 및 세대원 모두 무주택자"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "premiumIncomeAssessed",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "부부 합산 1년치 건강보험료 본인부담금으로 판정하는 사업 소득기준을 충족한다고 확인받았나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "기준 중위소득 180% 이하    ※ 1년치 건강보험료 본인부담금에 의한 소득 판정(부부 합산)"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "HOUSEHOLD",
+                "params": {
+                  "attribute": "loanAndContractAddress",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "SOURCE_EXPLICIT_PROGRAM_STATUS",
+                  "reference": "POLICY_ASSESSMENT_DATE_UNCONFIRMED",
+                  "prompt": "주민등록 주소지·임대차계약서·전세자금대출의 소재지가 모두 같은가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "주민등록 주소지와 주택임대차계약서 및 주택전세자금대출 소재지 동일"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "현행 공고·전체 자격·신청기간·잔여예산 미검수. 원문 누락을 사용자 응답으로 보충하지 않음.",
+              "건강보험료 판정이므로 RECOGNIZED_INCOME_RATIO로 변환하지 않음. 보험료 대상연도·가구범위·가입유형별 환산표 미확인.",
+              "혼인·무주택 및 계약주소 기준일이 신청일과 같은지 추정하지 않음.",
+              "예산 부족 시 자녀수·소득·보증금 우선순위는 순위 요소이지 탈락조건 아님. 우선순위 계산과 지원액 가산 미구현."
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

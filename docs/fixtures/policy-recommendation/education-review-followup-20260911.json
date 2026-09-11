@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "education-official-followup-1",
+  "status": "PENDING_HUMAN_REVIEW",
+  "checkedOn": "2026-09-11",
+  "scope": "E03/E04 기존 미확인 항목 추가 조사. 신규 HUMAN 승인·경로 완전성·현재 접수 가능 여부를 확정하지 않는다.",
+  "method": "공식사이트 웹 검색 결과의 색인 본문과 ELIS 현행 목록 확인. 법령·관악 사이트 일부 직접 open은 오류 또는 본문 공백으로 반환되어 해당 한계를 각 근거에 기록. 민간 재게시 자료는 확정 근거로 사용하지 않음.",
+  "sources": [
+    {
+      "id": "gijang-ordinance",
+      "url": "https://www.law.go.kr/LSW/ordinInfoP.do?chrClsCd=010202&gubun=ELIS&ordinSeq=1370848",
+      "title": "부산광역시 기장군 교복 지원 조례",
+      "effectiveOn": "2018-11-26",
+      "observedVia": "공식 검색 색인에 제1~8조 본문 노출; 직접 open 오류"
+    },
+    {
+      "id": "gijang-current-list",
+      "url": "https://www.elis.go.kr/alrpop/locgovAlrPopup?ctpvCd=26&sggCd=710",
+      "title": "기장군 현행 자치법규 목록",
+      "observedVia": "직접 open 성공; 교육정책 교복 지원 조례 2018-11-26, 청소년드림 학교 밖 청소년 지원 조례 2025-09-24 확인"
+    },
+    {
+      "id": "gijang-alternative-definition",
+      "url": "https://www.law.go.kr/ordinSc.do?menuId=3&query=부산광역시+기장군+학교+밖+청소년+지원+조례",
+      "title": "부산광역시 기장군 학교 밖 청소년 지원 조례",
+      "effectiveOn": "2025-09-24",
+      "ordinanceNumber": "1561",
+      "observedVia": "공식 현행 법규 검색 결과 본문 제2조 확인"
+    },
+    {
+      "id": "gwanak-current-list",
+      "url": "https://www.elis.go.kr/alrpop/locgovAlrPopup?ctpvCd=11&sggCd=620",
+      "title": "관악구 현행 자치법규 목록",
+      "observedVia": "공식 검색 색인에서 입학준비금 지원 조례 최종일 2025-09-25 확인"
+    },
+    {
+      "id": "gwanak-bokjiro",
+      "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006588&wlfareInfoReldBztpCd=02",
+      "title": "타 시·도 초·중·고등학교 신입생 입학준비금 지원",
+      "observedVia": "공식 검색 색인 선정기준 및 첨부 법규 파일명 확인; 직접 open 본문 공백"
+    },
+    {
+      "id": "gwanak-2025-minutes",
+      "url": "https://www.ga21c.seoul.kr/viewer/minutes.do?uid=6031",
+      "title": "제307회 보건복지위원회 제1차 회의록",
+      "observedVia": "공식 검색 색인의 2025년 입학준비금 질의응답 확인; 직접 open timeout"
+    },
+    {
+      "id": "gwanak-ordinance-current-body",
+      "url": "https://www.law.go.kr/LSW/ordinSc.do?menuId=3&query=서울특별시%20관악구%20입학준비금%20지원%20조례",
+      "title": "서울특별시 관악구 입학준비금 지원 조례",
+      "effectiveOn": "2025-09-25",
+      "ordinanceNumber": "1835",
+      "ordinSeq": "2081165",
+      "ordinId": "2204561",
+      "observedVia": "격리 브라우저에서 현행 검색 페이지가 렌더링한 전문 직접 확인; DOM의 ordinSeq/ordinId도 확인",
+      "checkedAt": "2026-09-11T11:43:23Z"
+    }
+  ],
+  "items": [
+    {
+      "sampleId": "E03",
+      "policyId": "046f6387-44ae-4770-8181-35545094340b",
+      "status": "PENDING_HUMAN_REVIEW",
+      "newFindings": [
+        {
+          "id": "gijang-duplicate-deduction",
+          "state": "EVIDENCE_FOUND_REQUIRES_RECONCILIATION",
+          "summary": "조례 제5조제2항은 법령·다른 조례 또는 그 밖의 방법으로 받은 교복구입비를 공제하도록 규정한다. 중복지원이 있다는 이유만으로 모든 경로를 탈락시키면 안 된다. 2026 공고의 중복수급 환수 안내와 실무 적용 범위를 대조해야 한다.",
+          "evidence": [
+            {
+              "sourceId": "gijang-ordinance",
+              "section": "제5조제2항제1~2호"
+            },
+            {
+              "sourceId": "gijang-current-list",
+              "section": "교육청소년 > 교육정책 > 교복 지원 조례"
+            }
+          ],
+          "catalogImplication": "기존 broad duplicate=false 조건 미도입 유지. 부분 수급자는 정책 확인으로 남기고 공제액 계산·차액 지급을 아직 구현하지 않는다."
+        },
+        {
+          "id": "gijang-alternative-scope",
+          "state": "DEFINITION_NARROWED",
+          "summary": "교복 조례의 학교는 초·중등교육법 제2조 학교이며 학교 외 교육기관은 학교 밖 청소년 조례 제2조제4호를 참조한다. 해당 정의는 대안교육을 실시하며 같은 법 제4조 인가를 받지 않은 기관이다. 학교급 OTHER나 일반적인 대안학교 명칭만으로 충족시킬 수 없다.",
+          "evidence": [
+            {
+              "sourceId": "gijang-ordinance",
+              "section": "제2조제1~2호"
+            },
+            {
+              "sourceId": "gijang-alternative-definition",
+              "section": "제2조제3~4호"
+            }
+          ],
+          "catalogImplication": "대안기관 질문에 법적 정의·인가 여부 확인을 명시할 검수 근거. 실제 기관 인정 및 교육청 등록과 인가의 차이는 별도 확인 필요. 교복비 대상에 9~24세 제한을 직접 추론하지 않는다."
+        }
+      ],
+      "remainingUnknowns": [
+        "2026 공고와 조례의 중복지원 공제/환수 처리 관계, 지원 유형·시점·부분 금액별 실무",
+        "개별 대안교육기관 인정 및 신청 증빙",
+        "입학 전 전학 등 경계 사례",
+        "본인 신청용 서식·통장 표기 불일치",
+        "접수 시각·예산·실접수 가능 여부",
+        "학교급/학년/입학유형이 동일 사건인지 연결은 웹 근거만으로 해결할 수 없는 데이터 계약 문제"
+      ],
+      "releaseAssessment": "대안기관 정의와 공제 근거는 좁혀졌으나 완전 경로로 승격할 근거는 부족하다. 일반 학교·최초 신입학·다른 교복비 미수급 사례를 별도 검수 대상으로 좁힐 수 있으나 나머지 경로를 탈락 처리하거나 승인으로 대체하지 않는다."
+    },
+    {
+      "sampleId": "E04",
+      "policyId": "065aebae-110a-41a6-9c07-c816be1209b9",
+      "status": "PENDING_HUMAN_REVIEW",
+      "newFindings": [
+        {
+          "id": "gwanak-duplicate-seoul-education",
+          "state": "EVIDENCE_FOUND",
+          "summary": "복지로 선정기준은 서울시교육청 및 타 시·도 입학준비금 등의 중복지원을 확인한다고 명시한다. 질문을 타 시·도 지원에만 좁히면 서울시교육청의 유사 지원 이력을 놓칠 수 있다.",
+          "evidence": [
+            {
+              "sourceId": "gwanak-bokjiro",
+              "section": "선정기준"
+            }
+          ],
+          "catalogImplication": "gwanak-2026-duplicate-entry-aid 질문과 왜 묻는지 설명에서 서울시교육청 지원도 검수한다. 모든 일반 장학금으로 범위를 확대하지 않는다."
+        },
+        {
+          "id": "gwanak-current-law-version",
+          "state": "CURRENT_BODY_VERIFIED",
+          "summary": "최종 추가 조사에서 현행 제1835호 전문을 직접 확보했다. 제3조는 외국인 등록지를 포함하며, 1학년 입학생과 타 시·도 및 국외 전입 1학년 학생을 규정한다.",
+          "evidence": [
+            {
+              "sourceId": "gwanak-current-list",
+              "section": "입학준비금 지원 조례"
+            },
+            {
+              "sourceId": "gwanak-bokjiro",
+              "section": "관련 법규 첨부 파일명"
+            },
+            {
+              "sourceId": "gwanak-ordinance-current-body",
+              "section": "시행일·조례번호 / 제3조 본문 및 제1~2호"
+            }
+          ],
+          "catalogImplication": "FIRST만 허용하거나 외국인등록·전입을 일괄 제외하지 않는다. 2026 타시도 개별사업에 대한 적용 범위는 제6조 공동사업 별도 방식 및 연도별 공고와 대조한다."
+        },
+        {
+          "id": "gwanak-point-expiry",
+          "state": "UNKNOWN",
+          "summary": "2025년 의회 질의응답에 연말 사용 언급은 있으나 2026년 타 시·도 사업의 정확한 포인트 만료일을 증명하지 않는다.",
+          "evidence": [
+            {
+              "sourceId": "gwanak-2025-minutes",
+              "section": "입학준비금 조례 개정안 관련 교육지원과장 질의응답"
+            }
+          ],
+          "catalogImplication": "2026-12-31을 임의 생성하지 않는다."
+        },
+        {
+          "id": "gwanak-article3-boundaries",
+          "state": "LAW_SCOPE_VERIFIED_PROGRAM_SCOPE_PENDING",
+          "summary": "제3조의 기준일은 구청장이 정하며 조례 자체는 2026년을 지정하지 않는다. 거주 등록은 외국인 등록지도 포함한다. 타 시·도·국외 전입 1학년 학생이 별도 호로 명시되나 재입학은 별도로 명시되지 않는다. 전입의 행정상 의미를 bank의 학교 전학 TRANSFER와 자동 동일시하지 않는다.",
+          "evidence": [
+            {
+              "sourceId": "gwanak-ordinance-current-body",
+              "section": "제3조 본문 및 제1~2호 / 제6조"
+            }
+          ],
+          "catalogImplication": "2026년·실제 신청일 기준은 기존 연도별 공고 근거 유지. 외국인 등록을 포괄할 질문·경로를 검수하고 전입/재입학 예외는 일반 FIRST 규칙으로 축약하지 않는다."
+        }
+      ],
+      "remainingUnknowns": [
+        "현행 조례 제3조 본문은 확보했으나 2026 타시도 개별사업의 전입 경로 및 외국인등록 증빙 적용은 연도별 집행기준과 대조 필요. 재입학 허용/제외는 명시 근거 미확보.",
+        "학생 본인 신청 조건과 법정대리인 서식 관계",
+        "정부24 신청 현행성·접수 종료 시각·예산 및 실제 접수 가능 여부",
+        "2026 포인트 사용 마감일"
+      ],
+      "releaseAssessment": "현행 조례의 외국인등록 포함 및 전입 1학년 근거를 확보했다. 2026 개별사업 경로 완전성이나 HUMAN 승인을 의미하지 않는다."
+    }
+  ],
+  "checkedAt": "2026-09-11T11:36:54Z",
+  "lastFollowup": {
+    "checkedAt": "2026-09-11T11:43:23Z",
+    "maxAlternativeRoutes": 3,
+    "attempts": [
+      {
+        "url": "https://www.law.go.kr/ordinSc.do?menuId=3&query=서울특별시%20관악구%20입학준비금%20지원%20조례",
+        "result": "web open safe-open non-retryable 오류"
+      },
+      {
+        "url": "https://www.elis.go.kr/allalr/selectAlrBdtOne?alrNo=11620125183000&histNo=003&menuNm=main",
+        "result": "web open safe-open non-retryable 오류; 추정 상세 경로였으며 법규 식별자 검증 안 됨. 근거로 사용하지 않음"
+      },
+      {
+        "url": "https://www.law.go.kr/LSW/ordinSc.do?menuId=3&query=서울특별시%20관악구%20입학준비금%20지원%20조례",
+        "result": "격리 브라우저 직접 렌더링 성공; 현행 제1835호 및 제3조 본문 확보"
+      }
+    ]
+  }
+}

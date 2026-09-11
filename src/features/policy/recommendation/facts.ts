@@ -79,7 +79,7 @@ export function normalizeAnswers(answers: Answer[]): Answer[] {
     const key = answer?.key;
     if (
       !key ||
-      !["CHILD", "HOUSEHOLD"].includes(key.subject?.kind) ||
+      !["CHILD", "HOUSEHOLD", "PERSON", "EVENT"].includes(key.subject?.kind) ||
       ![key.attribute, key.subject.id, key.basis, key.reference].every(
         (x) => typeof x === "string" && x.length > 0,
       ) ||
@@ -129,9 +129,35 @@ export function validateRequest(request: Request): Request {
     request.needs.some((x) => typeof x !== "string" || !x)
   )
     throw new Error("invalid-scope");
+  if (
+    request.selectedSubjects !== undefined &&
+    (!Array.isArray(request.selectedSubjects) ||
+      request.selectedChildren.length + request.selectedSubjects.length > 60 ||
+      request.selectedSubjects.some(
+        (subject) =>
+          !subject ||
+          !["PERSON", "EVENT"].includes(subject.kind) ||
+          typeof subject.id !== "string" ||
+          !subject.id.trim() ||
+          Object.keys(subject).some((key) => key !== "kind" && key !== "id"),
+      ) ||
+      new Set(
+        request.selectedSubjects.map((subject) =>
+          JSON.stringify([subject.kind, subject.id]),
+        ),
+      ).size !== request.selectedSubjects.length)
+  )
+    throw new Error("invalid-scope");
   return {
     ...request,
     selectedChildren: [...request.selectedChildren],
+    ...(request.selectedSubjects !== undefined
+      ? {
+          selectedSubjects: request.selectedSubjects.map((subject) => ({
+            ...subject,
+          })),
+        }
+      : {}),
     needs: [...new Set(request.needs)].sort(),
     answers: normalizeAnswers(request.answers),
   };
@@ -147,7 +173,13 @@ export function activateAnswers(
       a.active !== false &&
       (a.key.subject.kind === "HOUSEHOLD"
         ? a.key.subject.id === request.householdId
-        : request.selectedChildren.includes(a.key.subject.id)),
+        : a.key.subject.kind === "CHILD"
+          ? request.selectedChildren.includes(a.key.subject.id)
+          : (request.selectedSubjects ?? []).some(
+              (subject) =>
+                subject.kind === a.key.subject.kind &&
+                subject.id === a.key.subject.id,
+            )),
   }));
   // Fixed point handles transitive dependencies; catalog validation forbids cycles.
   for (let pass = 0; pass <= questions.length; pass++) {

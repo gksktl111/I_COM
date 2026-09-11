@@ -9,7 +9,7 @@ npm ci
 npm run dev
 ```
 
-외부 서비스 키는 로컬 환경변수로 설정합니다. 키·계정 설정 파일을 Git에 넣지 않습니다. 관리자 초기 설정과 서버 환경은 [관리자 운영 문서](docs/admin-console.md), 정책 API 키·수집 절차는 [정책 문서 안내](docs/policy/README.md)를 참고하세요.
+외부 서비스 키는 로컬 환경변수로 설정합니다. 키·계정 설정 파일을 Git에 넣지 않습니다. 관리자 초기 설정과 서버 환경은 [관리자 운영 문서](docs/admin-console.md), 정책 API 키·수집 절차는 [정책 수집 작업 문서](docs/policy/work/collection-runbook.md)를 참고하세요.
 
 현재 사용 스택은 Next.js 16·React 19·TypeScript·Tailwind CSS 4, Naver Maps, Supabase Auth/DB입니다. 정확한 의존성 버전과 명령은 [package.json](package.json)을 기준으로 합니다.
 
@@ -18,7 +18,7 @@ npm run dev
 | 영역 | 상태 |
 | --- | --- |
 | 정책 | 정부24·복지로 수집, 원문·이력 보존, 관련성 평가, 분야 라벨 저장·검수 이력 |
-| 공개 탐색 | 정책 목록·상세·조건 입력. 현재 원문 키워드 탐색이며 자격 충족 판정은 미연결 |
+| 공개 탐색 | 정책 목록·상세, 6개 분야 질문과 최대 20개 잠정 추천. 실제 정책의 자격 조건 연결은 후속 |
 | 주변 시설 | 지도·분류·마커·시설 상세 UI. 외부 지도/API 연결 필요 |
 | 관리자 | 인증·계정 관리, 사용자 검색, 정책·수집·품질 조회, 공지 초안 저장 |
 | 사용자 로그인 | 카카오·네이버·구글만 지원할 계획. 현재 버튼 비활성화 |
@@ -27,10 +27,11 @@ npm run dev
 ## 문서와 다음 작업
 
 - [문서 안내와 현재 결정 사항](docs/README.md)
+- [정책 서비스 핵심 현황과 선택 — 사용자용](docs/policy/README.md)
 - [다음 작업과 완료 기준](docs/next-steps.md)
 - [관리자 운영·화면 기준](docs/admin-console.md)
 - [공개 UI·시안 대응](docs/ui/stitch-implementation.md)
-- [정책 설계·운영·검증 문서](docs/policy/README.md)
+- [정책 구현·운영·검증 문서 — 작업자용](docs/policy/work/README.md)
 
 원래의 서비스 구상과 확장 아이디어는 [초기 프로젝트 개요](docs/archive/project-overview-original.md)에 보관했습니다. 해당 문서의 기술 스택·기능 목록은 현재 구현 상태를 뜻하지 않습니다.
 

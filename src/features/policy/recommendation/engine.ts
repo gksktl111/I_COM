@@ -3,6 +3,7 @@ import { evaluateEligibility } from "./eligibility.ts";
 import {
   calculatePolicyScore,
   comparePaths,
+  compareRank,
   enabledFeatures,
   rankPolicies,
 } from "./ranking.ts";
@@ -100,7 +101,11 @@ export function evaluateCards(catalog: Catalog, request: Request): Card[] {
       const subjects: Subject[] =
         path.subject === "HOUSEHOLD"
           ? [{ kind: "HOUSEHOLD", id: request.householdId }]
-          : request.selectedChildren.map((id) => ({ kind: "CHILD", id }));
+          : path.subject === "CHILD"
+            ? request.selectedChildren.map((id) => ({ kind: "CHILD", id }))
+            : (request.selectedSubjects ?? []).filter(
+                (subject) => subject.kind === path.subject,
+              );
       for (const subject of subjects) {
         const context: Context = {
           answers: request.answers,
@@ -151,7 +156,18 @@ export function evaluateCards(catalog: Catalog, request: Request): Card[] {
       .filter((p) => p.eligibility.value !== "INELIGIBLE")
       .sort(comparePaths);
     if (!candidates.length) continue;
-    const representative = candidates[0];
+    const first = candidates[0];
+    // Keep the selected subject and relevance rank. A known matching alternative
+    // for that same subject is more useful than an equally ranked incomplete path.
+    const representative =
+      candidates.find(
+        (candidate) =>
+          candidate.subject.kind === first.subject.kind &&
+          candidate.subject.id === first.subject.id &&
+          candidate.purpose === first.purpose &&
+          compareRank(candidate.rank, first.rank) === 0 &&
+          candidate.eligibility.value === "ELIGIBLE",
+      ) ?? first;
     const subjectKeys = [
       ...new Set(candidates.map((p) => JSON.stringify(p.subject))),
     ];
@@ -188,6 +204,7 @@ export function evaluateRecommendation(
   request.answers = activateAnswers(request, catalog.questions);
   if (
     !request.selectedChildren.length &&
+    ["education", "childcare", "care"].includes(request.category) &&
     selectUsablePolicies(catalog, request).some((p) =>
       p.paths.some((path) => path.subject === "CHILD"),
     )

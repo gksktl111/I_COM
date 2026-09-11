@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "recommendation-coverage-v1",
+  "signalPatterns": {
+    "AGE": "(?:만\\s*)?\\d+\\s*세|출생|생년",
+    "MONTHS_UNRESOLVED": "\\d+\\s*개월",
+    "INCOME_RECOGNIZED": "소득인정액",
+    "INCOME_INSURANCE": "건강보험료",
+    "INCOME_MEDIAN": "중위소득",
+    "INCOME": "소득|건강보험료|수급자|차상위",
+    "HOUSEHOLD": "가구|한부모|다문화|다자녀|신혼|부부",
+    "RESIDENCE": "거주|주민등록|주소|관내",
+    "SCHOOL": "재학|입학|학교|학년",
+    "EXCEPTION": "제외|중복|단,|다만|예외",
+    "APPLICATION": "신청일|공고일|기준일|신청기간"
+  },
+  "checkedAt": "2026-09-11T12:57:46.419Z",
+  "inventoryDigest": "1f6bb588e049457bd471564a936b1141dbd32d6ab2a089a7dcd893dd793cd397",
+  "catalogVersion": "e917a8745cb788b9564519d49b45a8d70a5cc3ad683bfc2bace1329beafad4df",
+  "summary": {
+    "activeCount": 2173,
+    "currentDraftCount": 24,
+    "changedDraftCount": 0,
+    "noDraftCount": 2149,
+    "unclassifiedCount": 161,
+    "multiCategoryCount": 1147,
+    "inactiveDraftIds": []
+  },
+  "fields": [
+    {
+      "category": "pregnancy",
+      "label": "임신·출산",
+      "candidateCount": 874,
+      "currentDraftCount": 2,
+      "sourceChangedCount": 0,
+      "pendingCount": 872
+    },
+    {
+      "category": "childcare",
+      "label": "양육·보육",
+      "candidateCount": 932,
+      "currentDraftCount": 2,
+      "sourceChangedCount": 0,
+      "pendingCount": 930
+    },
+    {
+      "category": "care",
+      "label": "돌봄",
+      "candidateCount": 122,
+      "currentDraftCount": 2,
+      "sourceChangedCount": 0,
+      "pendingCount": 120
+    },
+    {
+      "category": "health",
+      "label": "의료·건강",
+      "candidateCount": 821,
+      "currentDraftCount": 2,
+      "sourceChangedCount": 0,
+      "pendingCount": 819
+    },
+    {
+      "category": "education",
+      "label": "아동 교육",
+      "candidateCount": 344,
+      "currentDraftCount": 10,
+      "sourceChangedCount": 0,
+      "pendingCount": 334
+    },
+    {
+      "category": "housing",
+      "label": "주거·생활지원",
+      "candidateCount": 577,
+      "currentDraftCount": 2,
+      "sourceChangedCount": 0,
+      "pendingCount": 575
+    }
+  ],
+  "limitations": [
+    "분야는 문구 기반 후보이며 중복될 수 있습니다.",
+    "조건 신호는 검토할 원문 위치이며 자격 규칙·공개 승인이 아닙니다.",
+    "조회 시점의 고정 자료입니다. 공개 전 최신 원본을 다시 검증해야 합니다."
+  ]
+}

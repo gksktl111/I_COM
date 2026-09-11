@@ -13,11 +13,12 @@ async function main() {
       resume: { type: "string" },
       "call-budget": { type: "string" },
       "max-items": { type: "string" },
+      mode: { type: "string" },
     },
   });
   if (values.help) {
     console.log(
-      "policy:auto --provider gov24|central|local [--config JSON] [--resume UUID] [--call-budget 40] [--max-items N]\nPOLICY_SYNC_ENABLED=true 필요. 기본 범위는 해당 출처 전체이며 목록·진행·품질을 DB에 저장. 배포 예약은 별도 설정.",
+      "policy:auto --provider gov24|central|local [--mode new-only|refresh] [--config JSON] [--resume UUID] [--call-budget 40] [--max-items N]\n새 실행 기본값은 new-only: 저장된 정책은 상세 호출 없이 건너뜀. refresh는 기존 정책도 갱신. 재개 시 저장된 모드 유지. POLICY_SYNC_ENABLED=true 필요.",
     );
     return;
   }
@@ -41,7 +42,13 @@ async function main() {
   )
     throw new Error("invalid-run-id");
   const repository = createRepository();
-  let config = {
+  let config: {
+    filters: Record<string, string>;
+    perPage: number;
+    maxPages: number;
+    dailyLimit: number;
+    mode?: "new-only" | "refresh";
+  } = {
     filters: {} as Record<string, string>,
     perPage: 10,
     maxPages: 1000,
@@ -55,6 +62,15 @@ async function main() {
         { provider, runId: values.resume },
       )
     ).job.config;
+  if (values.mode !== undefined) {
+    if (values.mode !== "new-only" && values.mode !== "refresh")
+      throw new Error("invalid-automatic-mode");
+    // Legacy resumes omit mode in persisted config; preserve exact scope JSON.
+    if (values.resume && values.mode !== (config.mode ?? "refresh"))
+      throw new Error("resume-mode-changed-start-new-run");
+    if (!values.resume) config.mode = values.mode;
+  }
+  if (!values.resume) config.mode ??= "new-only";
   const keyName =
     provider === "GOV24"
       ? "GOV24_API_KEY"
@@ -69,6 +85,7 @@ async function main() {
     perPage: config.perPage,
     maxPages: config.maxPages,
     dailyLimit: config.dailyLimit,
+    mode: config.mode,
     repository,
     key: process.env[keyName] ?? "",
     resumeRunId: values.resume,

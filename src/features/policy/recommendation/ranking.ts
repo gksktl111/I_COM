@@ -28,7 +28,11 @@ export function calculateNeedScore(
     return emptyFeature("UNKNOWN");
   return {
     ...emptyFeature(
-      path.purposes.some((p) => needs.includes(p)) ? "MATCH" : "OTHER",
+      path.purposes.some((p) => needs.includes(p))
+        ? "MATCH"
+        : path.purposesComplete === false
+          ? "UNKNOWN"
+          : "OTHER",
     ),
     evidenceRefs: path.purposeEvidence,
     reasonCodes: ["POLICY_PURPOSE"],
@@ -54,16 +58,33 @@ export function enabledFeatures(
   for (const policy of policies)
     for (const path of policy.paths)
       for (const [name, feature] of Object.entries(path.features ?? {})) {
+        const subjects =
+          path.subject === "HOUSEHOLD"
+            ? [{ kind: "HOUSEHOLD" as const, id: request.householdId }]
+            : path.subject === "CHILD"
+              ? request.selectedChildren.map((id) => ({
+                  kind: "CHILD" as const,
+                  id,
+                }))
+              : (request.selectedSubjects ?? []).filter(
+                  (s) => s.kind === path.subject,
+                );
         const rules = policy.rules.filter((r) =>
           refs(feature.expression).includes(r.id),
         );
         if (
           rules.some((r) =>
-            active.some(
-              (a) =>
-                a.key.attribute === r.fact.attribute &&
-                a.key.basis === r.fact.basis &&
-                a.key.reference === r.fact.reference,
+            subjects.some((beneficiary) =>
+              active.some(
+                (a) =>
+                  factKey(a.key) ===
+                  factKey(
+                    bindFact(r.fact, {
+                      beneficiary,
+                      household: { kind: "HOUSEHOLD", id: request.householdId },
+                    }),
+                  ),
+              ),
             ),
           )
         )

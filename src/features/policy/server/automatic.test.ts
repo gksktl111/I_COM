@@ -67,7 +67,11 @@ function setup(total = 12) {
       if (action === "current") result = null;
       if (action === "snapshot")
         result = { snapshotId: `snapshot-${payload.externalId}` };
-      if (action === "apply" || action === "auto_exclude")
+      if (
+        action === "apply" ||
+        action === "auto_exclude" ||
+        action === "auto_skip_existing"
+      )
         success.add(String(payload.externalId));
       if (action === "finish") {
         assert.equal(complete, true);
@@ -416,7 +420,7 @@ test("existing related policies still refresh when the source becomes unrelated"
       return command<T>(action, payload);
     },
   };
-  const result = await runAutomatic(s.options);
+  const result = await runAutomatic({ ...s.options, mode: "refresh" });
   assert.equal(result.status, "SUCCESS");
   assert.ok(s.requests.some((url) => url.pathname.endsWith("serviceDetail")));
   assert.ok(s.events.some((e) => e.action === "apply"));
@@ -488,4 +492,77 @@ test("Bokjiro listing titles use servNm for early exclusion", async () => {
     s.events.some((e) => e.action === "fail" || e.action === "apply"),
     false,
   );
+});
+
+test("new-only skips stored policies without detail calls and resumes remaining new policies", async () => {
+  const s = setup(3);
+  const command = s.options.repository.command.bind(s.options.repository);
+  s.options.repository = {
+    async command<T>(action: string, payload: Record<string, unknown>) {
+      if (action === "current" && payload.externalId === "0")
+        return { snapshotId: "existing" } as T;
+      return command<T>(action, payload);
+    },
+  };
+  const first = await runAutomatic({
+    ...s.options,
+    mode: "new-only",
+    maxItems: 1,
+  });
+  assert.equal(first.reason, "ITEM_LIMIT");
+  assert.equal(first.calls, 1, "only list discovery consumes upstream budget");
+  assert.deepEqual(
+    s.events.find((e) => e.action === "auto_skip_existing")?.payload,
+    {
+      runId: "run-1",
+      generation: 1,
+      externalId: "0",
+      page: 1,
+      provider: "GOV24",
+    },
+  );
+  const second = await runAutomatic({
+    ...s.options,
+    mode: "new-only",
+    resumeRunId: first.runId,
+  });
+  assert.equal(second.status, "SUCCESS");
+  const details = s.requests.filter((u) =>
+    u.pathname.endsWith("serviceDetail"),
+  );
+  assert.deepEqual(
+    [...new Set(details.map((u) => u.searchParams.get("cond[서비스ID::EQ]")))],
+    ["1", "2"],
+  );
+  assert.equal(
+    s.events.filter((e) => e.action === "auto_skip_existing").length,
+    1,
+  );
+  assert.equal(s.events.filter((e) => e.action === "apply").length, 2);
+  assert.equal(
+    s.events.some(
+      (e) =>
+        ["snapshot", "apply", "auto_exclude"].includes(e.action) &&
+        e.payload.externalId === "0",
+    ),
+    false,
+  );
+});
+
+test("failure to persist an existing-policy skip stops before any detail request", async () => {
+  const s = setup(1);
+  s.control.storageFail = "auto_skip_existing";
+  const command = s.options.repository.command.bind(s.options.repository);
+  s.options.repository = {
+    async command<T>(action: string, payload: Record<string, unknown>) {
+      if (action === "current") return { snapshotId: "existing" } as T;
+      return command<T>(action, payload);
+    },
+  };
+  await assert.rejects(
+    runAutomatic({ ...s.options, mode: "new-only" }),
+    /automatic-storage-failed/,
+  );
+  assert.equal(s.requests.length, 1);
+  assert.equal(s.success.size, 0);
 });

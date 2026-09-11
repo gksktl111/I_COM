@@ -1,6 +1,9 @@
 export type Truth = "TRUE" | "FALSE" | "UNKNOWN";
 export type Eligibility = "ELIGIBLE" | "INELIGIBLE" | "UNKNOWN";
-export type Subject = { kind: "CHILD" | "HOUSEHOLD"; id: string };
+export type Subject = {
+  kind: "CHILD" | "HOUSEHOLD" | "PERSON" | "EVENT";
+  id: string;
+};
 export type FactKey = {
   attribute: string;
   subject: Subject;
@@ -84,10 +87,12 @@ export type Expression =
 export type RankedFeature = { expression: Expression; evidenceRefs: string[] };
 export type PolicyPath = {
   id: string;
-  subject: "CHILD" | "HOUSEHOLD";
+  subject: Subject["kind"];
   complete: boolean;
   expression: Expression;
   purposes: string[];
+  /** Absent preserves the legacy complete-purpose interpretation. */
+  purposesComplete?: boolean;
   purposeEvidence: string[];
   availability: "OPEN" | "UPCOMING" | "CLOSED" | "UNKNOWN";
   availabilityEvidence: string[];
@@ -138,6 +143,8 @@ export type Request = {
   revision: number;
   category: string;
   selectedChildren: string[];
+  /** Additional PERSON/EVENT beneficiaries; CHILD scope remains selectedChildren. */
+  selectedSubjects?: Subject[];
   subjectsComplete: boolean;
   householdId: string;
   needs: string[];

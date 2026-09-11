@@ -636,3 +636,17 @@ test("detail API validates ID and distinguishes missing records from safe upstre
   assert.equal(failure.status, 503);
   assert.deepEqual(await failure.json(), { error: "policy-data-unavailable" });
 });
+
+test("changed question context is a recoverable conflict with a safe uncached error", async () => {
+  const { RecommendationContextChangedError } = await import(
+    "./recommendation-service.ts"
+  );
+  const response = recommendationErrorResponse(
+    new RecommendationContextChangedError(),
+  );
+  assert.equal(response.status, 409);
+  assert.equal(response.headers.get("Cache-Control"), "private, no-store");
+  assert.deepEqual(await response.json(), {
+    error: "recommendation-context-changed",
+  });
+});

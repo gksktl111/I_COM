@@ -15,12 +15,12 @@ const valuesEqual = (a: unknown, b: unknown) =>
   JSON.stringify(a) === JSON.stringify(b);
 function contexts(request: Request) {
   const household: Subject = { kind: "HOUSEHOLD", id: request.householdId };
-  return request.selectedChildren.length
-    ? request.selectedChildren.map((id) => ({
-        beneficiary: { kind: "CHILD" as const, id },
-        household,
-      }))
-    : [{ beneficiary: household, household }];
+  const beneficiaries: Subject[] = [
+    ...request.selectedChildren.map((id) => ({ kind: "CHILD" as const, id })),
+    ...(request.selectedSubjects ?? []),
+    household,
+  ];
+  return beneficiaries.map((beneficiary) => ({ beneficiary, household }));
 }
 function answerAt(request: Request, key: FactKey): Answer[] {
   return request.answers.filter(

@@ -31,6 +31,12 @@ export const adminNavigation = [
     group: "운영 관리",
   },
   {
+    href: "/admin/recommendations",
+    label: "추천 준비",
+    icon: ClipboardCheck,
+    group: "운영 관리",
+  },
+  {
     href: "/admin/collection",
     label: "정책 수집",
     icon: Database,

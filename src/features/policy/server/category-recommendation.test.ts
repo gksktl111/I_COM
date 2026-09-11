@@ -143,7 +143,7 @@ test("broken paging fails safely and missing data is a 503", async () => {
   );
 });
 
-test("response is bounded while candidateCount covers catalog and residence never excludes candidates", async () => {
+test("Seoul residence excludes Busan policies before candidate count and top results", async () => {
   const run = createCategoryRecommendationService({
     loadPolicies: async () =>
       Array.from({ length: 25 }, (_, i) =>
@@ -162,10 +162,13 @@ test("response is bounded while candidateCount covers catalog and residence neve
       reference: "CURRENT",
     },
   });
-  assert.equal(result.candidateCount, 25);
-  assert.equal(result.policies.length, 20);
+  assert.equal(result.candidateCount, 1);
+  assert.equal(result.policies.length, 1);
   assert.equal(result.policies[0].policy.id, "24");
-  assert(result.policies.some((p) => p.policy.name.includes("부산")));
+  assert(!result.policies.some((p) => p.policy.name.includes("부산")));
+  const unrestricted = await run(request);
+  assert.equal(unrestricted.candidateCount, 25);
+  assert.equal(unrestricted.policies.length, 20);
 });
 
 test("every category ranks matching public content with its registered purpose", async () => {
@@ -183,5 +186,78 @@ test("every category ranks matching public content with its registered purpose",
     const result = await run({ ...request, category, needs: [need] });
     assert.equal(result.candidateCount, 1, category);
     assert(result.policies[0].score > 10, category);
+  }
+});
+
+test("all six fields filter local providers while retaining central policies and respecting district scope", async () => {
+  for (const [category, name] of [
+    ["pregnancy", "산모 출산 지원"],
+    ["childcare", "어린이집 보육료 지원"],
+    ["care", "아이 돌봄 지원"],
+    ["health", "아동 건강 검진 지원"],
+    ["education", "중학생 교복 지원"],
+    ["housing", "주거비 지원"],
+  ]) {
+    const run = createCategoryRecommendationService({
+      loadPolicies: async () => [
+        {
+          ...policy("busan", name),
+          provider_name: "부산광역시 기장군 교육청소년과",
+          target_text: "관내 주민",
+          summary: "서울시 학교도 가능",
+        },
+        { ...policy("seoul", name), provider_name: "서울시 복지정책과" },
+        {
+          ...policy("gangnam", name),
+          provider_name: "서울특별시 강남구 가족과",
+        },
+        {
+          ...policy("gwanak", name),
+          provider_name: "서울특별시 관악구 가족과",
+        },
+        {
+          ...policy("national", name),
+          provider_name: "보건복지부",
+          contact_text: "부산광역시 콜센터",
+        },
+      ],
+    });
+    const residence = {
+      region: "서울특별시",
+      district: "",
+      basis: "REGISTERED_RESIDENCE",
+      reference: "CURRENT",
+    };
+    const ids = (result: Awaited<ReturnType<typeof run>>) =>
+      result.policies.map((p) => p.policy.id).sort();
+    assert.deepEqual(
+      ids(await run({ ...request, category, needs: [], residence })),
+      ["gangnam", "gwanak", "national", "seoul"],
+      category,
+    );
+    assert.deepEqual(
+      ids(
+        await run({
+          ...request,
+          category,
+          needs: [],
+          residence: { ...residence, district: "강남구" },
+        }),
+      ),
+      ["gangnam", "national", "seoul"],
+      category,
+    );
+    assert.deepEqual(
+      ids(
+        await run({
+          ...request,
+          category,
+          needs: [],
+          residence: { ...residence, region: "부산광역시" },
+        }),
+      ),
+      ["busan", "national"],
+      category,
+    );
   }
 });

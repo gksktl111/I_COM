@@ -9,6 +9,9 @@ export type RecommendationCatalog = {
   catalog: Catalog;
   policies: PublicPolicy[];
   coverage: "READY" | "AWAITING_REVIEW";
+  /** Categories already switched to rules, including temporarily stale releases. */
+  reviewedCategories?: string[];
+  withheldByCategory?: Record<string, number>;
 };
 
 /** Trusted server configuration, never populated from requests or AI labels.

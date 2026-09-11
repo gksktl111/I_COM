@@ -39,6 +39,12 @@ test("real Bokjiro XML and PostgreSQL RPC preserve automatic cursors, quotas, sn
       "20260907181933_policy_ingestion",
       "20260907192856_policy_multiple_providers",
       "20260908053334_policy_automatic_quality",
+      "20260908073708_policy_relevance",
+      "20260908075211_policy_scope_exclusion",
+      "20260908080358_policy_catalog_disposition",
+      "20260908082550_policy_relevance_v2",
+      "20260908091150_policy_relevance_v3",
+      "20260909091358_policy_new_only_collection",
     ]) {
       await db.exec(
         await readFile(
@@ -166,6 +172,28 @@ test("real Bokjiro XML and PostgreSQL RPC preserve automatic cursors, quotas, sn
     assert.equal(await countSnapshots(), 2);
     const applied = await current();
 
+    const newOnlyBoundary = requests.length;
+    const newOnly = await runAutomatic({ ...options, mode: "new-only" });
+    assert.equal(newOnly.status, "SUCCESS");
+    assert.equal(
+      newOnly.calls,
+      3,
+      "existing policies require only the three list requests",
+    );
+    assert.equal(
+      requests.slice(newOnlyBoundary).some((u) => u.searchParams.has("servId")),
+      false,
+    );
+    assert.equal(await countSnapshots(), 2);
+    assert.deepEqual(await current(), applied);
+    const skipSummary = await db.query<{
+      summary: { success: number; skippedExisting: number };
+    }>("select summary from public.policy_sync_runs where id=$1", [
+      newOnly.runId,
+    ]);
+    assert.equal(skipSummary.rows[0].summary.success, 0);
+    assert.equal(skipSummary.rows[0].summary.skippedExisting, 2);
+
     const repeat = await runAutomatic(options);
     assert.equal(repeat.status, "SUCCESS");
     assert.equal(repeat.calls, 5);
@@ -256,6 +284,7 @@ test("real Bokjiro XML and PostgreSQL RPC preserve automatic cursors, quotas, sn
     assert.equal(
       requests.length,
       paused.calls +
+        newOnly.calls +
         resumed.calls +
         repeat.calls +
         quarantine.calls +

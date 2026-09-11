@@ -1,0 +1,139 @@
+{
+  "verifiedAt": "2026-09-09T09:17:05.998Z",
+  "environment": "policy-dev",
+  "phase": "temporary-limit-extension-before-new-only",
+  "policyCountBefore": 2527,
+  "policyCountAfter": 2665,
+  "runs": [
+    {
+      "id": "78f41e01-e944-459d-a025-d60ecd441b5a",
+      "calls": 784,
+      "config": {
+        "filters": {},
+        "perPage": 50,
+        "maxPages": 1000,
+        "dailyLimit": 100
+      },
+      "status": "PARTIAL",
+      "summary": {
+        "calls": 784,
+        "failed": 0,
+        "reason": "UPSTREAM_ERROR",
+        "status": "PAUSED",
+        "pending": 0,
+        "success": 733,
+        "excluded": 117
+      },
+      "trigger": "manual",
+      "provider": "BOKJIRO_LOCAL",
+      "next_page": 18,
+      "discovered": 850,
+      "started_at": "2026-09-09T08:49:19.548783+00:00",
+      "finished_at": "2026-09-09T09:07:13.73714+00:00",
+      "stop_reason": "UPSTREAM_ERROR",
+      "lease_active": false,
+      "expected_total": 4764,
+      "collection_mode": "automatic",
+      "discovery_complete": false
+    },
+    {
+      "id": "851043be-6342-4dff-b91b-f03424d9d266",
+      "calls": 105,
+      "config": {
+        "filters": {},
+        "perPage": 50,
+        "maxPages": 1000,
+        "dailyLimit": 100
+      },
+      "status": "PARTIAL",
+      "summary": {
+        "calls": 105,
+        "failed": 29,
+        "reason": "UPSTREAM_ERROR",
+        "status": "PAUSED",
+        "pending": 0,
+        "success": 94,
+        "excluded": 27
+      },
+      "trigger": "manual",
+      "provider": "BOKJIRO_CENTRAL",
+      "next_page": 4,
+      "discovered": 150,
+      "started_at": "2026-09-09T08:49:15.674939+00:00",
+      "finished_at": "2026-09-09T08:57:28.695667+00:00",
+      "stop_reason": "UPSTREAM_ERROR",
+      "lease_active": false,
+      "expected_total": 461,
+      "collection_mode": "automatic",
+      "discovery_complete": false
+    },
+    {
+      "id": "8ef95422-a4d3-4474-ba3e-9cbd186899e3",
+      "calls": 3899,
+      "config": {
+        "filters": {},
+        "perPage": 50,
+        "maxPages": 1000,
+        "dailyLimit": 100
+      },
+      "status": "PARTIAL",
+      "summary": {
+        "calls": 3899,
+        "failed": 0,
+        "reason": "CALL_BUDGET",
+        "status": "PAUSED",
+        "pending": 21,
+        "success": 866,
+        "excluded": 163
+      },
+      "trigger": "manual",
+      "provider": "GOV24",
+      "next_page": 22,
+      "discovered": 1050,
+      "started_at": "2026-09-09T08:49:10.416051+00:00",
+      "finished_at": "2026-09-09T09:12:49.319789+00:00",
+      "stop_reason": "CALL_BUDGET",
+      "lease_active": false,
+      "expected_total": 10955,
+      "collection_mode": "automatic",
+      "discovery_complete": false
+    }
+  ],
+  "dailyUsage": [
+    {
+      "day": "2026-09-09",
+      "provider": "BOKJIRO_LOCAL",
+      "reserved_calls": 785,
+      "configured_limit": 100
+    },
+    {
+      "day": "2026-09-09",
+      "provider": "BOKJIRO_CENTRAL",
+      "reserved_calls": 106,
+      "configured_limit": 100
+    },
+    {
+      "day": "2026-09-09",
+      "provider": "GOV24",
+      "reserved_calls": 3900,
+      "configured_limit": 100
+    }
+  ],
+  "allProcessesExited": true,
+  "allLimitsRestored": true,
+  "fullSourceCollectionComplete": false,
+  "sourceEvidence": [
+    {
+      "path": ".local/policy-sync/daily-20260909/after-extension.json",
+      "sha256": "25b33086db8498f19bee767fd8d58af26fa126a9c4ed818dcc000df72eedaeb8"
+    },
+    {
+      "path": ".local/policy-sync/daily-20260909/continue-journal.json",
+      "sha256": "42326f71b2959f06e8f69e6c83f416b1e5eba24c5e7820b8a3b12ce16c932344"
+    },
+    {
+      "path": ".local/policy-sync/daily-20260909/local-recovery-journal.json",
+      "sha256": "fd1f017a3105f75baca22895e5dea1b4638eb28881c8f51aa75608b93e53ba18"
+    }
+  ]
+}

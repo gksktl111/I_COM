@@ -1,3 +1,4 @@
+import { matchesProvisionalResidence } from "./provisional-residence.ts";
 import {
   activeBankAnswers,
   getBankQuestions,
@@ -8,11 +9,17 @@ import {
 import { RECOMMENDATION_FIELDS } from "../recommendation/intake.ts";
 import { matchesInterests, type PublicPolicy } from "../public/types.ts";
 import { RecommendationRequestError } from "./recommendation-service.ts";
+import type { RuleAnswer } from "./guided-recommendation.ts";
+import { classifyProvisionalScope } from "./provisional-classification.ts";
 export type CategoryBankRequest = BankContext & {
   flow: "CATEGORY_BANK_V1";
   revision: number;
   bankAnswers: BankAnswer[];
-  phase: "RESULTS";
+  phase: "QUESTIONING" | "RESULTS";
+  ruleAnswers?: RuleAnswer[];
+  questionCount?: number;
+  catalogVersion?: string;
+  contextKey?: string;
 };
 export type CategoryBankResponse = {
   flow: "CATEGORY_BANK_V1";
@@ -22,6 +29,7 @@ export type CategoryBankResponse = {
     score: number;
     reasons: string[];
     tags: string[];
+    reviewStatus?: "REVIEWED" | "CHECK_REQUIRED";
   }[];
   candidateCount: number;
 };
@@ -54,11 +62,15 @@ export function parseCategoryBankRequest(
     "residence",
     "bankAnswers",
     "phase",
+    "ruleAnswers",
+    "questionCount",
+    "catalogVersion",
+    "contextKey",
   ]);
   const field = RECOMMENDATION_FIELDS.find((f) => f.id === r.category);
   if (
     r.flow !== "CATEGORY_BANK_V1" ||
-    r.phase !== "RESULTS" ||
+    !["QUESTIONING", "RESULTS"].includes(r.phase as string) ||
     !Number.isSafeInteger(r.revision) ||
     (r.revision as number) < 0 ||
     !field ||
@@ -72,6 +84,46 @@ export function parseCategoryBankRequest(
     r.bankAnswers.length > 300
   )
     invalid();
+  if (
+    (r.questionCount !== undefined &&
+      (!Number.isInteger(r.questionCount) ||
+        (r.questionCount as number) < 0 ||
+        (r.questionCount as number) > 5)) ||
+    (r.catalogVersion !== undefined && !text(r.catalogVersion)) ||
+    (r.contextKey !== undefined &&
+      (typeof r.contextKey !== "string" ||
+        !/^[a-f0-9]{64}$/.test(r.contextKey)))
+  )
+    invalid();
+  if (r.ruleAnswers !== undefined) {
+    if (!Array.isArray(r.ruleAnswers) || r.ruleAnswers.length > 300) invalid();
+    const seen = new Set<string>();
+    for (const raw of r.ruleAnswers) {
+      const a = object(raw, [
+        "questionId",
+        "version",
+        "subject",
+        "state",
+        "value",
+      ]);
+      const s = object(a.subject, ["kind", "id"]);
+      if (
+        !text(a.questionId) ||
+        !text(a.version) ||
+        !text(s.id) ||
+        !["CHILD", "HOUSEHOLD", "PERSON", "EVENT"].includes(s.kind as string) ||
+        !["PROVIDED", "DONT_KNOW", "SKIPPED"].includes(a.state as string) ||
+        (a.state === "PROVIDED"
+          ? typeof a.value !== "string" ||
+            !/^(0|[1-9][0-9]{0,3})$/.test(a.value)
+          : "value" in a)
+      )
+        invalid();
+      const key = JSON.stringify([a.questionId, s.kind, s.id]);
+      if (seen.has(key)) invalid();
+      seen.add(key);
+    }
+  }
   const ids = new Set<string>();
   for (const inputChild of r.childProfiles) {
     const child = object(inputChild, ["id", "sex", "birthYear"]);
@@ -223,24 +275,44 @@ const detailTerms: Record<string, Record<string, string[]>> = {
 };
 export function createCategoryRecommendationService({
   loadPolicies,
+  classifyScope = classifyProvisionalScope,
+  filterResidence = true,
 }: {
   loadPolicies: () => Promise<PublicPolicy[]>;
+  /** Only archived comparison tools disable geographic filtering. Never read from requests. */
+  filterResidence?: boolean;
+  /** Inject only on the server; comparison tools can preserve the old baseline. */
+  classifyScope?: (
+    policy: PublicPolicy,
+    category: string,
+  ) => boolean | undefined;
 }) {
-  return async (input: unknown): Promise<CategoryBankResponse> => {
+  return async (
+    input: unknown,
+    options: { excludePolicyIds?: ReadonlySet<string> } = {},
+  ): Promise<CategoryBankResponse> => {
     const request = parseCategoryBankRequest(input);
     const field = RECOMMENDATION_FIELDS.find((f) => f.id === request.category)!;
     const all = await loadPolicies();
-    const candidates = all.filter((p) =>
-      matchesInterests(
-        {
-          ...p,
-          summary: [p.summary, p.purpose_text, p.criteria_text]
-            .filter(Boolean)
-            .join(" "),
-        },
-        [field.label],
-      ),
-    );
+    const candidates = all
+      .filter((p) => !options.excludePolicyIds?.has(p.id))
+      .filter(
+        (p) =>
+          !filterResidence || matchesProvisionalResidence(p, request.residence),
+      )
+      .filter(
+        (p) =>
+          classifyScope(p, request.category) ??
+          matchesInterests(
+            {
+              ...p,
+              summary: [p.summary, p.purpose_text, p.criteria_text]
+                .filter(Boolean)
+                .join(" "),
+            },
+            [field.label],
+          ),
+      );
     const questions = getBankQuestions(request, request.bankAnswers);
     const policies = candidates
       .map((policy) => {
