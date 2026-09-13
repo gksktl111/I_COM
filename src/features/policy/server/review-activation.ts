@@ -1,11 +1,13 @@
 import { createHash } from "node:crypto";
 import { hashJson } from "./normalize.ts";
+import { RECOMMENDATION_FIELDS } from "../recommendation/intake.ts";
 import { POLICY_RELEVANCE_CATEGORIES } from "./relevance.ts";
 
 export const REVIEW_RELEVANCE_VERSION = "policy-relevance-review-1";
 export const REVIEW_DISPOSITION_VERSION = "policy-relevance-review-2";
 export const REVIEW_CORRECTION_VERSION = "policy-relevance-review-3";
 export const REVIEW_REASSESSMENT_VERSION = "policy-relevance-review-4";
+export const REVIEW_TAG_VERSION = "policy-relevance-review-5";
 export type OfficialReviewEvidence = {
   originalUrl: string;
   finalUrl: string;
@@ -37,6 +39,7 @@ export type ScopeReviewDecision = {
   categories: string[];
   evidence: { field: string; excerpt: string; rule: string }[];
   reason: string;
+  conditionChecks?: string[];
   officialEvidence?: OfficialReviewEvidence[];
   sourceConsistency?: "CONFIRMED" | "CONFLICT" | "UNRESOLVED";
 };
@@ -61,11 +64,12 @@ function validEvidenceUrl(value: unknown): boolean {
 export function prepareReviewActivation(
   inventory: { queriedAt: string; rows: ReviewSourceRow[] },
   decisions: ReviewDecisions,
-  version: typeof REVIEW_RELEVANCE_VERSION | typeof REVIEW_DISPOSITION_VERSION | typeof REVIEW_CORRECTION_VERSION | typeof REVIEW_REASSESSMENT_VERSION = REVIEW_RELEVANCE_VERSION,
+  version: typeof REVIEW_RELEVANCE_VERSION | typeof REVIEW_DISPOSITION_VERSION | typeof REVIEW_CORRECTION_VERSION | typeof REVIEW_REASSESSMENT_VERSION | typeof REVIEW_TAG_VERSION = REVIEW_RELEVANCE_VERSION,
   recordKept = false,
 ) {
+  const tagging = version === REVIEW_TAG_VERSION;
   const reassessing = version === REVIEW_REASSESSMENT_VERSION;
-  if (![REVIEW_RELEVANCE_VERSION, REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION, REVIEW_REASSESSMENT_VERSION].includes(version)) fail("version");
+  if (![REVIEW_RELEVANCE_VERSION, REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION, REVIEW_REASSESSMENT_VERSION, REVIEW_TAG_VERSION].includes(version)) fail("version");
   if ((recordKept && version === REVIEW_RELEVANCE_VERSION) || (version === REVIEW_CORRECTION_VERSION && !recordKept)) fail("version");
   if (!Number.isFinite(Date.parse(inventory.queriedAt)) ||
       decisions.kind !== "CATALOG_REVIEW_DECISIONS" ||
@@ -82,6 +86,9 @@ export function prepareReviewActivation(
     if (reassessing && (!row.relevance || typeof row.relevance !== "object" ||
         ![REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION].includes((row.relevance as Record<string, unknown>).version as string) ||
         (row.relevance as Record<string, unknown>).status !== "REVIEW")) fail("reassessment-source");
+    if (tagging && (!row.relevance || typeof row.relevance !== "object" || Array.isArray(row.relevance) ||
+        !["policy-relevance-1", "policy-relevance-2", "policy-relevance-3", REVIEW_RELEVANCE_VERSION, REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION, REVIEW_REASSESSMENT_VERSION].includes((row.relevance as Record<string, unknown>).version as string) ||
+        (row.relevance as Record<string, unknown>).status !== "REVIEW")) fail("tag-source");
     if (version === REVIEW_CORRECTION_VERSION &&
         (!row.relevance || typeof row.relevance !== "object" ||
           (row.relevance as Record<string, unknown>).version !== REVIEW_DISPOSITION_VERSION)) fail("correction-source");
@@ -94,6 +101,8 @@ export function prepareReviewActivation(
     seen.add(decision.sourceId);
     if (decision.name !== row.normalized.display.name || !text(decision.reason) || /^UNREAD\b/i.test(decision.reason) ||
         !Array.isArray(decision.categories) || !Array.isArray(decision.evidence)) fail("decision-shape");
+    if (tagging && (!Array.isArray(decision.conditionChecks) ||
+        decision.conditionChecks.some((check) => !text(check)))) fail("condition-checks");
     if (reassessing) {
       if (!["CONFIRMED", "CONFLICT", "UNRESOLVED"].includes(decision.sourceConsistency ?? "") ||
           (decision.decision === "ACTIVATE" && decision.sourceConsistency !== "CONFIRMED")) fail("source-consistency");
@@ -112,20 +121,21 @@ export function prepareReviewActivation(
     const keeping = decision.decision === "KEEP_REVIEW";
     if (version === REVIEW_CORRECTION_VERSION && !keeping) fail("correction-must-remain-pending");
     if (keeping) {
-      if (decision.categories.length || (!reassessing && decision.evidence.length)) fail("keep-review-payload");
+      if (decision.categories.length || (!reassessing && !tagging && decision.evidence.length)) fail("keep-review-payload");
       kept.push({ sourceId: row.source_id, name: decision.name, reason: decision.reason });
-      if (!recordKept && !reassessing) return [];
+      if (!recordKept && !reassessing && !tagging) return [];
     }
     const excluding = decision.decision === "EXCLUDE";
     if (!keeping && ((decision.decision !== "ACTIVATE" && !excluding) ||
         (excluding && ((version !== REVIEW_DISPOSITION_VERSION && !reassessing) || decision.categories.length !== 0)) ||
         (!excluding && !decision.categories.length) ||
         new Set(decision.categories).size !== decision.categories.length ||
-        decision.categories.some((category) => !Object.values(POLICY_RELEVANCE_CATEGORIES).some((label) => label === category)) ||
+        decision.categories.some((category) => !(tagging ? RECOMMENDATION_FIELDS.map((field) => field.label) : Object.values(POLICY_RELEVANCE_CATEGORIES)).some((label) => label === category)) ||
         (!reassessing && !decision.evidence.length))) fail("activation-decision");
     for (const evidence of decision.evidence) {
+      if (!evidence || typeof evidence !== "object") fail("evidence");
       const original = row.normalized.display[evidence.field];
-      const fields = version === REVIEW_DISPOSITION_VERSION || reassessing
+      const fields = version === REVIEW_DISPOSITION_VERSION || reassessing || tagging
         ? ["name", "target_text", "benefit_text", "criteria_text", "summary", "purpose_text"]
         : ["name", "target_text", "benefit_text"];
       if (!fields.includes(evidence.field) ||
@@ -134,6 +144,8 @@ export function prepareReviewActivation(
     }
     if (!keeping && version === REVIEW_DISPOSITION_VERSION && !decision.evidence.some((e) =>
       ["target_text", "benefit_text", "criteria_text"].includes(e.field))) fail("direct-evidence-required");
+    if (tagging && !keeping && !["target_text", "benefit_text"].every((field) =>
+      decision.evidence.some((e) => e.field === field))) fail("tag-direct-evidence-required");
     return [{
       name: decision.name,
       sourceDigest: hashJson(row.normalized),
@@ -150,6 +162,10 @@ export function prepareReviewActivation(
         previousRelevance: structuredClone(row.relevance),
         relevance: {
           version,
+          ...(tagging ? {
+            previousRelevance: structuredClone(row.relevance),
+            conditionChecks: [...decision.conditionChecks!],
+          } : {}),
           ...(reassessing ? {
             previousRelevance: structuredClone(row.relevance),
             officialEvidence: structuredClone(decision.officialEvidence!),

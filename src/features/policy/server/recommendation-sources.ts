@@ -57,7 +57,7 @@ export async function readRecommendationSourcePage({
     const limit = id ? 1 : 1000;
     const url = new URL("/rest/v1/policy_active_candidates", base);
     url.search = new URLSearchParams({
-      select: "source_id,applied_snapshot_id,normalized,updated_at",
+      select: "source_id,applied_snapshot_id,normalized,updated_at,relevance",
       order: "source_id.asc",
       limit: String(limit),
       offset: String(offset),

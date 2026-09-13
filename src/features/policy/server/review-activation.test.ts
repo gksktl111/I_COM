@@ -155,3 +155,79 @@ test("v4 rejects missing or invented official evidence, inconsistent activation 
   inventory.rows[0].relevance.version = "policy-relevance-3";
   assert.throws(() => prepareReviewActivation(inventory, decisions, "policy-relevance-review-4"), /reassessment-source/);
 });
+
+function tagFixture() {
+  const value = fixture();
+  value.inventory.rows[0].relevance.version = "policy-relevance-review-4";
+  Object.assign(value.decisions.items[0], {
+    categories: ["주거·생활지원"],
+    conditionChecks: ["소득 기준과 신청기간은 추가 확인 필요"],
+    sourceConsistency: "UNRESOLVED",
+  });
+  value.decisions.items[0].evidence.push({ field: "benefit_text", excerpt: "급식비 지원", rule: "식사·급식의 생활지원 혜택 확인" });
+  return value;
+}
+
+test("v5 activates actual six-tag service scope while preserving unresolved eligibility and prior review", () => {
+  const { inventory, decisions } = tagFixture();
+  const plan = prepareReviewActivation(inventory, decisions, "policy-relevance-review-5");
+  assert.equal(plan.activateCount, 1);
+  assert.equal(plan.items[0].payload.relevance.status, "RELATED");
+  assert.deepEqual(plan.items[0].payload.relevance.conditionChecks, decisions.items[0].conditionChecks);
+  assert.deepEqual(plan.items[0].payload.relevance.previousRelevance, inventory.rows[0].relevance);
+  assert.deepEqual(plan.items[0].payload.expectedNormalized, inventory.rows[0].normalized);
+  assert.match(plan.items[0].payload.relevance.reason, /신청 자격·조건 추천 공개 승인은 아닙니다/);
+  decisions.items[0].conditionChecks!.push("지원 금액 확인 필요");
+  inventory.rows[0].relevance.version = "policy-relevance-review-3";
+  assert.equal(plan.items[0].payload.relevance.conditionChecks!.length, 1);
+  assert.equal((plan.items[0].payload.relevance.previousRelevance as { version: string }).version, "policy-relevance-review-4");
+  assert.notEqual(plan.digest, prepareReviewActivation(inventory, decisions, "policy-relevance-review-5").digest);
+  for (const version of ["policy-relevance-1", "policy-relevance-2", "policy-relevance-3", "policy-relevance-review-1", "policy-relevance-review-2", "policy-relevance-review-3", "policy-relevance-review-4"]) {
+    inventory.rows[0].relevance.version = version;
+    assert.equal(prepareReviewActivation(inventory, decisions, "policy-relevance-review-5").activateCount, 1);
+  }
+});
+
+test("v5 requires actual target and benefit quotes, explicit condition checks and six UI labels", () => {
+  const { inventory, decisions } = tagFixture();
+  for (const modify of [
+    (d: ReviewDecisions) => { d.items[0].evidence = [{ field: "name", excerpt: "학생 급식 지원", rule: "제목만 확인" }]; },
+    (d: ReviewDecisions) => { d.items[0].evidence = d.items[0].evidence.filter((e) => e.field !== "target_text"); },
+    (d: ReviewDecisions) => { d.items[0].evidence = d.items[0].evidence.filter((e) => e.field !== "benefit_text"); },
+    (d: ReviewDecisions) => { d.items[0].evidence[1].excerpt = "없는 혜택"; },
+    (d: ReviewDecisions) => { delete d.items[0].conditionChecks; },
+    (d: ReviewDecisions) => { d.items[0].conditionChecks = [""]; },
+    (d: ReviewDecisions) => { d.items[0].categories = ["가족 지원"]; },
+    (d: ReviewDecisions) => { d.items[0].categories = ["아동 돌봄"]; },
+    (d: ReviewDecisions) => { d.items[0].categories = ["housing"]; },
+    (d: ReviewDecisions) => { d.items[0].decision = "EXCLUDE"; d.items[0].categories = []; },
+  ]) {
+    const changed = structuredClone(decisions);
+    modify(changed);
+    assert.throws(() => prepareReviewActivation(inventory, changed, "policy-relevance-review-5"), /invalid-review-plan:/);
+  }
+  decisions.items[0].conditionChecks = [];
+  assert.equal(prepareReviewActivation(inventory, decisions, "policy-relevance-review-5").activateCount, 1);
+  assert.throws(() => prepareReviewActivation(inventory, { ...decisions, inputQueriedAt: "2026-09-10T00:00:00Z" }, "policy-relevance-review-5"), /inventory/);
+  inventory.rows[0].normalized.display.benefit_text = "변경된 지원";
+  assert.throws(() => prepareReviewActivation(inventory, decisions, "policy-relevance-review-5"), /evidence/);
+});
+
+test("v5 records pending scope with evidence and rejects nonpending or unsupported predecessors", () => {
+  const { inventory, decisions } = tagFixture();
+  Object.assign(decisions.items[0], { decision: "KEEP_REVIEW", categories: [] });
+  const plan = prepareReviewActivation(inventory, decisions, "policy-relevance-review-5");
+  assert.equal(plan.recordedReviewCount, 1);
+  assert.equal(plan.activateCount, 0);
+  assert.equal(plan.items[0].payload.relevance.evidence.length, 2);
+  decisions.items[0].categories = ["돌봄"];
+  assert.throws(() => prepareReviewActivation(inventory, decisions, "policy-relevance-review-5"), /keep-review-payload/);
+  decisions.items[0].categories = [];
+  inventory.rows[0].relevance.status = "RELATED";
+  assert.throws(() => prepareReviewActivation(inventory, decisions, "policy-relevance-review-5"), /tag-source/);
+  inventory.rows[0].relevance.status = "REVIEW";
+  inventory.rows[0].relevance.version = "unsupported";
+  assert.throws(() => prepareReviewActivation(inventory, decisions, "policy-relevance-review-5"), /tag-source/);
+  inventory.rows[0].catalog_status = "ACTIVE";
+  assert.throws(() => prepareReviewActivation(inventory, decisions, "policy-relevance-review-5"), /source/);
+});

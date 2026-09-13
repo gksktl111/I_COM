@@ -134,3 +134,45 @@ test("classification text changes, renamed source identities and other categorie
     );
   }
 });
+
+test("projected v5 scope drives provisional recommendations without keywords and excludes other fields", async () => {
+  const policy = projectPublicPolicy({
+    source_id: "00000000-0000-0000-0000-000000000005",
+    normalized: { display: { name: "보조기기 제공", target_text: "지역 주민", benefit_text: "보조기기 대여 및 수리" } },
+    relevance: { version: "policy-relevance-review-5", status: "RELATED", categories: ["의료·건강"], conditionChecks: ["세부 소득 조건 확인 필요"] },
+  })!;
+  const request = { flow: "CATEGORY_BANK_V1", revision: 0, category: "health", childProfiles: [], needs: [], bankAnswers: [], phase: "RESULTS" };
+  const recommend = createCategoryRecommendationService({ loadPolicies: async () => [policy] });
+  const result = await recommend(request);
+  assert.deepEqual(result.policies.map((item) => item.policy.id), [policy.id]);
+  assert(result.policies[0].tags.includes("자격·소득·신청기간 추가 확인 필요"));
+  for (const category of ["pregnancy", "childcare", "care", "education", "housing"]) {
+    assert.equal(classifyProvisionalScope(policy, category), false);
+    assert.equal((await recommend({ ...request, category })).policies.length, 0);
+  }
+  assert.equal((await createCategoryRecommendationService({ loadPolicies: async () => [policy], classifyScope: () => undefined })(request)).policies.length, 0);
+  for (const field of ["id", "name", "summary", "provider_name", "purpose_text", "target_text", "criteria_text", "benefit_text", "source_url"] as const) {
+    const changed = { ...policy, [field]: "원문 변경" };
+    assert.equal(classifyProvisionalScope(changed, "health"), undefined, field);
+  }
+  assert.equal(classifyProvisionalScope(policy, "family"), undefined);
+});
+
+test("v5 scope overrides archived corrections only while its source fingerprint remains current", () => {
+  const original = policy("E03");
+  const tagged = projectPublicPolicy({
+    source_id: original.id,
+    normalized: { display: original },
+    relevance: { version: "policy-relevance-review-5", status: "RELATED", categories: ["주거·생활지원"] },
+  })!;
+  assert.equal(classifyProvisionalScope(original, "education"), true);
+  assert.equal(classifyProvisionalScope(tagged, "education"), false);
+  assert.equal(classifyProvisionalScope(tagged, "housing"), true);
+  assert.equal(classifyProvisionalScope({ ...tagged, benefit_text: "수정된 지원내용" }, "housing"), undefined);
+  const older = projectPublicPolicy({
+    source_id: original.id, normalized: { display: original },
+    relevance: { version: "policy-relevance-review-4", status: "RELATED", categories: ["아동 교육"] },
+  })!;
+  assert.equal(older.reviewedScope, undefined);
+  assert.equal(classifyProvisionalScope(older, "education"), true);
+});

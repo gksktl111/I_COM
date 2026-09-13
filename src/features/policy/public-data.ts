@@ -1,4 +1,6 @@
 import "server-only";
+import { RECOMMENDATION_FIELDS } from "./recommendation/intake.ts";
+import { provisionalClassificationFingerprint } from "./server/provisional-classification.ts";
 import { safePolicyUrl, type PublicPolicy } from "./public/types.ts";
 
 const fields = [
@@ -29,7 +31,7 @@ export function projectPublicPolicy(input: unknown): PublicPolicy | null {
     !values.name.trim()
   )
     return null;
-  return {
+  const policy: PublicPolicy = {
     id: row.source_id,
     name: values.name,
     ...Object.fromEntries(
@@ -42,6 +44,22 @@ export function projectPublicPolicy(input: unknown): PublicPolicy | null {
     application_url: safePolicyUrl(values.application_url),
     updated_at: typeof row.updated_at === "string" ? row.updated_at : null,
   } as PublicPolicy;
+  const relevance = row.relevance;
+  if (relevance && typeof relevance === "object" && !Array.isArray(relevance)) {
+    const review = relevance as Record<string, unknown>;
+    const categories = review.categories;
+    if (review.version === "policy-relevance-review-5" && review.status === "RELATED" &&
+        Array.isArray(categories) && categories.length > 0 &&
+        new Set(categories).size === categories.length &&
+        categories.every((label) => RECOMMENDATION_FIELDS.some((field) => field.label === label))) {
+      // 공개 탐색용 분야만 전달하고 검수 이력과 미확인 자격 조건은 서버에 남긴다.
+      policy.reviewedScope = {
+        categories: categories.map((label) => RECOMMENDATION_FIELDS.find((field) => field.label === label)!.id),
+        fingerprint: provisionalClassificationFingerprint(policy),
+      };
+    }
+  }
+  return policy;
 }
 
 export async function readPublicPolicies({
@@ -76,7 +94,7 @@ export async function readPublicPolicies({
     throw new Error("policy-data-unavailable");
   const url = new URL("/rest/v1/policy_active_candidates", base);
   url.search = new URLSearchParams({
-    select: "source_id,normalized,updated_at",
+    select: "source_id,normalized,updated_at,relevance",
     order: "source_id.asc",
     limit: id ? "1" : "1000",
     offset: String(offset),

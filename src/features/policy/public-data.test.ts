@@ -27,7 +27,7 @@ const hooks = registerHooks({
     return next(specifier, context);
   },
 });
-const { readPublicPolicies } = await import("./public-data.ts");
+const { readPublicPolicies, projectPublicPolicy } = await import("./public-data.ts");
 hooks.deregister();
 
 test("public catalogue reads only ACTIVE candidates and projects public display fields", async (t) => {
@@ -69,7 +69,7 @@ test("public catalogue reads only ACTIVE candidates and projects public display 
       assert.equal(url.pathname, "/rest/v1/policy_active_candidates");
       assert.equal(
         url.searchParams.get("select"),
-        "source_id,normalized,updated_at",
+        "source_id,normalized,updated_at,relevance",
       );
       assert.equal(init?.redirect, "error");
       assert.equal(init?.cache, "no-store");
@@ -230,4 +230,29 @@ test("education can be selected with child questions and discovers learning supp
       false,
     );
   }
+});
+
+
+test("v5 projection exposes only validated six-field scope without private review or eligibility data", () => {
+  const row = {
+    source_id: "00000000-0000-0000-0000-000000000001",
+    normalized: { display: { name: "통합 서비스", target_text: "지역 주민", benefit_text: "보조기기 제공" } },
+    relevance: {
+      version: "policy-relevance-review-5", status: "RELATED", categories: ["의료·건강", "주거·생활지원"],
+      previousRelevance: { reason: "private-history" }, conditionChecks: ["private-condition"],
+      evidence: [{ excerpt: "private-evidence" }],
+    },
+  };
+  const projected = projectPublicPolicy(row)!;
+  assert.deepEqual(projected.reviewedScope?.categories, ["health", "housing"]);
+  assert.doesNotMatch(JSON.stringify(projected), /private-|previousRelevance|conditionChecks|evidence/);
+  for (const relevance of [
+    { ...row.relevance, version: "policy-relevance-review-4" },
+    { ...row.relevance, status: "REVIEW" },
+    { ...row.relevance, categories: [] },
+    { ...row.relevance, categories: ["가족 지원"] },
+    { ...row.relevance, categories: ["의료·건강", "의료·건강"] },
+    { ...row.relevance, categories: ["health"] },
+    { ...row.relevance, categories: [null] },
+  ]) assert.equal(projectPublicPolicy({ ...row, relevance })!.reviewedScope, undefined);
 });

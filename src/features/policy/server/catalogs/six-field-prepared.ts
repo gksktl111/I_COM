@@ -72,7 +72,8 @@ export function prepareSixFieldCatalog(entries: FieldEntry[] = fieldEntries) {
         evidenceDocuments,
         fields: Object.fromEntries(
           Object.entries(policy).filter(
-            ([, value]) => typeof value === "string" || value === null,
+            (entry): entry is [string, string | null] =>
+              typeof entry[1] === "string" || entry[1] === null,
           ),
         ),
       }),

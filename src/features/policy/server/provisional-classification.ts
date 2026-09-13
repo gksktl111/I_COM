@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { RECOMMENDATION_FIELDS } from "../recommendation/intake.ts";
 import type { PublicPolicy } from "../public/types.ts";
 import officialScope from "../../../../docs/fixtures/policy-recommendation/official-scope-link-20260913.json" with { type: "json" };
 
@@ -64,6 +65,14 @@ export function classifyProvisionalScope(
   policy: PublicPolicy,
   category: string,
 ): boolean | undefined {
+  const reviewed = policy.reviewedScope;
+  if (reviewed && RECOMMENDATION_FIELDS.some((field) => field.id === category) &&
+      Array.isArray(reviewed.categories) && reviewed.categories.length > 0 &&
+      reviewed.categories.every((key) => RECOMMENDATION_FIELDS.some((field) => field.id === key)) &&
+      reviewed.fingerprint === provisionalClassificationFingerprint(policy)) {
+    // 분야 포함·제외만 적용하며 신청 자격이나 조건 검수 상태는 바꾸지 않는다.
+    return reviewed.categories.includes(category);
+  }
   const correction = corrections.find(
     (c) => c.id === policy.id && c.category === category,
   );

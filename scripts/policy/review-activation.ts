@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve, join } from "node:path";
 import { parseArgs } from "node:util";
 import { hashJson } from "../../src/features/policy/server/normalize.ts";
-import { prepareReviewActivation, REVIEW_RELEVANCE_VERSION, REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION, REVIEW_REASSESSMENT_VERSION } from "../../src/features/policy/server/review-activation.ts";
+import { prepareReviewActivation, REVIEW_RELEVANCE_VERSION, REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION, REVIEW_REASSESSMENT_VERSION, REVIEW_TAG_VERSION } from "../../src/features/policy/server/review-activation.ts";
 import { createRepository } from "../../src/features/policy/server/repository.ts";
 
 async function main() {
@@ -15,7 +15,7 @@ async function main() {
     "record-kept": { type: "boolean", default: false },
   } });
   if (!values.input || !values.decisions) throw new Error("input-and-decisions-required");
-  if (values["review-version"] !== REVIEW_RELEVANCE_VERSION && values["review-version"] !== REVIEW_DISPOSITION_VERSION && values["review-version"] !== REVIEW_CORRECTION_VERSION && values["review-version"] !== REVIEW_REASSESSMENT_VERSION)
+  if (values["review-version"] !== REVIEW_RELEVANCE_VERSION && values["review-version"] !== REVIEW_DISPOSITION_VERSION && values["review-version"] !== REVIEW_CORRECTION_VERSION && values["review-version"] !== REVIEW_REASSESSMENT_VERSION && values["review-version"] !== REVIEW_TAG_VERSION)
     throw new Error("invalid-review-version");
   const plan = prepareReviewActivation(
     JSON.parse(await readFile(resolve(values.input), "utf8")),

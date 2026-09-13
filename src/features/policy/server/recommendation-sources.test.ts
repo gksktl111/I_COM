@@ -72,7 +72,7 @@ test("source read binds normalized-only changes while projecting public display 
       assert.equal(url.pathname, "/rest/v1/policy_active_candidates");
       assert.equal(
         url.searchParams.get("select"),
-        "source_id,applied_snapshot_id,normalized,updated_at",
+        "source_id,applied_snapshot_id,normalized,updated_at,relevance",
       );
       assert.equal(
         new Headers(init?.headers).get("apikey"),

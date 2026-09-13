@@ -2,9 +2,8 @@ import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import { PolicyDetailDialog } from "@/features/admin/components/PolicyDetailDialog";
 import { Archive, ClipboardCheck, Files, Layers } from "lucide-react";
-import { POLICY_RELEVANCE_CATEGORIES } from "@/features/policy/server/relevance";
 import { requireAdmin } from "@/features/admin/server/auth";
-import { listPolicies, relevanceOverview } from "@/features/admin/server/data";
+import { listPolicies, relevanceOverview, POLICY_CATEGORY_FILTERS } from "@/features/admin/server/data";
 import { qualityRows } from "@/features/admin/server/policy";
 import {
   PageHeading,
@@ -66,7 +65,7 @@ export default async function PoliciesPage({
     ? params.relevanceStatus
     : undefined;
   const category =
-    Object.values(POLICY_RELEVANCE_CATEGORIES).find(
+    POLICY_CATEGORY_FILTERS.find(
       (label) => label === params.category,
     ) ?? "";
   const status = ["PASS", "REVIEW", "ERROR", "NOT_EVALUATED"].includes(
@@ -245,7 +244,7 @@ export default async function PoliciesPage({
                 defaultValue={category}
               >
                 <option value="">모든 관련 분야</option>
-                {Object.values(POLICY_RELEVANCE_CATEGORIES).map((label) => (
+                {POLICY_CATEGORY_FILTERS.map((label) => (
                   <option key={label} value={label}>
                     {label}
                   </option>
