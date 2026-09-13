@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import sample from "../../../../docs/fixtures/policy-recommendation/education-sample-20260909.json" with { type: "json" };
+import officialScope from "../../../../docs/fixtures/policy-recommendation/official-scope-link-20260913.json" with { type: "json" };
 import module from "node:module";
 const { registerHooks } = module as unknown as {
   registerHooks(hooks: {
@@ -22,6 +23,7 @@ const { projectPublicPolicy } = await import("../public-data.ts");
 hooks.deregister();
 import { classifyProvisionalScope } from "./provisional-classification.ts";
 import { createCategoryRecommendationService } from "./category-recommendation.ts";
+import type { PublicPolicy } from "../public/types.ts";
 function policy(sampleId: string) {
   const item = sample.items.find((p) => p.sample_id === sampleId)!;
   return projectPublicPolicy({
@@ -30,6 +32,40 @@ function policy(sampleId: string) {
     updated_at: null,
   })!;
 }
+test("공식 근거의 활동지원·자립수당을 맞는 분야에 연결하고 자격 확인 안내를 유지한다", async () => {
+  for (const item of officialScope.items) {
+    const policy = item.policy as PublicPolicy;
+    const request = {
+      flow: "CATEGORY_BANK_V1",
+      revision: 0,
+      category: item.include[0],
+      childProfiles: [],
+      needs: [],
+      bankAnswers: [],
+      phase: "RESULTS",
+    };
+    const after = await createCategoryRecommendationService({
+      loadPolicies: async () => [policy],
+    })(request);
+    assert.deepEqual(after.policies.map((p) => p.policy.id), [policy.id]);
+    assert(after.policies[0].tags.includes("자격·소득·신청기간 추가 확인 필요"));
+    if (item.include[0] !== "health") {
+      const before = await createCategoryRecommendationService({
+        loadPolicies: async () => [policy],
+        classifyScope: () => undefined,
+      })(request);
+      assert.equal(before.policies.length, 0);
+    }
+    for (const category of item.exclude) {
+      const excluded = await createCategoryRecommendationService({
+        loadPolicies: async () => [policy],
+      })({ ...request, category });
+      assert.equal(excluded.policies.length, 0);
+    }
+    assert.equal(classifyProvisionalScope({ ...policy, target_text: "대상이 변경됨" }, request.category), undefined);
+    assert.equal(classifyProvisionalScope({ ...policy, id: "another-policy" }, request.category), undefined);
+  }
+});
 test("exact archived scope corrects missing uniform support and university-only scholarship without deciding eligibility", async () => {
   const policies = [policy("E03"), policy("E18")];
   const request = {

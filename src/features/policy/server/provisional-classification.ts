@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import type { PublicPolicy } from "../public/types.ts";
+import officialScope from "../../../../docs/fixtures/policy-recommendation/official-scope-link-20260913.json" with { type: "json" };
 
 const fields = [
   "name",
@@ -23,8 +24,8 @@ export function provisionalClassificationFingerprint(
     )
     .digest("hex");
 }
-/** Scope corrections from the archived education audit, not eligibility rules or HUMAN releases.
- * Only the exact classification text is covered. Changed text falls back to ordinary discovery.
+/** 보존된 교육 검수와 공식 자료 검수의 분야 보정이며 자격 규칙·공개 승인이 아니다.
+ * 분류 원문 지문이 일치할 때만 적용하고 원문 변경 시 일반 탐색으로 돌아간다.
  */
 const corrections = [
   {
@@ -46,6 +47,18 @@ const corrections = [
     reason:
       "현재 지원내용은 대학생 장학금; 과거 초·고등학교 조건 문구로 아동 교육에 넣지 않음",
   },
+  ...officialScope.items.flatMap((item) =>
+    [
+      ...item.include.map((category) => ({ category, include: true })),
+      ...item.exclude.map((category) => ({ category, include: false })),
+    ].map((decision) => ({
+      id: item.sourceId,
+      ...decision,
+      fingerprint: item.fingerprint,
+      evidence: `official-scope-link-20260913:${item.sourceId}`,
+      reason: item.reason,
+    })),
+  ),
 ] as const;
 export function classifyProvisionalScope(
   policy: PublicPolicy,
