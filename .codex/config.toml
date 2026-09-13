@@ -1,0 +1,7 @@
+# Project defaults: Sol handles orchestration and ordinary implementation.
+model = "gpt-5.6-sol"
+model_reasoning_effort = "high"
+
+[agents]
+default_subagent_model = "gpt-5.6-sol"
+default_subagent_reasoning_effort = "high"

@@ -23,6 +23,19 @@
 - Do not change unrelated product code or weaken assertions to fix an environment
   or fixture failure. Establish the behavior contract or environment difference.
 
+## Code comments
+
+- Write newly added or modified code comments in Korean. Preserve code identifiers,
+  API names, and tool-required directives in their original form.
+
+## Design work
+
+- Before UI, styling, or user-facing copy changes, read [DESIGN.md](DESIGN.md).
+  Use its I_COM visual rules and landing benefit/CTA hierarchy, reusing existing
+  shared components. It defines target design, not completed implementation.
+- Preserve behavior and policy meaning from the relevant domain documents.
+  Apply design changes within the requested scope; do not redesign unrelated screens.
+
 ## Subagent routing
 
 Delegate bounded independent work when it saves time, removes substantial noise,
@@ -32,22 +45,36 @@ agent. Keep tightly coupled work local when delegation would delay the next deci
 
 ### Roles and models
 
-- Default to `agent_type = "astra_worker"` for bounded implementation, code
-  investigation, and reviews requiring judgment. Its config supplies Astra medium;
-  omit model/effort overrides.
+- Project default: Sol high is the main agent for user communication, planning,
+  ordinary investigation/implementation, integration and final result review.
+  Handle short or tightly coupled work locally; do not delegate every task.
+- Default to `agent_type = "sol_worker"` for useful independent implementation,
+  investigation, policy refinement under established criteria, and ordinary reviews.
+  Its config supplies Sol high; omit model/effort overrides. Assign investigation
+  through implementation together when practical instead of investigating twice.
+- Use `agent_type = "astra_worker"` (Astra medium) only for a specific difficult
+  question: conflicting official evidence, complex eligibility exceptions,
+  difficult diagnosis, or consequential architecture/security/data-loss decisions.
+  Send the question, relevant evidence and attempted approaches. Do not make Astra
+  review every task or process all policy records. Omit model/effort overrides.
 - Use Luna only through `agent_type = "luna_runner"` for supplied commands/scripts
   whose runtime or output warrants handoff, with known inputs, outputs and completion
   criteria. Its config supplies Luna xhigh; omit model/effort overrides.
-- Keep investigation, validation design, and interpretation with the parent or Astra.
+- Keep ordinary investigation, validation design, and interpretation with the parent
+  or Sol; reserve Astra for the difficult questions above.
   Delegate to Luna only when the executable handoff is already simple; do not create
   extra planning or scripts just to use Luna.
-- Choose by remaining decisions and impact at handoff. Keep difficult diagnosis,
-  architecture, security, and data-loss decisions with the parent or specialist.
-  When substantial independent work or review justifies another agent at that level,
-  use an appropriate role inheriting the parent's model and effort.
+- Choose by remaining decisions and impact at handoff. The parent owns integration,
+  acceptance and external/destructive actions, using specialist findings when needed.
+  For policy work, Sol applies established criteria and maps verified conditions;
+  Astra resolves ambiguous cases; Luna executes supplied checks. Preserve unknowns
+  and keep uncertain policies pending rather than inventing eligibility rules.
 - Respect role scope. Never use `luna_runner` for implementation or persistently
   override built-in roles or existing specialists. If a configured role is unavailable,
   keep the work local rather than silently substituting a model.
+- Keep bulk sources and logs in assigned artifacts. Send concise findings and
+  decisive references; the parent reviews the diff and relevant evidence without
+  repeating all worker reads. Expand only for a concrete gap or risk.
 
 ### Handoff and completion
 
