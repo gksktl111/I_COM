@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { test } from "node:test";
 import { prepareReviewActivation, type ReviewDecisions } from "./review-activation.ts";
 
@@ -97,4 +98,60 @@ test("correction plans can only return exclusions to pending", () => {
   assert.equal(plan.items[0].payload.correction, true);
   assert.equal(plan.items[0].payload.relevance.status, "REVIEW");
   assert.deepEqual(plan.items[0].payload.previousRelevance, inventory.rows[0].relevance);
+});
+
+function officialFixture() {
+  const value = fixture();
+  value.inventory.rows[0].relevance.version = "policy-relevance-review-2";
+  const content = "학생 급식 지원: 결식 우려가 있는 아동에게 급식비 지원";
+  Object.assign(value.decisions.items[0], {
+    sourceConsistency: "CONFIRMED",
+    evidence: [],
+    officialEvidence: [{
+      originalUrl: "https://www.gov.kr/policy/meal", finalUrl: "https://www.gov.kr/policy/meal",
+      publisher: "담당 지방자치단체", retrievedAt: "2026-09-13T00:00:00.000Z", content,
+      contentHash: createHash("sha256").update(content, "utf8").digest("hex"),
+      excerpt: "결식 우려가 있는 아동", field: "target_text", rule: "아동 급식 지원 대상 확인",
+      policyIdentity: "같은 지역·기관의 학생 급식 지원 사업",
+    }],
+  });
+  return value;
+}
+
+test("v4 captures official text and predecessor in the immutable plan and records unresolved evidence", () => {
+  const { inventory, decisions } = officialFixture();
+  const plan = prepareReviewActivation(inventory, decisions, "policy-relevance-review-4");
+  assert.equal(plan.activateCount, 1);
+  assert.equal(plan.items[0].payload.reassessment, true);
+  assert.deepEqual(plan.items[0].payload.relevance.previousRelevance, inventory.rows[0].relevance);
+  assert.deepEqual(plan.items[0].payload.relevance.officialEvidence, decisions.items[0].officialEvidence);
+  decisions.items[0].officialEvidence![0].policyIdentity += " 추가 확인";
+  assert.notEqual(plan.digest, prepareReviewActivation(inventory, decisions, "policy-relevance-review-4").digest);
+  Object.assign(decisions.items[0], { decision: "KEEP_REVIEW", categories: [], sourceConsistency: "CONFLICT" });
+  inventory.rows[0].relevance.version = "policy-relevance-review-3";
+  const pending = prepareReviewActivation(inventory, decisions, "policy-relevance-review-4");
+  assert.equal(pending.recordedReviewCount, 1);
+  assert.equal(pending.items[0].payload.relevance.officialEvidence!.length, 1);
+  assert.equal(pending.items[0].payload.relevance.sourceConsistency, "CONFLICT");
+  Object.assign(decisions.items[0], { decision: "EXCLUDE", sourceConsistency: "CONFIRMED" });
+  assert.equal(prepareReviewActivation(inventory, decisions, "policy-relevance-review-4").excludeCount, 1);
+});
+
+test("v4 rejects missing or invented official evidence, inconsistent activation and unsupported predecessors", () => {
+  const { inventory, decisions } = officialFixture();
+  for (const modify of [
+    (d: ReviewDecisions) => { d.items[0].officialEvidence = []; },
+    (d: ReviewDecisions) => { d.items[0].officialEvidence![0].content += "改"; },
+    (d: ReviewDecisions) => { d.items[0].officialEvidence![0].excerpt = "없는 문장"; },
+    (d: ReviewDecisions) => { d.items[0].officialEvidence![0].publisher = ""; },
+    (d: ReviewDecisions) => { d.items[0].officialEvidence![0].finalUrl = "file:///tmp/page"; },
+    (d: ReviewDecisions) => { d.items[0].sourceConsistency = "CONFLICT"; },
+    (d: ReviewDecisions) => { d.items[0].sourceConsistency = "UNRESOLVED"; },
+  ]) {
+    const changed = structuredClone(decisions);
+    modify(changed);
+    assert.throws(() => prepareReviewActivation(inventory, changed, "policy-relevance-review-4"), /official-evidence|source-consistency/);
+  }
+  inventory.rows[0].relevance.version = "policy-relevance-3";
+  assert.throws(() => prepareReviewActivation(inventory, decisions, "policy-relevance-review-4"), /reassessment-source/);
 });

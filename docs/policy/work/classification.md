@@ -1,6 +1,6 @@
 # 정책 관련성·분야 라벨·검수 운영
 
-관련성 후보 선별 → 여섯 분야 분류 → 원문 검수 저장의 세 단계를 구분한다. 자동 관련성 버전은 `policy-relevance-3`, 원문 재검토 버전은 `policy-relevance-review-1/2/3`다. 분류 사전의 논리 초안은 `interest-taxonomy-v2-draft`, 구현된 평가 버전은 `interest-taxonomy-2/rules-1`이다. `ACTIVE`, `VERIFIED`, 공개 승인, 자격 비교 가능 상태는 서로 대체하지 않는다.
+관련성 후보 선별 → 여섯 분야 분류 → 원문 검수 저장의 세 단계를 구분한다. 자동 관련성 버전은 `policy-relevance-3`, 원문 재검토 버전은 `policy-relevance-review-1/2/3`, 공식 자료 재검수 버전은 `policy-relevance-review-4`다. 분류 사전의 논리 초안은 `interest-taxonomy-v2-draft`, 구현된 평가 버전은 `interest-taxonomy-2/rules-1`이다. `ACTIVE`, `VERIFIED`, 공개 승인, 자격 비교 가능 상태는 서로 대체하지 않는다.
 
 이 문서의 명령은 저장소 루트에서 실행한다. 날짜별 재분류·1,000건 AI 보조 검수·독립 표본 조정·마이그레이션·검증 결과는 [구현·검증 이력](../records/classification-and-operations-history.md)에 보존한다. 당시 건수는 현재 DB 집계나 인간 검수·최종 정확도 증명이 아니다. 공개 조회와 질문의 현재 동작은 최신 추천·UI 문서를 따른다.
 
@@ -57,6 +57,8 @@ POLICY_SYNC_ENABLED=true node --experimental-strip-types scripts/policy/relevanc
 기본 v1은 ACTIVATE/KEEP_REVIEW를 지원하며 활성 전환만 저장한다. `--review-version policy-relevance-review-2 --record-kept`는 ACTIVATE→RELATED, EXCLUDE→UNRELATED, KEEP_REVIEW→REVIEW를 모두 기록한다. 활성·제외는 정확한 인용과 대상·급여·선정기준 중 하나 이상의 직접 근거가 필요하다. 유지는 범주·긍정 근거를 비워두고 미확인 이유를 남긴다. 미검토 표시 `UNREAD`가 있으면 계획 생성을 거부한다. 제목만 읽은 건을 상세 검토 완료로 기록하지 않는다.
 
 v2로 제외한 정책에서 불확실성이 확인되면 현재 원문을 다시 조회하고 `--review-version policy-relevance-review-3 --record-kept`의 KEEP_REVIEW 계획으로만 정정한다. 같은 원문·직전 v2 제외 판정이 그대로일 때 보류로 돌리며, 이전 제외 관찰은 보존한다. 정정 이후에는 과거 v2 계획을 통째로 재실행하지 않는다. 오래된 판정의 재적용은 거부된다.
+
+v2 또는 v3의 현재 보류 정책을 공식 자료로 재검수할 때는 `--review-version policy-relevance-review-4`를 사용한다. `officialEvidence`에 원래·최종 URL, 발행기관, UTC 조회 시각, 캡처한 문맥 포함 평문과 UTF-8 SHA-256, 정확한 인용, 판단 규칙, 동일 정책임을 확인한 설명, 대상·급여·선정기준 필드를 기록한다. 공식 기관 여부와 문맥의 의미는 검수자가 판단하며 해시 검증이 이를 대신하지 않는다. `sourceConsistency`는 CONFIRMED/CONFLICT/UNRESOLVED이고 활성화는 CONFIRMED일 때만 허용한다. 보류도 근거와 함께 자동 기록하므로 `--record-kept`가 필수는 아니다. 저장 원문은 수정하지 않으며, v4에는 직전 판정까지 묶어 재시도와 과거 버전 덮어쓰기를 검증한다. 같은 원문의 v4 판정을 바꾸려면 별도 버전 설계가 필요하다. [2026-09-13 첫 공식 자료 재검수](../records/catalog-reassessment-20260913.md)에 실제 적용 범위를 기록했다.
 
 전체 정규화 원문·스냅샷·직전 판정이 그대로이고 현재 REVIEW일 때만 변경한다. 기존 관찰은 보존하고 같은 요청은 중복 반영하지 않는다. 동일 원문의 재검토 결과는 과거 자동 분류가 되돌리지 못하며, 원문 변경 시 기존 무효화 규칙을 따른다. 같은 원문·검토 버전에서 다른 판정으로 덮어쓰지 않는다. 변경되거나 적용 여부가 불확실한 요청은 중단 후 실행 기록을 대조한다. 실제 실행 범위는 [첫 활성 전환](../records/catalog-review-20260911.md)과 [수집 중단 후 전체 정제](../records/catalog-review-20260912.md)를 따른다.
 

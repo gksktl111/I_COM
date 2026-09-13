@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { after, before, beforeEach, test } from "node:test";
 import { PGlite } from "@electric-sql/pglite";
@@ -310,6 +310,7 @@ before(async () => {
     "20260911145539_policy_review_disposition",
     "20260911150947_policy_review_pending_notes",
     "20260911152220_policy_review_correction",
+    "20260913142106_policy_official_reassessment",
   ]) {
     await db.exec(
       await readFile(
@@ -1411,4 +1412,98 @@ test("v3 correction returns only a source-matched v2 exclusion to pending and pr
   assert.equal(row.catalog_status, "REVIEW");
   assert.deepEqual(row.normalized, original.expectedNormalized);
   assert.equal((await db.query<{ n: number }>("select count(*)::int n from public.policy_relevance_observations")).rows[0].n, 3);
+});
+
+async function officialReassessment(corrected = false) {
+  const original = await pendingReviewActivation();
+  const v2 = { version: "policy-relevance-review-2", status: corrected ? "UNRELATED" : "REVIEW", categories: [],
+    evidence: corrected ? original.relevance.evidence : [], reason: "이전 재검토 결과" };
+  await command("relevance_store", { ...original, relevance: v2 });
+  const previous = corrected ? { ...v2, version: "policy-relevance-review-3", status: "REVIEW", evidence: [], reason: "공식 확인 필요" } : v2;
+  if (corrected) await command("relevance_store", { ...original, correction: true, previousRelevance: v2, relevance: previous });
+  const content = "지역 학생 이용 지원의 대상은 초등학생 및 중학생이며 체육시설 사용료를 감면한다.";
+  return {
+    ...original, reassessment: true, previousRelevance: previous,
+    relevance: {
+      version: "policy-relevance-review-4", status: "RELATED", categories: ["아동 돌봄"], evidence: [],
+      previousRelevance: structuredClone(previous), sourceConsistency: "CONFIRMED", reason: "공식 학생 지원 대상 확인",
+      officialEvidence: [{ originalUrl: "https://www.gov.kr/policy/student", finalUrl: "https://www.gov.kr/policy/student",
+        publisher: "담당 지방자치단체", retrievedAt: "2026-09-13T00:00:00.000Z", content,
+        contentHash: createHash("sha256").update(content, "utf8").digest("hex"), excerpt: "초등학생 및 중학생",
+        field: "target_text", rule: "아동 지원 대상", policyIdentity: "같은 지역·기관의 학생 시설 사용료 감면" }],
+    },
+  };
+}
+
+test("v4 reassesses pending v2 with immutable provenance, source and history and exact retries", async () => {
+  const payload = await officialReassessment();
+  const snapshots = await dump(["policy_source_snapshots"]);
+  const history = (await dump(["policy_relevance_observations"]))[0];
+  assert.equal((await command("relevance_store", payload)).status, "RELATED");
+  assert.equal((await command("relevance_store", payload)).replayed, true);
+  const current = (await db.query<{ normalized: unknown; relevance: unknown; catalog_status: string }>("select normalized,relevance,catalog_status from public.policies")).rows[0];
+  assert.deepEqual(current.normalized, payload.expectedNormalized);
+  assert.deepEqual(current.relevance, payload.relevance);
+  assert.equal(current.catalog_status, "ACTIVE");
+  assert.deepEqual(await dump(["policy_source_snapshots"]), snapshots);
+  const afterHistory = (await dump(["policy_relevance_observations"]))[0];
+  assert.equal(afterHistory.length, history.length + 1);
+  for (const observation of history) assert.ok(afterHistory.some((row) => JSON.stringify(row) === JSON.stringify(observation)));
+  await assert.rejects(command("relevance_store", { ...payload, previousRelevance: { ...payload.previousRelevance, reason: "다른 선행 평가" } }), /INVALID_REASSESSMENT/);
+  await assert.rejects(command("relevance_store", { ...payload, relevance: { ...payload.relevance, reason: "변경 평가" } }), /RELEVANCE_VERSION_CONFLICT/);
+});
+
+test("v4 pending from corrected v3 preserves conflict evidence and blocks old review and automatic downgrade", async () => {
+  const payload = await officialReassessment(true);
+  Object.assign(payload.relevance, { status: "REVIEW", categories: [], sourceConsistency: "CONFLICT" });
+  assert.equal((await command("relevance_store", payload)).status, "REVIEW");
+  const beforeState = await dump();
+  for (const version of ["policy-relevance-review-1", "policy-relevance-review-2", "policy-relevance-review-3"]) {
+    await assert.rejects(command("relevance_store", { ...payload, previousRelevance: payload.relevance,
+      relevance: { ...payload.previousRelevance, version } }), /STALE_REVIEW_DECISION/);
+    assert.deepEqual(await dump(), beforeState);
+  }
+  for (const version of ["policy-relevance-1", "policy-relevance-2", "policy-relevance-3"]) {
+    assert.equal((await command("relevance_store", { ...payload, relevance: { ...payload.previousRelevance, version } })).preservedReviewed, true);
+    assert.deepEqual(await dump(), beforeState);
+  }
+  assert.equal((await command("relevance_store", payload)).replayed, true);
+});
+
+test("v4 excludes a pending policy while preserving prior assessments", async () => {
+  const payload = await officialReassessment();
+  Object.assign(payload.relevance, { status: "UNRELATED", categories: [] });
+  assert.equal((await command("relevance_store", payload)).status, "UNRELATED");
+  assert.equal((await db.query<{ catalog_status: string }>("select catalog_status from public.policies")).rows[0].catalog_status, "EXCLUDED");
+  assert.equal((await db.query<{ n: number }>("select count(*)::int n from public.policy_relevance_observations")).rows[0].n, 3);
+});
+
+test("v4 rejects stale source, predecessor, provenance and unconfirmed activation without side effects", async () => {
+  const payload = await officialReassessment();
+  const beforeState = await dump();
+  const official = payload.relevance.officialEvidence[0];
+  const stalePrevious = { ...payload.previousRelevance, reason: "변경된 이전 평가" };
+  for (const [modified, reason] of [
+    [{ ...payload, reassessment: false }, /INVALID_REASSESSMENT/],
+    [{ ...payload, expectedNormalized: { ...payload.expectedNormalized, changed: true } }, /STALE_REVIEW_SOURCE/],
+    [{ ...payload, snapshotId: randomUUID() }, /STALE_RELEVANCE/],
+    [{ ...payload, previousRelevance: stalePrevious, relevance: { ...payload.relevance, previousRelevance: stalePrevious } }, /STALE_REVIEW_DECISION/],
+    [{ ...payload, relevance: { ...payload.relevance, officialEvidence: [] } }, /INVALID_OFFICIAL_EVIDENCE/],
+    ...[
+      { ...official, contentHash: "a".repeat(64) }, { ...official, excerpt: "없는 근거" },
+      { ...official, publisher: "" }, { ...official, policyIdentity: "" }, { ...official, content: "바뀐 본문" },
+      { ...official, retrievedAt: "invalid" }, { ...official, finalUrl: "file:///tmp/page" },
+      { ...official, field: "name" },
+    ].map((e) => [{ ...payload, relevance: { ...payload.relevance, officialEvidence: [e] } }, /INVALID_OFFICIAL_EVIDENCE/]),
+    ...["CONFLICT", "UNRESOLVED"].map((sourceConsistency) => [{ ...payload, relevance: { ...payload.relevance, sourceConsistency } }, /INVALID_REASSESSMENT/]),
+  ] as [object, RegExp][]) {
+    await assert.rejects(command("relevance_store", modified), reason);
+    assert.deepEqual(await dump(), beforeState);
+  }
+  await command("relevance_store", payload);
+  await admin("update public.policies set normalized=normalized||'{\"sourceShapeChanged\":true}'::jsonb");
+  const current = (await db.query<{ relevance: unknown; catalog_status: string }>("select relevance,catalog_status from public.policies")).rows[0];
+  assert.equal(current.relevance, null);
+  assert.equal(current.catalog_status, "REVIEW");
+  await assert.rejects(command("relevance_store", payload), /STALE_REVIEW_SOURCE/);
 });
