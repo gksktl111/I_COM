@@ -706,12 +706,35 @@ try {
   await viewport(1280);
   await navigate("/policy");
   await until("!!document.querySelector('main article')");
+  assert.equal(
+    await evaluate(
+      "document.querySelector('main article [aria-label=\"관련 분야\"]') !== null",
+    ),
+    true,
+  );
+  assert.deepEqual(
+    await evaluate(
+      "[...document.querySelector('main article').querySelectorAll('dt')].map((node) => node.textContent.trim())",
+    ),
+    ["신청 기간"],
+  );
   await capture("policy-cards-desktop");
   await viewport(390);
   await capture("policy-cards-mobile");
   assert.equal(
     await evaluate("document.documentElement.scrollWidth > innerWidth"),
     false,
+  );
+  await evaluate(
+    "document.querySelector('main article a[href^=\"/policy/\"]:has(svg)').click()",
+  );
+  await until(
+    "location.pathname.startsWith('/policy/') && !!document.querySelector('main h1')",
+  );
+  assert.equal(
+    await evaluate("document.querySelector('dialog[open]') === null"),
+    true,
+    "catalog details use the full detail page",
   );
   for (const width of [320, 1280]) {
     await viewport(width);

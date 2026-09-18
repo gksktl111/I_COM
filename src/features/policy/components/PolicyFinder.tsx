@@ -194,7 +194,7 @@ export function PolicyFinder() {
         {!catalog.loading && !catalog.error && (
           <div className={styles.cardGrid}>
             {filtered.slice((page - 1) * 8, page * 8).map((policy) => (
-              <PolicyCard key={policy.id} policy={policy} />
+              <PolicyCard key={policy.id} policy={policy} variant="catalog" />
             ))}
           </div>
         )}

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { ArrowRight, Bookmark, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,15 @@ import { EmptyState, Notice, Skeleton } from "@/components/ui/feedback";
 import type { PublicPolicy } from "../public/types";
 import { PolicyDetailModal } from "./PolicyDetailModal";
 import styles from "./policy-public.module.css";
+
+const categoryLabels: Record<string, string> = {
+  pregnancy: "임신·출산",
+  childcare: "양육·보육",
+  care: "돌봄",
+  health: "의료·건강",
+  education: "아동 교육",
+  housing: "주거·생활지원",
+};
 
 export function PolicyNotice() {
   return (
@@ -93,15 +103,17 @@ export function PolicyCard({
   policy,
   personalized = false,
   recommendation,
+  variant = "recommendation",
 }: {
   policy: PublicPolicy;
   personalized?: boolean;
   recommendation?: { rank: number; reasons: string[]; tags: string[] };
+  variant?: "catalog" | "recommendation";
 }) {
   const [detailOpen, setDetailOpen] = useState(false);
   const primaryBenefit =
-    policy.benefit_text ||
     policy.summary ||
+    policy.benefit_text ||
     policy.purpose_text ||
     "상세 화면에서 지원 내용을 확인해 주세요.";
   const detailTags = recommendation
@@ -116,6 +128,62 @@ export function PolicyCard({
   const reviewLabel = recommendation?.tags.includes("직접 확인 필요")
     ? "직접 확인 필요"
     : "추가 확인 필요";
+  const categoryTags = [
+    ...new Set(
+      (policy.reviewedScope ?? policy.classifiedScope)?.categories
+        .map((category) => categoryLabels[category])
+        .filter((label): label is string => Boolean(label)) ?? [],
+    ),
+  ];
+
+  if (variant === "catalog") {
+    return (
+      <article
+        className={`${styles.policyCard} flex h-full flex-col gap-5 p-5 sm:p-6`}
+      >
+        <div className="flex flex-wrap gap-2" aria-label="관련 분야">
+          {(categoryTags.length ? categoryTags : ["관련 분야 확인 중"]).map(
+            (tag) => (
+              <span
+                key={tag}
+                className="border-border rounded-sm border px-2.5 py-1 text-xs font-semibold text-slate-600"
+              >
+                {tag}
+              </span>
+            ),
+          )}
+        </div>
+        <h2 className="text-lg leading-7 font-bold">
+          <Link
+            href={`/policy/${policy.id}`}
+            className="hover:text-primary focus-visible:outline-primary inline-flex min-h-11 items-center rounded [overflow-wrap:anywhere] break-keep focus-visible:outline-2 focus-visible:outline-offset-4"
+          >
+            {policy.name}
+          </Link>
+        </h2>
+        <dl className="border-y border-slate-200 py-4 text-sm">
+          <div>
+            <dt className="font-semibold text-slate-800">신청 기간</dt>
+            <dd
+              className={`${styles.shortPreviewText} mt-1 leading-6 break-words text-slate-600`}
+            >
+              {policy.application_period_text ||
+                "원문 정보 없음 · 기관 확인 필요"}
+            </dd>
+          </div>
+        </dl>
+        <div className="mt-auto flex justify-end">
+          <Button asChild size="sm" className="min-h-11">
+            <Link href={`/policy/${policy.id}`}>
+              상세보기
+              <ArrowRight aria-hidden="true" />
+            </Link>
+          </Button>
+        </div>
+      </article>
+    );
+  }
+
   return (
     <article
       className={`${styles.policyCard} mb-4 flex flex-col gap-4 p-5 sm:p-6`}
@@ -146,19 +214,25 @@ export function PolicyCard({
           {policy.name}
         </button>
       </h2>
-      <p className="text-sm leading-6 break-words text-slate-700">
+      <p
+        className={`${styles.previewText} text-sm leading-6 break-words text-slate-700`}
+      >
         {primaryBenefit}
       </p>
       <dl className="grid gap-3 border-y border-slate-200 py-4 text-sm sm:grid-cols-2">
         <div>
           <dt className="font-semibold text-slate-800">지원 대상</dt>
-          <dd className="mt-1 leading-6 break-words text-slate-600">
+          <dd
+            className={`${styles.previewText} mt-1 leading-6 break-words text-slate-600`}
+          >
             {policy.target_text || "공식 안내에서 지원 대상을 확인해 주세요."}
           </dd>
         </div>
         <div>
           <dt className="font-semibold text-slate-800">신청 기간</dt>
-          <dd className="mt-1 leading-6 break-words text-slate-600">
+          <dd
+            className={`${styles.shortPreviewText} mt-1 leading-6 break-words text-slate-600`}
+          >
             {policy.application_period_text ||
               "원문 정보 없음 · 기관 확인 필요"}
           </dd>
