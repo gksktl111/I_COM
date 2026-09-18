@@ -174,34 +174,7 @@
   }
 }
 
-@media (min-width: 768px) {
-  :root {
-    --app-header-height: calc(7rem + 2px);
-  }
-}
-
-/* Only the brand row retreats; the second row remains the sticky navigation. */
-.site-header {
-  transition: top 180ms ease;
-}
 :root {
   --app-header-visible-height: var(--app-header-height);
   scroll-padding-top: calc(var(--app-header-visible-height) + 1rem);
-}
-:root:has(.site-header[data-secondary="true"]) {
-  --app-header-height: calc(7rem + 2px);
-}
-.site-header[data-secondary="true"][data-collapsed="true"] {
-  top: -4rem;
-}
-:root:has(.site-header[data-secondary="true"][data-collapsed="true"]) {
-  --app-header-visible-height: calc(3rem + 2px);
-}
-@media (min-width: 768px) {
-  .site-header[data-collapsed="true"] {
-    top: -4rem;
-  }
-  :root:has(.site-header[data-collapsed="true"]) {
-    --app-header-visible-height: calc(3rem + 2px);
-  }
 }

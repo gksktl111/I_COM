@@ -143,18 +143,10 @@ try {
     false,
   );
   await evaluate("window.scrollTo(0, 350)");
-  await until("document.querySelector('header').dataset.collapsed === 'true'");
   await until(
-    "Math.abs(document.querySelector('#service-navigation').getBoundingClientRect().top) <= 2",
+    "Math.abs(document.querySelector('#desktop-service-navigation').getBoundingClientRect().top) <= 2",
   );
-  await evaluate("window.scrollTo(0, 200)");
-  await until("document.querySelector('header').dataset.collapsed === 'false'");
-  await until(
-    "Math.abs(document.querySelector('.header-brand-row').getBoundingClientRect().top) <= 2",
-  );
-  console.log(
-    "PASS: QA 1–4 scroll direction, persistent navigation and header/CTA copy",
-  );
+  console.log("PASS: single-row persistent navigation and header/CTA copy");
   await viewport(390);
   await navigate("/");
   await evaluate(
@@ -188,7 +180,7 @@ try {
   );
   console.log("PASS: mobile menu and community disclosure");
   await viewport(1280);
-  await click("크게");
+  await click("글자 크게");
   assert.equal(
     await evaluate("getComputedStyle(document.documentElement).fontSize"),
     "18.4px",
@@ -199,7 +191,7 @@ try {
     "18.4px",
     "text-size preference survives navigation",
   );
-  await click("기본");
+  await click("기본 크기");
   console.log("PASS: persistent text size");
   await navigate("/map");
   await until("window.__geoCalls > 0");
