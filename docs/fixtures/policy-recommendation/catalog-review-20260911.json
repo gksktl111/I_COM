@@ -1,0 +1,68 @@
+{
+  "kind": "CATALOG_REVIEW_ACTIVATION_RESULT",
+  "inputQueriedAt": "2026-09-11T14:15:17.881Z",
+  "scope": "관리자 정책 목록 catalog_status=REVIEW의 저장 원문 기반 서비스 관련성 재검토",
+  "initialReviewCount": 1930,
+  "titleScreenedCount": 1930,
+  "detailReviewedCount": 666,
+  "activatedCount": 389,
+  "detailReviewedKeptCount": 277,
+  "titleScreenOnlyKeptCount": 1264,
+  "remainingOriginalReviewCount": 1541,
+  "byProvider": {
+    "GOV24": 309,
+    "BOKJIRO_LOCAL": 63,
+    "BOKJIRO_CENTRAL": 17
+  },
+  "categoriesNonExclusive": {
+    "가족 지원": 205,
+    "아동 돌봄": 46,
+    "아동 교육": 40,
+    "임신·출산": 74,
+    "신혼·자녀가구 주거": 13,
+    "아동 의료·건강": 33,
+    "양육·보육": 36
+  },
+  "batches": [
+    {
+      "digest": "444e41650eb7787e65f2f930671d48007f5aaf0c682bba0145f3af8ca59c9de7",
+      "activated": 308,
+      "finishedAt": "2026-09-11T14:32:53.873Z"
+    },
+    {
+      "digest": "d88b52a02418385250e2c6c8b99c9252090bdfeef4fa79bdd6d17cda9c429da9",
+      "activated": 72,
+      "finishedAt": "2026-09-11T14:34:39.665Z"
+    },
+    {
+      "digest": "5e08f8aced5914cc660b8144f1f6567a8c50996a5f72ec616ab76c481b3dd89d",
+      "activated": 9,
+      "finishedAt": "2026-09-11T14:36:49.267Z"
+    }
+  ],
+  "databaseVerification": {
+    "activatedCount": 389,
+    "anonExecute": false,
+    "at": "2026-09-11T14:37:46.922218+00:00",
+    "authenticatedExecute": false,
+    "candidateViewCount": 389,
+    "cohort": {
+      "ACTIVE": 389,
+      "REVIEW": 1541
+    },
+    "currentLabels": 389,
+    "priorObservations": 684,
+    "reviewObservations": 389,
+    "total": {
+      "ACTIVE": 2851,
+      "EXCLUDED": 590,
+      "REVIEW": 1739
+    }
+  },
+  "eligibilityPublicationApprovalsAdded": 0,
+  "limitations": [
+    "1930건 모두의 상세 검수를 완료한 것이 아님. 1264건은 제목 선별 후 유지.",
+    "공식 사이트 현행 공고 재조회나 신청 자격 검수 완료를 의미하지 않음.",
+    "병행 수집 증가분을 원래 검토 대기 1930건과 분리하여 집계."
+  ]
+}

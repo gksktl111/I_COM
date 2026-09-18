@@ -1,0 +1,49 @@
+{
+  "checked_on": "2026-09-09",
+  "mode": "OFFLINE_ARTIFACT_VALIDATION",
+  "status": "PASS",
+  "sample_count": 20,
+  "mapping_count": 20,
+  "service_path_count": 30,
+  "exact_quote_count": 114,
+  "education_disposition_counts": {
+    "CANDIDATE": 11,
+    "HOLD": 6,
+    "ADJACENT": 2,
+    "OUTSIDE": 1
+  },
+  "overall_comparison_counts": {
+    "NEEDS_CHECK": 17,
+    "NOT_APPLICABLE": 3
+  },
+  "checks": [
+    "20 unique source IDs and sample IDs, one mapping per sample",
+    "all question IDs exist in the input mapping document",
+    "all evidence quotes exactly match the referenced exported display field",
+    "all paths retain incomplete condition scope and policy gaps",
+    "no whole-policy MATCH and no current OPEN/CLOSED claims",
+    "selected archived source and review snapshots and normalized objects match",
+    "exported display fields and archived assessment/reason match source bundle",
+    "upstream file SHA-256 and normalized canonical JSON SHA-256 match"
+  ],
+  "artifacts": [
+    {
+      "path": "docs/fixtures/policy-recommendation/education-mapping-a-20260909.json",
+      "sha256": "ddb1e131328f7ebe4bd31533bddba71edaeec446437182f403a52acb536b0a74"
+    },
+    {
+      "path": "docs/fixtures/policy-recommendation/education-mapping-b-20260909.json",
+      "sha256": "6222634450d92ada145f8c181d561f7a472cad1022bad031dfdc8e4264b4a40c"
+    },
+    {
+      "path": "docs/fixtures/policy-recommendation/education-sample-20260909.json",
+      "sha256": "830cbefe25244e0eda0ef7cfbb6d6b082605959bbc984c60ed17455187fa62da"
+    }
+  ],
+  "not_verified": [
+    "current remote database or official policy contents",
+    "human review or public approval",
+    "raw response to normalization fidelity",
+    "runtime question UI, eligibility algorithm, ranking accuracy or deployment"
+  ]
+}

@@ -4,31 +4,14 @@ import { Button } from "@/components/ui/button";
 
 // 소셜 로그인 버튼들 컴포넌트
 export function SocialLoginButtons() {
-  // 구글 로그인 처리
-  const handleGoogleLogin = () => {
-    console.log("구글 로그인 클릭");
-    // TODO: 구글 OAuth 구현
-  };
-
-  // 네이버 로그인 처리
-  const handleNaverLogin = () => {
-    console.log("네이버 로그인 클릭");
-    // TODO: 네이버 OAuth 구현
-  };
-
-  // 카카오 로그인 처리
-  const handleKakaoLogin = () => {
-    console.log("카카오 로그인 클릭");
-    // TODO: 카카오 OAuth 구현
-  };
-
   return (
     <div className="space-y-3">
       {/* 구글 로그인 */}
       <Button
         variant="outline"
-        className="flex w-full items-center justify-start gap-4 border-gray-300 py-4 pl-6 hover:bg-gray-50"
-        onClick={handleGoogleLogin}
+        className="flex h-13 w-full items-center justify-start gap-4 border-gray-300 py-4 pl-6 hover:bg-gray-50 disabled:opacity-70"
+        disabled
+        aria-label="Google 로그인 준비 중"
       >
         <div className="flex h-5 w-5 items-center justify-center">
           <svg className="h-5 w-5" viewBox="0 0 24 24">
@@ -58,8 +41,9 @@ export function SocialLoginButtons() {
       {/* 네이버 로그인 */}
       <Button
         variant="outline"
-        className="flex w-full items-center justify-start gap-4 border-green-500 bg-green-500 py-4 pl-6 text-white hover:bg-green-600"
-        onClick={handleNaverLogin}
+        className="flex h-13 w-full items-center justify-start gap-4 border-green-500 bg-green-500 py-4 pl-6 text-white hover:bg-green-600 disabled:opacity-70"
+        disabled
+        aria-label="네이버 로그인 준비 중"
       >
         <div className="flex h-5 w-5 items-center justify-center">
           <svg className="h-5 w-5 fill-white" viewBox="0 0 24 24">
@@ -72,8 +56,9 @@ export function SocialLoginButtons() {
       {/* 카카오 로그인 */}
       <Button
         variant="outline"
-        className="flex w-full items-center justify-start gap-4 border-yellow-400 bg-yellow-400 py-4 pl-6 text-gray-900 hover:bg-yellow-500"
-        onClick={handleKakaoLogin}
+        className="flex h-13 w-full items-center justify-start gap-4 border-yellow-400 bg-yellow-400 py-4 pl-6 text-gray-900 hover:bg-yellow-500 disabled:opacity-70"
+        disabled
+        aria-label="카카오 로그인 준비 중"
       >
         <div className="flex h-5 w-5 items-center justify-center">
           <svg className="h-5 w-5" viewBox="0 0 24 24">

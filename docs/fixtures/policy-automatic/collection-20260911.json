@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-11",
+  "authorization": "User requested collection alongside recommendation implementation",
+  "executor": "parent process; Luna spawn rejected by agent thread limit",
+  "initialPolicyCount": 4632,
+  "resumeAttempt": {
+    "runId": "6cea7c91-158d-436a-85fc-950060c2aa52",
+    "status": "PAUSED",
+    "reason": "SOURCE_DRIFT",
+    "calls": 1,
+    "exitCode": 0
+  },
+  "newRun": {
+    "runId": "6d2476ea-95c0-4875-8e26-b774f55561ef",
+    "mode": "new-only",
+    "status": "PARTIAL",
+    "summaryStatus": "PAUSED",
+    "reason": "CALL_BUDGET",
+    "calls": 99,
+    "processed": 620,
+    "success": 0,
+    "excluded": 34,
+    "skippedExisting": 586,
+    "pending": 30,
+    "discovered": 650,
+    "expectedTotal": 10939,
+    "nextPage": 14,
+    "leaseActive": false,
+    "exitCode": 0
+  },
+  "finalPolicyCount": 4632,
+  "newPolicyCount": 0,
+  "reservedDailyCalls": 100,
+  "configuredDailyLimit": 100,
+  "fullSourceCollectionComplete": false,
+  "collectorExited": true
+}

@@ -34,7 +34,11 @@ test("Data API sends private headers only to configured host and hides upstream 
     });
     await writer.command("apply", {
       normalized: {
-        display: { name: "어업경영자금 지원", target_text: "어업 경영자" },
+        display: {
+          name: "어업경영자금 지원",
+          target_text: "어업 경영자",
+          benefit_text: "어선 장비 구입비 지원",
+        },
       },
       relevance: { status: "RELATED" },
     });
@@ -42,6 +46,10 @@ test("Data API sends private headers only to configured host and hides upstream 
       (applied.relevance as { status: string }).status,
       "UNRELATED",
       "all apply callers receive evaluated relevance, not a caller-provided label",
+    );
+    assert.equal(
+      (applied.relevance as { version: string }).version,
+      "policy-relevance-4",
     );
     process.env.SUPABASE_URL = "https://example.supabase.co.attacker.invalid";
     assert.throws(() => createRepository(), /invalid-supabase-url/);

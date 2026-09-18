@@ -1,7 +1,11 @@
 import "server-only";
 import { requireAdmin } from "./auth";
+import { INTERESTS } from "../../policy/public/types.ts";
 import { POLICY_RELEVANCE_CATEGORIES } from "../../policy/server/relevance.ts";
 import { createRepository } from "../../policy/server/repository.ts";
+
+// 현재 여섯 태그와 이전 평가 이력의 분야를 모두 조회할 수 있게 한다.
+export const POLICY_CATEGORY_FILTERS = [...new Set([...INTERESTS, ...Object.values(POLICY_RELEVANCE_CATEGORIES)])];
 
 export type AdminUser = {
   id: string;
@@ -32,7 +36,7 @@ export type AdminPolicy = {
   relevance_assessed_at: string | null;
 };
 export type AdminRelevance = {
-  version: "policy-relevance-1" | "policy-relevance-2" | "policy-relevance-3";
+  version: "policy-relevance-1" | "policy-relevance-2" | "policy-relevance-3" | "policy-relevance-4" | "policy-relevance-review-1" | "policy-relevance-review-2" | "policy-relevance-review-3" | "policy-relevance-review-4" | "policy-relevance-review-5" | "policy-relevance-review-6";
   status: "RELATED" | "UNRELATED" | "REVIEW";
   categories: string[];
   evidence: { field: string; excerpt: string; rule: string }[];
@@ -97,7 +101,7 @@ function relevanceProjection(value: unknown): AdminRelevance | null {
   if (value == null) return null;
   const row = record(value);
   if (
-    !["policy-relevance-1", "policy-relevance-2", "policy-relevance-3"].includes(
+    !["policy-relevance-1", "policy-relevance-2", "policy-relevance-3", "policy-relevance-4", "policy-relevance-review-1", "policy-relevance-review-2", "policy-relevance-review-3", "policy-relevance-review-4", "policy-relevance-review-5", "policy-relevance-review-6"].includes(
       String(row.version),
     ) ||
     !["RELATED", "UNRELATED", "REVIEW"].includes(String(row.status)) ||
@@ -296,7 +300,7 @@ export async function listPolicies(
   const category = filters.category?.trim() ?? "";
   if (
     category &&
-    !Object.values(POLICY_RELEVANCE_CATEGORIES).some(
+    !POLICY_CATEGORY_FILTERS.some(
       (label) => label === category,
     )
   )

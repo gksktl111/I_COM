@@ -8,9 +8,9 @@ import { ToasterProvider } from "@/components/common/ToasterProvider";
 
 // 메타데이터 설정 - 페이지 제목과 설명 정의
 export const metadata: Metadata = {
-  title: "케어커넥트 - 믿을 수 있는 보육시설을 찾아보세요",
+  title: "아이콤 - 우리 가족을 위한 복지 나침반",
   description:
-    "지역 내 소아병원, 아이 친화적 카페, 어린이집, 가족 서비스를 찾아보세요. 부모 커뮤니티와 연결하세요.",
+    "임신·출산부터 양육·보육까지, 정부와 지자체의 지원 정책 및 우리 동네 시설을 한곳에서 찾아보세요.",
 };
 
 export default function RootLayout({
@@ -57,8 +57,8 @@ export default function RootLayout({
           >
             <div className="pointer-events-auto max-w-3xl rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-amber-900 shadow-sm">
               <p className="text-sm font-medium">
-                NEXT_PUBLIC_NCP_KEY_ID가 설정되지 않았습니다. .env.local 파일에 키를 추가하면
-                지도 SDK가 로드됩니다.
+                NEXT_PUBLIC_NCP_KEY_ID가 설정되지 않았습니다. .env.local 파일에
+                키를 추가하면 지도 SDK가 로드됩니다.
               </p>
             </div>
           </div>

@@ -15,12 +15,31 @@ export namespace NaverMaps {
     );
     setCenter(position: LatLng): void;
     panTo(position: LatLng): void;
+    destroy(): void;
   }
 
   class Marker {
-    constructor(options: { position: LatLng; map: Map });
+    constructor(options: {
+      position: LatLng;
+      map: Map;
+      icon?: { content: HTMLElement; anchor?: { x: number; y: number } };
+      title?: string;
+      clickable?: boolean;
+      zIndex?: number;
+    });
     setPosition(position: LatLng): void;
     setMap(map: Map | null): void;
+    setZIndex(zIndex: number): void;
+  }
+
+  type MapEventListener = object;
+  namespace Event {
+    function addListener(
+      target: Marker,
+      eventName: "click",
+      listener: () => void,
+    ): MapEventListener;
+    function removeListener(listener: MapEventListener): void;
   }
 }
 

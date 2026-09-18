@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { ChevronDown, KeyRound, UserPlus } from "lucide-react";
 import {
   changeAdminPassword,
   createAdminAccount,
@@ -19,6 +20,7 @@ function PasswordFields() {
           autoComplete="new-password"
           minLength={12}
           maxLength={256}
+          placeholder="12자 이상 입력하세요"
           required
         />
       </label>
@@ -30,6 +32,7 @@ function PasswordFields() {
           autoComplete="new-password"
           minLength={12}
           maxLength={256}
+          placeholder="비밀번호를 다시 입력하세요"
           required
         />
       </label>
@@ -63,7 +66,7 @@ export function CreateAdminAccountForm() {
   return (
     <form
       action={action}
-      className="grid max-w-lg gap-4"
+      className="grid gap-4"
       aria-label="관리자 계정 추가"
       aria-busy={pending}
     >
@@ -81,10 +84,11 @@ export function CreateAdminAccountForm() {
       <PasswordFields />
       <ActionMessage state={state} />
       <button
-        className="admin-button justify-self-start"
+        className="admin-button w-full"
         type="submit"
         disabled={pending}
       >
+        <UserPlus size={15} aria-hidden="true" />
         {pending ? "등록 중…" : "관리자 계정 등록"}
       </button>
     </form>
@@ -105,15 +109,19 @@ export function ChangeAdminPasswordForm({
 
   return (
     <details>
-      <summary className="cursor-pointer">비밀번호 변경</summary>
+      <summary className="admin-button admin-button-secondary list-none">
+        <KeyRound size={14} aria-hidden="true" />
+        비밀번호 변경
+        <ChevronDown size={14} aria-hidden="true" />
+      </summary>
       <form
         action={action}
-        className="mt-4 grid min-w-56 gap-4"
+        className="mt-4 grid min-w-56 gap-4 rounded-lg border border-slate-200 bg-slate-50 p-4"
         aria-label={`${email} 비밀번호 변경`}
         aria-busy={pending}
       >
-        <p className="admin-muted">변경할 계정: {email}</p>
-        <p className="admin-muted">
+        <p className="m-0 break-all font-semibold">{email}</p>
+        <p className="admin-muted m-0 text-xs">
           본인 계정의 비밀번호를 변경하면 다시 로그인합니다.
         </p>
         <input type="hidden" name="targetId" value={targetId} />

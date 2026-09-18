@@ -1,4 +1,7 @@
+import { Select } from "@/components/ui/select";
+import { ChevronDown, FilePlus2 } from "lucide-react";
 import { PageHeading, Panel, EmptyState } from "@/features/admin/components";
+import { dateTime } from "@/features/admin/format";
 import { requireAdmin } from "@/features/admin/server/auth";
 import {
   listAdminNotices,
@@ -26,10 +29,14 @@ function DraftFields({ notice }: { notice?: AdminNotice }) {
       )}
       <label className="admin-field">
         유형
-        <select name="kind" defaultValue={notice?.kind ?? "NOTICE"}>
+        <Select
+          aria-label="초안 유형"
+          name="kind"
+          defaultValue={notice?.kind ?? "NOTICE"}
+        >
           <option value="NOTICE">공지</option>
           <option value="NOTIFICATION">알림</option>
-        </select>
+        </Select>
       </label>
       <label className="admin-field">
         제목
@@ -47,7 +54,7 @@ function DraftFields({ notice }: { notice?: AdminNotice }) {
           name="body"
           required
           maxLength={10000}
-          rows={5}
+          rows={6}
           defaultValue={notice?.body}
           placeholder="초안 내용을 입력하세요"
         />
@@ -77,7 +84,14 @@ export default async function NoticesPage({
     <>
       <PageHeading
         title="공지 · 알림 관리"
-        description="초안 저장 · 사용자 게시/발송 연결 예정"
+        description="공지와 알림 초안을 작성하고 보관합니다. 사용자 게시·발송은 아직 지원하지 않습니다."
+        action={
+          !unavailable && (
+            <a className="admin-button" href="#new-notice-draft">
+              <FilePlus2 size={15} aria-hidden="true" />새 초안 작성
+            </a>
+          )
+        }
       />
       {result && messages[result] && (
         <p className="admin-notice" role="status">
@@ -92,18 +106,15 @@ export default async function NoticesPage({
           />
         </Panel>
       ) : (
-        <>
-          <Panel
-            title="새 초안 작성"
-            description="저장한 내용은 관리자만 확인할 수 있습니다."
-          >
-            <form action={saveNoticeAction} className="grid gap-4">
-              <DraftFields />
-            </form>
-          </Panel>
+        <div className="admin-grid-main items-start">
           <Panel
             title="저장된 초안"
             description="최근 수정 순으로 최대 100건을 표시합니다."
+            action={
+              <span className="admin-badge admin-badge-neutral">
+                조회 {notices.length}건
+              </span>
+            }
           >
             {notices.length === 0 ? (
               <EmptyState
@@ -111,36 +122,47 @@ export default async function NoticesPage({
                 description="첫 공지 또는 알림 초안을 작성해 주세요."
               />
             ) : (
-              notices.map((notice) => (
-                <article className="admin-panel" key={notice.id}>
-                  <div className="admin-panel-body">
-                    <div className="admin-panel-heading">
-                      <h2>{notice.title}</h2>
-                      <span className="admin-badge">
-                        {notice.kind === "NOTICE" ? "공지" : "알림"} ·{" "}
+              <div className="divide-y divide-slate-100">
+                {notices.map((notice) => (
+                  <article
+                    className="py-5 first:pt-0 last:pb-0"
+                    key={notice.id}
+                  >
+                    <div className="mb-2 flex flex-wrap items-center gap-2">
+                      <span className="admin-badge admin-badge-neutral">
+                        {notice.kind === "NOTICE" ? "공지" : "알림"}
+                      </span>
+                      <span
+                        className={`admin-badge${notice.status === "DRAFT" ? "" : " admin-badge-neutral"}`}
+                      >
                         {notice.status === "DRAFT" ? "초안" : "보관"}
                       </span>
                     </div>
-                    <p className="admin-muted">
-                      작성자 {notice.author_email} · 수정{" "}
-                      {new Date(notice.updated_at).toLocaleString("ko-KR", {
-                        timeZone: "Asia/Seoul",
-                      })}
+                    <h3 className="m-0 text-sm font-semibold break-words">
+                      {notice.title}
+                    </h3>
+                    <p className="admin-muted mt-1 mb-3 text-xs break-words">
+                      {notice.author_email} · 수정 {dateTime(notice.updated_at)}{" "}
+                      KST
                     </p>
                     {notice.status === "DRAFT" ? (
                       <>
-                        <details className="my-4">
-                          <summary className="mb-3 cursor-pointer">
+                        <p className="admin-muted m-0 line-clamp-2 text-sm break-words whitespace-pre-wrap">
+                          {notice.body}
+                        </p>
+                        <details className="mt-4">
+                          <summary className="admin-button admin-button-secondary list-none">
                             초안 수정
+                            <ChevronDown size={14} aria-hidden="true" />
                           </summary>
                           <form
                             action={saveNoticeAction}
-                            className="grid gap-4"
+                            className="mt-4 grid gap-4"
                           >
                             <DraftFields notice={notice} />
                           </form>
                         </details>
-                        <form action={archiveNoticeAction}>
+                        <form action={archiveNoticeAction} className="mt-3">
                           <input type="hidden" name="id" value={notice.id} />
                           <input
                             type="hidden"
@@ -156,14 +178,37 @@ export default async function NoticesPage({
                         </form>
                       </>
                     ) : (
-                      <p className="whitespace-pre-wrap">{notice.body}</p>
+                      <>
+                        <p className="admin-muted m-0 line-clamp-2 text-sm break-words whitespace-pre-wrap">
+                          {notice.body}
+                        </p>
+                        <details className="mt-4">
+                          <summary className="admin-button admin-button-secondary list-none">
+                            본문 전체 보기
+                            <ChevronDown size={14} aria-hidden="true" />
+                          </summary>
+                          <p className="mt-4 mb-0 text-sm break-words whitespace-pre-wrap">
+                            {notice.body}
+                          </p>
+                        </details>
+                      </>
                     )}
-                  </div>
-                </article>
-              ))
+                  </article>
+                ))}
+              </div>
             )}
           </Panel>
-        </>
+          <div id="new-notice-draft" className="min-w-0 scroll-mt-6">
+            <Panel
+              title="새 초안 작성"
+              description="저장한 내용은 관리자만 확인할 수 있습니다."
+            >
+              <form action={saveNoticeAction} className="grid gap-4">
+                <DraftFields />
+              </form>
+            </Panel>
+          </div>
+        </div>
       )}
     </>
   );

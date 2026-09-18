@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "recommendation-coverage-v1",
+  "signalPatterns": {
+    "AGE": "(?:만\\s*)?\\d+\\s*세|출생|생년",
+    "MONTHS_UNRESOLVED": "\\d+\\s*개월",
+    "INCOME_RECOGNIZED": "소득인정액",
+    "INCOME_INSURANCE": "건강보험료",
+    "INCOME_MEDIAN": "중위소득",
+    "INCOME": "소득|건강보험료|수급자|차상위",
+    "HOUSEHOLD": "가구|한부모|다문화|다자녀|신혼|부부",
+    "RESIDENCE": "거주|주민등록|주소|관내",
+    "DISABILITY": "장애인|장애의 정도|등록장애|심한장애",
+    "ALTERNATIVE_PATH": "또는|하거나|예외지원|지원 가능",
+    "RESIDENCE_REFERENCE": "출생일|입학일|신청일|공고일|전입|계속하여|계속 거주",
+    "SUBJECT_SCOPE": "부 또는 모|막내|세대주|직계존속|신혼부부|미성년 자녀",
+    "SCHOOL": "재학|입학|학교|학년",
+    "EXCEPTION": "제외|중복|단,|다만|예외",
+    "APPLICATION": "신청일|공고일|기준일|신청기간"
+  },
+  "checkedAt": "2026-09-13T15:02:08.643Z",
+  "inventoryDigest": "37450ab7d8ee6b209d94dae441b6bda009d342cf3d0a6a4b334c8b2d152fae32",
+  "catalogVersion": "db89bf780bcbf406d6ddb81dccc085e9209c3a2f9d57a54af2521793b25559ff",
+  "summary": {
+    "activeCount": 3435,
+    "currentDraftCount": 59,
+    "changedDraftCount": 0,
+    "noDraftCount": 3376,
+    "unclassifiedCount": 338,
+    "multiCategoryCount": 1772,
+    "inactiveDraftIds": []
+  },
+  "fields": [
+    {
+      "category": "pregnancy",
+      "label": "임신·출산",
+      "candidateCount": 1229,
+      "currentDraftCount": 7,
+      "sourceChangedCount": 0,
+      "pendingCount": 1222
+    },
+    {
+      "category": "childcare",
+      "label": "양육·보육",
+      "candidateCount": 1358,
+      "currentDraftCount": 6,
+      "sourceChangedCount": 0,
+      "pendingCount": 1352
+    },
+    {
+      "category": "care",
+      "label": "돌봄",
+      "candidateCount": 193,
+      "currentDraftCount": 7,
+      "sourceChangedCount": 0,
+      "pendingCount": 186
+    },
+    {
+      "category": "health",
+      "label": "의료·건강",
+      "candidateCount": 1352,
+      "currentDraftCount": 10,
+      "sourceChangedCount": 0,
+      "pendingCount": 1342
+    },
+    {
+      "category": "education",
+      "label": "아동 교육",
+      "candidateCount": 474,
+      "currentDraftCount": 15,
+      "sourceChangedCount": 0,
+      "pendingCount": 459
+    },
+    {
+      "category": "housing",
+      "label": "주거·생활지원",
+      "candidateCount": 1028,
+      "currentDraftCount": 10,
+      "sourceChangedCount": 0,
+      "pendingCount": 1018
+    }
+  ],
+  "reviewPriorities": [
+    {
+      "kind": "AGE",
+      "policyCount": 1343
+    },
+    {
+      "kind": "MONTHS_UNRESOLVED",
+      "policyCount": 565
+    },
+    {
+      "kind": "INCOME_RECOGNIZED",
+      "policyCount": 50
+    },
+    {
+      "kind": "INCOME_INSURANCE",
+      "policyCount": 123
+    },
+    {
+      "kind": "INCOME_MEDIAN",
+      "policyCount": 363
+    },
+    {
+      "kind": "INCOME",
+      "policyCount": 945
+    },
+    {
+      "kind": "HOUSEHOLD",
+      "policyCount": 1090
+    },
+    {
+      "kind": "RESIDENCE",
+      "policyCount": 1968
+    },
+    {
+      "kind": "DISABILITY",
+      "policyCount": 511
+    },
+    {
+      "kind": "ALTERNATIVE_PATH",
+      "policyCount": 821
+    },
+    {
+      "kind": "RESIDENCE_REFERENCE",
+      "policyCount": 768
+    },
+    {
+      "kind": "SUBJECT_SCOPE",
+      "policyCount": 450
+    },
+    {
+      "kind": "SCHOOL",
+      "policyCount": 455
+    },
+    {
+      "kind": "EXCEPTION",
+      "policyCount": 492
+    },
+    {
+      "kind": "APPLICATION",
+      "policyCount": 497
+    }
+  ],
+  "limitations": [
+    "분야는 문구 기반 후보이며 중복될 수 있습니다.",
+    "조건 신호는 검토할 원문 위치이며 자격 규칙·공개 승인이 아닙니다.",
+    "조회 시점의 고정 자료입니다. 공개 전 최신 원본을 다시 검증해야 합니다."
+  ]
+}

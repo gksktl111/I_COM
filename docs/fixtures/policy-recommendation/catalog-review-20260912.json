@@ -1,0 +1,109 @@
+{
+  "kind": "CATALOG_REVIEW_FULL_REFINEMENT",
+  "inputQueriedAt": "2026-09-11T14:55:52.206Z",
+  "verifiedAt": "2026-09-11T15:31:56.803129+00:00",
+  "beforeCounts": {
+    "ACTIVE": 3217,
+    "REVIEW": 2088,
+    "EXCLUDED": 590
+  },
+  "reviewedPolicies": 2088,
+  "unreadPolicies": 0,
+  "reviewedFields": [
+    "name",
+    "target_text",
+    "benefit_text",
+    "criteria_text",
+    "summary",
+    "purpose_text"
+  ],
+  "result": {
+    "ACTIVE": 213,
+    "EXCLUDED": 444,
+    "REVIEW": 1431
+  },
+  "activatedByProvider": {
+    "GOV24": 186,
+    "BOKJIRO_CENTRAL": 13,
+    "BOKJIRO_LOCAL": 14
+  },
+  "activationCategoriesNonExclusive": {
+    "아동 교육": 18,
+    "가족 지원": 105,
+    "신혼·자녀가구 주거": 11,
+    "아동 돌봄": 33,
+    "양육·보육": 11,
+    "아동 의료·건강": 28,
+    "임신·출산": 27
+  },
+  "batches": [
+    {
+      "name": "apply-1",
+      "digest": "bfdff0869a1a8da0272366a8b23f17c9b89714ac578faec9aba39e8e4a28ecd8",
+      "count": 696,
+      "finishedAt": "2026-09-11T15:14:54.551Z"
+    },
+    {
+      "name": "apply-2",
+      "digest": "710192229fdd81ae24ceb3760eb19d04263bdd4dadea95aa91e78a75134cbac1",
+      "count": 696,
+      "finishedAt": "2026-09-11T15:17:33.210Z"
+    },
+    {
+      "name": "apply-extra-1",
+      "digest": "da8e85b22f40b9b67af1a86889c7d8f053a97bed33f3a3891b830d5e53db1a13",
+      "count": 348,
+      "finishedAt": "2026-09-11T15:28:50.665Z"
+    },
+    {
+      "name": "apply-extra-2",
+      "digest": "f6c840cc2bcbfe684dbc201ee5e7995b2f3efe8951a04bd263930201d2a1b2e9",
+      "count": 348,
+      "finishedAt": "2026-09-11T15:29:29.678Z"
+    },
+    {
+      "name": "apply-correction",
+      "digest": "ea412057a9850d0ef3f75086d2c7b25c521ddfd099b818e50f13a03c72dbbd76",
+      "count": 1,
+      "finishedAt": "2026-09-11T15:28:11.240Z"
+    }
+  ],
+  "correctedExclusionToReview": 1,
+  "databaseVerification": {
+    "activeCandidateCount": 213,
+    "activeCollectorCount": 0,
+    "anonExecute": false,
+    "at": "2026-09-11T15:31:56.803129+00:00",
+    "authenticatedExecute": false,
+    "cohort": {
+      "ACTIVE": 213,
+      "EXCLUDED": 444,
+      "REVIEW": 1431
+    },
+    "cohortCount": 2088,
+    "gov24Stop": {
+      "jobLimit": "100",
+      "reason": "USER_STOPPED"
+    },
+    "gov24Usage": {
+      "limit": 100,
+      "reserved": 10400
+    },
+    "matchedStatusAndSource": 2088,
+    "priorObservations": 3485,
+    "reviewObservations": 2089,
+    "total": {
+      "ACTIVE": 3430,
+      "EXCLUDED": 1034,
+      "REVIEW": 1431
+    }
+  },
+  "testsPassed": 53,
+  "webpackBuildPassed": true,
+  "eligibilityPublicationApprovalsAdded": 0,
+  "limitations": [
+    "수집된 표시 원문을 검토했으며 전체 공식 공고를 새로 조회한 것이 아님.",
+    "남은 REVIEW1431건도 상세 검토했으나 서비스 범위·대상·원문 충돌을 확정하지 못해 보류.",
+    "ACTIVE는 서비스 관련성이며 신청 자격 충족 또는 HUMAN 공개 승인이 아님."
+  ]
+}

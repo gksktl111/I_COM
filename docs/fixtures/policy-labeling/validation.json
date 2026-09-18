@@ -1,0 +1,60 @@
+{
+  "testedAt": "2026-09-08T12:37:18.851Z",
+  "active": 1000,
+  "observations": 1000,
+  "reviewed": 1000,
+  "counts": {
+    "VERIFIED": 850,
+    "OUT_OF_TAXONOMY": 63,
+    "NEEDS_REVIEW": 74,
+    "OUT_OF_SCOPE": 13
+  },
+  "environment": "local-pglite",
+  "reviewKind": "AI_ASSISTED",
+  "remoteApplied": true,
+  "independentReview": {
+    "sample": 125,
+    "initialExactStatusAndCategoryAgreement": 109,
+    "initialDisagreements": 16,
+    "adjudicatedRecordsIncludingRelatedCases": 20,
+    "isAccuracyEstimate": false
+  },
+  "policyTests": {
+    "files": 18,
+    "passed": 160,
+    "failed": 0,
+    "cancelled": 0
+  },
+  "artifacts": {
+    "active-source.json": "94e235ff10a347a695a196c0a9b98be63d0ecca6d61414d8bda507f85921db75",
+    "review-bundle.json": "c2d4c7da3254e25b62b5464805c04a5712b9d255830c7441109811f869463135",
+    "independent-review.json": "fad4a616fca7e914fbba28e5dd9b46d0f743e8c103267161ef9a8be7c92a351c",
+    "adjudications.json": "c9d8058691a425ab01380b22ba8d510a004e75960d932cc973df59061b4fbef3"
+  },
+  "remoteVerification": {
+    "at": "2026-09-08T14:17:04.146Z",
+    "active": 1000,
+    "labeled": 1000,
+    "counts": {
+      "VERIFIED": 850,
+      "OUT_OF_TAXONOMY": 63,
+      "NEEDS_REVIEW": 74,
+      "OUT_OF_SCOPE": 13
+    },
+    "categories": {
+      "parenting_childcare": 176,
+      "housing_living": 108,
+      "pregnancy_birth": 304,
+      "health": 228,
+      "child_education": 195,
+      "care": 48
+    },
+    "migration": "20260908120844",
+    "missing": 0,
+    "observations": 1000,
+    "reviews": 1000,
+    "fullBundleReplay": "passed-no-duplicates",
+    "activationRollbackTest": "passed",
+    "newSecurityAdvisorWarnings": 0
+  }
+}

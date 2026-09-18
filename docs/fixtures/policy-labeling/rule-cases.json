@@ -1,0 +1,423 @@
+[
+  {
+    "name": "실제: 청소년부모 아동양육비 지원사업",
+    "display": {
+      "name": "청소년부모 아동양육비 지원사업",
+      "target_text": "① 청소년(24세이하, 사실혼 포함)부부로서, ② 자녀를 양육하고 있는, ③ 기준 중위소득 65% 이하의 가구",
+      "benefit_text": "저소득 청소년부모 가구 자녀 1인당 월 25만 원 아동양육비 지원"
+    },
+    "expectedCategories": [
+      "parenting_childcare"
+    ],
+    "note": "현재 적용 원문 사례. source_id=0008a012-f6a9-4e64-9226-94a255edbd40; snapshot_id=ad5c38ac-ef4f-489e-b6e8-1d9d39e89c6d; 기대값은 규칙 설계용 제안이며 독립 검수 정답셋이 아님."
+  },
+  {
+    "name": "실제: 임신초기검사 및 기형아검사 지원",
+    "display": {
+      "name": "임신초기검사 및 기형아검사 지원",
+      "target_text": "○ 노원구에 주민등록 주소지를 둔  임산부",
+      "benefit_text": "○ 임신초기검사 : 임신 10주 이내 진행하는 공복 혈액 및 소변검사\n○ 기형아검사(쿼드검사) : 임신 16~18주 사이에 진행하는 혈액검사"
+    },
+    "expectedCategories": [
+      "pregnancy_birth",
+      "health"
+    ],
+    "note": "현재 적용 원문 사례. source_id=01540197-1f0a-4781-98b9-02780773f6df; snapshot_id=bd8bb6b6-d823-42a6-8f62-a6e1a214d901; 기대값은 규칙 설계용 제안이며 독립 검수 정답셋이 아님."
+  },
+  {
+    "name": "실제: 임신축하금 지원",
+    "display": {
+      "name": "임신축하금 지원",
+      "target_text": "♥ 신청대상 : 출산예정일을 기준으로 1년 전부터 신청일 현재까지 계속하여 서대문구에 주민등록을 두고 실제 거주하고 있는 임산부\n- 소득, 재산 기준 없음\n♥ 신청기간 : 출산예정일 전일까지(출산전이어야 함)",
+      "benefit_text": "- 현금지원 : 단태아 30만원, 쌍둥이 60만원, 세쌍둥이 이상 90만원"
+    },
+    "expectedCategories": [
+      "pregnancy_birth"
+    ],
+    "note": "현재 적용 원문 사례. source_id=0fbc72ba-69ed-4bb6-b82c-36e7d20b6c3d; snapshot_id=f760c87d-5994-482f-99c3-37a36adfd659; 기대값은 규칙 설계용 제안이며 독립 검수 정답셋이 아님."
+  },
+  {
+    "name": "실제: 산후조리비용 지원",
+    "display": {
+      "name": "산후조리비용 지원",
+      "target_text": "○ 신청일 기준, 부 또는 모가 성동구에 주민등록을 두고 실제 거주하고 있는 출산가정\n○ 신생아 출생일 기준 60일 이내 신청가능\n○ 성동구에 출생신고를 한 가정",
+      "benefit_text": "○ 성동구 거주 출산가구에 소득수준에 관계없이 산후조리비용 정액 50만원 지원"
+    },
+    "expectedCategories": [
+      "pregnancy_birth"
+    ],
+    "note": "현재 적용 원문 사례. source_id=0457fc14-4fd8-4f95-b34b-7565d920471e; snapshot_id=9780a7a7-9e8b-409d-8be7-af903175196b; 기대값은 규칙 설계용 제안이며 독립 검수 정답셋이 아님."
+  },
+  {
+    "name": "실제: 결식아동급식비지원",
+    "display": {
+      "name": "결식아동급식비지원",
+      "target_text": "보호자의 근로 및 질병의 사유로 결식우려가 있는 저소득층 아동",
+      "benefit_text": "결식우려가 있는 아동에게 아동급식카드 지원 (2026.01.01~2026.12.31.)"
+    },
+    "expectedCategories": [
+      "housing_living"
+    ],
+    "note": "현재 적용 원문 사례. source_id=0bca730d-ea30-49f9-a580-26fdbfd49ec7; snapshot_id=1f551e16-2bc2-496c-8250-8052636bb886; 기대값은 규칙 설계용 제안이며 독립 검수 정답셋이 아님."
+  },
+  {
+    "name": "실제: 한부모가족 자녀 학습 지원",
+    "display": {
+      "name": "한부모가족 자녀 학습 지원",
+      "target_text": "○ 법정 저소득한부모가족 4세 ~ 12세 자녀",
+      "benefit_text": "○ 1:1 맞춤 방문학습\n\n- 지원과목 : 국어, 영어, 수학, 사회, 과학, 독서, 한글 등\n- 1인 2과목"
+    },
+    "expectedCategories": [
+      "child_education"
+    ],
+    "note": "현재 적용 원문 사례. source_id=4464f9d2-be64-4e64-bcd8-ecd5f6f4cc14; snapshot_id=2f724128-9217-4fe5-aeb5-0c18df09dc04; 기대값은 규칙 설계용 제안이며 독립 검수 정답셋이 아님."
+  },
+  {
+    "name": "실제: 아이돌봄서비스 본인부담금 지원사업",
+    "display": {
+      "name": "아이돌봄서비스 본인부담금 지원사업",
+      "target_text": "관내 주소를 두고 실거주하는 12세 이하 가정의 아이돌봄서비스 이용 가정",
+      "benefit_text": "본인부담금의 50%를 익월 지급"
+    },
+    "expectedCategories": [
+      "care"
+    ],
+    "note": "현재 적용 원문 사례. source_id=258f06a2-248b-4ba5-95f2-ea1a4222de22; snapshot_id=1d7b292a-e1c8-467a-bc1b-c537bb1aea0e; 기대값은 규칙 설계용 제안이며 독립 검수 정답셋이 아님."
+  },
+  {
+    "name": "실제: 학대피해아동 마음건강지킴이 사업",
+    "display": {
+      "name": "학대피해아동 마음건강지킴이 사업",
+      "target_text": "아동학대신고접수된 가구의 가족구성원\n- 아동학대판단회의를 통해 대상자 선정",
+      "benefit_text": "아동학대사건 발생 가구의 가구원에 대한 심리검사, 상담, 치료 서비스 제공"
+    },
+    "expectedCategories": [
+      "health"
+    ],
+    "note": "현재 적용 원문 사례. source_id=18b4d5d8-51b2-4c49-a12c-c1736524be5a; snapshot_id=b3147fbb-a310-49e7-a897-0e3a93bd3438; 기대값은 규칙 설계용 제안이며 독립 검수 정답셋이 아님."
+  },
+  {
+    "name": "실제: 저소득 한부모가족 유급 자녀돌봄휴가비 지원",
+    "display": {
+      "name": "저소득 한부모가족 유급 자녀돌봄휴가비 지원",
+      "target_text": "18세 미만 자녀를 양육하는 기준 중위소득 65%이하 한부모가족 근로자 중 무급 자녀돌봄휴가 사용자",
+      "benefit_text": "○ 유급 자녀돌봄휴가비 지원\n- 연 최대 80만 원 지원(1일 8만 원, 최대 10일)\n· 단시간 근로자는 시간비례 지원\n· 소정 근로시간 주 20시간 이하는 1일 4만 원 정액 지원\n· 타 기관(고용노동부 등) 자녀양육 가족돌봄 휴가비 지원 대상자 제외"
+    },
+    "expectedCategories": [
+      "parenting_childcare"
+    ],
+    "note": "현재 적용 원문 사례. source_id=0225cef4-2016-4658-a3a5-2ed13dd0c825; snapshot_id=f377a594-4cd8-43c5-9812-f24612778279; 기대값은 규칙 설계용 제안이며 독립 검수 정답셋이 아님."
+  },
+  {
+    "name": "출산 사건 급여",
+    "display": {
+      "name": "출산 축하 지원",
+      "target_text": "출생아를 둔 가구",
+      "benefit_text": "출산축하금 100만원 지급"
+    },
+    "expectedCategories": [
+      "pregnancy_birth"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "난임 시술 의료비",
+    "display": {
+      "name": "난임부부 시술비",
+      "target_text": "난임부부",
+      "benefit_text": "난임 시술비 및 약제비 지원"
+    },
+    "expectedCategories": [
+      "pregnancy_birth",
+      "health"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "유치원 기본 이용",
+    "display": {
+      "name": "유아교육비 지원",
+      "target_text": "유치원 재원 아동",
+      "benefit_text": "유치원 교육비 지원"
+    },
+    "expectedCategories": [
+      "parenting_childcare"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "보육료는 생활비 아님",
+    "display": {
+      "name": "보육료 지원",
+      "target_text": "어린이집 이용 아동",
+      "benefit_text": "보육료 월 20만원 지원"
+    },
+    "expectedCategories": [
+      "parenting_childcare"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "양육 상담은 아동학습 아님",
+    "display": {
+      "name": "부모 양육교육",
+      "target_text": "자녀를 양육하는 부모",
+      "benefit_text": "부모 교육과 양육 상담 제공"
+    },
+    "expectedCategories": [
+      "parenting_childcare"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "방과후 보호",
+    "display": {
+      "name": "초등 돌봄 지원",
+      "target_text": "초등학생",
+      "benefit_text": "방과 후 아동 보호와 돌봄 서비스 제공"
+    },
+    "expectedCategories": [
+      "care"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "학습과 보호 별도 경로",
+    "display": {
+      "name": "방과후 아동 지원",
+      "target_text": "초등학생",
+      "benefit_text": "방과 후 돌봄 서비스 제공\n학습 지도 지원"
+    },
+    "expectedCategories": [
+      "care",
+      "child_education"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "방과후 학습만",
+    "display": {
+      "name": "방과후 학습 지원",
+      "target_text": "초등학생",
+      "benefit_text": "학습 지도 및 교재 지원"
+    },
+    "expectedCategories": [
+      "child_education"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "학용품비",
+    "display": {
+      "name": "학생 교육 참여",
+      "target_text": "초중고 학생",
+      "benefit_text": "학용품비 지원"
+    },
+    "expectedCategories": [
+      "child_education"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "아동 예방접종",
+    "display": {
+      "name": "예방접종 지원",
+      "target_text": "아동",
+      "benefit_text": "예방접종 비용 지원"
+    },
+    "expectedCategories": [
+      "health"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "아동 재활",
+    "display": {
+      "name": "발달재활 지원",
+      "target_text": "장애아동",
+      "benefit_text": "발달재활 서비스 지원"
+    },
+    "expectedCategories": [
+      "health"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "자녀가구 주택 공급",
+    "display": {
+      "name": "다자녀 주택 지원",
+      "target_text": "미성년 자녀가 있는 가구",
+      "benefit_text": "공공주택 입주 지원"
+    },
+    "expectedCategories": [
+      "housing_living"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "자녀가구 주거비",
+    "display": {
+      "name": "가족 주거 안정",
+      "target_text": "미성년 자녀가 있는 가구",
+      "benefit_text": "월세 지원\n이사비 지원\n전기요금 감면"
+    },
+    "expectedCategories": [
+      "housing_living"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "아동 포함 일반생계",
+    "display": {
+      "name": "생계 지원",
+      "target_text": "아동이 포함된 저소득 가구",
+      "benefit_text": "생계급여 지급"
+    },
+    "expectedCategories": [
+      "housing_living"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "문화 관람은 사전 밖",
+    "display": {
+      "name": "아동 문화생활 지원",
+      "target_text": "아동",
+      "benefit_text": "공연 관람료 50% 할인"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "주차장 할인은 주거급여 아님",
+    "display": {
+      "name": "다자녀 주거지 주차장 지원",
+      "target_text": "다자녀 가구",
+      "benefit_text": "주거지 전용 주차장 사용요금 50% 감면"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "창업보육 동음이의어",
+    "display": {
+      "name": "창업보육실 입주",
+      "target_text": "중소기업",
+      "benefit_text": "창업보육실 임대료 지원"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "임산물 동음이의어",
+    "display": {
+      "name": "임산물 생산 지원",
+      "target_text": "임업인",
+      "benefit_text": "임산물 생산시설 설치비 지원"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "장례 안치료",
+    "display": {
+      "name": "장례비 지원",
+      "target_text": "사망자 유족",
+      "benefit_text": "안치료 및 장례비 지원"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "성인 교육 경로",
+    "display": {
+      "name": "가족 지원",
+      "target_text": "성인 전용 교육 대상자",
+      "benefit_text": "성인 전용 취업 교육비 지원"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "혼합 가족 중 대학 경로 제외",
+    "display": {
+      "name": "자녀 교육 지원",
+      "target_text": "초등학생 또는 대학생 자녀",
+      "benefit_text": "대학생 교육비 지원"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "노인 전용 돌봄",
+    "display": {
+      "name": "노인 돌봄",
+      "target_text": "65세 이상 노인 전용",
+      "benefit_text": "노인 전용 방문 돌봄 서비스 제공"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "서류 언급",
+    "display": {
+      "name": "다자녀 문화 지원",
+      "target_text": "아동가구",
+      "benefit_text": "출산지원금 신청서 제출"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "명시적 제외",
+    "display": {
+      "name": "가족 프로그램",
+      "target_text": "아동가구",
+      "benefit_text": "의료비 지원 제외"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "교육 제목만",
+    "display": {
+      "name": "아동 교육비 지원",
+      "target_text": "아동",
+      "benefit_text": "자세한 지원내용은 문의 바랍니다."
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "부모 신청 일반현금",
+    "display": {
+      "name": "부모 신청 사업",
+      "target_text": "자녀가 있는 부모",
+      "benefit_text": "현금 10만원 지급"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "건강 배경만",
+    "display": {
+      "name": "문화 활동",
+      "target_text": "아동",
+      "benefit_text": "아동 건강 증진을 위한 공연 관람료 할인"
+    },
+    "expectedCategories": [],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  },
+  {
+    "name": "급식은 돌봄 아님",
+    "display": {
+      "name": "지역아동센터 급식",
+      "target_text": "아동",
+      "benefit_text": "지역아동센터 급식 지원"
+    },
+    "expectedCategories": [
+      "housing_living"
+    ],
+    "note": "가상 경계 사례; 범위 판단을 포함한 기대 결과."
+  }
+]

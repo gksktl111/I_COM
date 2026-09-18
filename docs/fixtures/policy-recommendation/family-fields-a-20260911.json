@@ -1,0 +1,497 @@
+{
+  "schemaVersion": "family-fields-draft-1",
+  "checkedAt": "2026-09-11T13:00:57Z",
+  "items": [
+    {
+      "sampleId": "B01",
+      "category": "childcare",
+      "source": {
+        "policy": {
+          "id": "064e8cc2-5284-4f68-9227-6d6b0f841655",
+          "name": "민간가정 어린이집 부모부담 보육료지원",
+          "summary": "- 정부지원시설과 정부미지원시설 이용 아동간 균등한 교육기회제공\n- 부모의 양육부담 경감",
+          "provider_name": "인천광역시 미추홀구 복지환경국 보육정책과",
+          "purpose_text": null,
+          "target_text": "관내 민간·가정어린이집을 이용하는 만3~5세 누리과정 아동",
+          "criteria_text": "관내(미추홀구) 어린이집을 이용하는 경우",
+          "benefit_text": "O 누리과정 부모부담보육료 지원- 미추홀구 관내 민간, 가정 어린이집 부모부담보육료 지원 - 지원금액(2026년 기준)   만3세 : 142,000원 / 만4~5세 : 127,000원",
+          "application_method_text": "복지로 혹은 행정복지센터",
+          "application_period_text": null,
+          "required_documents_text": null,
+          "reception_text": null,
+          "contact_text": "인천광역시 미추홀구청 032-728-6921",
+          "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00002680&wlfareInfoReldBztpCd=02",
+          "application_url": null,
+          "updated_at": "2026-09-08T08:22:09.45557+00:00"
+        },
+        "source": {
+          "snapshotId": "7112a689-2df0-48cc-8724-8c2fd0eb2680",
+          "normalizerVersion": "bokjiro-2",
+          "displayHash": "36293f0595b0e7e9e2dc2f4a3b155978167fd01e1f34451da0e43abbfcf4a30e",
+          "normalizedFingerprint": "8d33a3350a9023a22577d554dbe15ea5ce90ea38e737d464f8a2bc99238aa8ed"
+        }
+      },
+      "recipe": {
+        "sampleId": "B01",
+        "policyId": "064e8cc2-5284-4f68-9227-6d6b0f841655",
+        "category": "childcare",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "ACTIVE_PUBLIC_SOURCE_SNAPSHOT; UNREVIEWED 조건 초안. 원문 source 원형 보존.",
+          "수혜 아동 CHILD 단일 경로. 사용자 희망·선호를 실제 서비스 이용·보호 자격으로 바꾸지 않는다.",
+          "부모부담 보육료 지원이며 어린이집 운영자 일반 운영비 지원이 아니다. 2026 급여액 3세/4~5세 차이는 자격 분기가 아닌 급여 분기.",
+          "OFFICIAL_FOLLOWUP 2026-09-11: family-official-followup-20260911.json의 공개 원문 일부 발췌를 연결. 문서 text는 전체 본문이 아닌 확인 인용문이며 hash도 이 발췌 범위이다. HUMAN 승인·완전성 승격 없음."
+        ],
+        "paths": [
+          {
+            "id": "B01-direct-family-support",
+            "purpose": "childcare-costs",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "privateOrFamilyDaycare",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "이 자녀는 민간 또는 가정어린이집을 실제 이용하고 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "민간·가정어린이집을 이용하는"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "nurriCurriculum",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "이 자녀는 누리과정 대상 아동인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "누리과정 아동"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_NUMBER_RANGE",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "childAgeYears",
+                  "min": 3,
+                  "max": 5,
+                  "minInclusive": true,
+                  "maxInclusive": true,
+                  "unit": "AGE_YEARS",
+                  "basis": "POLICY_AGE_METHOD_UNCONFIRMED",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 기준일과 산정방법에 따른 이 자녀의 나이는 몇 세인가요?"
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "만3~5세"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "attendedDaycareLocatedMichuhol",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "OFFICIAL_INSTITUTION_LOCATION",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "이 자녀가 실제 이용하는 어린이집의 소재지는 미추홀구인가요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "미추홀구에 있어요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "다른 지역에 있어요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "official.michuhol2026",
+                    "quote": "관내(미추홀구) 어린이집을 이용하는 경우"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "AI_ASSISTED 분류 추정 표본이며 전체 정책 검토 완료가 아니다. 원문 최신 공고·정책 전체 조건·HUMAN 공개 승인 미확인.",
+              "기준일 및 선언 사실의 유효 시점 미확인. UNCONFIRMED 질문은 자동 생성하지 않는다.",
+              "만 나이 3~5세의 정책 기준일 미명시. 연령 측정 정밀도·누리과정 인정 기준 검수 필요.",
+              "복지로 2026-08-22 수정 안내에서 어린이집 소재지 기준을 확인하여 전용 조건 추가. 가구·자녀 거주지를 기관 소재지로 대체하지 않음. 이용 및 소재지 판단 기준일은 여전히 UNCONFIRMED."
+            ]
+          }
+        ]
+      },
+      "evidenceDocuments": {
+        "michuhol2026": {
+          "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00002680&wlfareInfoReldBztpCd=02",
+          "text": "관내(미추홀구) 어린이집을 이용하는 경우"
+        }
+      }
+    },
+    {
+      "sampleId": "B02",
+      "category": "childcare",
+      "source": {
+        "policy": {
+          "id": "336ae5ae-d49c-4b9a-9a15-f0b00ccf7965",
+          "name": "가정위탁 아동 양육보조금 지원",
+          "summary": "18세 미만 가정위탁 아동을 위해 양육보조금 지원",
+          "provider_name": "강원특별자치도 삼척시",
+          "purpose_text": null,
+          "target_text": "○ 18세 미만 가정위탁 아동",
+          "criteria_text": null,
+          "benefit_text": "○ 가정위탁 아동 양육보조금 지원",
+          "application_method_text": "○ 방문 신청\n- 주민센터 : 거주지 관할 읍면동 주민센터에 방문 신청\n- 시군구 : 관할 시청 복지정책과 방문 신청",
+          "application_period_text": "상시신청",
+          "required_documents_text": "해당없음",
+          "reception_text": null,
+          "contact_text": "복지정책과/033-570-3779",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/424000000176",
+          "application_url": null,
+          "updated_at": "2026-09-09T09:40:04.484972+00:00"
+        },
+        "source": {
+          "snapshotId": "1a356d8f-b682-4d41-a1a0-8c6b02bbca17",
+          "normalizerVersion": "1",
+          "displayHash": "ce7a8c998af478991e4f3ce02954eefd566053f579201fae3f8315588dfa96e4",
+          "normalizedFingerprint": "10695b67e2380bdaece58768acded60690e097c969ebbf8979e1845644bd30e5"
+        }
+      },
+      "recipe": {
+        "sampleId": "B02",
+        "policyId": "336ae5ae-d49c-4b9a-9a15-f0b00ccf7965",
+        "category": "childcare",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "ACTIVE_PUBLIC_SOURCE_SNAPSHOT; UNREVIEWED 조건 초안. 원문 source 원형 보존.",
+          "수혜 아동 CHILD 단일 경로. 사용자 희망·선호를 실제 서비스 이용·보호 자격으로 바꾸지 않는다."
+        ],
+        "paths": [
+          {
+            "id": "B02-direct-family-support",
+            "purpose": "childcare-costs",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "fosterCareChild",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "이 자녀는 가정위탁 아동으로 인정되어 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "가정위탁 아동"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_NUMBER_RANGE",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "childAgeYears",
+                  "min": null,
+                  "max": 18,
+                  "minInclusive": true,
+                  "maxInclusive": false,
+                  "unit": "AGE_YEARS",
+                  "basis": "POLICY_AGE_METHOD_UNCONFIRMED",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 기준일과 산정방법에 따른 이 자녀의 나이는 몇 세인가요?"
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "18세 미만"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "AI_ASSISTED 분류 추정 표본이며 전체 정책 검토 완료가 아니다. 원문 최신 공고·정책 전체 조건·HUMAN 공개 승인 미확인.",
+              "기준일 및 선언 사실의 유효 시점 미확인. UNCONFIRMED 질문은 자동 생성하지 않는다.",
+              "가정위탁 인정 절차·연장보호 예외·연령 기준일과 산정방식 미명시.",
+              "삼척시 기관명과 관할 방문 신청만으로 학생의 특정 거주요건을 생성하지 않는다. 금액·지급기간 미확인."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "C01",
+      "category": "care",
+      "source": {
+        "policy": {
+          "id": "3aee86b9-c525-4d7c-b9ca-b9eb91ed19ff",
+          "name": "아이돌봄서비스 본인부담금 지원",
+          "summary": "아이돌봄서비스를 이용하는 가정의 본인부담금 추가지원서비스",
+          "provider_name": "전남광주통합특별시 장성군",
+          "purpose_text": "아이돌봄서비스 이용 시 본인부담금 추가지원을 통한 양육부담 경감",
+          "target_text": "○  관내 주민등록상 주소를 두고 시간제 아이돌봄서비스를 이용하는 3개월이상 ~ 12세 이하 아동",
+          "criteria_text": null,
+          "benefit_text": "○ 서비스 대상 : 두가지 요건을 충족하는 자\n- 시간제 아이돌봄 서비스를 이용하는 만 3개월 이상 ~ 만12세이하 아동\n- 신청일부터 보호자가 관내 주민등록상 주소를 두고 실제 아이와 함께 거주하면서 아이돌봄서비스를 이용하는 가정\n\n○ 지원금액 (시간당 본인부담금의 중위소득 75%~250% 차등지원)\n- 가형 1,918원(중위소득75%이하) / 나형 5,116원(중위소득120%이하) / 다형 8,952원(중위소득150%이하) / 라형 10,870원(중위소득250%이하)\n- 다자녀 (12세이하 아동 3명 이상인 가정의 셋째 이상 아이 이용 시) - 소득무관 100%\n\n○ 제공기간 : 서비스 이용시 매월 적용",
+          "application_method_text": "○ 방문 신청\n- 주민센터 : 관할 행정복지센터 신청",
+          "application_period_text": "상시신청",
+          "required_documents_text": "○ 아이돌봄서비스 본인부담금 지원신청서\n○ 통장사본",
+          "reception_text": null,
+          "contact_text": "자치행정국 가족행복과/061-390-7413",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/498000000107",
+          "application_url": null,
+          "updated_at": "2026-09-09T10:06:29.961486+00:00"
+        },
+        "source": {
+          "snapshotId": "ffa7cc06-a0ac-4714-bd69-e0450bdda1ec",
+          "normalizerVersion": "1",
+          "displayHash": "d181104fd7a40aa772c40333f060e12aae0ab23915900466a315cde3700fa610",
+          "normalizedFingerprint": "755e4daf91955c8851677d3424b8aa1e3021098c73681a3deb0b086f3035661a"
+        }
+      },
+      "recipe": {
+        "sampleId": "C01",
+        "policyId": "3aee86b9-c525-4d7c-b9ca-b9eb91ed19ff",
+        "category": "care",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "ACTIVE_PUBLIC_SOURCE_SNAPSHOT; UNREVIEWED 조건 초안. 원문 source 원형 보존.",
+          "수혜 아동 CHILD 단일 경로. 사용자 희망·선호를 실제 서비스 이용·보호 자격으로 바꾸지 않는다.",
+          "temporary-care는 분야 필요 목적 분류다. 이용 시간이 일시적이어야 한다는 자격 조건을 추가하지 않는다.",
+          "정기 시간제 이용도 원문 범위에서 배제하지 않는다."
+        ],
+        "paths": [
+          {
+            "id": "C01-direct-family-support",
+            "purpose": "temporary-care",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "usesHourlyChildcare",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "이 자녀는 시간제 아이돌봄서비스를 실제 이용하고 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "시간제 아이돌봄서비스를 이용하는"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_NUMBER_RANGE",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "childAgeYears",
+                  "min": null,
+                  "max": 12,
+                  "minInclusive": true,
+                  "maxInclusive": true,
+                  "unit": "AGE_YEARS",
+                  "basis": "POLICY_AGE_METHOD_UNCONFIRMED",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 기준일과 산정방법에 따른 이 자녀의 나이는 몇 세인가요?"
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "12세 이하 아동"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "AI_ASSISTED 분류 추정 표본이며 전체 정책 검토 완료가 아니다. 원문 최신 공고·정책 전체 조건·HUMAN 공개 승인 미확인.",
+              "기준일 및 선언 사실의 유효 시점 미확인. UNCONFIRMED 질문은 자동 생성하지 않는다.",
+              "생후 3개월 이상 하한은 AGE_YEARS로 소수 환산하지 않는다. 개월 단위 template와 기준일 확인 필요.",
+              "학생 관내 주민등록과 신청일부터 보호자의 관내 주민등록·아동과 실제 동거를 따로 확인해야 한다. HOUSEHOLD 현재주소로 대신하지 않는다.",
+              "소득 75/120/150/250%는 지급액 구간이며 산정 방식·가구범위 미명시. 12세 이하 아동3명 이상 가정의 셋째 이상 이용은 소득무관100% 예외로 보존하되 불완전 경로에서 전체 탈락 판정 금지."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sampleId": "C02",
+      "category": "care",
+      "source": {
+        "policy": {
+          "id": "258f06a2-248b-4ba5-95f2-ea1a4222de22",
+          "name": "아이돌봄서비스 본인부담금 지원사업",
+          "summary": "양육공백이 생긴 12세 이하 아이돌봄서비스 이용가정에 본인부담금 50%를 군비로 지원하여\n건강한 돌봄 생활 지원(연 960시간 이내)",
+          "provider_name": "충청남도 예산군 행정복지국 가족지원과",
+          "purpose_text": null,
+          "target_text": "관내 주소를 두고 실거주하는 12세 이하 가정의 아이돌봄서비스 이용 가정",
+          "criteria_text": "아이돌봄서비스 이용가정",
+          "benefit_text": "본인부담금의 50%를 익월 지급",
+          "application_method_text": "해당주소지 읍면동 행정복지 센터 방문신청",
+          "application_period_text": null,
+          "required_documents_text": null,
+          "reception_text": null,
+          "contact_text": "예산군청 가족지원과 여성가족팀",
+          "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005197&wlfareInfoReldBztpCd=02",
+          "application_url": null,
+          "updated_at": "2026-09-08T08:21:44.190919+00:00"
+        },
+        "source": {
+          "snapshotId": "125c6398-1981-4368-a0d3-087954e40b7e",
+          "normalizerVersion": "bokjiro-2",
+          "displayHash": "8d114ae594634efe48c908bfb09b1f55e736bc2901b28a9f77d34e56671d75ad",
+          "normalizedFingerprint": "5e8a14945d46df643ead6dbf81415fe66afa4c4f195b0b96db86f9b6b5194915"
+        }
+      },
+      "recipe": {
+        "sampleId": "C02",
+        "policyId": "258f06a2-248b-4ba5-95f2-ea1a4222de22",
+        "category": "care",
+        "disposition": "CANDIDATE",
+        "notes": [
+          "ACTIVE_PUBLIC_SOURCE_SNAPSHOT; UNREVIEWED 조건 초안. 원문 source 원형 보존.",
+          "수혜 아동 CHILD 단일 경로. 사용자 희망·선호를 실제 서비스 이용·보호 자격으로 바꾸지 않는다.",
+          "본인부담금50% 익월 지급. temporary-care는 목적 분류이며 희망이나 일시성만으로 실제 이용 사실을 생성하지 않는다."
+        ],
+        "paths": [
+          {
+            "id": "C02-direct-family-support",
+            "purpose": "temporary-care",
+            "subject": "CHILD",
+            "conditions": [
+              {
+                "template": "DECLARED_PROGRAM_STATUS",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "usesChildcare",
+                  "values": [
+                    "YES"
+                  ],
+                  "basis": "POLICY_SPECIFIC_DECLARED_STATUS",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "이 자녀는 아이돌봄서비스를 실제 이용하고 있나요?",
+                  "options": [
+                    {
+                      "value": "YES",
+                      "label": "해당해요"
+                    },
+                    {
+                      "value": "NO",
+                      "label": "해당하지 않아요"
+                    }
+                  ]
+                },
+                "evidence": [
+                  {
+                    "field": "criteria_text",
+                    "quote": "아이돌봄서비스 이용가정"
+                  }
+                ]
+              },
+              {
+                "template": "DECLARED_NUMBER_RANGE",
+                "subject": "BENEFICIARY",
+                "params": {
+                  "attribute": "childAgeYears",
+                  "min": null,
+                  "max": 12,
+                  "minInclusive": true,
+                  "maxInclusive": true,
+                  "unit": "AGE_YEARS",
+                  "basis": "POLICY_AGE_METHOD_UNCONFIRMED",
+                  "reference": "POLICY_REFERENCE_UNCONFIRMED",
+                  "prompt": "정책의 기준일과 산정방법에 따른 이 자녀의 나이는 몇 세인가요?"
+                },
+                "evidence": [
+                  {
+                    "field": "target_text",
+                    "quote": "12세 이하"
+                  }
+                ]
+              }
+            ],
+            "gaps": [
+              "AI_ASSISTED 분류 추정 표본이며 전체 정책 검토 완료가 아니다. 원문 최신 공고·정책 전체 조건·HUMAN 공개 승인 미확인.",
+              "기준일 및 선언 사실의 유효 시점 미확인. UNCONFIRMED 질문은 자동 생성하지 않는다.",
+              "관내 주소+실거주 요건은 필요하나 해당 주체·기준일 미명시. 학생/부모/가구 역할을 임의 합치지 않는다.",
+              "요약의 양육공백·연960시간 상한 및 예산군 지역 집행 세부요건 검수 필요. 소득 기준을 추가하지 않는다.",
+              "12세 이하 표현의 만 나이 여부·산정 기준일 미확인."
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

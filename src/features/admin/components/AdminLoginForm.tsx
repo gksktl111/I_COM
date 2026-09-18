@@ -2,7 +2,7 @@
 
 import { useFormStatus } from "react-dom";
 import Link from "next/link";
-import { ArrowLeft, Baby, LockKeyhole, ShieldCheck } from "lucide-react";
+import { ArrowLeft, Compass, LockKeyhole, ShieldCheck } from "lucide-react";
 import "../admin.css";
 
 function SubmitButton() {
@@ -32,7 +32,7 @@ export function AdminLoginForm({
       <div className="admin-login-wrap">
         <Link className="admin-brand admin-login-brand" href="/">
           <span className="admin-brand-icon">
-            <Baby size={28} aria-hidden="true" />
+            <Compass size={28} aria-hidden="true" />
           </span>
           <span>
             아이콤 <small>ADMIN CONSOLE</small>

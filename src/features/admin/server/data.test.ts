@@ -280,9 +280,15 @@ test("admin reads guard before privileged requests, validate filters, and return
   });
   assert.equal(related.items[0].relevance_assessed_at, "2026-09-08T00:00:00Z");
   assert.ok(!JSON.stringify(related).includes("excluded"));
-  for (const version of ["policy-relevance-2", "policy-relevance-3"]) {
+  for (const version of ["policy-relevance-2", "policy-relevance-3", "policy-relevance-4", "policy-relevance-review-1", "policy-relevance-review-2", "policy-relevance-review-3", "policy-relevance-review-4", "policy-relevance-review-5", "policy-relevance-review-6"]) {
     response = Response.json([{ ...policy, relevance: { ...relevance, version } }]);
     assert.equal((await listPolicies()).items[0].relevance?.version, version);
+  }
+  for (const category of ["돌봄", "의료·건강", "주거·생활지원", "아동 돌봄"]) {
+    response = Response.json([{ ...policy, relevance: { ...relevance, version: "policy-relevance-review-5", categories: [category] } }]);
+    const tagged = await listPolicies({ category });
+    assert.deepEqual(tagged.items[0].relevance?.categories, [category]);
+    assert.equal(requestUrl.searchParams.get("relevance"), `cs.${JSON.stringify({ categories: [category] })}`);
   }
   response = Response.json([
     { ...policy, relevance: { ...relevance, version: "unknown-version" } },

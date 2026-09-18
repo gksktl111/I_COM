@@ -1,0 +1,163 @@
+{
+  "dateKST": "2026-09-09",
+  "verifiedAt": "2026-09-09T08:50:58.735Z",
+  "environment": "policy-dev",
+  "mode": "REAL_UPSTREAM_AND_DATABASE_WRITE",
+  "overallStatus": "PARTIAL",
+  "fullSourceCollectionComplete": false,
+  "allProcessesExited": true,
+  "allObservedLeasesReleased": true,
+  "policyCountBefore": 2527,
+  "policyCountAfter": 2568,
+  "policyCountNetIncrease": 41,
+  "initialResumeAttempts": [
+    {
+      "provider": "GOV24",
+      "runId": "8a75d68a-9a14-4ae0-ac8a-02568b5902fd",
+      "status": "PAUSED",
+      "reason": "SOURCE_DRIFT",
+      "calls": 1,
+      "processed": 0
+    },
+    {
+      "provider": "BOKJIRO_CENTRAL",
+      "runId": "87f0678c-b4f1-4bb4-a9bf-2153cf37ba57",
+      "status": "PAUSED",
+      "reason": "SOURCE_DRIFT",
+      "calls": 1,
+      "processed": 0
+    },
+    {
+      "provider": "BOKJIRO_LOCAL",
+      "runId": "547a59cf-f9b3-4d86-be97-318be3ef4455",
+      "status": "PAUSED",
+      "reason": "SOURCE_DRIFT",
+      "calls": 1,
+      "processed": 0
+    }
+  ],
+  "runs": [
+    {
+      "provider": "BOKJIRO_LOCAL",
+      "runId": "78f41e01-e944-459d-a025-d60ecd441b5a",
+      "status": "PARTIAL",
+      "stopReason": "UPSTREAM_ERROR",
+      "startedAt": "2026-09-09T08:49:19.548783+00:00",
+      "finishedAt": "2026-09-09T08:50:00.85387+00:00",
+      "calls": 51,
+      "processed": 50,
+      "applied": 49,
+      "excluded": 1,
+      "failedItems": 0,
+      "pendingDiscoveredItems": 0,
+      "nextPage": 2,
+      "discovered": 50,
+      "expectedSourceTotal": 4764,
+      "discoveryComplete": false,
+      "leaseActive": false,
+      "config": {
+        "filters": {},
+        "perPage": 50,
+        "maxPages": 1000,
+        "dailyLimit": 100
+      },
+      "qualityRows": 49,
+      "qualityErrorRows": 0
+    },
+    {
+      "provider": "BOKJIRO_CENTRAL",
+      "runId": "851043be-6342-4dff-b91b-f03424d9d266",
+      "status": "PARTIAL",
+      "stopReason": "DAILY_BUDGET",
+      "startedAt": "2026-09-09T08:49:15.674939+00:00",
+      "finishedAt": "2026-09-09T08:50:23.002727+00:00",
+      "calls": 99,
+      "processed": 108,
+      "applied": 91,
+      "excluded": 17,
+      "failedItems": 0,
+      "pendingDiscoveredItems": 42,
+      "nextPage": 4,
+      "discovered": 150,
+      "expectedSourceTotal": 461,
+      "discoveryComplete": false,
+      "leaseActive": false,
+      "config": {
+        "filters": {},
+        "perPage": 50,
+        "maxPages": 1000,
+        "dailyLimit": 100
+      },
+      "qualityRows": 91,
+      "qualityErrorRows": 0
+    },
+    {
+      "provider": "GOV24",
+      "runId": "8ef95422-a4d3-4474-ba3e-9cbd186899e3",
+      "status": "PARTIAL",
+      "stopReason": "DAILY_BUDGET",
+      "startedAt": "2026-09-09T08:49:10.416051+00:00",
+      "finishedAt": "2026-09-09T08:49:32.961235+00:00",
+      "calls": 99,
+      "processed": 24,
+      "applied": 24,
+      "excluded": 0,
+      "failedItems": 0,
+      "pendingDiscoveredItems": 26,
+      "nextPage": 2,
+      "discovered": 50,
+      "expectedSourceTotal": 10955,
+      "discoveryComplete": false,
+      "leaseActive": false,
+      "config": {
+        "filters": {},
+        "perPage": 50,
+        "maxPages": 1000,
+        "dailyLimit": 100
+      },
+      "qualityRows": 24,
+      "qualityErrorRows": 0
+    }
+  ],
+  "dailyUsage": [
+    {
+      "day": "2026-09-09",
+      "provider": "BOKJIRO_LOCAL",
+      "reserved_calls": 52,
+      "configured_limit": 100
+    },
+    {
+      "day": "2026-09-09",
+      "provider": "BOKJIRO_CENTRAL",
+      "reserved_calls": 100,
+      "configured_limit": 100
+    },
+    {
+      "day": "2026-09-09",
+      "provider": "GOV24",
+      "reserved_calls": 100,
+      "configured_limit": 100
+    }
+  ],
+  "totalApplied": 164,
+  "totalExcluded": 18,
+  "totalReservedCalls": 252,
+  "unassessedCurrent": 0,
+  "sourceEvidence": [
+    {
+      "path": ".local/policy-sync/daily-20260909/before.json",
+      "sha256": "e464cd0894608672c1812d8840f6da091e2b72f645a3e7cafcdbc00182279a44"
+    },
+    {
+      "path": ".local/policy-sync/daily-20260909/after.json",
+      "sha256": "7552a22f554be72b516b9642d646e531adf20a8e2a2fe9a043366772adfe4c58"
+    }
+  ],
+  "limits": "Existing provider daily reservation cap 100 retained; no quota reset or cap increase. Upstream error not retried.",
+  "notVerified": [
+    "complete source coverage",
+    "current eligibility or human public approval",
+    "exact upstream error response code for local page 2",
+    "scheduled collection or production deployment"
+  ]
+}

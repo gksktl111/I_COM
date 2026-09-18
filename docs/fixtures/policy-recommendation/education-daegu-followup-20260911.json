@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "education-daegu-followup-1",
+  "sampleId": "E10",
+  "policyId": "10acd4aa-c872-42e5-b4fc-44170c3235ac",
+  "policyName": "대구시교육청 방과후학교 자유수강권 지원",
+  "checkedAt": "2026-09-11T12:38:52Z",
+  "status": "PENDING_HUMAN_REVIEW",
+  "authoredBy": "AI_ASSISTED",
+  "method": "보존 template-sources 대조 후 복지로 격리 브라우저 실제 본문 및 교육부 2026 안내(교육청 공식 배포 PDF) 확인. 교육청·학교 검색을 보조 사용. 코드·recipe·승인 변경 없음.",
+  "sources": [
+    {
+      "id": "bokjiro-current",
+      "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005512&wlfareInfoReldBztpCd=02",
+      "updatedOn": "2026-08-20",
+      "observedVia": "격리 브라우저 렌더링 본문 직접 읽기; 지원대상·선정기준·서비스 내용·최종수정일 확인"
+    },
+    {
+      "id": "moe-2026-guide",
+      "url": "https://www.goe.go.kr/resource/goe/na/bbs_2675/2026/05/f792b8b5-8d10-4920-95a5-f8550b30cd24.pdf",
+      "title": "2026 초·중·고 학생 교육비 지원 안내",
+      "observedVia": "경기도교육청 도메인의 교육부 안내 PDF 텍스트 직접 열람; 124쪽 중 PDF 28~32쪽 관련 부분. PDF 표 screenshot 시도는 오류여서 표 시각 검증 미완료."
+    },
+    {
+      "id": "daegu-school-2026-index",
+      "url": "https://yg.dge.es.kr/yge/na/ntt/selectNttList.do?bbsId=10203706&mi=10208482",
+      "observedVia": "공식 학교 게시판 검색 색인에서 2026-03-10 게시물 제목 확인; 본문 open cache miss"
+    },
+    {
+      "id": "daegu-school-2025-plan",
+      "url": "https://kyungsang.dge.ms.kr/kyungsangm/cm/cntnts/cntntsView.do?cntntsId=10000031&mi=10000031",
+      "observedVia": "공식 학교 검색 색인에 2025 운영계획 및 1.5% 표기 확인; 2026 근거로 사용하지 않음"
+    }
+  ],
+  "findings": [
+    {
+      "id": "priority-one",
+      "summary": "현행 복지로는 1순위를 기초·차상위·한부모 우선지원 대상으로 명시한다. 2026 교육부 안내의 법정 정의는 기초생활수급자·한부모가족 보호대상자·법정 차상위대상자다. 일반 한부모라는 답변을 법정 인정으로 바꾸지 않는다.",
+      "evidence": [
+        {
+          "sourceId": "bokjiro-current",
+          "section": "지원대상 1순위",
+          "quote": "1순위) 우선지원대상자 : 기초, 차상위, 한부모"
+        },
+        {
+          "sourceId": "moe-2026-guide",
+          "section": "인쇄 23쪽 / PDF index 28 표 하단 법정 정의"
+        }
+      ]
+    },
+    {
+      "id": "income-80",
+      "summary": "2026 안내 대구 행의 자유수강권은 법정·80%·학교장으로 표시한다. 80%는 가구 학생의 기준 중위소득 이하 기준이며 일반 월급 기준이 아니다. 현행 복지로 2순위의 80%와 일치한다.",
+      "supportedValues": {
+        "medianIncomeMaximumPercent": 80,
+        "assessmentYearInGuide": 2026
+      },
+      "evidence": [
+        {
+          "sourceId": "moe-2026-guide",
+          "section": "인쇄 22~24쪽 / PDF index 27~29 선정기준·대구 행·소득인정액 환산표"
+        },
+        {
+          "sourceId": "bokjiro-current",
+          "section": "지원대상 2순위"
+        }
+      ]
+    },
+    {
+      "id": "priority-two-listed-groups",
+      "summary": "2순위에는 보훈대상 자녀·북한이탈주민 자녀·난민인정자 또는 그 자녀·소년소녀가장·복지시설수용학생·난치병학생·특수교육대상자가 소득 항목과 함께 열거된다. 각 집단의 법적 정의 및 80%와의 조합을 개별 조건으로 확정할 상세 계획은 확보하지 못했다.",
+      "evidence": [
+        {
+          "sourceId": "bokjiro-current",
+          "section": "지원대상 / 선정기준 2순위"
+        }
+      ]
+    },
+    {
+      "id": "school-recommendation-quota",
+      "summary": "3순위 학교장 추천은 특수교육대상자를 제외한 1·2순위 대상자 수의 3% 범위에서 선정한다. 이는 추천 인원 한도이며 개인 소득·확률·자동 자격 조건이 아니다.",
+      "supportedValues": {
+        "priority": 3,
+        "quotaPercent": 3,
+        "denominator": "PRIORITY_1_AND_2_EXCLUDING_SPECIAL_EDUCATION"
+      },
+      "evidence": [
+        {
+          "sourceId": "bokjiro-current",
+          "section": "지원대상 / 선정기준 3순위",
+          "quote": "1~2순위 대상자(특수교육대상자 제외) 3% 범위 내 선정"
+        }
+      ]
+    },
+    {
+      "id": "actual-selection-and-use",
+      "summary": "복지로는 실제 방과후 프로그램 수강료 지원 및 저소득 연60만원·특수교육대상 연96만원 한도를 안내한다. 교육부 2026 안내는 선정 후 신청·수강한 경우 지원하며, 학교장 추천에도 위원회 등의 의결이 필요하다고 설명한다. 추천 희망만으로 선정 완료가 아니다.",
+      "evidence": [
+        {
+          "sourceId": "bokjiro-current",
+          "section": "서비스 내용"
+        },
+        {
+          "sourceId": "moe-2026-guide",
+          "section": "인쇄 25~26쪽 / PDF index 30~31 자유수강권 및 학교장 추천 지원"
+        }
+      ]
+    },
+    {
+      "id": "possible-additional-2026-route",
+      "summary": "대구연경초 공식 목록에 2026-03-10 육아기 근로시간 단축 활용 자유수강권 지원 안내가 있다. 저장된 1~3순위 목록만으로 모든 2026 경로가 완전하다고 할 수 없다. 제목만 확인했으므로 구체적 대상·지원범위는 미확인이다.",
+      "evidence": [
+        {
+          "sourceId": "daegu-school-2026-index",
+          "section": "2026-03-10 방과후 프로그램 게시물 제목"
+        }
+      ]
+    }
+  ],
+  "resolved": [
+    "80% 기준을 2026 교육부 안내로 재확인했다.",
+    "3% 및 특수교육대상자 분모 제외 문구를 2026-08-20 갱신 복지로 실제 본문에서 확인했다.",
+    "우선순위·학교장 추천은 신청자 선호나 보편적 Boolean 자격과 구분해야 한다."
+  ],
+  "unresolved": [
+    "대구교육청 2026 자유수강권 상세 시행계획 전문은 확보하지 못했다. 복지로 요약을 경로 완전성 승인으로 사용하지 않는다.",
+    "학교장 추천 배정 인원 산정 기준일·반올림·특별배정·학교별 심사 세부요건 미확인.",
+    "2025 경상중 운영계획 색인에는 1.5%가 있으나 과거 학교계획이다. 2026 3%로 변경된 정확한 시점·시행문서는 미확보. 과거 비율로 덮어쓰지 않는다.",
+    "2순위 소득과 특별집단의 AND/OR 관계 및 집단별 인정기준·예외는 상세 근거 필요.",
+    "육아기 근로시간 단축 활용 경로의 2026 대구 공통 적용 여부와 기존 순위와의 관계 미확인.",
+    "학교 소재지·학생 주민등록 등 지역 적용 세부기준 및 지원중단·출석 요건 미확인."
+  ],
+  "proposedNextChange": [
+    "법정수급·80% 소득·학교장 실제 선정 후보를 서로 다른 경로로 검토하되 우선순위를 기존 추천 점수에 임의 반영하지 않는다.",
+    "3%는 정책 운영 quota 메타데이터 후보로 보존하고 사용자 질문으로 자격 충족시키지 않는다.",
+    "새로운 학교 게시물의 원문 또는 교육청 시행계획 확보 전 모든 경로에 gaps와 미공개 상태를 유지한다."
+  ]
+}

@@ -1,0 +1,3334 @@
+{
+  "schemaVersion": "six-tag-activation-record-1",
+  "inputQueriedAt": "2026-09-13T15:29:33.733Z",
+  "beforeCounts": {
+    "ACTIVE": 3435,
+    "REVIEW": 1422,
+    "EXCLUDED": 1038
+  },
+  "reviewCriteria": "여섯 화면 태그와 실제 지원 대상·내용 일치로 활성화; 세부 조건 확인은 별도 보존",
+  "sourceRows": [
+    {
+      "source_id": "046d9a33-4076-4ab9-8fb9-a4e55497da74",
+      "applied_snapshot_id": "a8b7e4d0-3fed-490f-a878-09b7766e646c",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/319000000147",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/319000000147",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "온라인신청사이트URL",
+            "value": null,
+            "status": "empty",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "통합돌봄 건강장수센터 운영",
+          "summary": "다학제팀(의사, 간호사, 영양사, 운동사, 치위생사)이 가정으로 찾아가는 맞춤형 건강관리",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/319000000147",
+          "target_text": "맞춤형 건강관리가 필요한 건강취약계층 ※ 통합돌봄사업 대상자 우선",
+          "benefit_text": "●이용대상\n맞춤형 건강관리가 필요한 건강취약계층\n※ 통합돌봄사업 대상자 우선\n\n●운영인력\n건강주치의팀 7명(의사 1명, 간호사 2명, 영양사 1명, 운동사 1명, 치위생사 2명)\n\n●서비스내용\n다학제팀의 통합 방문건강관리서비스 제공\n건강상담 및 교육 : 건강상태 평가, 복약순응도 확인, 복약지도, 만성질환 합병증 유무 등 파악, 건강상담 및 교육 등\n영양관리 : 식생활 점검, 영양상태 확인, 맞춤형 영양 상담 및 교육\n운동관리 : 신체건강기능증진 및 체력강화를 위한 맞춤형 운동방법 제시\n구강관리 : 구강위생 관리법, 틀니 관리, 연하(삼킴) 장애 관리 등\n맞춤형 연계 서비스 제공(재택의료, 정신‧치매 상담, 복지상담 등)\n\n●이용 문의\n신대방보건지소(신대방지소팀) ☎02-820-9702~9704, 9720",
+          "contact_text": "보건지소/02-820-9701||보건지소/02-820-9702||보건지소/02-820-9703||보건지소/02-820-9704||보건지소/02-820-9720",
+          "purpose_text": "건강고위험군 대상 다학제팀의 통합 방문건강관리 서비스 제공하고 지역사회 자원 연계를 통해 어르신의 건강 증진과 삶의 질 향상을 도모하고자 함",
+          "criteria_text": null,
+          "provider_name": "서울특별시 동작구",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "1. 방문건강관리사업, 통합돌봄사업 대상자중 다학제팀 필요 대상자 의뢰\n2. 보건지소 건강주치의팀으로 유선 신청\n\n-> 건강주치의팀 전문인력에 의한 방문건강관리",
+          "application_period_text": "상시신청",
+          "required_documents_text": "해당없음"
+        },
+        "rawHash": "9c23ac767b8eec0a355054c838d81b0daa85548657b246f310b2ca8b9a344a34",
+        "modified": {
+          "list": {
+            "day": "2026-07-30",
+            "raw": "20260730164623",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-07-30",
+            "raw": "2026-07-30",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "d5784c87e136355e107c2c0b724c5c35d35d82775d6c2b3ae6f920ff05aa50e4",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "cb812ca8cbe701912754b2df414aba1b4267811b0d61c3f1209d5815934d5c2a",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "대상은 건강취약계층 일반, 목적은 어르신 건강으로 대상범위 확인 필요 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:16:11.948961+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-08T09:03:16.439214+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "319000000147"
+      }
+    },
+    {
+      "source_id": "1439f0ae-5298-4e15-9e10-3c7d97cf826c",
+      "applied_snapshot_id": "7ef3890f-23e2-4351-9ef5-fc86deb6674e",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/368000000105",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/368000000105",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "온라인신청사이트URL",
+            "value": null,
+            "status": "empty",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "대덕형 마을돌봄 서비스",
+          "summary": "돌봄이 필요한 자에게 일시재가, 이동지원, 영양급식, 주거편의, 단기보호 등 제공",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/368000000105",
+          "target_text": "○ 건강, 기능, 생활상태 악화로 독립생활이 어려운 돌봄이 필요한 자",
+          "benefit_text": "○ 돌봄이 필요한 자에게 일시재가, 이동지원, 영양급식, 단기보호, 주거편의 등 지원 서비스를 제공하여 돌봄 사각지대 보완\n* 일시재가 연80시간, 영양급식 1일 1회 50식 등\n단, 소득 및 재산에 따라 본인부담금 발생가능성 있음.",
+          "contact_text": "복지정책과 통합돌봄사업팀/042-608-4612",
+          "purpose_text": "지역사회 통합돌봄 실현",
+          "criteria_text": null,
+          "provider_name": "대전광역시 대덕구",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "○ 방문 신청 : 거주지 관할 동행정복지센터 신청(신분증 지참)",
+          "application_period_text": "상시신청",
+          "required_documents_text": "각 동 마을돌봄사업 담당자에게 문의 후 가정방문 또는 주민센터 내방 후 관련 서류 작성\n\n1. 서비스 신청서(동행정복지센터 담당자 확인 후 담당자가 작성)\n2. 현장실태조사 및 케어회의록\n3. 신분증 등(대리 신청의 경우 대상자 및 대리인 신분증 함께 제출)\n신청시 필요하다고 생각되는 자료가 있을경우 요청할수도 있음을 양해바랍니다."
+        },
+        "rawHash": "149a924833df0711c00247b5fcd49c15a915cc22fac2e2c9d6b3228d8f76ab76",
+        "modified": {
+          "list": {
+            "day": "2026-08-06",
+            "raw": "20260806065710",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-08-06",
+            "raw": "2026-08-06",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "206a6ba1f4cecea592a8963f56d2eedbcbd08659a0b1e5100507ba7187d9a491",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "0d1ccd6ed977a128a7444810a98fba199570e9089e52a3657dd4638ce659d086",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "일반 돌봄 필요자 서비스로 아동·부모가족 범위 없음 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:16:17.82342+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-08T09:25:26.43912+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "368000000105"
+      }
+    },
+    {
+      "source_id": "19e08438-77b4-40b3-874e-69c8a006d461",
+      "applied_snapshot_id": "2c85611c-698f-4423-9250-7bafd14fd952",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/629000000200",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/629000000200",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "온라인신청사이트URL",
+            "value": null,
+            "status": "empty",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "광주다움 통합돌봄",
+          "summary": "기존돌봄을 우선 연계하고 틈새는 광주+ 돌봄 13종 제공",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/629000000200",
+          "target_text": "동행정복지센터 사례관리 담당 공무원이 가정방문하여 → 돌봄이 필요한지 평가한 후 → 아래 조건에 모두 해당하는 경우 돌봄서비스를 지원함\n\n〔돌봄이 필요하다고 판단할 수 있는 경우〕\n① 혼자 거동하기 어렵거나, 독립적인 일상생활 수행이 어려운데\n② 돌볼 수 있는 가족이 없거나, 있어도 돌볼 수 없으면서\n③ 기존 돌봄 서비스를 이용할 수 없거나, 이용 중 공백이 발생한 경우",
+          "benefit_text": "빈틈없는 전 생애주기 지역사회 통합돌봄 서비스망 구축\n\n(기존서비스 우선 연계) 우선적으로 기존 제도권 서비스부터 누수 없이 신속하게 연계\n(틈새는 광주+돌봄 13종 서비스) 기존망에서 돌봄을 받지 못하는 대상, 시간, 종류 등 신규서비스 마련\n\n① 일상생활지원 일시재가 ②일상생활지원 방문목욕 ③ 식사지원 ④ 동행지원 ⑤ 건강지원 방문간호\n⑥ 건강지원 방문구강교육 ⑦ 건강지원 방문맞춤운동 ⑧ 다제약물관리  ⑨안전지원 AI안부전화\n⑩ 안전지원 안전생활 환경 ⑪주거편의 대청소 ⑫ 주거편의 방역〮방충 ⑬ 일시보호 케어안심주택",
+          "contact_text": "돌봄콜/1660-2642",
+          "purpose_text": "돌봄이 필요한 시민들의 근본적인 치유·회복과 생활개선 지원",
+          "criteria_text": null,
+          "provider_name": "전남광주통합특별시",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "ㅇ 돌봄콜 1660-2642 전화신청\n(신청인 : 본인, 가족, 이웃, 병원·시설·공공기관 종사자 등 신청)\nㅇ 동행정복지센터 전화 및 방문도 가능\nㅇ 돌봄콜 운영\n평일 주간(09:00~18:00)      ➜ 구 돌봄콜로 연결\n평일 야간(18:00~익일 09:00), 주말, 공휴일 등 구 휴무시 ➜ 자동응답시스템(ARS) 가동",
+          "application_period_text": "상시신청",
+          "required_documents_text": "해당없음"
+        },
+        "rawHash": "ce32bfe7fc79130a7bb420fe7d75b454cdbbf49d4605ccd4475a9103ada29c70",
+        "modified": {
+          "list": {
+            "day": "2026-07-16",
+            "raw": "20260716100605",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-07-16",
+            "raw": "2026-07-16",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "32432f920688983d66d6acc4fb8e91d388da4484dbc2f77efb44ee51a358957c",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "fcade7e098e811d43331b8baa514148da8a8c225b1e7e5e0b7d4d69fde2b539c",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "전 생애 돌봄이지만 아동·가족 경로 특정 불가 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:13:36.602822+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-11T14:46:33.573493+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "629000000200"
+      }
+    },
+    {
+      "source_id": "49f4f353-22b9-4d40-ac43-8f2f35fcbb0e",
+      "applied_snapshot_id": "af113dac-6eba-4e20-a6ce-56c669c5b964",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006259&wlfareInfoReldBztpCd=02",
+            "field": "servDtlLink",
+            "value": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006259&wlfareInfoReldBztpCd=02",
+            "status": "valid",
+            "endpoint": "list"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "applicationUrl",
+            "value": null,
+            "status": "empty",
+            "endpoint": "detail"
+          }
+        },
+        "dates": {
+          "crtrYr": {
+            "list": null,
+            "detail": null
+          },
+          "enfcEndYmd": {
+            "list": null,
+            "detail": "99991231"
+          },
+          "lastModYmd": {
+            "list": "20260815",
+            "detail": "20260815"
+          },
+          "enfcBgngYmd": {
+            "list": null,
+            "detail": "20260701"
+          },
+          "svcfrstRegTs": {
+            "list": null,
+            "detail": null
+          }
+        },
+        "display": {
+          "name": "일상생활돌봄(가사지원)",
+          "summary": "노쇠, 장애, 질병, 사고 등으로 일상생활 수행에 어려움을 겪는 사람이 살던 곳에서 계속하여 건강한 생활을 영위할 수 있도록 의료ㆍ요양 등 돌봄 지원을 통합ㆍ연계하여 제공하며, 국민의 건강하고 인간다운 생활을 유지하고 증진하는 데에 이바지함을 목적으로 함",
+          "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006259&wlfareInfoReldBztpCd=02",
+          "target_text": "통합돌봄 신청자 중 통합지원회의를 통하여 일상생활돌봄(가사지원) 등이 필요하다고 판단된 통합돌봄 대상자",
+          "benefit_text": "3개월 234시간 (월 78시간)의 방문요양 서비스 제공",
+          "contact_text": "경상북도 영양군청 주민복지과 054-680-6212",
+          "purpose_text": null,
+          "criteria_text": "의료요양 통합돌봄사업 지침에 따름",
+          "provider_name": "경상북도 영양군 행정복지국 주민복지과",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "방문 및 우편, 팩스 신청",
+          "application_period_text": null,
+          "required_documents_text": null
+        },
+        "rawHash": "6fd5b6b1c19eeee53c458ee56b8d2af0c759f56a605d6161ad2a3fd2c198079c",
+        "warnings": [],
+        "additional": {
+          "basfrmList": [
+            {
+              "wlfareInfoDtlCd": "040",
+              "wlfareInfoReldCn": "https://www.bokjiro.go.kr/ssis-tbu/CmmFileUtil/siteQnaInfoDownload.do?atcflId=20260410UUWBM1628430185489722&atcflSn=1",
+              "wlfareInfoReldNm": "2026년 의료요양 통합돌봄 사업 안내.pdf"
+            },
+            {
+              "wlfareInfoDtlCd": "040",
+              "wlfareInfoReldCn": "https://www.bokjiro.go.kr/ssis-tbu/CmmFileUtil/siteQnaInfoDownload.do?atcflId=20260410UUWBM1623420185487815&atcflSn=1",
+              "wlfareInfoReldNm": "개인정보 수집·이용 동의서.hwpx"
+            },
+            {
+              "wlfareInfoDtlCd": "040",
+              "wlfareInfoReldCn": "https://www.bokjiro.go.kr/ssis-tbu/CmmFileUtil/siteQnaInfoDownload.do?atcflId=20260410UUWBM1625030185487563&atcflSn=1",
+              "wlfareInfoReldNm": "통합지원신청서.hwpx"
+            }
+          ],
+          "baslawList": {
+            "wlfareInfoDtlCd": "030",
+            "wlfareInfoReldNm": "의료ㆍ요양 등 지역 돌봄의 통합지원에 관한 법률"
+          },
+          "inqplCtadrList": {
+            "wlfareInfoDtlCd": "010",
+            "wlfareInfoReldCn": "054-680-6212",
+            "wlfareInfoReldNm": "경상북도 영양군청 주민복지과"
+          }
+        },
+        "displayHash": "d0b5cbb156401ea7e70b5e80d031fc73c2689044b13dc6549ad6885fd3eb5ad6",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "servNm",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "servDgst",
+            "endpoint": "list",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "servDtlLink",
+            "endpoint": "list",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "sprtTrgtCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "alwServCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "inqplCtadrList",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "purpose",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "criteria_text": {
+            "field": "slctCritCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "provider_name": {
+            "field": "bizChrDeptNm",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "reception",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "application_url": {
+            "field": "applicationUrl",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "application_method_text": {
+            "field": "aplyMtdCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "applicationPeriod",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "required_documents_text": {
+            "field": "requiredDocuments",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          }
+        },
+        "classification": {},
+        "conditionsHash": "2b977f7b882768cb041a109a941a32277e08a51e5857dd541891cbad67514f81",
+        "sourceModified": {
+          "list": "20260815",
+          "detail": "20260815"
+        },
+        "normalizerVersion": "bokjiro-2"
+      },
+      "relevance": {
+        "reason": "통합돌봄 대상 연령·가족 경로 불명확 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:13:59.056556+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-09T09:06:06.012837+00:00",
+      "policy_sources": {
+        "provider": "BOKJIRO_LOCAL",
+        "external_id": "WLF00006259"
+      }
+    },
+    {
+      "source_id": "4c480fab-cf0f-4e15-8336-97b264c645fb",
+      "applied_snapshot_id": "4963a834-9c1a-4a06-829c-e0ca66080057",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/641000000730",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/641000000730",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": "https://www.gg.go.kr/ggcare/hmpg/main/main.do",
+            "field": "온라인신청사이트URL",
+            "value": "https://www.gg.go.kr/ggcare/hmpg/main/main.do",
+            "status": "valid",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "누구나 돌봄",
+          "summary": "돌봄이 필요한 도민에게 인당 연 최대 1,500천원 한도 돌봄서비스 제공",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/641000000730",
+          "target_text": "○ 돌봄이 필요한 31개 시·군 도민 누구나\n\n○ 적격 판단 기준  ( ※ 3가지 위기 상황 모두 충족하여야 지원 가능)\n- 혼자 거동이 어렵거나 독립적인 일상생활 수행이 어려운 경우\n- 수발 할 수 있는 가족 등이 없거나 수발 할 수 없는 경우\n- 공적 돌봄 서비스를 이용하지 않거나 서비스 이용 중 불가피한 공백이 발생한 경우",
+          "benefit_text": "○ 지원비용 : 인당 연 최대 1,500천원 한도 돌봄서비스 제공\n※ 중위소득 120%이하 전액지원, 120%초과~150%이하 50%지원, 150%초과 자부담\n\n○ 돌봄분야\n- 기본형 5개 분야,  확대형 3개 분야  (※ 확대형 : 시군 자율선택)\n- 기본형<5개> : 생활돌봄, 동행돌봄, 주거안전, 식사지원, 일시보호\n- 확대형<3개> : 재활돌봄, 심리상담, 방문의료\n\n① 생활돌봄서비스\t : 갑작스러운 사고 등 돌봄공백이 발생한 경우, 대상자 돌봄 서비스\n- 서비스 비용: 1시간 미만 17,450원\n- 이용한도 : 연간 최대 60시간(일/8시간까지 가능, 원칙상 60일 이내)\n\n② 동행돌봄서비스\t: 거동불편, 질병 등으로 필수적 외출이 필요한 경우, 동행돌봄 서비스\n- 서비스 비용:1시간 미만 17,410원\n- 이용한도 : 연간 최대 60시간(일/8시간까지 가능, 원칙상 60일 이내)\n\n③ 주거안전서비스\t: 독거 어르신 등 대상자의 가정 내 간단한 수리·보수 관련 서비스 및 대청소, 대형세탁, 소독·방역 서비스\n- 서비스 비용:1시간 미만 17,410원\n- 이용한도 : 연간 최대 60시간(일/8시간까지 가능)\n\n④ 식사지원서비스\t: 대상자의 기본적인 식생활 유지가 곤란한 경우, 도시락제공 서비스\n- 서비스 비용:1식당 11,000원\n- 이용한도  : 일 1~3식(연 최대 45식, 원칙상 60일 이내)\n\n⑤ 일시보호서비스\t: 가정 내 돌봄이 어려운 경우, 일정기간 시설보호 서비스\n- 서비스 비용:1일 74,060원\n- 이용한도  : 연간 최대 15일 이내\n\n⑥ 재활돌봄서비스\t: 일상생활 수행능력 향상이 필요한 경우, 맞춤형재활서비스 제공\n- 서비스 비용:1시간 60,000원\n- 이용한도  : 연간 최대 10회 이내(1주/1~2회에 1시간 이내)\n\n⑦ 심리상담서비스\t: 일상생활과 관련하여 심리적 어려움에 처한 경우, 심리상담제공\n- 서비스 비용:1시간 60,000원\n- 이용한도  : 연간 최대 10회 이내(1주/1~2회에 1시간이내)\n\n⑧ 방문의료서비스 : 거동 불편 등으로 병원방문이 어려운 경우, 의료진이 가정방문 진료\n- 서비스 비용: 방문진료 본인부담금 (1회 5만원 내외)\n- 이용한도  : 월 6회 이내 (원칙상 60일 이내)",
+          "contact_text": "경기도 콜센터/031-120||수원시 돌봄정책과/1899-3300||용인시 복지정책과/1577-1122||고양시 복지정책과/031-909-9000||화성시 복지정책과/1577-4200||부천시 통합돌봄과/032-625-9015||남양주시 복지정책과/031-579-6743||안산시 통합돌봄과/031-481-3457||평택시 복지정책과/031-8024-5000||안양시 복지정책과/031-8045-7979||시흥시 복지정책과/031-310-3569||김포시 복지과/031-980-2488||파주시 복지정책과/031-940-4114||광주시 복지정책과/031-760-5609||광명시 복지정책과/02-1688-3399||군포시 복지정책과/031-390-0693||오산시 희망복지과/031-8036-7394||양주시 사회복지과/031-8082-5706||이천시 복지정책과/031-644-2000||구리시  복지정책과/031-557-1010||안성시 복지정책과/031-678-2193||의왕시 복지정책과/031-345-2114||포천시 복지정책과/1533-2200||양평군 노인복지과/031-770-3988||여주시 복지행정과/031-887-2735||동두천시 복지정책과/031-860-2482||과천시 복지정책과/02-3677-2837||가평군 복지정책과/031-580-2255||연천군 복지정책과/031-839-2442||의정부시 복지정책과/031-828-4103||성남시 노인복지과/031-729-8899||하남시 복지정책과/031-5182-1210",
+          "purpose_text": "소득·연령에 관계없이 기존 돌봄의 틈새로 발생하는 돌봄공백의 해소",
+          "criteria_text": null,
+          "provider_name": "경기도",
+          "reception_text": null,
+          "application_url": "https://www.gg.go.kr/ggcare/hmpg/main/main.do",
+          "application_method_text": "○ 온라인신청 :누구나돌봄 플랫폼(https://www.gg.go.kr/ggcare/hmpg/main/main.do)\n○ 방문신청 : 주민등록상 주소의 읍면동 주민센터 (사업 실시 시·군)\n○ 전화신청 : 경기도 긴급복지 콜센터(031-120, 010-4419-7722)",
+          "application_period_text": "상시신청",
+          "required_documents_text": "해당없음"
+        },
+        "rawHash": "c1e4b10c9c171299a300b8d66b835b007d633d6c303e7c004604c594253149ff",
+        "modified": {
+          "list": {
+            "day": "2026-08-12",
+            "raw": "20260812171239",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-08-12",
+            "raw": "2026-08-12",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "87249efcf461275c62f4151894ca2ea2ac117ceb824cafda2bb54f54488be678",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "a74cf4a1c9b263f19064c19ade6a41b8bab656268d7adcd3ba5f198ca72b0d1b",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "전 연령 일반 돌봄이지만 아동 경로 특정 불가 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:14:00.431237+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-11T14:49:46.898136+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "641000000730"
+      }
+    },
+    {
+      "source_id": "5b39daba-a29f-414b-9f8b-461d6ffe0c6d",
+      "applied_snapshot_id": "a93c6e40-7793-4eb8-9632-cb5e6ae93f93",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/401000000123",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/401000000123",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": "https://www.gg.go.kr/ggcare/hmpg/srap/appl/srapInfoForm.do",
+            "field": "온라인신청사이트URL",
+            "value": "https://www.gg.go.kr/ggcare/hmpg/srap/appl/srapInfoForm.do",
+            "status": "valid",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "시흥돌봄SOS센터(누구나돌봄) 돌봄 서비스 지원",
+          "summary": "갑작스럽고 일시적인 위기상황 발생 시 돌봄서비스 신속 지원",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/401000000123",
+          "target_text": "○ 이용대상\n- 돌봄이 필요한 시흥시민\n※ 그 외 대상자는 시 심의를 통해 지원\n○ 자격기준\n- 아래의 세가지 조건에 모두 해당되는 경우\n· 혼자 거동하기 어렵거나 독립적인 일상생활 수행이 어려운 경우\n· 수발할 수 있는 가족 등이 부재하거나 수발할 수 없는 경우\n· 공적 돌봄서비스를 이용하지 않거나, 서비스 이용 중 불가피한 공백이 발생한 경우",
+          "benefit_text": "시흥돌봄SOS센터\n○ 갑작스럽고 일시적인 위기상황 발생 시 돌봄서비스 신속 지원\n○ 지원내용\n- 8대 돌봄서비스(단기/수가체계): 생활돌봄, 동행돌봄, 주거안전, 식사지원, 일시보호, 재활돌봄, 심리상담, 방문의료(시범운영)\n· 생활돌봄: 돌봄대상자 가정방문을 통한 수발\n· 동행지원: 필수적 외출 활동지원\n· 주거편의: 간단한 수리보수, 청소, 방역, 세탁\n· 식사지원: 기본적 식생활 유지 위한 식사배달\n· 일시보호: 단기시설 입소\n· 재활돌봄: 맞춤형 운동재활\n· 심리상담: 심리상담 제공\n· 방문의료: 진찰, 처방, 질환관리\n○ 서비스 비용\n- 8대 돌봄서비스(단기/수가체계): 국민기초생활보장수급자, 차상위, 중위소득120%이하, 국가유공자 본인 및 선순위 유족 무료, 그 외 자부담",
+          "contact_text": "시흥시청 통합돌봄과/031-310-3568||시흥시청 통합돌봄과/031-310-3569",
+          "purpose_text": null,
+          "criteria_text": null,
+          "provider_name": "경기도 시흥시",
+          "reception_text": null,
+          "application_url": "https://www.gg.go.kr/ggcare/hmpg/srap/appl/srapInfoForm.do",
+          "application_method_text": "○ 이용방법\n- 주소지 동 행정복지센터(시훙돌봄SOS센터) 방문 또는 전화\n-  누구나 돌봄 플랫품 온라인신청(https://www.gg.go.kr/ggcare/hmpg/srap/appl/srapInfoForm.do) 가능",
+          "application_period_text": "상시신청",
+          "required_documents_text": "※ 상담 후 필요 시 별도 제출(신청서, 개인정보 수집, 이용 및 제3자 제공 동의서 등)"
+        },
+        "rawHash": "9b609104c0abb92f065b0cfbf1766c0430b12a3f88a3b3a6069b1d083264f22f",
+        "modified": {
+          "list": {
+            "day": "2026-08-25",
+            "raw": "20260825161135",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-08-25",
+            "raw": "2026-08-25",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "24091e440a0f132258ebbae928c809a601f54d23dca5f2a32fcc5f62528b15f5",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "aa646a5f8fe3127657e65f17f670ae672ea66124391e443cdcd351bc195bb868",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "일반 돌봄필요 시민이며 가족 부재는 수발자 조건 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:28:39.795022+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-09T09:33:57.014239+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "401000000123"
+      }
+    },
+    {
+      "source_id": "6057931b-5785-488a-a12c-6c56b345481a",
+      "applied_snapshot_id": "5e9f7e51-dc11-47ed-a92b-bd0424783d69",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/611000019636",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/611000019636",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": "https://www.seoulmomcare.com/main/main.do",
+            "field": "온라인신청사이트URL",
+            "value": "https://www.seoulmomcare.com/main/main.do",
+            "status": "valid",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "서울형 가사서비스",
+          "summary": "임산부·맞벌이·다자녀 가정의 가사 노동 부담을 경감하고 일·생활 균형 지원",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/611000019636",
+          "target_text": "○ 서울시 거주 중위소득 180% 이하 임산부·맞벌이·다자녀 가정\n\n- 임산부 가구 : 임신 3개월 ~ 출산 후 1년 이내 가구\n\n- 맞벌이 가구 : 주 20시간 이상 근로하고 12세 이하(2012.7.1.이후 출생) 자녀 양육\n\n- 다자녀 가구 : 18세 이하(2006.7.1.이후) 자녀가 2명, 단 12세 이하 반드시 1명 포함\n\n※ 2026년부터 가구 당(세대주와 그 배우자 기준) 지원 생애 1회로 제한 예정\n\n- 23~25년 사업 참여가구는 26년부터 서비스 지원 대상 제외",
+          "benefit_text": "○ 사업기간 : 2025.7.~11월, 5개월\n\n※ 기간 내 미 사용 시 환수 조치\n\n○ 1가정 당 연 70만 원 상당 바우처를 신용(체크)카드에 지급\n\n○ 서울형 가사서비스 선정 업체(32개소)에서 바우처 결제",
+          "contact_text": "다산 콜센터/02-120",
+          "purpose_text": "임산부·맞벌이·다자녀 가정의 가사 노동 부담을 경감하고 일·생활 균형 지원",
+          "criteria_text": null,
+          "provider_name": "서울특별시",
+          "reception_text": null,
+          "application_url": "https://www.seoulmomcare.com/main/main.do",
+          "application_method_text": "○ 온라인신청 : 서울맘케어 누리(www.seoulmomcare.com)",
+          "application_period_text": "’25. 7. 21.  ~ '25. 11. 21",
+          "required_documents_text": "※ 신한카드(국민행복카드만 가능), 삼성카드. KB국민카드, 우리카드, BC카드 중 본인 명의의 카드를 소지하고 있어야 바우처 지급 가능\n\n＊ 증빙서류는 최근 3개월 이내 발급 분 인정 원칙\n\n<공통 사항>\n\n○ 서울 거주 및 자녀 나이(12세 이하)확인 : 주민등록등본\n\n○ (필수) 기준 중위소득 180%이하 여부 (구비 서류 제출)\n\n- 주민등록 세대 구성원의 건강·장기요양보험료 납부확인서\n\n- 피부양자의 경우 자격득실확인서 제출\n\n○ (해당시) 부, 모 세대 분리 (구비서류 제출)\n\n- 가족관계증명서\n\n○ 임산부 가구(임신 3개월~출산 1년 이내)\n\n○ 임신부 (구비서류 제출)\n- 임신사실확인서(병원명, 요양기관번호, 의사명, 의사 면허번호, 분만예정일 등 기재)\n\n○ 출산 후 1년 이내 (공통 자료로 확인)\n\n- 공통 자료 주민등록등본으로확인\n\n○ 맞벌이가정\n\n○임금근로자\n\n-  직장건강보험 및 고용보험 가입자는 증빙 없이 취업으로 인정\n\n※ 육아휴직자의 경우 육아휴직확인서 제출\n\n- 직장건강보험 미가입자는 아래 증빙서류 중 1종 제출\n\n※ 근로활동 및 소득신고서 별도 제출 필요\n\n- 국민연금가입자 가입증명서\n\n- 재직증명서, 근로계약서, 위촉(탁)계약서, 급여명세서,고용(근로)확인서 중 1부\n\n- 소득세 납세사실증명서 또는 근로소득원천징수영수증\n\n- 소득금액증명원\n\n○자영업자\n\n- 사업자등록증명원과 아래 서류 중 1부\n\n※ 근로활동 및 소득신고서 별도 제출 필요\n\n- 소득금액증명원 또는 부가가치세과세표준증명원\n\n- 부가가치세신고서\n\n* 신규 사업자의 경우 소득 확인이 가능한 서류(매출장부, 매출전표 등) 관할 세무서, 국세청 홈택스\n\n○기타\n- 공적증명서류가없는경우: 근로활동및소득신고서와 함께 소득증빙(고용임금확인서, 통장사본 등1)) 서류 제출\n\n○ 다자녀 가정 (2자녀 이상)\n\n- 미성년 자녀(만 18세 이하) 2명 이상 여부 확인 공통 자료로 확인"
+        },
+        "rawHash": "3cb5b55162148aaa16549d4c95ba018cfb54241345df440fc14f8ac917522177",
+        "modified": {
+          "list": {
+            "day": "2026-02-25",
+            "raw": "20260225160930",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-02-25",
+            "raw": "2026-02-25",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "841ca4c068703cad1e7907de5fc61b6609d7c6c2cd7437805b074329b91cd283",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "9988f71bfe320363af62e50893928c10577a37f954a489073c218344f8e394cb",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "강동구청 2026-03-26 공식 공지에서 과거 참여가구 재신청 허용을 확인했으나 저장 원문은 생애 1회 제한과 2025년 사업기간·옛 출생일 기준을 포함한다. 가족 지원 관련성은 확인되지만 저장 조건 정정 및 서울시 전체 최신 기준 검증 전까지 보류한다. 저장 원문 및 공식 자료 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-4",
+        "evidence": [],
+        "categories": [],
+        "officialEvidence": [
+          {
+            "rule": "2026년 공식 공지와 저장 원문의 생애 1회 제한·사업연도 충돌",
+            "field": "target_text",
+            "content": "임산부·맞벌이·다자녀 가정의 가사노동 부담 경감을 위해\n‘서울형 가사서비스 지원’ 사업 대상자를 아래와 같이 모집합니다.\n※ 가구당 생애 1회 지원 제한 없음\n(2023년~2025년 참여 가구 2026년 신청 가능)\n○ 강동구 3차모집일정: 2026. 6. 16.(화) 10:00~마감시까지\n※ 선착순 접수 / 단, 등록 장애아동이 있는 가정 우선 선정\n○ 강동구 추가모집일정: 2026. 4. 8.(수) 10:00~24:00\n※ 선착순 접수 / 단, 등록 장애아동이 있는 가정 우선 선정\n○ 강동구 신청일: 2026. 4. 3.(금) 10:00~24:00\n※ 단, 등록 장애아동이 있는 가정 우선 선정\n○ 신청방법: 탄생육아 몽땅정보통(https://umppa.seoul.go.kr)을 통해 온라인 신청\n□ 사업개요\n○ 사업기간: 2026. 3. 30.(월) ~ 2026. 11. 30.(월) ( ※ 기간 내 미사용시 바우처 자동소멸)\n○ 지원대상 : 서울시 거주 소득인정액이 중위소득 180% 이하이면서 12세 이하 자녀가 있는 임산부·맞벌이·다자녀 가정\n- (임산부 가구) 임신3개월 ~ 출산 후 1년 이내\n- (맞벌이 가구) 12세 이하(2013. 1. 1.이후 출생) 자녀 양육\n※ 육아휴직 중이어도 취업으로 인정\n- (다자녀 가구) 18세 이하 자녀가 2자녀 이상, 단 12세 이하 자녀 반드시 1명 포함\n○ 지원내용: 1가정당 연 70만원 가사서비스 이용 가능 바우처를 신용(체크)카드에 지급\n- 협약카드사: 신한(국민행복카드), 삼성, KB국민, 우리, 비씨(IBK기업, 우체국, 새마을금고)\n○ 사용처: 서울형 가사서비스 제공기관 38개 업체 (몽땅정보통 홈페이지 참고)\n○ 전체 모집가구 수: 강동구민 944가구\n※ 가구당 생애 1회 지원 제한 없음\n○ 문의처\n강동구 가족정책과 출생정책팀 (☎ 02-3425-5785)\n각 동 주민센터 복지팀",
+            "excerpt": "※ 가구당 생애 1회 지원 제한 없음",
+            "finalUrl": "https://gangdong.go.kr/web/newportal/bbs/b_068/155501?baCategory1=U0072",
+            "publisher": "강동구청 가족정책과",
+            "contentHash": "fd255d7663c7dc230423c9fe0447006695e356b335de76cab417baa4f1e79ae1",
+            "originalUrl": "https://gangdong.go.kr/web/newportal/bbs/b_068/155501?baCategory1=U0072",
+            "retrievedAt": "2026-09-13T14:22:05.524Z",
+            "policyIdentity": "동일한 서울형 가사서비스 사업명, 서울시 대상 가구, 연 70만원 바우처를 명시한 자치구 수행기관 공지. 강동구 모집일은 서울 전체 일정으로 확장하지 않는다."
+          }
+        ],
+        "previousRelevance": {
+          "reason": "가사서비스 12세·18세 기준과 출생일·사업연도 불일치로 현재 범위 확인 필요 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+          "status": "REVIEW",
+          "version": "policy-relevance-review-2",
+          "evidence": [],
+          "categories": []
+        },
+        "sourceConsistency": "CONFLICT"
+      },
+      "relevance_assessed_at": "2026-09-13T14:26:51.194002+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-11T14:41:50.760546+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "611000019636"
+      }
+    },
+    {
+      "source_id": "7cf5f2f6-0c29-4090-9a0d-4574f149f60a",
+      "applied_snapshot_id": "a6faa72f-5405-44fd-b20a-8fa02826a609",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/507000000786",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/507000000786",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "온라인신청사이트URL",
+            "value": null,
+            "status": "empty",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "장애인틈새돌봄서비스 지원",
+          "summary": "장애인의 신체,가사,사회활동 등의 돌봄서비스 지원",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/507000000786",
+          "target_text": "○ 장애인활동지원 신청자 중 판정 전 장애인\n- 사지마비, 와상, 24시간 호흡기 착용자\n- 배우자 또는 2촌 이내 가족이 없는 장애인(주민등록등본 상)\n- 보호자 및 가족의 부재로 인한 돌봄이 필요한 장애인\n○ 장애인활동지원 신청자 중 등급 외 중증장애인(판정결과 당해년도만 적용)\n- 종합점수 15점 이상인 중증장애인\n- 보호자 및 가족의 부재 또는 독거중증장애인\n- 그 외에 돌봄이 필요하다고 판단되는 장애인\n○ 2011. 3. 31. 이전 등록한 중증 장애인\n- 발달장애인으로 장애인활동지원 신청 시 장애정도판단 필요자\n- 그 외에 돌봄이 필요하다고 판단되는 장애인",
+          "benefit_text": "○ 신체활동 서비스\n- 개인위생 관리, 신체기능 유지 및 증진, 식사 도움 등\n○ 가사활동 서비스\n-청소 및 주변 정돈, 세탁, 취사 등\n○ 사회활동 서비스\n-등하교 및 출퇴근 지원, 외출시 동행 등\n○ 그 밖의 제공서비스\n- 장애인활동지원 사업 지침에 준함.",
+          "contact_text": "안동시청 노인장애인과/054-840-5266",
+          "purpose_text": "장애인활동지원 신청자와 등급외 판정되어 활동지원 서비스를 받지 못하는 중증장애인에게\n돌봄서비스를 제공함으로 중증장애인 및 가족의 안정도모",
+          "criteria_text": null,
+          "provider_name": "경상북도 안동시",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "○ 방문신청: 수행기관을 통한 신청 접수\n- 수행기관: 사)경북장애인부모회 안동시지부",
+          "application_period_text": "상시신청",
+          "required_documents_text": "○ 신청인 제출서류\n- 서비스 이용  신청서\n- 서비스 이용 계약서\n- 개인정보 수집,제공,활용에 관한 동의서\n- 상호협력 동의서\n- 이동지원 서비스 안내 확인 동의서\n- 주민등록 등,초본"
+        },
+        "rawHash": "e7ba035c97cd7d9f28c5d06a612e25db6897fd9b97d33ad31b80a3a8ea85490f",
+        "modified": {
+          "list": {
+            "day": "2026-04-30",
+            "raw": "20260430134507",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-04-30",
+            "raw": "2026-04-30",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "f8b911c09b65bfc294352f8d9a90551fcc2cae1b493faee9e9834c4e82de0e4d",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "413274dac6e13f29979adf4a71a4bc005fcb1c692c6d0ba83fcc8bea1c7bb624",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "중증 장애인 틈새 활동지원이나 연령이 없고 등하교의 학교급도 명시되지 않음. 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:28:52.134635+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-09T10:08:50.049188+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "507000000786"
+      }
+    },
+    {
+      "source_id": "9cb61f4d-06e3-4372-b0b0-ff83f6410541",
+      "applied_snapshot_id": "4f5cf402-5027-4b7e-b276-29f263087f2c",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/484000000382",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/484000000382",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "온라인신청사이트URL",
+            "value": null,
+            "status": "empty",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "서민층 가스안전장치(타이머콕) 보급",
+          "summary": "LPG금속배관 및 도시가스를 사용하는 서민층 및 사회복지시설에 가스안전장치(타이머콕)설치",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/484000000382",
+          "target_text": "○ 지원 대상 : LPG금속배관 및 도시가스를 사용하는 만 55세이상 서민층\n\n- 기초생활수급자, 차상위계층, 소외계층(독거노인, 장애인, 한부모가족, 소년소녀가장, 기초노령연금수급자), 일반가구 등\n\n- 노인성질환자(치매 환자)가구, 사회복지시설 등",
+          "benefit_text": "○ 서비스 내용 : LPG가스 사용가구에 가스타이머 콕 무상설치\n\n○ 지원 대상 : LPG금속배관 및 도시가스를 사용하는 만 55세이상 서민층\n- 기초생활수급자, 차상위계층, 소외계층(독거노인, 장애인, 한부모가족, 소년소녀가장, 기초노령연금수급자), 일반가구 등\n- 노인성질환자(치매 환자)가구, 사회복지시설 등\n\n○ 사업추진 : 공기과 대행사업(한국가스안전공사)",
+          "contact_text": "신산업과/061-797-2805",
+          "purpose_text": "가스안전장치(타이머콕) 설치를 통해 화재 등 재난사고를 사전에 예방하고 안전복지 실현을 통해 군민이 안심하는 선진 가스안전 관리체계 구축",
+          "criteria_text": null,
+          "provider_name": "전남광주통합특별시 광양시",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "○ 방문 신청: 광양시청 신산업과(4층)",
+          "application_period_text": "공고기간",
+          "required_documents_text": "해당없음"
+        },
+        "rawHash": "e6101de39f3a6acd9b48c42f59ccad4dea1e8084a0f8e162a3d8017b5b6804fc",
+        "modified": {
+          "list": {
+            "day": "2026-08-14",
+            "raw": "20260814160805",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-08-14",
+            "raw": "2026-08-14",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "bd4ad49c655079d87a4344271a667c4892a29396001b5ffc749eb992749489c6",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "eb352dbe4d000da764ac938b0072b547cb09b9924638097c100bd4325054a06f",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "광양시 2026-877호는 초등학생 이하 가정·미성년 자녀 2명 이상 가구를 타이머콕 지원대상에 명시한다. 55세는 고령자 항목에 붙어 있어 저장 원문의 전체 만 55세 이상 조건과 충돌한다. 신청기간·담당부서도 현행 공지와 달라 저장 조건 정정 및 현재 접수 여부 확인 전까지 보류한다. 저장 원문 및 공식 자료 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-4",
+        "evidence": [],
+        "categories": [],
+        "officialEvidence": [
+          {
+            "rule": "공식 지원대상 목록에서 아동 가구 직접 경로 확인 및 일괄 55세 조건 충돌 식별",
+            "field": "target_text",
+            "content": "2. 가스안전장치(타이머콕) 보급사업\n○ 신청기간: 2026. 4. 6.(월) ~ 2026. 4. 22.(수)\n○ 신청방법: 해당 읍・면・동사무소 신청\n○ 사업개요\n- 사업기간: 2026. 4. ~ 12.\n- 사업내용: 가스안전장치(타이머콕) 설치\n* 타이머콕: 설정시간이 도래하면 자동으로 가스중간밸브(퓨즈콕) 잠그는 안전장치\n- 사 업 비: 가구당 65,500원(※자부담 없음)\n- 지원대상: 취약계층 및 취약시설 229가구\n취약\n계층\n고령자(만55세 이상), 장애인, 조손가정, 치매가정, 다문화가정,\n한부모가정, 차상위계층, 기초생활수급자, 탈북민, 국가유공자,\n다자녀가구(미성년자2 이상), 재난피해 가구, 초등학생 이하 가정 등\n취약\n시설\n사회복지시설(경로당, 종합복지관 등), 공공기관 임대주택,\n노후공동주택(준공 30년 이후), 전통시장 내 주택 등\n- 대행기관: 한국가스안전공사 전남동부지사(주관: 광양시 신산업과)\n3. 유의사항\n가. LPG용기 사용가구 시설개선사업의 경우 자부담(30,000원) 발생\n나. 타이머콕 사업 고무호스 사용가구는 설치 불가(LPG 시설개선사업 동시신청)\n다. 신청가구 금년 지원 대상가구 초과시 조기 마감될 수 있음\n라. 사업 특성상 대상 선정 여부 개별 회신 없음\n마. 제품 선정 및 설치업체 계약 체결 후 순차적 방문 및 설치 예정, 설치 방문시\n연락두절 및 부재의 경우 지원 제외될 수 있음\n바. 설치제품 A/S 지원 불가",
+            "excerpt": "다자녀가구(미성년자2 이상), 재난피해 가구, 초등학생 이하 가정 등",
+            "finalUrl": "https://gwangyang.go.kr/saeol/gosi.es?act=view&mid=a10909030000&nPage=134&seq=60601&type_code=",
+            "publisher": "광양시청 신산업과",
+            "contentHash": "9162fb6e0a3f72c7208048d5ad05ad2addf2f98655c32a12d0e6ccb1e4f781e5",
+            "originalUrl": "https://gwangyang.go.kr/saeol/gosi.es?act=view&mid=a10909030000&nPage=134&seq=60601&type_code=",
+            "retrievedAt": "2026-09-13T14:22:05.917Z",
+            "policyIdentity": "광양시 공고 제2026-877호의 두 번째 사업인 타이머콕 무상설치. 첫 번째 LPG 배관교체 사업의 비용·자격은 혼합하지 않는다."
+          }
+        ],
+        "previousRelevance": {
+          "reason": "만 55세 이상 필수 대상과 소년소녀가장 범주가 함께 적혀 대체 경로 및 연령 적용이 충돌함. 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+          "status": "REVIEW",
+          "version": "policy-relevance-review-2",
+          "evidence": [],
+          "categories": []
+        },
+        "sourceConsistency": "CONFLICT"
+      },
+      "relevance_assessed_at": "2026-09-13T14:26:51.417973+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-09T10:00:46.725397+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "484000000382"
+      }
+    },
+    {
+      "source_id": "9fd4d66e-70b8-453c-b0d9-3f87a3879e8c",
+      "applied_snapshot_id": "7021f219-58da-4a68-8f5d-0f47395bb482",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005102&wlfareInfoReldBztpCd=02",
+            "field": "servDtlLink",
+            "value": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005102&wlfareInfoReldBztpCd=02",
+            "status": "valid",
+            "endpoint": "list"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "applicationUrl",
+            "value": null,
+            "status": "empty",
+            "endpoint": "detail"
+          }
+        },
+        "dates": {
+          "crtrYr": {
+            "list": null,
+            "detail": null
+          },
+          "enfcEndYmd": {
+            "list": null,
+            "detail": "99991231"
+          },
+          "lastModYmd": {
+            "list": "20260822",
+            "detail": "20260822"
+          },
+          "enfcBgngYmd": {
+            "list": null,
+            "detail": "20230401"
+          },
+          "svcfrstRegTs": {
+            "list": null,
+            "detail": null
+          }
+        },
+        "display": {
+          "name": "광주다움 통합돌봄",
+          "summary": "빈틈없는 전 생애주기 지역사회 통합돌봄 서비스망 구축하여,\n돌봄이 필요한 시민 누구나 필요할 때 원스톱으로 집에서 돌봄 서비스(13종)를 받을 수 있는 사업입니다.",
+          "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005102&wlfareInfoReldBztpCd=02",
+          "target_text": "ㅇ 돌봄이 필요한 광주시민 누구나<세부기준>? 신청일 기준 광주광역시에 주민등록이 되어 있는 시민    ※ 주민등록 말소자도 시급히 돌봄이 필요한 경우 신청 가능    (신청·지원) 실거주지? 광주광역시에 체류지 신고가 된 「긴급복지지원법」 시행령에 근거한 외국인    「긴급복지지원법」 시행령 제1조의2 (긴급지원대상자에 해당하는 외국인의 범위)     1. 대한민국 국민과 혼인 중인 사람     2. 대한민국 국민인 배우자와 이혼하거나 그 배우자가 사망한 사람으로서 대한민국 국적을 가진 직계존비속(直系尊卑屬)을 돌보고 있는 사람     3. 「난민법」 제2조제2호에 따른 난민(難民)으로 인정된 사람     4. 본인의 귀책사유 없이 화재, 범죄, 천재지변으로 피해를 입은 사람     5. 그 밖에 보건복지부장관이 긴급한 지원이 필요하다고 인정하는 사람? 광주광역시에 체류지 신고가 된 외국국적 동포",
+          "benefit_text": "<기존 돌봄 연계>우선적으로 기존 돌봄 서비스부터 신속하게 연계<광주+돌봄>1. 일시재가 : 취사·청소·세탁·정리정돈·근거리 외출동행·정서지원 등 / 1시간 25,300원(야간 30분당 2,470원, 휴일 30분당 4,110원 할증)2. 방문목욕 : 목욕차량 또는 가정 내 욕조 이용 목욕/ 1회 88,000원( 가정 내 50,000원)3. 식사지원 : 영양음식 조리·배달 (영양 설계를 바탕으로 일반식· 죽식·간편식·유동식 등 조리·배달)/ 1식 9,000원 배달비 포함4. 동행지원 : 병원동행 (집-병원 이동, 병원 내 진료) 관공서 외출동행 (관공서 왕복 이동, 서류작성· 의사 소통 등 업무 지원)/ 1시간 25,300원 5. 방문간호 : 재택방문을 통한 간호, 진료의 보조, 요양에 관산 상담, 건강 교육 등/1회 70,000원  6. 방문구강 : 재택방문을 통한 구강 상태 점검 및 치아관리 정보 제공, 치아관리 교육 등/1회 120,000원7. 방문맞춤운동 : 재택방문을 통한 건강상태 맞춤 운동지도/ 1회 50,000원8. 다제약물관리 : 약물  중복 및 부작용 등 점검, 모니터링 제공/ 1회 83,010원9. AI 안부확인  : AI 보이스봇 통화, 안부·안전 확인/ 무료10. 안전생활환경 : 낙상예방 미끄럼방지 장치, 문턱경사로, 가스타이머 설치 등 안전한 주거환경 조성 / 연 1,500,000원 한/ 3년에 1회/ 분할사용 불가11. 대청소 : 대청소 및 대형쓰레기 처리, 정리 수납 등/ 1회 600,000원한12. 방역·방충 : 방역 및 소독, 해충 방제 등/ 1회 100,000원한/ 연 3회13. 일시보호 : 구에서 확보한 주택에 일시 입소",
+          "contact_text": "전남광주통합특별시 돌봄정책과 062-613-3242",
+          "purpose_text": null,
+          "criteria_text": "ㅇ 동 행정복지센터 사례관리 담당 공무원이 가정방문하여 돌봄이 필요한지 평가한 후 아래 조건을 모두 충족할 경우 돌봄서비스를 지원합니다.<광주+돌봄>① 혼자 거동이 어렵거나 독립적인 일상생활 수행이 어려운데② 돌볼 수 있는 가족이 없거나, 있어도 돌볼 수 없으면서③ 기존 돌봄 서비스도 이용할 수 없거나, 이용 중 공백이 발생한 경우",
+          "provider_name": "전남광주통합특별시 보건복지본부 복지정책관 돌봄정책과",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "ㅇ 신청방법    [직접신청] 구 돌봄콜(1660-2642), 동 돌봄창구 One point 접수 / 본인·가족·병원·시설·이웃 등    [의무방문] 동 사례관리 담당자 / 사각지대 예방을 위해 의무방문으로 대상자 발굴  ㅇ 선정방법 : 동 행정복지센터 사례관리 담당자 <현장방문>, <돌봄필요도 평가>를 통해 서비스 대상자 선정ㅇ 서비스제공 : 동 행정복지센터 사례관리 담당자가 서비스를 연계 또는 의뢰하면 공공·민간 제공기관에서 서비스를 제공ㅇ 이용료 지원    [광주+돌봄] 기준 중위 소득   90% 이하   전액 지원                   기준 중위 소득  120% 이하   70% 지원                   기준 중위 소득  160% 이하   40% 지원                   기준 중위 소득  160% 초과  전액 본인부담     ※ 1인당 연간한도 150만원 이내",
+          "application_period_text": null,
+          "required_documents_text": null
+        },
+        "rawHash": "78b9d6f782bb17426a9fa91703a4575e0956a2e6f3f7070c0d48341544c8a21b",
+        "warnings": [],
+        "additional": {
+          "basfrmList": [
+            {
+              "wlfareInfoDtlCd": "040",
+              "wlfareInfoReldCn": "https://www.bokjiro.go.kr/ssis-tbu/CmmFileUtil/siteQnaInfoDownload.do?atcflId=20230524UUWBM1431280036020699&atcflSn=1",
+              "wlfareInfoReldNm": "광주광역시 통합 돌봄 지원 조례.hwpx"
+            },
+            {
+              "wlfareInfoDtlCd": "040",
+              "wlfareInfoReldCn": "https://www.bokjiro.go.kr/ssis-tbu/CmmFileUtil/siteQnaInfoDownload.do?atcflId=20230524UUWBM1627130036056394&atcflSn=1",
+              "wlfareInfoReldNm": "[서식 5-1] 개인정보 수집·이용·제공동의서.hwp"
+            },
+            {
+              "wlfareInfoDtlCd": "040",
+              "wlfareInfoReldCn": "https://www.bokjiro.go.kr/ssis-tbu/CmmFileUtil/siteQnaInfoDownload.do?atcflId=20230524UUWBM1626150036056106&atcflSn=1",
+              "wlfareInfoReldNm": "[서식 5] 서비스 신청서.hwp"
+            }
+          ],
+          "baslawList": {
+            "wlfareInfoDtlCd": "030",
+            "wlfareInfoReldNm": "광주광역시 통합 돌봄 지원 조례"
+          },
+          "inqplCtadrList": {
+            "wlfareInfoDtlCd": "010",
+            "wlfareInfoReldCn": "062-613-3242",
+            "wlfareInfoReldNm": "전남광주통합특별시 돌봄정책과"
+          }
+        },
+        "displayHash": "8543ae1f96bde594546723961134d79422a94bc5751a2b936bcb2b05e3310287",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "servNm",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "servDgst",
+            "endpoint": "list",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "servDtlLink",
+            "endpoint": "list",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "sprtTrgtCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "alwServCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "inqplCtadrList",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "purpose",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "criteria_text": {
+            "field": "slctCritCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "provider_name": {
+            "field": "bizChrDeptNm",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "reception",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "application_url": {
+            "field": "applicationUrl",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "application_method_text": {
+            "field": "aplyMtdCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "applicationPeriod",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "required_documents_text": {
+            "field": "requiredDocuments",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          }
+        },
+        "classification": {},
+        "conditionsHash": "a0047d760d264912f919cd3832c65032c75284b2cc5f4b4e2d43462f6c9f434d",
+        "sourceModified": {
+          "list": "20260822",
+          "detail": "20260822"
+        },
+        "normalizerVersion": "bokjiro-2"
+      },
+      "relevance": {
+        "reason": "일반 시민 통합돌봄이며 혼인·가족은 외국인 범위 및 돌봄 가능 여부 조건으로 특화 경로 확인 필요함. 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:29:02.378523+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-08T08:22:05.322308+00:00",
+      "policy_sources": {
+        "provider": "BOKJIRO_LOCAL",
+        "external_id": "WLF00005102"
+      }
+    },
+    {
+      "source_id": "a61bb155-145f-462c-8992-7e73962be0b1",
+      "applied_snapshot_id": "88854fe6-2482-4705-b5f9-71feaad3f2e7",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/647000000186",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/647000000186",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "온라인신청사이트URL",
+            "value": null,
+            "status": "empty",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "경상북도 35세 이상 산모 의료비 지원",
+          "summary": "○ 경상북도  주소를 둔 35세 이상 산모의 임신 기간 중 외래 진료 및 검사비 지원",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/647000000186",
+          "target_text": "○ 주민등록 주소가  경상북도인 35세 이상 산모(1990년생 이하)  * 지원 대상 조건에서 배우자는 제외",
+          "benefit_text": "○ 지원내용 : 임신 기간 중 외래 진료 및 검사비 지원\n*진료 및 검사일 :  2026. 1. 1. 이후 진료 및 검사비, 국민행복카드 바우처(임산부 바우처)와 동시 사용 불가\n○ 사 용 처\n① 임신과 관련된 외래진료(검사)비 지원\n② 진료과와 상관없이 지원이 가능하나, 진료 사유가 임신 관련이라는 의사 소견이 반드시 첨부\n③ 유산 관련 처치료(소파시술비 제외)에 해당하는 외래 진료(검사비)비 지원\n단, 예방접종, 입원료, 제증명서 발급 비용, 입원료, 식비, 이송료, 외국 의료기관에서 발생한 의료비, 면제 또는 감면된 의료비 등 임신 유지와 관련 없는 비용은 지원 제외\n\n○ 지원금액 : 임신 당 최대 50만원(1회만 신청)",
+          "contact_text": "포항시 남구보건소/054-270-4205||포항시 북구보건소/054-270-4254||경주시 보건소/054-799-8626||김천시 보건소/054-421-2736||안동시 보건소/054-840-5964||구미시 보건소/054-480-4072||구미시선산 보건소/054-480-4158||영주시 보건소/054-639-5741||영천시 보건소/054-339-7898||상주시 보건소/054-537-5232||문경시 보건소/054-550-8061||경산시 보건소/053-810-6387||의성군 보건소/054-830-6686||청송군 보건소/054-870-7281||영양군 보건소/054-680-5153||영덕군 보건소/054-730-6829||청도군 보건소/054-370-2652||고령군 보건소/054-950-7952||성주군 보건소/054-930-8143||칠곡군 보건소/054-979-8253||예천군 보건소/054-650-8052||봉화군 보건소/054-679-6745||울진군 보건소/054-789-5054||울릉군 보건소/054-790-6824",
+          "purpose_text": "35세 이상 임신부의 높은 임신 관련 진료비 부담을 완화하여 산모가 필요한 시기에 충분한 산전 진찰과 검사를 받을 수 있도록 유도하여, 고위험 임신 및 출산에 대한 적절한  관리로 산모와 태아의 건강증진에 기여\n* 당해 연도 분만예정일 35세 이상 산모에게 지원",
+          "criteria_text": null,
+          "provider_name": "경상북도",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "○ 정부24(혜택알리미) 온라인 신청 원칙\n○ 온라인 신청이 어려운 경우 보건소 직접 방문 신청",
+          "application_period_text": "상시신청",
+          "required_documents_text": "○ 임신확인서 또는 출산(출생) 증명서\n○ 진료비 결재 영수증(카드 또는 현금 영수증), 진료비 영수증(병원에서 발급한 진료비 영수증), 진료비 세부 내역서\n○ 국민바우처카드 사용 내역 사본\n○ 산모 본인 통장 사본\n\n※ 보건소 직접 방문시 추가 제출 서류\n○ 35세 이상 산모 의료비 지원 신청서\n○ 주민등록 등본, 산모 본인 신분증 사본\n*대리신청의 경우 : 대리인 신분증, 가족관계증명서(상세), 위임장\n○ 개인정보 수집 이용 및 제공 동의서"
+        },
+        "rawHash": "573b2fe5b90ffc913b92b43f55aa77f52dba32c3b4e31f55db99076b461e87e1",
+        "modified": {
+          "list": {
+            "day": "2026-07-27",
+            "raw": "20260727132351",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-07-27",
+            "raw": "2026-07-27",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "b15b339e57071f1bacbd65be74f2b02ce9d812fc8a6f39818b440588d563a4b1",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "dd8c2d83b0ae6e1cd28ba16a45aea2d520fc7120968e360bb1e1ea0361722dbc",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "임신부 의료비지만 2026년 35세와 1990년생 이하 연령기준 상충 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:14:29.521789+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-11T14:55:02.383491+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "647000000186"
+      }
+    },
+    {
+      "source_id": "ba018fd2-1fc1-4046-9998-4d2f533363af",
+      "applied_snapshot_id": "faa5a6c5-3ca3-4866-8e30-eebe371eb61b",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/349000000111",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/349000000111",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "온라인신청사이트URL",
+            "value": null,
+            "status": "empty",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "돌봄플러그 설치 지원",
+          "summary": "취약계층 1인가구에 돌봄플러그를 설치하여 안부확인 등 지원",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/349000000111",
+          "target_text": "○ 취약계층 1인 고위험군 가구 중 설치 희망자\n- 저소득 1인 가구 중 고독사 등 위험도가 높은 대상자 선정)\n- 주거취약 거주자 우선 선정하되, 그 외 대상자도 고독사 위험도 및 필요성에 따라 선정 가능함. 유사사업 이용자 우선 선정 제외)",
+          "benefit_text": "○ 대상 : 취약계층 1인 가구\n\n○ 지원내용 : 취약계층인 1인 위험가구 세대에 돌봄플러그를 설치하고 돌봄 플러그 설치 후 전력량 및 조도 변화 추이에 따른 위험신호를 감지하고 대상자 안부 확인 또는 가정방문 시행",
+          "contact_text": "영종구청/032-760-6985",
+          "purpose_text": null,
+          "criteria_text": null,
+          "provider_name": "인천광역시 영종구",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "○ 방문 신청\n- 주민센터 : 거주지 관할 읍면동 행정복지센터에 방문 신청",
+          "application_period_text": "상시신청",
+          "required_documents_text": "해당없음"
+        },
+        "rawHash": "949b43daa5c33b0f84cbe15f71b41cce79edd8253a2534ea1c8a9b927062ec50",
+        "modified": {
+          "list": {
+            "day": "2026-08-24",
+            "raw": "20260824100149",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-08-24",
+            "raw": "2026-08-24",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "b9e08c62ca762bd4f7bf25a17260fbae53fccc44f6f96c0d99cfe868ae2192bf",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "988c0a8085884f7aef1b6ed96a37dafebe1b83504fecea82f8330b10b86e338a",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "취약 1인 가구 돌봄플러그로 연령·아동·가족 경로가 불명확함. 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:29:09.52368+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-08T09:09:13.795631+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "349000000111"
+      }
+    },
+    {
+      "source_id": "cfa96c5b-fa21-475d-83e9-ac884e64317d",
+      "applied_snapshot_id": "ce886ae1-b195-4c50-8a56-caabe000383d",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005239&wlfareInfoReldBztpCd=02",
+            "field": "servDtlLink",
+            "value": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005239&wlfareInfoReldBztpCd=02",
+            "status": "valid",
+            "endpoint": "list"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "applicationUrl",
+            "value": null,
+            "status": "empty",
+            "endpoint": "detail"
+          }
+        },
+        "dates": {
+          "crtrYr": {
+            "list": null,
+            "detail": null
+          },
+          "enfcEndYmd": {
+            "list": null,
+            "detail": "99991231"
+          },
+          "lastModYmd": {
+            "list": "20260815",
+            "detail": "20260815"
+          },
+          "enfcBgngYmd": {
+            "list": null,
+            "detail": "20221004"
+          },
+          "svcfrstRegTs": {
+            "list": null,
+            "detail": null
+          }
+        },
+        "display": {
+          "name": "누구나 돌봄! 시흥돌봄SOS센터 운영",
+          "summary": "□ 동 단위 돌봄SOS센터 설치로 돌봄 공공성 강화 및 돌봄 사각지대 해소\n□ 동 중심 통합돌봄 플랫폼 구축으로 시민 돌봄 체감도 제고",
+          "source_url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005239&wlfareInfoReldBztpCd=02",
+          "target_text": "돌봄공백 등 위기상황으로 돌봄이 필요한 시민",
+          "benefit_text": "□ 사업내용: 다양한 돌봄욕구 대응을 위한 13대 돌봄서비스 지원 ○ 7대 단기 돌봄서비스(수가체계)   - 생활돌봄: 대상자 가정방문을 통한 신체·가사활동 지원   - 동행돌봄: 필수적 외출 활동 동행지원   - 주거안전: 간단 집수리, 청소, 방역 및 세탁서비스   - 식사지원: 기본적인 식생활 유지를 위한 식사 배달   - 일시보호: 단기 시설입소를 통한 보호와 수발   - 재활돌봄: 운동재활 및 일상생활 수행훈련   - 심리상담: 심리·정서적 어려움에 대한 상담 지원 ○ 6대 중장기 돌봄연계(비수가체계)   - 안부확인, 건강지원, 돌봄제도, 사례관리, 긴급지원, 주거편의",
+          "contact_text": "시흥시청 통합돌봄과 031-310-3568",
+          "purpose_text": null,
+          "criteria_text": "□ 돌봄 적격판단 기준(적정성 검토) ○ 혼자 거동하기 어렵거나 독립적인 일상생활 수행이 어려운 경우 ○ 수발할 수 있는 가족 등이 부재하거나 수발할 수 없는 경우 ○ 공적 돌봄서비스를 이용하지 않거나 서비스 이용 중 불가피한 공백이 발생한 경우  ※ 위 세가지 기준을 기본으로 돌봄 필요성을 종합적으로 확인하여 지원여부 결정□ 비용지원 ○ 기초수급자·차상위계층·기준중위소득 120%이하 전액지원, 120%초과~150%이하 50%지원, 150%초과 자부담 ○ 「국가유공자 등 예우 및 지원에 관한 법률」 제4조에 따른 국가유공자 본인 및 선순위 유족 전액지원",
+          "provider_name": "경기도 시흥시 복지국 통합돌봄과",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "□ 이용방법: 주소지 동 행정복지센터(돌봄SOS센터) 방문 또는 전화",
+          "application_period_text": null,
+          "required_documents_text": null
+        },
+        "rawHash": "34b7adb7bb3eaaad20978e4f2a0ab8bc3392a293cda9a414ffcca033816d911b",
+        "warnings": [],
+        "additional": {
+          "baslawList": {
+            "wlfareInfoDtlCd": "030",
+            "wlfareInfoReldNm": "시흥시 지역 돌봄 통합지원에 관한 조례"
+          },
+          "inqplCtadrList": {
+            "wlfareInfoDtlCd": "010",
+            "wlfareInfoReldCn": "031-310-3568",
+            "wlfareInfoReldNm": "시흥시청 통합돌봄과"
+          }
+        },
+        "displayHash": "d6ade5850c3b3d0d6d1bc2bc1a0b9e8ed8bb5e65fa8dd9eb89dcdca147bed6d7",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "servNm",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "servDgst",
+            "endpoint": "list",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "servDtlLink",
+            "endpoint": "list",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "sprtTrgtCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "alwServCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "inqplCtadrList",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "purpose",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "criteria_text": {
+            "field": "slctCritCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "provider_name": {
+            "field": "bizChrDeptNm",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "reception",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "application_url": {
+            "field": "applicationUrl",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "application_method_text": {
+            "field": "aplyMtdCn",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "applicationPeriod",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          },
+          "required_documents_text": {
+            "field": "requiredDocuments",
+            "endpoint": "detail",
+            "fallback": false,
+            "emptyKind": "missing"
+          }
+        },
+        "classification": {
+          "intrsThemaNmArray": "신체건강"
+        },
+        "conditionsHash": "a9f258260b4bf5f69425fc7791d6d973afa810cc5f9f5e67be7fa42ca6f52d81",
+        "sourceModified": {
+          "list": "20260815",
+          "detail": "20260815"
+        },
+        "normalizerVersion": "bokjiro-2"
+      },
+      "relevance": {
+        "reason": "돌봄 필요 시민 일반 대상이며 아동·가족 고유 지원 경로 미확인 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:29:15.6805+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-09T09:06:11.471971+00:00",
+      "policy_sources": {
+        "provider": "BOKJIRO_LOCAL",
+        "external_id": "WLF00005239"
+      }
+    },
+    {
+      "source_id": "e1c3c0d0-922a-42ae-89af-8f23bdd5b795",
+      "applied_snapshot_id": "53f48873-813c-46fe-8913-d6ae775bcca8",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/462000000296",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/462000000296",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "온라인신청사이트URL",
+            "value": null,
+            "status": "empty",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "중증장애인 통합위생돌봄 서비스",
+          "summary": "거동불편 중증장애인에게 재가방문으로 개인위생 서비스 제공",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/462000000296",
+          "target_text": "○ 거동불편 중증장애인",
+          "benefit_text": "○ 중증장애인 재가방문 후 개인위생 서비스 제공",
+          "contact_text": "복지증진과/041-670-2776",
+          "purpose_text": null,
+          "criteria_text": null,
+          "provider_name": "충청남도 태안군",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "○ 방문 신청\n- 주민센터 : 거주지 읍면사무소 방문 신청",
+          "application_period_text": "상시신청",
+          "required_documents_text": "해당없음"
+        },
+        "rawHash": "f33f014b6781d8ea426ac88b8471c3861a05ae88219733e934ed38da303c11e7",
+        "modified": {
+          "list": {
+            "day": "2026-02-08",
+            "raw": "20260208164154",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-02-08",
+            "raw": "2026-02-08",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "4ea5b24e6e2d3433836328cbeedae26ecb0f4d855643eacc20eb6463fbcc7d7a",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "64cdbd9dedb98185d0f3508b031eb0c72aa1887e242873aadb18173da0bb6c3a",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "장애인 일반 위생 돌봄으로 아동 대상 경로 미확인 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:29:22.251867+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-09T09:52:24.83703+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "462000000296"
+      }
+    },
+    {
+      "source_id": "e2bada81-792e-466e-aa1b-36845149609c",
+      "applied_snapshot_id": "a5838889-bed5-4f72-8010-a15c38cc59da",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/310000000101",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/310000000101",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "온라인신청사이트URL",
+            "value": null,
+            "status": "empty",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "아동복지시설 만기퇴소 청소년 자립정착금 지원",
+          "summary": "시설 및 가정위탁 보호종료아동 지원",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/310000000101",
+          "target_text": "\"○ 관내 가정 위탁시설 보호종료청소년\n\n○  선정기준\n- 보호종료청소년에게 1인당 200만원 지급\n- 퇴소시 시설의 신청에 따라 퇴소 아동에게 교부\"",
+          "benefit_text": "○ 관내 아동복지시설 만기 퇴소청소년에게 현금 200만원 지급",
+          "contact_text": "김지영/02-2116-4410",
+          "purpose_text": null,
+          "criteria_text": null,
+          "provider_name": "서울특별시 노원구",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "○ 개인 신청절차 없음\n- 해당 아동 보호시설장의 공문 신청",
+          "application_period_text": "상시신청",
+          "required_documents_text": "없음"
+        },
+        "rawHash": "d35ac2298a5a55a886e71204d6d75a30e9e225af37fcb4a78f4f9b50f5111744",
+        "modified": {
+          "list": {
+            "day": "2026-07-29",
+            "raw": "20260729101329",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-07-29",
+            "raw": "2026-07-29",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "f348164d20949e130627aa7cb4c0ccaf4d8099b116b9451e4d88a3fc72f37983",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "8d5cee4fecd51d85fa355232d225df4b621ee60095e9de4594e90e60f1bd46b4",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "만기퇴소 보호종료자의 실제 지원 연령이 없어 미성년 지원인지 성인 자립지원인지 확인 필요 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-2",
+        "evidence": [],
+        "categories": []
+      },
+      "relevance_assessed_at": "2026-09-11T15:29:22.660809+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-08T08:58:18.928658+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "310000000101"
+      }
+    },
+    {
+      "source_id": "e7c5cebd-6e8d-488f-b63f-0412f09bd6f6",
+      "applied_snapshot_id": "94d78e92-c128-4f23-9c08-948ca780e5b7",
+      "normalized": {
+        "urls": {
+          "source_url": {
+            "raw": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/502000000249",
+            "field": "상세조회URL",
+            "value": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/502000000249",
+            "status": "valid",
+            "endpoint": "serviceList"
+          },
+          "application_url": {
+            "raw": null,
+            "field": "온라인신청사이트URL",
+            "value": null,
+            "status": "empty",
+            "endpoint": "serviceDetail"
+          }
+        },
+        "display": {
+          "name": "포항시 세자녀 이상 가족진료비 지원",
+          "summary": "세자녀 이상 가정에 가족진료비 본인부담금 일부 지원",
+          "source_url": "https://www.gov.kr/portal/rcvfvrSvc/dtlEx/502000000249",
+          "target_text": "포항시에 주소를 둔 세자녀 이상 가정으로 막내가 만 12세(13세) 이하인 가정\n가족 중 한명이라도 경북 내 주소지가 아닌 경우 지원 불가\n※선착순 지원",
+          "benefit_text": "해당년도 세자녀이상 가족의 치료목적 의료비, 약제비 본인부담금 합산하여 5만원 한도지원(가족진료비 합한 금액)",
+          "contact_text": "포항시 남구보건소 모자건강팀/054-270-4201||포항시 북구보건소 모자건강팀/054-270-4251",
+          "purpose_text": null,
+          "criteria_text": null,
+          "provider_name": "경상북도 포항시",
+          "reception_text": null,
+          "application_url": null,
+          "application_method_text": "정부24 온라인 신청 또는 방문 신청(구비서류 지참 후 관할 보건소 방문)",
+          "application_period_text": "※선착순 지원으로 예산 소진시 마감될 수 있음(12월 신청시 전화 요망)",
+          "required_documents_text": "민간병·의원 진료비 영수증 및 약제비 영수증 원본(당해년도에 한함, 본인부담금 5만원 확인 후 신청)\n※ 필요시 진료 항목 확인을 위해 진료비 상세내역서 제출\n※ 카드 영수증 불가\n부 또는 모 통장사본 1부\n주민등록등본"
+        },
+        "rawHash": "14f366622f54ffe0e0bf44f010526ba07686932440bee30e0c3a5504fd4f913c",
+        "modified": {
+          "list": {
+            "day": "2026-08-03",
+            "raw": "20260803101609",
+            "format": "YYYYMMDDHHmmss",
+            "status": "valid"
+          },
+          "detail": {
+            "day": "2026-08-03",
+            "raw": "2026-08-03",
+            "format": "YYYY-MM-DD",
+            "status": "valid"
+          }
+        },
+        "warnings": [
+          "list-detail-conflict:신청방법"
+        ],
+        "displayHash": "5adf12c778fe530ba13b2439f63eb73c575468445d08e573d5833bce854c276a",
+        "hashVersion": "sha256-sorted-json-v1",
+        "fieldSources": {
+          "name": {
+            "field": "서비스명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "summary": {
+            "field": "서비스목적요약",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "source_url": {
+            "field": "상세조회URL",
+            "endpoint": "serviceList",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "target_text": {
+            "field": "지원대상",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "benefit_text": {
+            "field": "지원내용",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "contact_text": {
+            "field": "문의처",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "purpose_text": {
+            "field": "서비스목적",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "criteria_text": {
+            "field": "선정기준",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "provider_name": {
+            "field": "소관기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "reception_text": {
+            "field": "접수기관명",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_url": {
+            "field": "온라인신청사이트URL",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": "null"
+          },
+          "application_method_text": {
+            "field": "신청방법",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "application_period_text": {
+            "field": "신청기한",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          },
+          "required_documents_text": {
+            "field": "구비서류",
+            "endpoint": "serviceDetail",
+            "fallback": false,
+            "emptyKind": null
+          }
+        },
+        "conditionsHash": "2df85dad5edee263692be48f23f5d7004a63cf626f03b31afdd3aee4ba1cf9af",
+        "normalizerVersion": "1"
+      },
+      "relevance": {
+        "reason": "포항시 공식 안내는 막내 13세 미만(초등학교 6학년까지)으로 명시하여 저장 원문의 만 12세(13세) 이하 표기와 충돌한다. 연령·학년 경계 및 가족 전원 경북 주소 요건을 확인하고 저장 표기를 정정해야 한다. 공식 페이지의 적용연도 미표시로 2026년 모집 유효성까지 확정하지 않고 보류한다. 저장 원문 및 공식 자료 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+        "status": "REVIEW",
+        "version": "policy-relevance-review-4",
+        "evidence": [],
+        "categories": [],
+        "officialEvidence": [
+          {
+            "rule": "저장 원문 연령 경계의 혼합 표기를 담당 시 공식 안내와 대조",
+            "field": "target_text",
+            "content": "세자녀 이상 가족진료비 지원\n지원대상 : 관내에 주소를 둔 세자녀 이상 가정에 막내가 13세미만(초등학교 6학년까지)인 가족\n지원내용 : 소득 관계없이 가구당 5만원이내 지원\n접수처 : 보건소, 정부24\n담당부서(연락처)\n남구보건소 054-270-4201\n북구보건소  054-270-4251",
+            "excerpt": "지원대상 : 관내에 주소를 둔 세자녀 이상 가정에 막내가 13세미만(초등학교 6학년까지)인 가족",
+            "finalUrl": "https://pohang.go.kr/dept/contents.do?mid=0104282900",
+            "publisher": "포항시청",
+            "contentHash": "3e4a83e1c59d67f2ccf16f8683fb6df6d6fe54196046049f476f48d493bb7b90",
+            "originalUrl": "https://pohang.go.kr/dept/contents.do?mid=0104282900",
+            "retrievedAt": "2026-09-13T14:22:05.591Z",
+            "policyIdentity": "포항시 동일 사업명, 가구당 5만원 의료비 지원, 남구·북구 보건소 연락처가 저장 원문과 일치한다."
+          }
+        ],
+        "previousRelevance": {
+          "reason": "막내 연령이 만 12세(13세) 이하로 혼재하여 적용 경계 확인 필요 저장 원문 기반 서비스 관련성 재검토이며 신청 자격·조건 추천 공개 승인은 아닙니다.",
+          "status": "REVIEW",
+          "version": "policy-relevance-review-2",
+          "evidence": [],
+          "categories": []
+        },
+        "sourceConsistency": "CONFLICT"
+      },
+      "relevance_assessed_at": "2026-09-13T14:26:51.572816+00:00",
+      "catalog_status": "REVIEW",
+      "updated_at": "2026-09-09T10:07:38.962756+00:00",
+      "policy_sources": {
+        "provider": "GOV24",
+        "external_id": "502000000249"
+      }
+    }
+  ],
+  "decisions": {
+    "kind": "CATALOG_REVIEW_DECISIONS",
+    "inputQueriedAt": "2026-09-13T15:29:33.733Z",
+    "items": [
+      {
+        "sourceId": "046d9a33-4076-4ab9-8fb9-a4e55497da74",
+        "name": "통합돌봄 건강장수센터 운영",
+        "decision": "ACTIVATE",
+        "categories": [
+          "의료·건강"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "맞춤형 건강관리가 필요한 건강취약계층 ※ 통합돌봄사업 대상자 우선",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "다학제팀의 통합 방문건강관리서비스 제공",
+            "rule": "돌봄·의료·건강: 건강취약계층에 방문하는 전문팀의 건강관리 서비스 자체가 해당한다."
+          }
+        ],
+        "conditionChecks": [
+          "purpose_text는 어르신 건강 증진을 목적으로 설명하지만 target_text와 benefit_text 이용대상에는 노인 전용 연령 제한이 없다. 실제 연령 범위와 통합돌봄 우선 선정 기준은 별도 확인한다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "건강취약계층 대상 방문건강관리·검진·영양·구강 관리의 실제 내용이 의료·건강에 해당한다. 건강 방문 서비스만으로 일상 보호 돌봄 태그를 추가하지 않는다."
+      },
+      {
+        "sourceId": "1439f0ae-5298-4e15-9e10-3c7d97cf826c",
+        "name": "대덕형 마을돌봄 서비스",
+        "decision": "ACTIVATE",
+        "categories": [
+          "돌봄",
+          "주거·생활지원"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "건강, 기능, 생활상태 악화로 독립생활이 어려운 돌봄이 필요한 자",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "일시재가, 이동지원, 영양급식, 단기보호, 주거편의 등 지원 서비스를 제공",
+            "rule": "돌봄: 재가·단기보호, 주거·생활지원: 급식·주거편의 제공이 명시되어 있다."
+          }
+        ],
+        "conditionChecks": [
+          "가정방문 및 현장실태조사를 통한 선정, 소득·재산별 본인부담금, 서비스별 실제 제공 한도를 확인한다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "일반 돌봄 필요자에게 재가돌봄과 식사·주거편의를 제공하므로 아동 전용 문구 없이도 두 태그에 해당한다."
+      },
+      {
+        "sourceId": "19e08438-77b4-40b3-874e-69c8a006d461",
+        "name": "광주다움 통합돌봄",
+        "decision": "ACTIVATE",
+        "categories": [
+          "돌봄",
+          "의료·건강",
+          "주거·생활지원"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "① 혼자 거동하기 어렵거나, 독립적인 일상생활 수행이 어려운데",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "① 일상생활지원 일시재가 ②일상생활지원 방문목욕 ③ 식사지원 ④ 동행지원 ⑤ 건강지원 방문간호",
+            "rule": "돌봄·의료·건강: 일시재가·목욕과 방문간호를 실제 제공한다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "⑩ 안전지원 안전생활 환경 ⑪주거편의 대청소 ⑫ 주거편의 방역〮방충 ⑬ 일시보호 케어안심주택",
+            "rule": "주거·생활지원: 안전환경·청소·방역 및 일시 주거를 제공한다."
+          }
+        ],
+        "conditionChecks": [
+          "독립생활 곤란, 가족 수발 불가, 기존 돌봄 이용 불가·공백의 세 조건과 현장평가를 확인한다. 서비스별 지원 한도·본인부담은 별도 확인한다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "전 생애주기 통합돌봄의 방문 돌봄·건강·주거 혜택이 세 태그에 직접 해당한다."
+      },
+      {
+        "sourceId": "49f4f353-22b9-4d40-ac43-8f2f35fcbb0e",
+        "name": "일상생활돌봄(가사지원)",
+        "decision": "ACTIVATE",
+        "categories": [
+          "돌봄"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "통합돌봄 신청자 중 통합지원회의를 통하여 일상생활돌봄(가사지원) 등이 필요하다고 판단된 통합돌봄 대상자",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "3개월 234시간 (월 78시간)의 방문요양 서비스 제공",
+            "rule": "돌봄: 통합지원회의에서 선정된 대상자에게 방문요양을 제공한다."
+          }
+        ],
+        "conditionChecks": [
+          "선정기준은 의료요양 통합돌봄사업 지침을 참조하므로 실제 대상 연령·장애·질병 요건, 회의 판정 및 본인부담을 별도 확인한다."
+        ],
+        "reason": "노쇠뿐 아니라 장애·질병·사고에 따른 일상생활 곤란을 설명하며 방문요양을 제공한다. 지침상 상세 자격 미확인을 태그 보류 사유로 사용하지 않는다."
+      },
+      {
+        "sourceId": "4c480fab-cf0f-4e15-8336-97b264c645fb",
+        "name": "누구나 돌봄",
+        "decision": "ACTIVATE",
+        "categories": [
+          "돌봄",
+          "의료·건강",
+          "주거·생활지원"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "돌봄이 필요한 31개 시·군 도민 누구나",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "기본형<5개> : 생활돌봄, 동행돌봄, 주거안전, 식사지원, 일시보호",
+            "rule": "돌봄·주거·생활지원: 생활돌봄·일시보호와 주거안전·식사를 제공한다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "확대형<3개> : 재활돌봄, 심리상담, 방문의료",
+            "rule": "의료·건강: 시군 선택형 재활·심리상담·방문의료가 명시되어 있다."
+          }
+        ],
+        "conditionChecks": [
+          "세 가지 위기 조건을 모두 충족해야 한다. 중위소득별 비용지원·연간 총한도·서비스별 한도를 확인한다. 확대형 건강 서비스는 시군 자율선택이므로 해당 거주지 제공 여부를 확인한다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "소득·연령에 관계없는 돌봄공백 지원이며 실제 돌봄·건강·주거 서비스에 해당한다."
+      },
+      {
+        "sourceId": "5b39daba-a29f-414b-9f8b-461d6ffe0c6d",
+        "name": "시흥돌봄SOS센터(누구나돌봄) 돌봄 서비스 지원",
+        "decision": "ACTIVATE",
+        "categories": [
+          "돌봄",
+          "의료·건강",
+          "주거·생활지원"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "돌봄이 필요한 시흥시민",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "생활돌봄: 돌봄대상자 가정방문을 통한 수발",
+            "rule": "돌봄: 가정방문 수발을 제공한다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "주거편의: 간단한 수리보수, 청소, 방역, 세탁",
+            "rule": "주거·생활지원: 집수리·청소 등 실제 생활환경 지원이다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "방문의료: 진찰, 처방, 질환관리",
+            "rule": "의료·건강: 방문 진료·질환관리를 제공한다."
+          }
+        ],
+        "conditionChecks": [
+          "세 가지 돌봄공백 조건 및 그 외 대상자 시 심의를 확인한다. 방문의료는 시범운영이다. GOV24는 8대 서비스와 기준 외 자부담, 동일 시흥 BOKJIRO_LOCAL 기록은 7대 단기 서비스 및 120%초과~150%이하 50%지원으로 달라 현재 서비스와 비용을 확인한다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "시민 대상 방문수발·의료·주거지원이 분명하다. 두 출처의 서비스 구성·비용 차이는 자격·이용조건 확인으로 분리한다."
+      },
+      {
+        "sourceId": "6057931b-5785-488a-a12c-6c56b345481a",
+        "name": "서울형 가사서비스",
+        "decision": "ACTIVATE",
+        "categories": [
+          "임신·출산",
+          "양육·보육",
+          "주거·생활지원"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "서울시 거주 중위소득 180% 이하 임산부·맞벌이·다자녀 가정",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "1가정 당 연 70만 원 상당 바우처를 신용(체크)카드에 지급",
+            "rule": "임신·출산·양육·보육: 명시된 임산부·자녀 양육 가정의 가사부담을 지원하는 바우처이다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "서울형 가사서비스 선정 업체(32개소)에서 바우처 결제",
+            "rule": "주거·생활지원: 가사서비스 이용비를 지원한다."
+          }
+        ],
+        "conditionChecks": [
+          "저장된 2025년 사업·신청기간과 출생일 기준을 2026년 적용 조건으로 단정하지 않는다. 기존 v4 공식 근거상 생애 1회 제한이 없다는 강동구 공지와 저장 문구가 충돌하므로 sourceConsistency=CONFLICT 및 officialEvidence를 보존하고 재참여·연령·신청처·자치구 일정·제공업체를 확인한다. 강동구 일정은 서울 전체로 확장하지 않는다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "임산부 및 자녀 양육 가정의 가사서비스 비용 지원으로 세 태그에 해당한다. 일정·재참여 조건 충돌은 카탈로그 관련성과 별도로 보존한다."
+      },
+      {
+        "sourceId": "7cf5f2f6-0c29-4090-9a0d-4574f149f60a",
+        "name": "장애인틈새돌봄서비스 지원",
+        "decision": "ACTIVATE",
+        "categories": [
+          "돌봄",
+          "주거·생활지원"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "보호자 및 가족의 부재로 인한 돌봄이 필요한 장애인",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "개인위생 관리, 신체기능 유지 및 증진, 식사 도움 등",
+            "rule": "돌봄: 장애인의 신체활동·식사를 보조한다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "청소 및 주변 정돈, 세탁, 취사 등",
+            "rule": "주거·생활지원: 실제 가사활동 지원이다."
+          }
+        ],
+        "conditionChecks": [
+          "활동지원 판정 전·등급 외·2011년 이전 등록의 대체 경로별 요건, 종합점수, 가족 부재 및 적용연도를 확인한다. 등하교 동행은 학교급 미확인 상태로 아동 교육 태그 근거로 확대하지 않는다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "장애인에 대한 신체·가사·동행 돌봄이 명시되어 있어 연령 미표기와 무관하게 돌봄·생활지원에 해당한다."
+      },
+      {
+        "sourceId": "9cb61f4d-06e3-4372-b0b0-ff83f6410541",
+        "name": "서민층 가스안전장치(타이머콕) 보급",
+        "decision": "ACTIVATE",
+        "categories": [
+          "주거·생활지원"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "기초생활수급자, 차상위계층, 소외계층(독거노인, 장애인, 한부모가족, 소년소녀가장, 기초노령연금수급자), 일반가구 등",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "LPG가스 사용가구에 가스타이머 콕 무상설치",
+            "rule": "주거·생활지원: 거주 가구에 가스안전장치를 설치한다."
+          }
+        ],
+        "conditionChecks": [
+          "저장된 일괄 만 55세 이상 문구와 기존 v4 광양시 공식 공고의 개별 고령자 요건·다자녀/초등학생 이하 가구 경로가 충돌한다. sourceConsistency=CONFLICT 및 officialEvidence를 보존하며 연령 적용·가스배관 조건·접수기간·신청기관을 확인한다. LPG 배관교체 사업의 자부담을 타이머콕에 혼합하지 않는다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "한부모·소년소녀가장 등을 포함한 가구 대상 무상 안전장치 설치는 주거·생활지원이다. 연령조건 충돌은 별도 확인 사항이다."
+      },
+      {
+        "sourceId": "9fd4d66e-70b8-453c-b0d9-3f87a3879e8c",
+        "name": "광주다움 통합돌봄",
+        "decision": "ACTIVATE",
+        "categories": [
+          "돌봄",
+          "의료·건강",
+          "주거·생활지원"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "돌봄이 필요한 광주시민 누구나",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "일시재가 : 취사·청소·세탁·정리정돈·근거리 외출동행·정서지원 등",
+            "rule": "돌봄: 재가생활 및 동행을 지원한다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "방문간호 : 재택방문을 통한 간호, 진료의 보조, 요양에 관산 상담, 건강 교육 등",
+            "rule": "의료·건강: 방문간호와 진료 보조가 명시되어 있다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "안전생활환경 : 낙상예방 미끄럼방지 장치, 문턱경사로, 가스타이머 설치 등 안전한 주거환경 조성",
+            "rule": "주거·생활지원: 주거 안전장치를 설치한다."
+          }
+        ],
+        "conditionChecks": [
+          "주민등록·실거주 및 말소자 예외, 체류신고와 외국인 대체 자격, 돌봄공백 세 조건을 각각 확인한다. 소득별 지원율·연간 총한도·서비스별 한도를 확인한다. 혼인·가족 문구는 외국인 경로 조건이지 일반 시민 이용대상을 가족 전용으로 제한하는 조건이 아니다."
+        ],
+        "reason": "돌봄이 필요한 시민 일반에 제공하는 재가·간호·주거안전 서비스로 세 태그에 해당한다."
+      },
+      {
+        "sourceId": "a61bb155-145f-462c-8992-7e73962be0b1",
+        "name": "경상북도 35세 이상 산모 의료비 지원",
+        "decision": "ACTIVATE",
+        "categories": [
+          "임신·출산",
+          "의료·건강"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "주민등록 주소가  경상북도인 35세 이상 산모(1990년생 이하)",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "임신 기간 중 외래 진료 및 검사비 지원",
+            "rule": "임신·출산·의료·건강: 산모의 임신 관련 외래진료·검사비를 지원한다."
+          }
+        ],
+        "conditionChecks": [
+          "35세 이상·1990년생 이하·당해 연도 분만예정일 기준의 연령 표기 관계를 확인한다. 거주요건, 임신 관련 소견, 2026년 진료일, 국민행복카드 중복 제한 및 제외비용·임신당 1회 신청을 각각 확인한다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "산모의 임신 관련 진료·검사비라는 대상과 혜택이 분명하다. 연령 경계 확인을 태그 보류 사유로 사용하지 않는다."
+      },
+      {
+        "sourceId": "ba018fd2-1fc1-4046-9998-4d2f533363af",
+        "name": "돌봄플러그 설치 지원",
+        "decision": "ACTIVATE",
+        "categories": [
+          "돌봄",
+          "주거·생활지원"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "취약계층 1인 고위험군 가구 중 설치 희망자",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "돌봄플러그를 설치하고 돌봄 플러그 설치 후 전력량 및 조도 변화 추이에 따른 위험신호를 감지하고 대상자 안부 확인 또는 가정방문 시행",
+            "rule": "돌봄: 위험신호에 따라 안부확인·방문을 시행한다. 주거·생활지원: 가구 내 안전 확인 장치를 설치한다."
+          }
+        ],
+        "conditionChecks": [
+          "저소득·고독사 위험도·주거취약 우선 선정 및 유사사업 이용자 우선 선정 제외의 적용을 확인한다. 1인 가구는 명시된 조건으로 유지하되 노인 전용 연령 제한은 원문에 없어 추가하지 않는다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "1인 위험가구의 안전장치 설치와 안부확인·가정방문은 주거·생활지원 및 돌봄이다. 가족 전용 문구 부재만으로 제외하지 않는다."
+      },
+      {
+        "sourceId": "cfa96c5b-fa21-475d-83e9-ac884e64317d",
+        "name": "누구나 돌봄! 시흥돌봄SOS센터 운영",
+        "decision": "ACTIVATE",
+        "categories": [
+          "돌봄",
+          "의료·건강",
+          "주거·생활지원"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "돌봄공백 등 위기상황으로 돌봄이 필요한 시민",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "생활돌봄: 대상자 가정방문을 통한 신체·가사활동 지원",
+            "rule": "돌봄: 가정방문 신체·가사활동을 지원한다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "주거안전: 간단 집수리, 청소, 방역 및 세탁서비스",
+            "rule": "주거·생활지원: 주거안전과 생활환경을 지원한다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "재활돌봄: 운동재활 및 일상생활 수행훈련   - 심리상담: 심리·정서적 어려움에 대한 상담 지원",
+            "rule": "의료·건강: 운동재활 및 심리상담을 제공한다."
+          }
+        ],
+        "conditionChecks": [
+          "세 가지 돌봄 적격 기준의 종합판정과 소득별 비용·국가유공자 예외를 확인한다. 동일 시흥 GOV24 기록과 단기서비스 수·방문의료 시범운영·120%초과~150%이하 지원률이 다르므로 현재 서비스 구성과 부담금을 확인한다."
+        ],
+        "reason": "위기상황 시민에게 제공하는 실제 돌봄·재활상담·주거지원으로 세 태그에 해당한다."
+      },
+      {
+        "sourceId": "e1c3c0d0-922a-42ae-89af-8f23bdd5b795",
+        "name": "중증장애인 통합위생돌봄 서비스",
+        "decision": "ACTIVATE",
+        "categories": [
+          "돌봄"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "거동불편 중증장애인",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "중증장애인 재가방문 후 개인위생 서비스 제공",
+            "rule": "돌봄: 거동불편 장애인에게 방문 개인위생 보조를 제공한다."
+          }
+        ],
+        "conditionChecks": [
+          "거동불편·중증장애 판단 및 지역 거주·서비스 제공 범위를 별도 확인한다. 원문에 없는 연령 제한은 만들지 않는다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "거동불편 중증장애인의 방문 위생 돌봄이 직접 명시되어 돌봄에 해당한다."
+      },
+      {
+        "sourceId": "e2bada81-792e-466e-aa1b-36845149609c",
+        "name": "아동복지시설 만기퇴소 청소년 자립정착금 지원",
+        "decision": "ACTIVATE",
+        "categories": [
+          "주거·생활지원"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "관내 가정 위탁시설 보호종료청소년",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "관내 아동복지시설 만기 퇴소청소년에게 현금 200만원 지급",
+            "rule": "주거·생활지원: 보호종료 청소년의 자립정착을 위한 현금 지원이다."
+          }
+        ],
+        "conditionChecks": [
+          "실제 지원 연령, 만기 퇴소·가정위탁 종료의 적용 범위, 보호시설장 공문 신청 및 지급 시점을 확인한다. 자립정착금의 용도를 교육비로 단정하지 않는다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "보호종료 청소년의 자립정착금은 주거·생활지원에 해당한다. 미성년 여부 미확인은 상세 자격 확인 사항이다."
+      },
+      {
+        "sourceId": "e7c5cebd-6e8d-488f-b63f-0412f09bd6f6",
+        "name": "포항시 세자녀 이상 가족진료비 지원",
+        "decision": "ACTIVATE",
+        "categories": [
+          "의료·건강"
+        ],
+        "evidence": [
+          {
+            "field": "target_text",
+            "excerpt": "포항시에 주소를 둔 세자녀 이상 가정으로 막내가 만 12세(13세) 이하인 가정",
+            "rule": "지원대상 원문을 혜택과 함께 판독하며 일반 주민·돌봄 필요자에 아동·가족 전용 문구를 추가 요구하지 않는다."
+          },
+          {
+            "field": "benefit_text",
+            "excerpt": "해당년도 세자녀이상 가족의 치료목적 의료비, 약제비 본인부담금 합산하여 5만원 한도지원(가족진료비 합한 금액)",
+            "rule": "의료·건강: 다자녀 가족의 실제 진료·약제비 본인부담금을 지원한다."
+          }
+        ],
+        "conditionChecks": [
+          "저장된 만 12세(13세) 이하와 기존 v4 공식 안내의 13세 미만(초등학교 6학년까지)이 충돌하므로 sourceConsistency=CONFLICT 및 officialEvidence를 보존한다. 연령·학년 경계, 가족 전원 경북 주소, 적용연도·예산·영수증 인정범위를 확인한다.",
+          "저장된 list-detail-conflict:신청방법 경고가 있으므로 실제 신청경로를 안내할 때 상세 원문과 담당기관 정보를 확인한다."
+        ],
+        "reason": "세자녀 가족의 의료비 지원은 의료·건강에 명확히 해당한다. 연령·학년 충돌과 접수 유효성은 별도 확인 사항이다."
+      }
+    ]
+  },
+  "applyResult": {
+    "planDigest": "bee68f6efb8e299ac525a74ae45f382b2ab77576435dea523a88c4b8a0c71387",
+    "startedAt": "2026-09-13T15:41:20.032Z",
+    "results": [
+      {
+        "sourceId": "046d9a33-4076-4ab9-8fb9-a4e55497da74",
+        "name": "통합돌봄 건강장수센터 운영",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "1439f0ae-5298-4e15-9e10-3c7d97cf826c",
+        "name": "대덕형 마을돌봄 서비스",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "19e08438-77b4-40b3-874e-69c8a006d461",
+        "name": "광주다움 통합돌봄",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "49f4f353-22b9-4d40-ac43-8f2f35fcbb0e",
+        "name": "일상생활돌봄(가사지원)",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "4c480fab-cf0f-4e15-8336-97b264c645fb",
+        "name": "누구나 돌봄",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "5b39daba-a29f-414b-9f8b-461d6ffe0c6d",
+        "name": "시흥돌봄SOS센터(누구나돌봄) 돌봄 서비스 지원",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "6057931b-5785-488a-a12c-6c56b345481a",
+        "name": "서울형 가사서비스",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "7cf5f2f6-0c29-4090-9a0d-4574f149f60a",
+        "name": "장애인틈새돌봄서비스 지원",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "9cb61f4d-06e3-4372-b0b0-ff83f6410541",
+        "name": "서민층 가스안전장치(타이머콕) 보급",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "9fd4d66e-70b8-453c-b0d9-3f87a3879e8c",
+        "name": "광주다움 통합돌봄",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "a61bb155-145f-462c-8992-7e73962be0b1",
+        "name": "경상북도 35세 이상 산모 의료비 지원",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "ba018fd2-1fc1-4046-9998-4d2f533363af",
+        "name": "돌봄플러그 설치 지원",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "cfa96c5b-fa21-475d-83e9-ac884e64317d",
+        "name": "누구나 돌봄! 시흥돌봄SOS센터 운영",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "e1c3c0d0-922a-42ae-89af-8f23bdd5b795",
+        "name": "중증장애인 통합위생돌봄 서비스",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "e2bada81-792e-466e-aa1b-36845149609c",
+        "name": "아동복지시설 만기퇴소 청소년 자립정착금 지원",
+        "status": "VERIFIED_ACTIVE"
+      },
+      {
+        "sourceId": "e7c5cebd-6e8d-488f-b63f-0412f09bd6f6",
+        "name": "포항시 세자녀 이상 가족진료비 지원",
+        "status": "VERIFIED_ACTIVE"
+      }
+    ],
+    "finishedAt": "2026-09-13T15:41:22.708Z"
+  },
+  "verification": {
+    "checkedAt": "2026-09-13T15:42:59.526Z",
+    "counts": {
+      "ACTIVE": 3451,
+      "REVIEW": 1406,
+      "EXCLUDED": 1038
+    },
+    "activeRead": 3451,
+    "pages": 4,
+    "verifiedPolicies": 16,
+    "categories": [
+      {
+        "category": "pregnancy",
+        "count": 2
+      },
+      {
+        "category": "childcare",
+        "count": 1
+      },
+      {
+        "category": "care",
+        "count": 10
+      },
+      {
+        "category": "health",
+        "count": 8
+      },
+      {
+        "category": "education",
+        "count": 0
+      },
+      {
+        "category": "housing",
+        "count": 11
+      }
+    ]
+  },
+  "remainingNotReviewedUnderV5": 1406
+}
