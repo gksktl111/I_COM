@@ -10,7 +10,7 @@ export function Notice({
   return (
     <div
       className={cn(
-        "text-muted-foreground flex gap-3 border-y py-4 text-sm leading-relaxed",
+        "bg-muted text-foreground flex gap-3 rounded-sm p-4 text-base leading-relaxed",
         className,
       )}
       {...props}
@@ -34,16 +34,16 @@ export function EmptyState({
 }) {
   return (
     <div
-      className="flex flex-col items-center px-4 py-14 text-center"
+      className="flex flex-col items-center px-5 py-10 text-center"
       role="status"
     >
       <SearchX
         aria-hidden="true"
         className="text-muted-foreground/60 mb-4 size-10"
       />
-      <h3 className="text-lg font-semibold">{title}</h3>
+      <h3 className="text-xl font-semibold">{title}</h3>
       {description && (
-        <p className="text-muted-foreground mt-2 max-w-md text-sm">
+        <p className="text-muted-foreground mt-2 max-w-md text-base">
           {description}
         </p>
       )}

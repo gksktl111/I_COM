@@ -23,7 +23,7 @@ export function RecommendationIntake({
   return (
     <div className="mt-8 space-y-10">
       <fieldset>
-        <legend className="mb-5 flex w-full flex-wrap items-center gap-2 border-b border-slate-200 pb-3 text-lg font-semibold text-slate-900">
+        <legend className="mb-5 flex w-full flex-wrap items-center gap-2 border-b border-[#dce3de] pb-3 text-xl font-semibold text-[#182c29]">
           <MapPin size={18} aria-hidden="true" />
           현재 주민등록상 거주지{" "}
           <span className="text-sm font-normal text-slate-600">선택</span>
@@ -38,7 +38,7 @@ export function RecommendationIntake({
             </label>
             <Select
               id="recommendation-region"
-              className="h-12 border-slate-300 text-base shadow-none"
+              className="h-12 border-[#7b8d87] text-base shadow-none"
               value={residence.region}
               onChange={(event) =>
                 onResidence({
@@ -65,7 +65,7 @@ export function RecommendationIntake({
             </label>
             <Select
               id="recommendation-district"
-              className="h-12 border-slate-300 text-base shadow-none"
+              className="h-12 border-[#7b8d87] text-base shadow-none"
               value={residence.district}
               disabled={!districts.length}
               searchable
@@ -95,7 +95,7 @@ export function RecommendationIntake({
         </p>
       </fieldset>
       <fieldset>
-        <legend className="mb-5 w-full border-b border-slate-200 pb-3 text-lg font-semibold text-slate-900">
+        <legend className="mb-5 w-full border-b border-[#dce3de] pb-3 text-xl font-semibold text-[#182c29]">
           지원 분야{" "}
           <span className="text-primary text-sm font-medium">
             필수 · 한 개 선택
@@ -112,7 +112,7 @@ export function RecommendationIntake({
               type="button"
               aria-pressed={category === field.id}
               onClick={() => onCategory(category === field.id ? "" : field.id)}
-              className={`focus-visible:outline-primary flex min-h-14 cursor-pointer items-center justify-between gap-3 rounded-lg border px-4 py-3 text-left text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${category === field.id ? "border-primary bg-primary/5 text-primary ring-primary font-semibold ring-1" : "hover:border-primary border-slate-300 bg-white text-slate-800 hover:bg-slate-50"}`}
+              className={`focus-visible:outline-primary flex min-h-14 cursor-pointer items-center justify-between gap-3 rounded-full border px-4 py-3 text-left text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${category === field.id ? "border-primary ring-primary bg-[#e8f3ef] font-semibold text-[#164b46] ring-1" : "hover:border-primary border-[#7b8d87] bg-white text-slate-800 hover:bg-[#f1f3f0]"}`}
             >
               {field.label}
               <Check

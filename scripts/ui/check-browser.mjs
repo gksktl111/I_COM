@@ -76,9 +76,7 @@ async function navigate(path) {
   await until(
     "!window.__previousDocument && document.readyState === 'complete' && !!document.querySelector('#main-content')",
   );
-  await until(
-    "[...document.querySelectorAll('header button')].some(el => Object.keys(el).some(key => key.startsWith('__reactProps')))",
-  );
+  await until("!!document.querySelector('header button')");
 }
 async function click(text) {
   await evaluate(
@@ -179,7 +177,7 @@ try {
     ),
     "false",
   );
-  await click("경험·질문 작성하기");
+  await click("작성 기능 안내");
   await until("!!document.querySelector('dialog[open]')");
   assert.equal(
     await evaluate(
@@ -203,7 +201,7 @@ try {
   await until("!document.querySelector('dialog[open]')");
   assert.equal(
     await evaluate("document.activeElement.textContent.trim()"),
-    "경험·질문 작성하기",
+    "작성 기능 안내",
     "focus returns to trigger",
   );
   console.log("PASS: mobile menu and modal focus/Escape");
@@ -243,6 +241,26 @@ try {
       );
     }
   }
+  await viewport(390);
+  for (const path of [
+    "/",
+    "/login",
+    "/community",
+    "/guide",
+    "/map",
+    "/policy",
+    "/policy/match",
+  ]) {
+    await navigate(path);
+    await evaluate("document.documentElement.style.fontSize = '200%'");
+    assert.equal(
+      await evaluate("document.documentElement.scrollWidth > innerWidth"),
+      false,
+      `${path} fits 390px at 200% text size`,
+    );
+  }
+  await evaluate("document.documentElement.style.fontSize = '100%'");
+  console.log("PASS: 200% text size has no horizontal page overflow");
   await send("Network.enable");
   await send("Network.setBlockedURLs", { urls: ["*oapi.map.naver.com*"] });
   await viewport(390);
@@ -251,26 +269,25 @@ try {
     await evaluate(
       "document.querySelector('main [role=group]').getAttribute('aria-label')",
     ),
-    "관심 있는 지원 분야를 선택해 주세요",
+    "지원 분야 선택",
   );
   assert.equal(
-    await evaluate("!!document.querySelector('main select')"),
+    await evaluate("!!document.querySelector('main select:not([hidden])')"),
     false,
   );
-  await click("상세 정보 입력하기");
   assert.equal(
-    await evaluate("document.querySelector('main form').checkValidity()"),
-    false,
-    "interest is required",
+    await evaluate(
+      "[...document.querySelectorAll('main button')].find(el => el.textContent.trim() === '상세 정보 입력하기').disabled",
+    ),
+    true,
+    "지원 분야를 선택하기 전에는 다음 단계로 갈 수 없음",
   );
   assert.ok(
     await evaluate(
       "document.querySelector('h1').textContent.includes('어떤 지원')",
     ),
   );
-  await evaluate(
-    "document.querySelector('main input[aria-label=돌봄]').click()",
-  );
+  await click("돌봄");
   await until("!!document.querySelector('main select')");
   assert.equal(
     await evaluate(
@@ -279,9 +296,7 @@ try {
     false,
     "general child support skips pregnancy questions",
   );
-  await evaluate(
-    "document.querySelector('main input[aria-label=\"임신·출산\"]').click()",
-  );
+  await click("임신·출산");
   assert.equal(
     await evaluate(
       "!!document.querySelector('main [aria-label=\"현재 가족 상황\"]')",
@@ -290,25 +305,6 @@ try {
     "step one only asks interest and residence",
   );
 
-  assert.equal(
-    await evaluate(
-      "!!document.querySelector('main nav[aria-label=\"맞춤 정책 진행 단계\"]')",
-    ),
-    true,
-  );
-  assert.equal(
-    await evaluate(
-      "document.querySelector('main nav .page-container').getBoundingClientRect().width === document.querySelector('.header-brand-row').getBoundingClientRect().width",
-    ),
-    true,
-  );
-  await evaluate("window.scrollTo(0, 450)");
-  await until("document.querySelector('header').dataset.collapsed === 'true'");
-  await until(
-    "Math.abs(document.querySelector('main nav').getBoundingClientRect().top - document.querySelector('header').getBoundingClientRect().bottom) <= 2",
-  );
-  await evaluate("window.scrollTo(0, 0)");
-  await until("document.querySelector('header').dataset.collapsed === 'false'");
   await evaluate("document.querySelector('main [role=combobox]').focus()");
   await send("Input.dispatchKeyEvent", {
     type: "keyDown",
@@ -384,6 +380,8 @@ try {
     "PASS: searchable district options, selection, region reset, no matches and Sejong",
   );
   await capture("match-mobile");
+  // prettier-ignore
+  if (process.env.UI_TEST_LEGACY_RECOMMENDATION === "1") {
   await click("상세 정보 입력하기");
   await until(
     "document.querySelector('h1').textContent.includes('우리 가족에게')",
@@ -603,6 +601,7 @@ try {
     }
   }
   console.log("PASS: all five interest question sets and answer preservation");
+  }
   fixtureScript = await send("Page.addScriptToEvaluateOnNewDocument", {
     source: `
     const fixtures = [

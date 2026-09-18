@@ -19,10 +19,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { PolicyBookmark, PolicyNotice } from "./PolicyShared";
-import type { PublicPolicy } from "../public/types";
+import { safePolicyUrl, type PublicPolicy } from "../public/types";
+import styles from "./policy-public.module.css";
 export function PolicyDetail({ policy }: { policy: PublicPolicy }) {
   const [external, setExternal] = useState<string | null>(null);
   const [message, setMessage] = useState("");
+  const sourceUrl = safePolicyUrl(policy.source_url);
+  const applicationUrl = safePolicyUrl(policy.application_url);
   async function share() {
     try {
       await navigator.clipboard.writeText(window.location.href);
@@ -76,9 +79,9 @@ export function PolicyDetail({ policy }: { policy: PublicPolicy }) {
     },
   ];
   return (
-    <main id="main-content" className="bg-slate-50/60 pb-16">
+    <main id="main-content" className={`${styles.page} pb-16`}>
       <div className="border-b bg-white">
-        <div className="mx-auto max-w-[1200px] px-5 py-7 md:px-8">
+        <div className="mx-auto max-w-[1200px] px-5 py-7 max-[359px]:px-4 md:px-8">
           <Link
             href="/policy"
             className="hover:text-primary inline-flex min-h-11 items-center gap-2 text-sm text-slate-500"
@@ -100,7 +103,7 @@ export function PolicyDetail({ policy }: { policy: PublicPolicy }) {
           <h1 className="mt-4 max-w-4xl text-[28px] leading-snug font-bold">
             {policy.name}
           </h1>
-          <p className="mt-3 max-w-4xl text-sm leading-7 text-slate-600">
+          <p className={`${styles.bodyCopy} mt-3 max-w-[760px]`}>
             {policy.summary ||
               policy.purpose_text ||
               "아래 지원 대상과 신청 방법을 확인해 주세요."}
@@ -129,7 +132,7 @@ export function PolicyDetail({ policy }: { policy: PublicPolicy }) {
         aria-label="정책 상세 항목"
         className="sticky top-[var(--app-header-visible-height)] z-20 overflow-x-auto border-b bg-white transition-[top] duration-180"
       >
-        <div className="mx-auto flex max-w-[1200px] gap-5 px-5 md:px-8">
+        <div className="mx-auto flex max-w-[1200px] gap-5 px-5 max-[359px]:px-4 md:px-8">
           {sections.map((section) => (
             <a
               key={section.id}
@@ -141,9 +144,9 @@ export function PolicyDetail({ policy }: { policy: PublicPolicy }) {
           ))}
         </div>
       </nav>
-      <div className="mx-auto grid max-w-[1200px] items-start gap-7 px-5 pt-7 md:px-8 lg:grid-cols-[minmax(0,1fr)_300px]">
+      <div className="mx-auto grid max-w-[1200px] items-start gap-8 px-5 pt-8 max-[359px]:px-4 md:px-8 lg:grid-cols-[minmax(0,760px)_minmax(240px,300px)] lg:justify-between">
         <div className="space-y-5">
-          <section className="rounded-xl border bg-white p-6">
+          <section className="rounded-lg border bg-white p-6">
             <h2 className="mb-5 text-lg font-bold">지원 내용 한눈에 보기</h2>
             <div className="grid gap-5 sm:grid-cols-3">
               {[
@@ -158,7 +161,7 @@ export function PolicyDetail({ policy }: { policy: PublicPolicy }) {
                     <h3 className="text-xs text-slate-500">
                       {label as string}
                     </h3>
-                    <p className="mt-2 line-clamp-3 text-sm leading-6 font-medium">
+                    <p className="mt-2 text-sm leading-6 font-medium break-words">
                       {(text as string) || "공식 안내 확인 필요"}
                     </p>
                   </div>
@@ -174,7 +177,7 @@ export function PolicyDetail({ policy }: { policy: PublicPolicy }) {
             <section
               id={id}
               key={id}
-              className="scroll-mt-36 rounded-xl border bg-white p-6 md:scroll-mt-48 md:p-7"
+              className="scroll-mt-36 rounded-lg border bg-white p-6 md:scroll-mt-48 md:p-7"
             >
               <h2 className="mb-6 flex items-center gap-3 text-lg font-bold">
                 <Icon className="text-primary size-5" />
@@ -203,10 +206,10 @@ export function PolicyDetail({ policy }: { policy: PublicPolicy }) {
               )}
               {id === "contact" && (
                 <div className="mt-5 flex flex-wrap gap-3">
-                  {policy.source_url ? (
+                  {sourceUrl ? (
                     <Button
                       variant="outline"
-                      onClick={() => setExternal(policy.source_url)}
+                      onClick={() => setExternal(sourceUrl)}
                     >
                       <FileText />
                       정책 원문 출처
@@ -224,7 +227,7 @@ export function PolicyDetail({ policy }: { policy: PublicPolicy }) {
           <PolicyNotice />
         </div>
         <aside className="space-y-5 lg:sticky lg:top-48">
-          <section className="border-primary/25 rounded-xl border bg-white p-5">
+          <section className="border-primary/25 rounded-lg border bg-white p-5">
             <h2 className="mb-3 flex items-center gap-2 font-bold">
               <ShieldCheck className="text-primary size-5" />
               신청 전 확인해 주세요
@@ -233,19 +236,16 @@ export function PolicyDetail({ policy }: { policy: PublicPolicy }) {
               공식 안내에서 최신 접수 일정과 구비 서류를 확인한 뒤 신청해
               주세요.
             </p>
-            {policy.application_url ? (
+            {applicationUrl ? (
               <Button
                 className="w-full"
-                onClick={() => setExternal(policy.application_url)}
+                onClick={() => setExternal(applicationUrl)}
               >
                 신청 사이트로 이동
                 <ExternalLink />
               </Button>
-            ) : policy.source_url ? (
-              <Button
-                className="w-full"
-                onClick={() => setExternal(policy.source_url)}
-              >
+            ) : sourceUrl ? (
+              <Button className="w-full" onClick={() => setExternal(sourceUrl)}>
                 공식 원문 확인하기
                 <ExternalLink />
               </Button>
@@ -259,7 +259,7 @@ export function PolicyDetail({ policy }: { policy: PublicPolicy }) {
               외부 사이트에서 본인 인증이 필요할 수 있어요.
             </p>
           </section>
-          <section className="rounded-xl border bg-white p-5">
+          <section className="rounded-lg border bg-white p-5">
             <h2 className="mb-4 font-semibold">신청 준비 체크</h2>
             {[
               "지원 대상 및 선정 기준 확인",

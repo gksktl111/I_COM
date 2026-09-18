@@ -58,7 +58,7 @@ export function Header({
   }
   return (
     <header
-      className="site-header sticky top-0 z-50 border-b bg-white shadow-xs"
+      className="site-header sticky top-0 z-50 border-b bg-white"
       data-collapsed={collapsed && !menuOpen}
       data-secondary={!!secondaryNavigation}
     >
@@ -77,13 +77,13 @@ export function Header({
           aria-label="아이콤 홈"
           className="text-primary flex min-h-11 shrink-0 items-center gap-2"
         >
-          <Compass className="size-7" />
-          <span className="text-xl font-bold tracking-tight">아이콤</span>
+          <Compass className="hidden size-7 md:block" />
+          <span className="text-xl font-semibold tracking-tight">아이콤</span>
           <span className="text-muted-foreground ml-3 hidden border-l pl-4 text-xs font-normal lg:block">
             대한민국 아동 공공 복지 나침반
           </span>
         </Link>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1 sm:gap-3">
           <div
             className="bg-muted hidden rounded-lg border p-0.5 sm:flex"
             role="group"
@@ -98,7 +98,7 @@ export function Header({
                 className={cn(
                   "min-h-9 rounded-md px-3 text-xs",
                   large === value
-                    ? "text-primary bg-white font-semibold shadow-xs"
+                    ? "text-primary bg-white font-semibold"
                     : "text-muted-foreground",
                 )}
               >
@@ -111,9 +111,9 @@ export function Header({
             variant="outline"
             className="border-border text-foreground"
           >
-            <Link href="/login">
+            <Link href="/login" aria-label="로그인">
               <LogIn />
-              로그인
+              <span className="hidden sm:inline">로그인</span>
             </Link>
           </Button>
           <Button
@@ -168,7 +168,7 @@ export function Header({
                   onClick={() => setMenuOpen(false)}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "hover:text-primary flex min-h-12 items-center border-b-2 px-2 text-sm transition-colors",
+                    "hover:text-primary flex min-h-12 items-center border-b-2 px-2 text-sm font-medium transition-colors",
                     active
                       ? "border-primary text-primary font-bold"
                       : "text-muted-foreground border-transparent",

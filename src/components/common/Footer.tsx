@@ -4,13 +4,13 @@ import { Notice } from "@/components/ui/feedback";
 
 export function Footer() {
   return (
-    <footer className="text-muted-foreground border-t bg-white py-10 text-sm">
+    <footer className="text-muted-foreground bg-background border-t py-12 text-[13px]">
       <div className="page-container">
         <div className="grid gap-8 pb-8 md:grid-cols-[2fr_1fr_1fr]">
           <div>
             <Link
               href="/"
-              className="text-primary inline-flex items-center gap-2 text-lg font-bold"
+              className="text-primary inline-flex min-h-11 items-center gap-2 text-lg font-semibold"
             >
               <Compass className="size-6" />
               아이콤{" "}
@@ -24,33 +24,51 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <h2 className="text-foreground mb-3 font-semibold">
+            <h2 className="text-foreground mb-3 text-sm font-semibold">
               안내 및 고객지원
             </h2>
             <div className="flex flex-col items-start gap-2">
-              <Link href="/guide#faq" className="hover:text-primary">
+              <Link
+                href="/guide#faq"
+                className="hover:text-primary inline-flex min-h-11 items-center underline-offset-4 hover:underline"
+              >
                 자주 묻는 질문
               </Link>
-              <Link href="/guide#sources" className="hover:text-primary">
+              <Link
+                href="/guide#sources"
+                className="hover:text-primary inline-flex min-h-11 items-center underline-offset-4 hover:underline"
+              >
                 공공데이터 출처 안내
               </Link>
-              <Link href="/community" className="hover:text-primary">
+              <Link
+                href="/community"
+                className="hover:text-primary inline-flex min-h-11 items-center underline-offset-4 hover:underline"
+              >
                 육아·정책 커뮤니티
               </Link>
             </div>
           </div>
           <div>
-            <h2 className="text-foreground mb-3 font-semibold">
+            <h2 className="text-foreground mb-3 text-sm font-semibold">
               서비스 이용 안내
             </h2>
             <div className="flex flex-col items-start gap-2">
-              <Link href="/guide#privacy" className="hover:text-primary">
+              <Link
+                href="/guide#privacy"
+                className="hover:text-primary inline-flex min-h-11 items-center underline-offset-4 hover:underline"
+              >
                 개인정보 이용 안내
               </Link>
-              <Link href="/guide#principles" className="hover:text-primary">
+              <Link
+                href="/guide#principles"
+                className="hover:text-primary inline-flex min-h-11 items-center underline-offset-4 hover:underline"
+              >
                 서비스 취지 및 원칙
               </Link>
-              <Link href="/guide#notice" className="hover:text-primary">
+              <Link
+                href="/guide#notice"
+                className="hover:text-primary inline-flex min-h-11 items-center underline-offset-4 hover:underline"
+              >
                 정책 정보 이용 시 유의사항
               </Link>
             </div>

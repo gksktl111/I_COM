@@ -38,10 +38,10 @@ export function Dialog({
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
-      className="text-foreground fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-xl overflow-y-auto rounded-2xl border bg-white p-0 shadow-xl backdrop:bg-slate-950/35"
+      className="text-foreground fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-xl overflow-y-auto rounded-xl border bg-white p-0 shadow-[0_16px_48px_rgb(24_44_41/14%)] backdrop:bg-[#182c29]/40"
     >
       <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b bg-white px-6 py-3">
-        <h2 id={titleId} className="text-lg font-bold">
+        <h2 id={titleId} className="text-xl font-semibold">
           {title}
         </h2>
         <Button variant="ghost" size="icon" aria-label="닫기" onClick={onClose}>

@@ -1,7 +1,7 @@
 import type { Place } from "../types/place";
 import styles from "./map-markers.module.css";
 
-// Google Material Symbols Outlined (Apache-2.0), matching the Stitch reference.
+// Google Material Symbols Outlined(Apache-2.0) 원본 경로를 사용합니다.
 const symbols = {
   child:
     '<path d="M580-490q-21 0-35.5-14.5T530-540q0-21 14.5-35.5T580-590q21 0 35.5 14.5T630-540q0 21-14.5 35.5T580-490Zm-200 0q-21 0-35.5-14.5T330-540q0-21 14.5-35.5T380-590q21 0 35.5 14.5T430-540q0 21-14.5 35.5T380-490Zm100 210q-60 0-108.5-33T300-400h360q-23 54-71.5 87T480-280Zm0 160q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-480q0-75 28.5-140.5t77-114q48.5-48.5 114-77T480-840q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-480q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-120Zm0-80q116 0 198-82t82-198q0-116-82-198t-198-82h-12q-6 0-12 2-6 6-8 13t-2 15q0 21 14.5 35.5T496-680q9 0 16.5-3t15.5-3q12 0 20 9t8 21q0 23-21.5 29.5T496-620q-45 0-77.5-32.5T386-730v-6q0-3 1-8-83 30-135 101t-52 163q0 116 82 198t198 82Zm0-280Z"/>',
@@ -30,7 +30,7 @@ export function createPlaceMarker(place: Place) {
   button.dataset.placeId = place.id;
   const { color, symbol } = categoryStyle(place.category);
   button.style.setProperty("--marker-color", color);
-  // Only constant SVG markup is inserted as HTML; provider strings use textContent.
+  // 상수 SVG만 HTML로 넣고, 제공처 문자열은 textContent로 처리합니다.
   button.innerHTML = `<span class="${styles.pin}" aria-hidden="true"><svg viewBox="0 -960 960 960" fill="currentColor">${symbol}</svg></span><span class="${styles.label}"></span><span class="${styles.callout}"><span class="${styles.name}"></span><span class="${styles.category}"></span></span>`;
   button.querySelector(`.${styles.label}`)!.textContent = place.name;
   button.querySelector(`.${styles.name}`)!.textContent = place.name;
@@ -44,6 +44,7 @@ export function selectPlaceMarker(
   selected: boolean,
 ) {
   button.dataset.selected = String(selected);
+  button.setAttribute("aria-pressed", String(selected));
 }
 
 export function createLocationMarker() {

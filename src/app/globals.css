@@ -45,24 +45,24 @@
 
 :root {
   --app-header-height: calc(4rem + 1px);
-  --radius: 0.5rem;
-  --background: #f8f9ff;
-  --foreground: #121c2a;
+  --radius: 0.75rem;
+  --background: #faf8f5;
+  --foreground: #182c29;
   --card: #ffffff;
-  --card-foreground: #121c2a;
+  --card-foreground: #182c29;
   --popover: #ffffff;
-  --popover-foreground: #121c2a;
+  --popover-foreground: #182c29;
   --primary: #0d7a73;
   --primary-foreground: #ffffff;
-  --secondary: #eff4ff;
-  --secondary-foreground: #3e4947;
-  --muted: #eff4ff;
-  --muted-foreground: #52616b;
-  --accent: #f0fdfa;
-  --accent-foreground: #005f5a;
-  --destructive: #ba1a1a;
-  --border: #dce3ea;
-  --input: #bdc9c7;
+  --secondary: #f1f3f0;
+  --secondary-foreground: #182c29;
+  --muted: #f1f3f0;
+  --muted-foreground: #52635f;
+  --accent: #e8f3ef;
+  --accent-foreground: #164b46;
+  --destructive: #b42318;
+  --border: #dce3de;
+  --input: #7b8d87;
   --ring: #0d7a73;
 }
 
@@ -112,13 +112,20 @@
 @layer base {
   body {
     font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    line-height: 1.6;
+    min-height: 100dvh;
+    font-size: 1rem;
+    line-height: 1.65;
   }
-  h1,
-  h2,
-  h3 {
+  h1 {
     letter-spacing: -0.02em;
+    text-wrap: pretty;
+  }
+  h2 {
+    letter-spacing: -0.01em;
+    text-wrap: pretty;
+  }
+  h3 {
+    letter-spacing: 0;
     text-wrap: pretty;
   }
   button,
@@ -145,11 +152,16 @@
   width: 100%;
   max-width: 1200px;
   margin-inline: auto;
-  padding-inline: 1rem;
+  padding-inline: 20px;
+}
+@media (max-width: 359px) {
+  .page-container {
+    padding-inline: 16px;
+  }
 }
 @media (min-width: 768px) {
   .page-container {
-    padding-inline: 1.5rem;
+    padding-inline: 24px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

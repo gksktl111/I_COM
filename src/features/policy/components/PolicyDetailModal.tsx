@@ -76,7 +76,7 @@ export function PolicyDetailModal({
         )
           onClose();
       }}
-      className="fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto overscroll-contain rounded-2xl border border-slate-200 bg-slate-50 p-0 text-slate-900 shadow-2xl backdrop:bg-slate-950/45"
+      className="fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto overscroll-contain rounded-2xl border border-[#dce3de] bg-white p-0 text-[#182c29] shadow-[0_16px_48px_rgb(24_44_41_/_14%)] backdrop:bg-[#182c29]/40"
     >
       <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-slate-200 bg-white px-5 py-3 sm:px-7">
         <span className="text-sm font-semibold text-slate-600">
@@ -100,7 +100,7 @@ export function PolicyDetailModal({
                 {[...new Set(tags)].map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-teal-50 px-3 py-1 text-xs font-medium text-teal-800"
+                    className="rounded-md bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-600"
                   >
                     {tag}
                   </span>
@@ -113,7 +113,7 @@ export function PolicyDetailModal({
             >
               {policy.name}
             </h2>
-            <dl className="space-y-4 rounded-xl border border-slate-200 bg-white p-5">
+            <dl className="space-y-4 rounded-lg border border-slate-200 bg-white p-5">
               <PolicyField label="소관 기관" value={policy.provider_name} />
               <PolicyField label="정책 소개" value={policy.summary} />
               <PolicyField label="지원 목적" value={policy.purpose_text} />
@@ -163,7 +163,7 @@ export function PolicyDetailModal({
           </PolicyAccordion>
 
           <section
-            className="space-y-4 rounded-xl border border-teal-100 bg-white p-5"
+            className="space-y-4 rounded-lg border border-teal-100 bg-white p-5"
             aria-label="공식 안내 및 신청"
           >
             <p className="text-sm leading-6 text-slate-600">

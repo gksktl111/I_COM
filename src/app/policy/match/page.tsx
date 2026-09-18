@@ -6,7 +6,9 @@ export default function PolicyMatchPage() {
   return (
     <>
       <Header />
-      <CategoryRecommendation />
+      <div className="bg-[#faf8f5]">
+        <CategoryRecommendation />
+      </div>
       <Footer />
     </>
   );

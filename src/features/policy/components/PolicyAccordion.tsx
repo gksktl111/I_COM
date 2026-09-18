@@ -20,7 +20,7 @@ export function PolicyAccordion({
 
   return (
     <section
-      className={cn("rounded-xl border border-slate-200 bg-white", className)}
+      className={cn("rounded-lg border border-[#dce3de] bg-white", className)}
     >
       <h3>
         <button
@@ -29,7 +29,7 @@ export function PolicyAccordion({
           aria-expanded={open}
           aria-controls={`${id}-content`}
           onClick={() => setOpen((previous) => !previous)}
-          className="flex min-h-16 w-full cursor-pointer items-center justify-between gap-4 rounded-xl px-5 py-4 text-left text-base font-semibold text-slate-900 transition-colors hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+          className="focus-visible:outline-primary flex min-h-16 w-full cursor-pointer items-center justify-between gap-4 rounded-lg px-5 py-4 text-left text-base font-semibold text-slate-900 transition-colors hover:bg-[#f1f3f0] focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           <span className="min-w-0 break-words">{title}</span>
           <ChevronDown

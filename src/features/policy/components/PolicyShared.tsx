@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState, Notice, Skeleton } from "@/components/ui/feedback";
 import type { PublicPolicy } from "../public/types";
 import { PolicyDetailModal } from "./PolicyDetailModal";
+import styles from "./policy-public.module.css";
 
 export function PolicyNotice() {
   return (
@@ -47,7 +48,7 @@ export function PolicyBookmark({ id }: { id: string }) {
     const ids: unknown = JSON.parse(snapshot);
     saved = Array.isArray(ids) && ids.includes(id);
   } catch {
-    /* Malformed browser storage is not a saved policy. */
+    /* 잘못된 브라우저 저장값은 보관한 정책으로 처리하지 않습니다. */
   }
   const [message, setMessage] = useState("");
   function toggle() {
@@ -105,13 +106,15 @@ export function PolicyCard({
 }) {
   const [detailOpen, setDetailOpen] = useState(false);
   return (
-    <article className="mb-4 space-y-4 rounded-xl border bg-white p-5 sm:p-6">
+    <article
+      className={`${styles.policyCard} mb-4 flex flex-col gap-4 p-5 sm:p-6`}
+    >
       {recommendation && (
         <div className="flex flex-wrap items-center gap-2 text-sm">
           <span
             className={
               recommendation.rank <= 5
-                ? "rounded bg-slate-900 px-2.5 py-1 font-semibold text-white"
+                ? "border-primary rounded-md border bg-white px-2.5 py-1 font-semibold text-[#164b46]"
                 : "font-semibold text-slate-600"
             }
           >
@@ -152,11 +155,25 @@ export function PolicyCard({
           {policy.name}
         </button>
       </h2>
-      <p className="line-clamp-2 text-sm leading-6 text-slate-600">
+      <p className="text-sm leading-6 break-words text-slate-600">
         {policy.summary ||
           policy.purpose_text ||
           "상세 화면에서 정책의 지원 내용을 확인해 주세요."}
       </p>
+      <dl className="grid gap-3 border-y border-slate-200 py-4 text-sm">
+        <div>
+          <dt className="font-semibold text-slate-800">지원 내용</dt>
+          <dd className="mt-1 leading-6 break-words text-slate-600">
+            {policy.benefit_text || "공식 안내에서 지원 내용을 확인해 주세요."}
+          </dd>
+        </div>
+        <div>
+          <dt className="font-semibold text-slate-800">지원 대상</dt>
+          <dd className="mt-1 leading-6 break-words text-slate-600">
+            {policy.target_text || "공식 안내에서 지원 대상을 확인해 주세요."}
+          </dd>
+        </div>
+      </dl>
       {recommendation && recommendation.reasons.length > 0 && (
         <div className="border-t border-slate-200 pt-4 text-sm leading-6 text-slate-700">
           <p className="mb-1 font-semibold text-slate-900">추천 이유</p>
@@ -185,7 +202,7 @@ export function PolicyCard({
           신청 기간:{" "}
           {policy.application_period_text || "원문 정보 없음 · 기관 확인 필요"}
         </p>
-        <div className="ml-auto flex flex-wrap items-center justify-end gap-2">
+        <div className="flex w-full flex-wrap items-center justify-end gap-2">
           <PolicyBookmark id={policy.id} />
           <Button
             type="button"
@@ -331,21 +348,26 @@ export function Pagination({
       >
         이전
       </Button>
-      {Array.from(
-        { length: Math.min(5, total) },
-        (_, index) =>
-          Math.min(Math.max(1, page - 2), Math.max(1, total - 4)) + index,
-      ).map((number) => (
-        <Button
-          key={number}
-          size="icon"
-          variant={number === page ? "default" : "ghost"}
-          aria-current={number === page ? "page" : undefined}
-          onClick={() => onChange(number)}
-        >
-          {number}
-        </Button>
-      ))}
+      <span className="text-muted-foreground min-w-16 text-center text-sm font-semibold tabular-nums sm:hidden">
+        {page} / {total}
+      </span>
+      <div className="hidden items-center gap-2 sm:flex">
+        {Array.from(
+          { length: Math.min(5, total) },
+          (_, index) =>
+            Math.min(Math.max(1, page - 2), Math.max(1, total - 4)) + index,
+        ).map((number) => (
+          <Button
+            key={number}
+            size="icon"
+            variant={number === page ? "default" : "ghost"}
+            aria-current={number === page ? "page" : undefined}
+            onClick={() => onChange(number)}
+          >
+            {number}
+          </Button>
+        ))}
+      </div>
       <Button
         variant="ghost"
         disabled={page === total}

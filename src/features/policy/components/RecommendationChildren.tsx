@@ -27,7 +27,7 @@ export function RecommendationChildren({
   }
   return (
     <fieldset className="mt-10 min-w-0">
-      <legend className="mb-4 w-full border-b border-slate-200 pb-3 text-lg font-semibold text-slate-900">
+      <legend className="mb-4 w-full border-b border-[#dce3de] pb-3 text-xl font-semibold text-[#182c29]">
         자녀 정보{" "}
         <span className="text-primary text-sm font-medium">
           한 명 이상 추가
@@ -41,7 +41,7 @@ export function RecommendationChildren({
           <section
             key={profile.id}
             aria-label={`자녀 ${index + 1} 정보`}
-            className="rounded-lg border border-slate-200 bg-white p-4 sm:p-5"
+            className="rounded-lg border border-[#dce3de] bg-white p-4 sm:p-5"
           >
             <div className="mb-5 flex items-center justify-between gap-3 border-b border-slate-100 pb-3">
               <h2 className="font-semibold text-slate-900">자녀 {index + 1}</h2>
@@ -86,7 +86,7 @@ export function RecommendationChildren({
                             profile.sex === option.value ? null : option.value,
                         })
                       }
-                      className={`focus-visible:outline-primary flex min-h-12 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border px-3 py-3 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${profile.sex === option.value ? "border-primary bg-primary/5 text-primary ring-primary font-semibold ring-1" : "hover:border-primary border-slate-300 bg-white text-slate-800 hover:bg-slate-50"}`}
+                      className={`focus-visible:outline-primary flex min-h-12 flex-1 cursor-pointer items-center justify-center gap-2 rounded-full border px-3 py-3 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${profile.sex === option.value ? "border-primary ring-primary bg-[#e8f3ef] font-semibold text-[#164b46] ring-1" : "hover:border-primary border-[#7b8d87] bg-white text-slate-800 hover:bg-[#f1f3f0]"}`}
                     >
                       {option.label}
                       {profile.sex === option.value && (
@@ -108,7 +108,7 @@ export function RecommendationChildren({
                 </label>
                 <Select
                   id={`${profile.id}-birth-year`}
-                  className="h-12 border-slate-300 text-base shadow-none"
+                  className="h-12 border-[#7b8d87] text-base shadow-none"
                   value={
                     profile.birthYear === null ? "" : String(profile.birthYear)
                   }
@@ -146,7 +146,7 @@ export function RecommendationChildren({
         type="button"
         disabled={profiles.length >= 30}
         onClick={onAdd}
-        className="text-primary hover:border-primary focus-visible:outline-primary mt-4 flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base font-semibold transition-colors hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+        className="text-primary hover:border-primary focus-visible:outline-primary border-primary mt-4 flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-sm border bg-white px-4 py-3 text-base font-semibold transition-colors hover:bg-[#e8f3ef] focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
       >
         <Plus size={18} aria-hidden="true" />
         자녀 추가{profiles.length >= 30 ? " (최대 30명)" : ""}

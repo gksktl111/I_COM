@@ -1,48 +1,69 @@
 import Link from "next/link";
-import { Compass, ArrowRight } from "lucide-react";
+import { ArrowRight, Compass, Info } from "lucide-react";
 import { SocialLoginButtons } from "./SocialLoginButtons";
-import { Card } from "@/components/ui/card";
-import { Notice } from "@/components/ui/feedback";
+import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/common/Footer";
 
 export function LoginForm() {
   return (
     <>
-      <main
-        id="main-content"
-        className="page-container flex min-h-[640px] items-center justify-center py-14"
-      >
-        <Card className="w-full max-w-lg px-6 py-10 sm:px-10">
-          <div className="mb-8 text-center">
-            <Compass className="text-primary mx-auto mb-4 size-10" />
-            <h1 className="text-[1.75rem] font-bold">아이콤 로그인</h1>
-            <p className="text-muted-foreground mt-3 text-sm leading-6">
-              우리 아이 맞춤 복지와 보육 정보를
+      <main id="main-content" className="bg-background px-4 py-10 sm:py-16">
+        <div className="border-border bg-card mx-auto w-full max-w-lg rounded-lg border p-5 sm:p-8">
+          <div className="text-center">
+            <Compass
+              aria-hidden="true"
+              className="text-primary mx-auto size-9"
+            />
+            <h1 className="text-foreground mt-4 text-[1.75rem] leading-[1.4] font-semibold sm:text-[2rem]">
+              아이콤 로그인
+            </h1>
+            <p className="text-muted-foreground mt-3 text-base leading-7">
+              로그인 기능은 현재 준비 중입니다.
               <br />
-              아이콤에서 함께 찾아보세요.
+              정책 탐색과 주변 시설 찾기는 로그인 없이 이용할 수 있어요.
             </p>
           </div>
-          <SocialLoginButtons />
-          <div className="my-7 border-y py-5 text-center">
-            <p className="text-sm font-semibold">
-              회원가입 없이 혜택을 먼저 둘러보세요
-            </p>
-            <p className="text-muted-foreground mt-1 text-xs">
-              맞춤 정책 탐색은 로그인 없이 이용할 수 있어요.
-            </p>
-            <Link
-              href="/policy/match"
-              className="text-primary mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-bold"
+
+          <div className="bg-muted text-muted-foreground mt-8 flex gap-3 rounded-lg p-4 text-sm leading-6">
+            <Info
+              aria-hidden="true"
+              className="text-primary mt-0.5 size-5 shrink-0"
+            />
+            카카오·네이버·구글 간편 로그인 연결을 준비하고 있습니다.
+          </div>
+
+          <div className="mt-6">
+            <SocialLoginButtons />
+          </div>
+
+          <section
+            aria-labelledby="guest-heading"
+            className="border-border mt-8 border-t pt-7 text-center"
+          >
+            <h2
+              id="guest-heading"
+              className="text-foreground text-lg font-semibold"
             >
-              비회원으로 정책 찾기
-              <ArrowRight className="size-4" />
+              회원가입 없이 먼저 둘러보세요
+            </h2>
+            <p className="text-muted-foreground mt-2 text-sm leading-6">
+              가족 상황을 입력하고 관련 정책을 찾는 기능은 바로 시작할 수
+              있어요.
+            </p>
+            <Button asChild size="lg" className="mt-5 w-full text-base">
+              <Link href="/policy/match">
+                맞춤 진단 시작하기
+                <ArrowRight aria-hidden="true" />
+              </Link>
+            </Button>
+            <Link
+              href="/policy"
+              className="text-primary mt-3 inline-flex min-h-11 items-center font-semibold underline-offset-4 hover:underline"
+            >
+              정책 먼저 둘러보기
             </Link>
-          </div>
-          <Notice className="border-0 py-0 text-xs">
-            간편 로그인 연결을 준비하고 있습니다. 지금은 회원가입 없이 정책
-            탐색과 주변 시설 찾기를 이용해 주세요.
-          </Notice>
-        </Card>
+          </section>
+        </div>
       </main>
       <Footer />
     </>

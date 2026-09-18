@@ -39,7 +39,7 @@ export function NaverMap({
       });
       setMap(instance);
     };
-    // Handle both an already available SDK and data that arrives before the SDK.
+    // 이미 준비된 SDK와 늦게 로드되는 SDK를 모두 처리합니다.
     document.addEventListener("naver-maps-loaded", init);
     init();
     return () => {
