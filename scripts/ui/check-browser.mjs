@@ -209,6 +209,9 @@ try {
     deniedCalls <= 2,
     "denial does not continuously retry across map consumers",
   );
+  await viewport(390);
+  await capture("map-sidebar-mobile");
+  await viewport(1280);
   await click("내 위치");
   await until(`window.__geoCalls === ${deniedCalls + 1}`);
   console.log("PASS: denied location stops and manual retry remains available");

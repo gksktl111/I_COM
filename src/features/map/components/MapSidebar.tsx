@@ -60,13 +60,8 @@ export function MapSidebar({
       aria-label="시설 검색 및 목록"
       className="flex h-full min-h-0 w-full flex-col border-r bg-white md:w-[390px] lg:w-[420px]"
     >
-      <div className="border-b p-4 min-[360px]:p-5">
-        <h1 className="text-2xl leading-[1.4] font-semibold tracking-[-0.01em] md:text-[1.75rem]">
-          주변 시설 찾기
-        </h1>
-        <p className="text-muted-foreground mt-2 mb-5 text-base leading-relaxed">
-          아이와 함께할 우리 동네 공간을 찾아보세요.
-        </p>
+      <div className="border-b p-4">
+        <h1 className="sr-only">주변 시설 찾기</h1>
         <SearchBar
           key={query}
           initialQuery={query}
@@ -97,17 +92,16 @@ export function MapSidebar({
           </p>
         )}
       </div>
-      <div className="border-b px-4 py-3 min-[360px]:px-5">
-        <p className="mb-2 text-sm font-semibold">빠른 검색</p>
+      <div className="border-b px-4 py-2.5">
         <div
-          className="flex gap-2 overflow-x-auto pb-2"
+          className="flex gap-1.5 overflow-x-auto pb-1"
           aria-label="시설 키워드 바로 검색"
         >
           {["어린이집", "유치원", "돌봄센터", "도서관"].map((keyword) => (
             <Chip
               key={keyword}
               selected={query === keyword}
-              className="shrink-0"
+              className="shrink-0 gap-1 px-2 text-sm [&>svg]:size-3"
               onClick={() => onSearch(keyword)}
             >
               {keyword}
