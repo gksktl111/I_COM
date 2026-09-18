@@ -11,6 +11,8 @@
 
 대상 ID·digest·실행 요약은 [고정 계획](../../fixtures/policy-retention/automatic-history-cleanup-20260918.json)에 보존한다. 실행 SQL은 외래키 순서대로 삭제하며 모든 수와 정책 상태가 정확히 일치하지 않으면 트랜잭션 전체를 중단한다.
 
+2026-09-18 실행 결과는 [용량 정리 기록](../records/database-retention-20260918.md)에 보존했다. 이 계획은 이미 적용된 일회성 계획이므로 다음 정리에서는 현재 상태로 새 계획 파일과 digest를 만들어야 한다.
+
 ## 실행 절차
 
 1. v4 마이그레이션과 정책 상태 `ACTIVE 4,414 / REVIEW 79 / EXCLUDED 1,402`를 확인한다.

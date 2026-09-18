@@ -54,7 +54,31 @@
     { "id": "8a75d68a-9a14-4ae0-ac8a-02568b5902fd", "provider": "GOV24", "status": "PARTIAL", "stopReason": "SOURCE_DRIFT", "startedAt": "2026-09-08T07:22:42.800756+00:00", "calls": 8452, "summary": { "failed": 0, "pending": 15, "success": 1803, "excluded": 582 } }
   ],
   "application": {
-    "status": "NOT_APPLIED",
-    "vacuumRequiredForPhysicalReclaim": true
+    "status": "APPLIED_AND_VERIFIED",
+    "deleted": {
+      "runs": 8,
+      "syncItems": 11440,
+      "autoPages": 237,
+      "qualityObservations": 6310,
+      "autoJobs": 8,
+      "snapshots": 1213
+    },
+    "vacuumedTables": [
+      "policy_sync_items",
+      "policy_source_snapshots",
+      "policy_auto_pages",
+      "policy_quality_observations"
+    ],
+    "verifiedAt": "2026-09-18T10:54:40.755221+00:00",
+    "databaseBytesAfter": 385977491,
+    "databasePrettyAfter": "368 MB",
+    "policyCountsAfter": {
+      "ACTIVE": 4414,
+      "REVIEW": 79,
+      "EXCLUDED": 1402
+    },
+    "remainingAutomaticRuns": 3,
+    "v6ObservationCount": 1406,
+    "v4MigrationRegistered": true
   }
 }
