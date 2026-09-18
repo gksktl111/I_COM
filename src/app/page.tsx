@@ -1,5 +1,13 @@
-import { redirect } from "next/navigation";
+import { Header } from "@/components/common/Header";
+import { Footer } from "@/components/common/Footer";
+import { LandingPage } from "@/features/landing/components";
 
 export default function HomePage() {
-  redirect("/policy/match");
+  return (
+    <>
+      <Header />
+      <LandingPage />
+      <Footer />
+    </>
+  );
 }

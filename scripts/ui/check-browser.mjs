@@ -127,16 +127,18 @@ try {
   });
   await viewport(1280);
   await navigate("/");
-  assert.equal(
-    await evaluate("location.pathname"),
-    "/policy/match",
-    "root redirects to policy matching",
-  );
   assert.ok(
     await evaluate(
-      "document.querySelector('h1')?.textContent.includes('어떤 지원을 찾고 계신가요?')",
+      "document.querySelector('h1')?.textContent.includes('아이와 가족에게 필요한 지원을')",
     ),
   );
+  await evaluate(
+    `(()=>{const input=document.querySelector('#landing-policy-search');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(input,'아동수당');input.dispatchEvent(new Event('input',{bubbles:true}));input.form.requestSubmit();})()`,
+  );
+  await until(
+    "location.pathname === '/policy' && new URLSearchParams(location.search).get('q') === '아동수당'",
+  );
+  await until("document.querySelector('#policy-search')?.value === '아동수당'");
   assert.equal(
     await evaluate(
       "document.querySelector('header').textContent.includes('조건 간편 확인')",
@@ -147,7 +149,7 @@ try {
   await until(
     "Math.abs(document.querySelector('#desktop-service-navigation').getBoundingClientRect().top) <= 2",
   );
-  console.log("PASS: root redirect and single-row persistent navigation");
+  console.log("PASS: landing search and single-row persistent navigation");
   await viewport(390);
   await navigate("/");
   await evaluate(

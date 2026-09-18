@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import {
   ArrowRight,
@@ -28,8 +29,10 @@ import {
 import styles from "./policy-public.module.css";
 export function PolicyFinder() {
   const catalog = usePolicyCatalog();
-  const [query, setQuery] = useState("");
-  const [keyword, setKeyword] = useState("");
+  const searchParams = useSearchParams();
+  const initialQuery = (searchParams.get("q") ?? "").trim().slice(0, 100);
+  const [query, setQuery] = useState(initialQuery);
+  const [keyword, setKeyword] = useState(initialQuery);
   const [interest, setInterest] = useState("");
   const [region, setRegion] = useState("");
   const [sort, setSort] = useState("name");
