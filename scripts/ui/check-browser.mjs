@@ -127,14 +127,15 @@ try {
   });
   await viewport(1280);
   await navigate("/");
-  assert.ok(
-    await evaluate("document.body.innerText.includes('우리 가족에게 맞는')"),
-  );
   assert.equal(
+    await evaluate("location.pathname"),
+    "/policy/match",
+    "root redirects to policy matching",
+  );
+  assert.ok(
     await evaluate(
-      "document.querySelector('main a[href=\"/policy/match\"]').textContent.trim()",
+      "document.querySelector('h1')?.textContent.includes('어떤 지원을 찾고 계신가요?')",
     ),
-    "맞춤 정책 찾기",
   );
   assert.equal(
     await evaluate(
@@ -146,7 +147,7 @@ try {
   await until(
     "Math.abs(document.querySelector('#desktop-service-navigation').getBoundingClientRect().top) <= 2",
   );
-  console.log("PASS: single-row persistent navigation and header/CTA copy");
+  console.log("PASS: root redirect and single-row persistent navigation");
   await viewport(390);
   await navigate("/");
   await evaluate(

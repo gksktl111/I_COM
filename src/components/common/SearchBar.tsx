@@ -7,7 +7,7 @@ import { cn } from "@/shared/utils/shadcn_utils";
 import { useGeolocation } from "@/shared/hooks/useGeolocation";
 import { useId, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LANDING_COPY } from "@/constants/copy";
+import { SEARCH_COPY } from "@/constants/copy";
 
 interface ISearchBarProps {
   className?: string;
@@ -80,7 +80,7 @@ export function SearchBar({
           <Input
             id={inputId}
             type="search"
-            placeholder={LANDING_COPY.searchPlaceholder}
+            placeholder={SEARCH_COPY.placeholder}
             className="h-12 pl-9"
             value={q}
             onChange={(event) => setQ(event.target.value)}

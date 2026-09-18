@@ -360,6 +360,8 @@ components:
 
 ## Overview
 
+> **현재 라우팅 결정 (2026-09-18):** 별도 랜딩 페이지는 사용하지 않으며 `/`는 `/policy/match`로 이동한다. 아래 랜딩 규칙은 과거 목표안으로만 보존하고, 이 결정이 유지되는 동안 구현 대상으로 사용하지 않는다.
+
 ICOM helps families with children discover relevant public support, understand benefits and application steps, and find nearby facilities. Its visual direction combines the everyday family photography and calm teal of [Maven Clinic](https://www.mavenclinic.com/) with the concise benefit explanation and direct entry action of [Oscar](https://www.hioscar.com/). Both homepages were visually reviewed on September 13, 2026. This is an original target design specification, not a claim that ICOM already implements these styles or that the references share these exact tokens.
 
 The landing page answers three questions immediately: who the service helps, what the visitor gains, and where to begin. The primary action opens `/policy/match`; a quieter link opens `/policy`. Warm photography supports that decision. It never delays the action or substitutes for a useful explanation.
