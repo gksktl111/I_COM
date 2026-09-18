@@ -9,7 +9,9 @@ export default function RecommendationTestPage() {
   return (
     <>
       <Header />
-      <RecommendationPlayground testMode />
+      <div className="bg-[#faf8f5]">
+        <RecommendationPlayground testMode />
+      </div>
       <Footer />
     </>
   );

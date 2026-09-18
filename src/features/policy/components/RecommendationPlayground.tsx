@@ -75,9 +75,9 @@ const base = () => ({
   answers: [],
 });
 const primary =
-  "inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-teal-700 px-6 py-3 font-semibold text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-40";
+  "inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-primary px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-[#005f5a] disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500";
 const secondary =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50";
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-sm border border-primary bg-white px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-[#e8f3ef]";
 function AnswerChoices({
   question,
   initial,
@@ -108,7 +108,7 @@ function AnswerChoices({
             type="button"
             aria-pressed={selected === index}
             onClick={() => setSelected(selected === index ? null : index)}
-            className={`flex min-h-16 items-center justify-between gap-3 rounded-2xl border px-5 py-4 text-left font-medium transition focus-visible:outline-2 focus-visible:outline-teal-700 ${selected === index ? "border-teal-700 bg-teal-50 text-teal-900" : "border-slate-200 bg-white hover:border-teal-600"}`}
+            className={`focus-visible:outline-primary flex min-h-16 items-center justify-between gap-3 rounded-sm border px-5 py-3 text-left font-medium transition-colors focus-visible:outline-2 ${selected === index ? "border-primary bg-[#e8f3ef] text-[#164b46]" : "border-[#7b8d87] bg-white hover:bg-[#f1f3f0]"}`}
           >
             <span>{testMode ? valueLabel(option.value) : option.label}</span>
             <Check
@@ -262,7 +262,7 @@ export function RecommendationPlayground({
             phase: "QUESTIONING",
           }).stopReason === "NO_USEFUL_QUESTION";
       } catch {
-        /* The render path presents the existing recovery UI. */
+        /* 렌더링 단계에서 기존 오류 복구 화면을 표시합니다. */
       }
     }
     setEditing(null);
@@ -344,10 +344,10 @@ export function RecommendationPlayground({
   return (
     <main
       id="main-content"
-      className="min-h-screen bg-[#f5f8f7] px-4 py-8 text-slate-900 sm:py-12"
+      className="min-h-[70vh] bg-[#faf8f5] px-5 py-8 text-[#182c29] max-[359px]:px-4 sm:px-8 sm:py-12"
     >
       <div
-        className={`mx-auto ${stage === "RESULTS" ? "max-w-6xl" : "max-w-3xl"}`}
+        className={`mx-auto ${stage === "RESULTS" ? "max-w-6xl" : "max-w-[704px]"}`}
       >
         <div className="mb-6 flex items-center justify-between gap-3">
           <Link
@@ -356,23 +356,22 @@ export function RecommendationPlayground({
           >
             <ArrowLeft size={16} /> 홈으로
           </Link>
-          <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-900">
+          <span className="rounded-md border border-[#dce3de] bg-white px-2 py-1 text-xs font-semibold text-[#52635f]">
             {testMode ? "검증용 정책 · 테스트" : "맞춤 진단"}
           </span>
         </div>
         <p className="mb-6 text-sm leading-6 text-slate-500">
           {testMode
-            ? "교복·입학준비 지원의 합성 사례 2개로 질문 흐름을 체험해요. 실제 신청 자격·접수 정보가 아니에요."
-            : "거주지와 지원 분야를 선택한 뒤 필요한 정보를 차근차근 확인해요. 답변은 추천 계산을 위해 서버로 전송돼요."}{" "}
-          답변은 저장하지 않으며 새로고침하면 초기화돼요.
+            ? "합성 정책으로 질문 흐름을 확인하는 화면입니다. 실제 자격·접수 정보가 아니며 답변은 저장되지 않습니다."
+            : "거주지와 지원 분야를 선택하면 필요한 조건만 확인합니다. 답변은 추천 계산을 위해 서버로 전송되며 저장하지 않습니다."}
         </p>
         <section
-          className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
+          className="overflow-hidden rounded-lg border border-[#dce3de] bg-white"
           aria-label={testMode ? "맞춤 추천 테스트" : "맞춤 진단"}
         >
           <div className="border-b border-slate-100 px-6 py-4 sm:px-10">
-            <span className="text-xs font-bold tracking-widest text-teal-700">
-              아이콤 · 맞춤 지원 찾기
+            <span className="text-sm font-semibold text-[#52635f]">
+              아이콤 맞춤 지원 찾기
             </span>
           </div>
           {evaluation.error ? (
@@ -409,7 +408,7 @@ export function RecommendationPlayground({
                 tabIndex={-1}
                 className="text-2xl font-bold outline-none"
               >
-                우리 아이에게 맞는 지원을 정리하고 있어요
+                선택한 내용과 관련된 지원을 정리하고 있어요
               </h1>
               <p className="mt-4 text-sm leading-6 text-slate-500">
                 선택한 자녀와 답변을 바탕으로
@@ -553,7 +552,7 @@ export function RecommendationPlayground({
                   {needs.map((need) => (
                     <label
                       key={need.id}
-                      className="flex cursor-pointer items-center gap-3 rounded-2xl border border-slate-200 p-4"
+                      className="flex min-h-14 cursor-pointer items-center gap-3 rounded-lg border border-[#7b8d87] p-4"
                     >
                       <input
                         type="checkbox"
@@ -607,7 +606,7 @@ export function RecommendationPlayground({
               {question ? (
                 <>
                   <div className="mb-5 flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-teal-50 px-3 py-1 text-sm font-semibold text-teal-800">
+                    <span className="rounded-sm bg-teal-50 px-3 py-1 text-sm font-semibold text-teal-800">
                       {question.factKey.subject.kind === "CHILD"
                         ? childLabel(question.factKey.subject.id)
                         : "가구 공통"}
@@ -714,12 +713,12 @@ export function RecommendationPlayground({
               >
                 {evaluation.coverage === "AWAITING_REVIEW"
                   ? "맞춤 추천을 준비하고 있어요"
-                  : "우리 가족에게 맞는 정책을 모았어요"}
+                  : "입력한 내용과 관련된 정책을 모았어요"}
               </h1>
               <div
                 role="note"
                 aria-label="정책 신청 전 확인 안내"
-                className="mt-5 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-amber-950"
+                className="mt-5 flex items-start gap-3 rounded-lg bg-[#faf8f5] p-5 text-[#8a5700]"
               >
                 <CircleAlert
                   size={22}
@@ -749,7 +748,7 @@ export function RecommendationPlayground({
                 · 추천 {result?.cards.length ?? 0}개 / 최대 20개
               </p>
               {evaluation.coverage === "AWAITING_REVIEW" && (
-                <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-amber-950">
+                <div className="mt-6 rounded-lg bg-[#faf8f5] p-5 text-sm leading-7 text-[#8a5700]">
                   수집한 정책의 지원 조건을 확인하고 있어요. 아직 맞춤 추천에
                   공개된 정책이 없어 추가 질문을 드리지 않았어요. 받을 수 있는
                   지원이 없다는 뜻은 아니에요.
@@ -768,14 +767,14 @@ export function RecommendationPlayground({
               )}
               <h2 className="mt-8 mb-4 font-bold text-teal-800">
                 {result?.cards.length
-                  ? `Top ${Math.min(5, result.cards.length)} · 먼저 살펴보세요`
+                  ? `우선 확인 ${Math.min(5, result.cards.length)}개`
                   : evaluation.coverage === "AWAITING_REVIEW"
                     ? "추천 정책 검수 중"
                     : "조건을 다시 확인해 보세요"}
               </h2>
               {!result?.cards.length &&
                 evaluation.coverage !== "AWAITING_REVIEW" && (
-                  <p className="rounded-2xl bg-slate-50 p-5 leading-7 text-slate-600">
+                  <p className="rounded-lg bg-[#f1f3f0] p-5 leading-7 text-slate-600">
                     {testMode
                       ? "현재 테스트 정책 2개 중 선택한 조건에 맞는 후보가 없어요."
                       : "현재 추천 범위에서 선택한 조건에 맞는 후보가 없어요."}{" "}
@@ -791,13 +790,13 @@ export function RecommendationPlayground({
                   >
                     <div className="text-center">
                       <span
-                        className={`flex aspect-square items-center justify-center rounded-xl text-xl font-bold sm:text-2xl ${index < 5 ? "bg-teal-700 text-white shadow-sm" : "bg-slate-100 text-slate-500"}`}
+                        className={`flex aspect-square items-center justify-center rounded-md text-xl font-bold sm:text-2xl ${index < 5 ? "bg-primary text-white" : "bg-slate-100 text-slate-500"}`}
                       >
                         {index + 1}
                       </span>
                       {index < 5 && (
                         <span className="mt-2 block text-[10px] font-bold tracking-wider text-teal-700">
-                          TOP 5
+                          우선
                         </span>
                       )}
                     </div>
@@ -808,7 +807,7 @@ export function RecommendationPlayground({
                       {card.tags.map((tag) => (
                         <span
                           key={tag.subject.id}
-                          className={`rounded-lg px-2.5 py-1 text-xs ${tag.eligibility === "ELIGIBLE" ? "bg-teal-100 text-teal-900" : "bg-amber-100 text-amber-900"}`}
+                          className="rounded-md border border-[#dce3de] bg-white px-2.5 py-1 text-xs text-slate-700"
                         >
                           {tag.subject.kind === "CHILD"
                             ? childLabel(tag.subject.id)
@@ -817,20 +816,20 @@ export function RecommendationPlayground({
                         </span>
                       ))}
                       {card.representative.availability === "UNKNOWN" && (
-                        <span className="rounded-lg bg-amber-100 px-2.5 py-1 text-xs text-amber-900">
+                        <span className="rounded-md bg-[#faf8f5] px-2.5 py-1 text-xs text-[#8a5700]">
                           접수 확인 필요
                         </span>
                       )}
                     </div>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {card.representative.features[0]?.value === "MATCH" && (
-                        <span className="rounded-full border border-teal-200 bg-white px-3 py-1 text-xs text-teal-800">
+                        <span className="rounded-md border border-[#dce3de] bg-white px-2.5 py-1 text-xs text-slate-700">
                           관심 지원 일치
                         </span>
                       )}
                       {card.tags.filter((tag) => tag.subject.kind === "CHILD")
                         .length > 1 && (
-                        <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs text-slate-600">
+                        <span className="rounded-md border border-[#dce3de] bg-white px-2.5 py-1 text-xs text-slate-600">
                           여러 자녀 관련
                         </span>
                       )}
@@ -853,7 +852,7 @@ export function RecommendationPlayground({
                       ].map((label) => (
                         <span
                           key={label}
-                          className="rounded-full bg-amber-50 px-3 py-1 text-xs text-amber-800"
+                          className="rounded-md bg-[#faf8f5] px-2.5 py-1 text-xs text-[#8a5700]"
                         >
                           {label}
                         </span>

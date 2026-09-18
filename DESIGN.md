@@ -360,6 +360,8 @@ components:
 
 ## Overview
 
+> **현재 랜딩 결정 (2026-09-18):** `/`는 [정부24+](https://plus.gov.kr/)의 검색 중심 정보 구조를 참고하되 아이콤의 색상과 구성 요소를 사용하는 독립적인 랜딩으로 제공한다. 정책 검색어는 `/policy`로 전달하며, 검색창 아래의 자주 찾는 정책어와 공개 공지 영역을 간결하게 배치한다.
+
 ICOM helps families with children discover relevant public support, understand benefits and application steps, and find nearby facilities. Its visual direction combines the everyday family photography and calm teal of [Maven Clinic](https://www.mavenclinic.com/) with the concise benefit explanation and direct entry action of [Oscar](https://www.hioscar.com/). Both homepages were visually reviewed on September 13, 2026. This is an original target design specification, not a claim that ICOM already implements these styles or that the references share these exact tokens.
 
 The landing page answers three questions immediately: who the service helps, what the visitor gains, and where to begin. The primary action opens `/policy/match`; a quieter link opens `/policy`. Warm photography supports that decision. It never delays the action or substitutes for a useful explanation.

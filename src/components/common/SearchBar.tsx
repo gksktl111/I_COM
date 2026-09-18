@@ -5,9 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Search, MapPin, Loader2 } from "lucide-react";
 import { cn } from "@/shared/utils/shadcn_utils";
 import { useGeolocation } from "@/shared/hooks/useGeolocation";
-import { useState } from "react";
+import { useId, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LANDING_COPY } from "@/constants/copy";
+import { SEARCH_COPY } from "@/constants/copy";
 
 interface ISearchBarProps {
   className?: string;
@@ -23,6 +23,7 @@ export function SearchBar({
   initialQuery = "",
 }: ISearchBarProps) {
   const router = useRouter();
+  const inputId = useId();
   const [q, setQ] = useState(initialQuery);
   const { fetchLocation, address, locating, resolving } = useGeolocation({
     auto: false,
@@ -64,21 +65,29 @@ export function SearchBar({
           <span className="max-w-36 truncate">{label}</span>
         </Button>
       )}
-      <div className="relative min-w-0 flex-1 basis-40">
-        <Search
-          aria-hidden="true"
-          className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2"
-        />
-        <Input
-          type="search"
-          placeholder={LANDING_COPY.searchPlaceholder}
-          aria-label="장소 또는 키워드 검색"
-          className="h-12 pl-9"
-          value={q}
-          onChange={(event) => setQ(event.target.value)}
-        />
+      <div className="min-w-0 flex-1 basis-48">
+        <label
+          htmlFor={inputId}
+          className="text-foreground mb-1.5 block text-sm font-semibold"
+        >
+          시설명 또는 키워드
+        </label>
+        <div className="relative">
+          <Search
+            aria-hidden="true"
+            className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2"
+          />
+          <Input
+            id={inputId}
+            type="search"
+            placeholder={SEARCH_COPY.placeholder}
+            className="h-12 pl-9"
+            value={q}
+            onChange={(event) => setQ(event.target.value)}
+          />
+        </div>
       </div>
-      <Button type="submit" className="h-12" disabled={!q.trim()}>
+      <Button type="submit" className="mt-auto h-12" disabled={!q.trim()}>
         검색
       </Button>
     </form>

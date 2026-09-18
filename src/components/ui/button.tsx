@@ -5,27 +5,25 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/shared/utils/shadcn_utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive cursor-pointer",
+  "inline-flex min-w-0 max-w-full cursor-pointer items-center justify-center gap-2 rounded-sm text-center text-base font-semibold whitespace-normal transition-colors disabled:pointer-events-none disabled:bg-muted disabled:text-muted-foreground disabled:opacity-100 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring aria-invalid:border-destructive",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-[#005f5a]",
+          "bg-primary text-primary-foreground hover:bg-[#005f5a] active:bg-[#005f5a]",
         destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+          "bg-destructive text-white hover:bg-destructive/90 focus-visible:outline-destructive",
         outline:
-          "border border-primary bg-white text-primary shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+          "border border-primary bg-white text-primary hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-accent",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-11 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-13 rounded-lg px-6 has-[>svg]:px-4",
-        icon: "size-11",
+        default: "min-h-11 px-6 py-2.5 has-[>svg]:px-4",
+        sm: "min-h-11 gap-1.5 px-3 py-2 has-[>svg]:px-2.5",
+        lg: "min-h-13 px-6 py-3.5 has-[>svg]:px-5",
+        icon: "size-11 shrink-0",
       },
     },
     defaultVariants: {

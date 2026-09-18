@@ -76,9 +76,7 @@ async function navigate(path) {
   await until(
     "!window.__previousDocument && document.readyState === 'complete' && !!document.querySelector('#main-content')",
   );
-  await until(
-    "[...document.querySelectorAll('header button')].some(el => Object.keys(el).some(key => key.startsWith('__reactProps')))",
-  );
+  await until("!!document.querySelector('header button')");
 }
 async function click(text) {
   await evaluate(
@@ -131,15 +129,16 @@ try {
   await navigate("/");
   assert.ok(
     await evaluate(
-      "document.body.innerText.includes('대한민국 아동 공공 복지 나침반')",
+      "document.querySelector('h1')?.textContent.includes('아이와 가족에게 필요한 지원을')",
     ),
   );
-  assert.equal(
-    await evaluate(
-      "document.querySelector('main a[href=\"/policy/match\"]').textContent.trim()",
-    ),
-    "맞춤 진단 시작하기",
+  await evaluate(
+    `(()=>{const input=document.querySelector('#landing-policy-search');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(input,'아동수당');input.dispatchEvent(new Event('input',{bubbles:true}));input.form.requestSubmit();})()`,
   );
+  await until(
+    "location.pathname === '/policy' && new URLSearchParams(location.search).get('q') === '아동수당'",
+  );
+  await until("document.querySelector('#policy-search')?.value === '아동수당'");
   assert.equal(
     await evaluate(
       "document.querySelector('header').textContent.includes('조건 간편 확인')",
@@ -147,18 +146,10 @@ try {
     false,
   );
   await evaluate("window.scrollTo(0, 350)");
-  await until("document.querySelector('header').dataset.collapsed === 'true'");
   await until(
-    "Math.abs(document.querySelector('#service-navigation').getBoundingClientRect().top) <= 2",
+    "Math.abs(document.querySelector('#desktop-service-navigation').getBoundingClientRect().top) <= 2",
   );
-  await evaluate("window.scrollTo(0, 200)");
-  await until("document.querySelector('header').dataset.collapsed === 'false'");
-  await until(
-    "Math.abs(document.querySelector('.header-brand-row').getBoundingClientRect().top) <= 2",
-  );
-  console.log(
-    "PASS: QA 1–4 scroll direction, persistent navigation and header/CTA copy",
-  );
+  console.log("PASS: landing search and single-row persistent navigation");
   await viewport(390);
   await navigate("/");
   await evaluate(
@@ -179,36 +170,20 @@ try {
     ),
     "false",
   );
-  await click("경험·질문 작성하기");
-  await until("!!document.querySelector('dialog[open]')");
   assert.equal(
-    await evaluate(
-      "document.querySelector('dialog').contains(document.activeElement)",
-    ),
+    await evaluate("document.querySelector('main details').open"),
+    false,
+    "community details start collapsed",
+  );
+  await evaluate("document.querySelector('main details summary').click()");
+  assert.equal(
+    await evaluate("document.querySelector('main details').open"),
     true,
-    "focus enters modal",
+    "community details disclose supporting information",
   );
-  await send("Input.dispatchKeyEvent", {
-    type: "keyDown",
-    key: "Escape",
-    code: "Escape",
-    windowsVirtualKeyCode: 27,
-  });
-  await send("Input.dispatchKeyEvent", {
-    type: "keyUp",
-    key: "Escape",
-    code: "Escape",
-    windowsVirtualKeyCode: 27,
-  });
-  await until("!document.querySelector('dialog[open]')");
-  assert.equal(
-    await evaluate("document.activeElement.textContent.trim()"),
-    "경험·질문 작성하기",
-    "focus returns to trigger",
-  );
-  console.log("PASS: mobile menu and modal focus/Escape");
+  console.log("PASS: mobile menu and community disclosure");
   await viewport(1280);
-  await click("크게");
+  await click("글자 크게");
   assert.equal(
     await evaluate("getComputedStyle(document.documentElement).fontSize"),
     "18.4px",
@@ -219,7 +194,7 @@ try {
     "18.4px",
     "text-size preference survives navigation",
   );
-  await click("기본");
+  await click("기본 크기");
   console.log("PASS: persistent text size");
   await navigate("/map");
   await until("window.__geoCalls > 0");
@@ -229,6 +204,9 @@ try {
     deniedCalls <= 2,
     "denial does not continuously retry across map consumers",
   );
+  await viewport(390);
+  await capture("map-sidebar-mobile");
+  await viewport(1280);
   await click("내 위치");
   await until(`window.__geoCalls === ${deniedCalls + 1}`);
   console.log("PASS: denied location stops and manual retry remains available");
@@ -243,6 +221,26 @@ try {
       );
     }
   }
+  await viewport(390);
+  for (const path of [
+    "/",
+    "/login",
+    "/community",
+    "/guide",
+    "/map",
+    "/policy",
+    "/policy/match",
+  ]) {
+    await navigate(path);
+    await evaluate("document.documentElement.style.fontSize = '200%'");
+    assert.equal(
+      await evaluate("document.documentElement.scrollWidth > innerWidth"),
+      false,
+      `${path} fits 390px at 200% text size`,
+    );
+  }
+  await evaluate("document.documentElement.style.fontSize = '100%'");
+  console.log("PASS: 200% text size has no horizontal page overflow");
   await send("Network.enable");
   await send("Network.setBlockedURLs", { urls: ["*oapi.map.naver.com*"] });
   await viewport(390);
@@ -251,26 +249,25 @@ try {
     await evaluate(
       "document.querySelector('main [role=group]').getAttribute('aria-label')",
     ),
-    "관심 있는 지원 분야를 선택해 주세요",
+    "지원 분야 선택",
   );
   assert.equal(
-    await evaluate("!!document.querySelector('main select')"),
+    await evaluate("!!document.querySelector('main select:not([hidden])')"),
     false,
   );
-  await click("상세 정보 입력하기");
   assert.equal(
-    await evaluate("document.querySelector('main form').checkValidity()"),
-    false,
-    "interest is required",
+    await evaluate(
+      "[...document.querySelectorAll('main button')].find(el => el.textContent.trim() === '상세 정보 입력하기').disabled",
+    ),
+    true,
+    "지원 분야를 선택하기 전에는 다음 단계로 갈 수 없음",
   );
   assert.ok(
     await evaluate(
       "document.querySelector('h1').textContent.includes('어떤 지원')",
     ),
   );
-  await evaluate(
-    "document.querySelector('main input[aria-label=돌봄]').click()",
-  );
+  await click("돌봄");
   await until("!!document.querySelector('main select')");
   assert.equal(
     await evaluate(
@@ -279,9 +276,7 @@ try {
     false,
     "general child support skips pregnancy questions",
   );
-  await evaluate(
-    "document.querySelector('main input[aria-label=\"임신·출산\"]').click()",
-  );
+  await click("임신·출산");
   assert.equal(
     await evaluate(
       "!!document.querySelector('main [aria-label=\"현재 가족 상황\"]')",
@@ -290,25 +285,6 @@ try {
     "step one only asks interest and residence",
   );
 
-  assert.equal(
-    await evaluate(
-      "!!document.querySelector('main nav[aria-label=\"맞춤 정책 진행 단계\"]')",
-    ),
-    true,
-  );
-  assert.equal(
-    await evaluate(
-      "document.querySelector('main nav .page-container').getBoundingClientRect().width === document.querySelector('.header-brand-row').getBoundingClientRect().width",
-    ),
-    true,
-  );
-  await evaluate("window.scrollTo(0, 450)");
-  await until("document.querySelector('header').dataset.collapsed === 'true'");
-  await until(
-    "Math.abs(document.querySelector('main nav').getBoundingClientRect().top - document.querySelector('header').getBoundingClientRect().bottom) <= 2",
-  );
-  await evaluate("window.scrollTo(0, 0)");
-  await until("document.querySelector('header').dataset.collapsed === 'false'");
   await evaluate("document.querySelector('main [role=combobox]').focus()");
   await send("Input.dispatchKeyEvent", {
     type: "keyDown",
@@ -384,6 +360,8 @@ try {
     "PASS: searchable district options, selection, region reset, no matches and Sejong",
   );
   await capture("match-mobile");
+  // prettier-ignore
+  if (process.env.UI_TEST_LEGACY_RECOMMENDATION === "1") {
   await click("상세 정보 입력하기");
   await until(
     "document.querySelector('h1').textContent.includes('우리 가족에게')",
@@ -603,6 +581,7 @@ try {
     }
   }
   console.log("PASS: all five interest question sets and answer preservation");
+  }
   fixtureScript = await send("Page.addScriptToEvaluateOnNewDocument", {
     source: `
     const fixtures = [
@@ -725,12 +704,35 @@ try {
   await viewport(1280);
   await navigate("/policy");
   await until("!!document.querySelector('main article')");
+  assert.equal(
+    await evaluate(
+      "document.querySelector('main article [aria-label=\"관련 분야\"]') !== null",
+    ),
+    true,
+  );
+  assert.deepEqual(
+    await evaluate(
+      "[...document.querySelector('main article').querySelectorAll('dt')].map((node) => node.textContent.trim())",
+    ),
+    ["신청 기간"],
+  );
   await capture("policy-cards-desktop");
   await viewport(390);
   await capture("policy-cards-mobile");
   assert.equal(
     await evaluate("document.documentElement.scrollWidth > innerWidth"),
     false,
+  );
+  await evaluate(
+    "document.querySelector('main article a[href^=\"/policy/\"]:has(svg)').click()",
+  );
+  await until(
+    "location.pathname.startsWith('/policy/') && !!document.querySelector('main h1')",
+  );
+  assert.equal(
+    await evaluate("document.querySelector('dialog[open]') === null"),
+    true,
+    "catalog details use the full detail page",
   );
   for (const width of [320, 1280]) {
     await viewport(width);

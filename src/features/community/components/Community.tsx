@@ -1,151 +1,79 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import {
-  ArrowRight,
-  MessageCircle,
-  PenLine,
-  Search,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowRight, MapPin, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Chip } from "@/components/ui/chip";
-import { Dialog } from "@/components/ui/dialog";
-import { EmptyState, Notice } from "@/components/ui/feedback";
 import { Footer } from "@/components/common/Footer";
 
-const categories = [
-  "전체 보기",
-  "정책 신청 후기",
-  "서류·자격 질문",
-  "우리 동네 혜택 톡",
-  "어린이집·돌봄 정보",
-  "자유 토크",
+const plannedTopics = [
+  "정책 신청 경험",
+  "서류와 자격 질문",
+  "우리 동네 육아 정보",
+  "어린이집과 돌봄 정보",
 ];
+
 export function Community() {
-  const [category, setCategory] = useState(categories[0]);
-  const [query, setQuery] = useState("");
-  const [submittedQuery, setSubmittedQuery] = useState("");
-  const [writeOpen, setWriteOpen] = useState(false);
   return (
     <>
-      <main id="main-content" className="page-container py-10 sm:py-12">
-        <div className="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-          <div>
-            <span className="text-primary mb-3 inline-flex items-center gap-2 text-xs font-semibold">
-              <MessageCircle className="size-4" />
-              아이콤 정책 사랑방
-            </span>
-            <h1 className="text-[1.75rem] font-bold">
-              육아·정책 소통 커뮤니티
+      <main id="main-content" className="bg-background py-10 sm:py-16">
+        <div className="page-container">
+          <div className="max-w-3xl">
+            <MessageCircle aria-hidden="true" className="text-primary size-7" />
+            <h1 className="mt-4 text-[1.75rem] leading-[1.4] font-semibold tracking-[-0.01em] sm:text-[2rem] sm:font-bold">
+              육아·정책 커뮤니티
             </h1>
-            <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-6">
-              신청 경험과 서류 준비 노하우, 우리 동네의 육아 이야기를 함께 나눌
-              공간입니다.
+            <p className="text-muted-foreground mt-3 max-w-2xl text-base leading-7">
+              정책 신청 경험과 우리 동네 육아 정보를 나눌 공간을 준비하고
+              있습니다.
             </p>
-          </div>
-          <Button onClick={() => setWriteOpen(true)}>
-            <PenLine />
-            경험·질문 작성하기
-          </Button>
-        </div>
-        <div className="mb-6 flex flex-wrap gap-2" aria-label="게시글 분류">
-          {categories.map((item) => (
-            <Chip
-              key={item}
-              selected={category === item}
-              onClick={() => setCategory(item)}
-            >
-              {item}
-            </Chip>
-          ))}
-        </div>
-        <Notice className="mb-7">
-          <strong className="text-foreground mr-2">
-            커뮤니티 오픈 준비 중
-          </strong>
-          부모님들의 경험을 안전하게 나눌 수 있도록 게시글과 댓글 기능을
-          준비하고 있습니다.
-        </Notice>
-        <Card className="p-0">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b px-5 py-4">
-            <h2 className="font-semibold">
-              {category}{" "}
-              <span className="text-muted-foreground ml-1 font-normal">
-                0건
-              </span>
-            </h2>
-            <span className="text-muted-foreground text-xs">
-              등록된 게시글이 없습니다
-            </span>
-          </div>
-          <EmptyState
-            title={
-              submittedQuery
-                ? `‘${submittedQuery}’ 검색 결과가 없습니다`
-                : "아직 나눔 글이 없습니다"
-            }
-            description="커뮤니티가 열리기 전, 우리 가족을 위한 지원 정책과 주변 시설을 먼저 살펴보세요."
-            action={
-              <Button asChild variant="outline">
+
+            <div className="border-border mt-8 border-y py-6">
+              <p className="text-foreground font-semibold">
+                현재 게시글 작성·댓글·검색은 제공하지 않습니다.
+              </p>
+              <p className="text-muted-foreground mt-2 text-sm leading-6">
+                이용 가능한 기능이 준비되면 이 화면에서 정확한 범위를
+                안내하겠습니다.
+              </p>
+            </div>
+
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <Button asChild>
                 <Link href="/policy">
                   정책 둘러보기
-                  <ArrowRight />
+                  <ArrowRight aria-hidden="true" />
                 </Link>
               </Button>
-            }
-          />
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              setSubmittedQuery(query.trim());
-            }}
-            className="mx-auto flex max-w-xl gap-2 px-5 pb-6"
-          >
-            <Input
-              aria-label="커뮤니티 검색"
-              placeholder="궁금한 육아·정책 이야기를 검색해 보세요"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-            />
-            <Button type="submit" aria-label="게시글 검색">
-              <Search />
-              <span className="hidden sm:inline">검색</span>
-            </Button>
-          </form>
-        </Card>
-        <div className="text-muted-foreground mt-7 flex items-start gap-3 border-y py-5 text-sm">
-          <ShieldCheck className="text-primary size-5 shrink-0" />
-          <p>
-            <strong className="text-foreground">
-              함께 만드는 신뢰할 수 있는 공간
-            </strong>
-            <br />
-            개인정보가 담긴 서류나 계좌정보는 공유하지 마세요. 지원 자격과 신청
-            기준은 반드시 공식 기관에서 확인해 주세요.
-          </p>
-        </div>
-        <Dialog
-          open={writeOpen}
-          onClose={() => setWriteOpen(false)}
-          title="경험과 질문을 나눌 공간을 준비하고 있어요"
-        >
-          <p className="text-muted-foreground text-sm leading-7">
-            게시글 작성과 회원 로그인이 연결되면 경험과 질문을 등록할 수
-            있습니다. 지금은 정책 둘러보기에서 필요한 정보를 확인해 주세요.
-          </p>
-          <div className="mt-6 flex justify-end gap-2">
-            <Button variant="ghost" onClick={() => setWriteOpen(false)}>
-              닫기
-            </Button>
-            <Button asChild>
-              <Link href="/policy">정책 둘러보기</Link>
-            </Button>
+              <Button asChild variant="outline">
+                <Link href="/map">
+                  <MapPin aria-hidden="true" />
+                  주변 시설 찾기
+                </Link>
+              </Button>
+            </div>
+
+            <details className="border-border mt-10 border-t pt-5">
+              <summary className="text-primary flex min-h-11 cursor-pointer items-center font-semibold underline-offset-4 hover:underline">
+                준비 중인 주제와 이용 원칙 보기
+              </summary>
+              <div className="text-muted-foreground pt-3 pb-2 text-base leading-7">
+                <ul className="list-disc space-y-1 pl-5">
+                  {plannedTopics.map((topic) => (
+                    <li key={topic}>{topic}</li>
+                  ))}
+                </ul>
+                <div className="border-border mt-5 flex gap-3 border-t pt-5">
+                  <ShieldCheck
+                    aria-hidden="true"
+                    className="text-primary mt-1 size-5 shrink-0"
+                  />
+                  <p>
+                    개인정보가 담긴 서류나 계좌정보는 공유하지 마세요. 지원
+                    자격과 신청 기준은 반드시 공식 기관에서 확인해야 합니다.
+                  </p>
+                </div>
+              </div>
+            </details>
           </div>
-        </Dialog>
+        </div>
       </main>
       <Footer />
     </>

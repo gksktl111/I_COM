@@ -14,7 +14,9 @@ type Category = { name: string; count: number };
 interface IMapSidebarProps {
   searchResults: Place[];
   isLoading: boolean;
+  searchError?: string;
   onSearch: (q: string) => void;
+  onRetry: () => void;
   onSelect: (p: Place) => void;
   query: string;
   selectedId?: string;
@@ -30,7 +32,9 @@ interface IMapSidebarProps {
 export function MapSidebar({
   searchResults,
   isLoading,
+  searchError,
   onSearch,
+  onRetry,
   onSelect,
   query,
   selectedId,
@@ -54,28 +58,25 @@ export function MapSidebar({
   return (
     <aside
       aria-label="시설 검색 및 목록"
-      className="flex h-full min-h-0 w-full flex-col border-r bg-white md:w-[380px] lg:w-[420px]"
+      className="flex h-full min-h-0 w-full flex-col border-r bg-white md:w-[390px] lg:w-[420px]"
     >
-      <div className="border-b p-5">
-        <h1 className="mb-1 text-xl font-bold">주변 시설 찾기</h1>
-        <p className="text-muted-foreground mb-5 text-sm">
-          아이와 함께할 우리 동네 공간을 찾아보세요.
-        </p>
+      <div className="border-b p-4">
+        <h1 className="sr-only">주변 시설 찾기</h1>
         <SearchBar
           key={query}
           initialQuery={query}
           currentLocation={false}
           onSearch={onSearch}
         />
-        <div className="mt-3 flex items-center justify-between gap-2">
-          <span className="text-muted-foreground min-w-0 truncate text-sm">
+        <div className="mt-3 flex items-start justify-between gap-2">
+          <span className="text-muted-foreground min-w-0 flex-1 pt-2.5 text-sm leading-relaxed break-words">
             {locationLabel}
           </span>
           <Button
             variant="ghost"
             onClick={onLocate}
             disabled={locating}
-            className="text-primary"
+            className="text-primary shrink-0"
           >
             {locating ? (
               <Loader2 aria-hidden="true" className="animate-spin" />
@@ -85,20 +86,22 @@ export function MapSidebar({
             내 위치
           </Button>
         </div>
-        <p className="text-muted-foreground text-xs leading-relaxed">
-          현재 위치를 기준으로 검색합니다. 위치 권한을 허용해 주세요.
-        </p>
+        {!hasLocation && (
+          <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
+            위치 권한을 허용하거나 시설명을 검색해 주세요.
+          </p>
+        )}
       </div>
-      <div className="border-b px-5 py-3">
+      <div className="border-b px-4 py-2.5">
         <div
-          className="flex gap-2 overflow-x-auto pb-2"
+          className="flex gap-1.5 overflow-x-auto pb-1"
           aria-label="시설 키워드 바로 검색"
         >
           {["어린이집", "유치원", "돌봄센터", "도서관"].map((keyword) => (
             <Chip
               key={keyword}
               selected={query === keyword}
-              className="shrink-0"
+              className="shrink-0 gap-1 px-2 text-sm [&>svg]:size-3"
               onClick={() => onSearch(keyword)}
             >
               {keyword}
@@ -106,9 +109,17 @@ export function MapSidebar({
           ))}
         </div>
         <div className="mt-1 flex items-center justify-between gap-2">
-          <p className="text-sm" aria-live="polite">
-            검색 결과{" "}
-            <strong className="text-primary">{searchResults.length}곳</strong>
+          <p className="text-sm leading-relaxed" aria-live="polite">
+            {isLoading ? (
+              "시설을 검색하고 있습니다"
+            ) : (
+              <>
+                검색 결과{" "}
+                <strong className="text-primary">
+                  {searchResults.length}곳
+                </strong>
+              </>
+            )}
           </p>
           <Button
             variant="ghost"
@@ -135,7 +146,9 @@ export function MapSidebar({
       <SearchResultList
         results={searchResults}
         isLoading={isLoading}
+        error={searchError}
         onSelect={onSelect}
+        onRetry={onRetry}
         selectedId={selectedId}
         query={query}
         hasLocation={hasLocation}
@@ -145,7 +158,7 @@ export function MapSidebar({
         onClose={() => setFiltersOpen(false)}
         title="시설 유형 상세 설정"
       >
-        <p className="text-muted-foreground mb-5 text-sm leading-relaxed">
+        <p className="text-muted-foreground mb-5 text-base leading-relaxed">
           검색된 시설 중 보고 싶은 유형을 선택해 주세요. 여러 유형을 함께 선택할
           수 있습니다.
         </p>
@@ -161,7 +174,7 @@ export function MapSidebar({
               {categories.map((category) => (
                 <label
                   key={category.name}
-                  className={`flex min-h-12 cursor-pointer items-center gap-3 rounded-lg border px-4 py-3 text-sm ${draft.includes(category.name) ? "border-primary bg-accent" : "bg-white"}`}
+                  className={`flex min-h-12 cursor-pointer items-center gap-3 rounded-lg border px-4 py-3 text-base ${draft.includes(category.name) ? "border-primary bg-accent" : "border-input bg-white"}`}
                 >
                   <input
                     type="checkbox"
@@ -175,8 +188,10 @@ export function MapSidebar({
                       )
                     }
                   />
-                  <span className="flex-1">{category.name}</span>
-                  <span className="text-muted-foreground">
+                  <span className="min-w-0 flex-1 break-words">
+                    {category.name}
+                  </span>
+                  <span className="text-muted-foreground shrink-0 tabular-nums">
                     {category.count}곳
                   </span>
                 </label>
@@ -192,11 +207,12 @@ export function MapSidebar({
           시설 유형은 검색 결과에서 제공된 정보를 기준으로 표시합니다. 방문 전
           운영시간과 이용 조건은 해당 시설에 확인해 주세요.
         </Notice>
-        <div className="mt-6 flex flex-wrap justify-between gap-3">
+        <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
           <Button variant="ghost" onClick={() => setDraft([])}>
             선택 초기화
           </Button>
           <Button
+            className="whitespace-normal"
             onClick={() => {
               onCategoriesChange(draft);
               setFiltersOpen(false);

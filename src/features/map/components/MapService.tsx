@@ -29,6 +29,7 @@ export function MapService() {
     useGeolocation({ auto: true });
 
   const [results, setResults] = useState<Place[]>([]);
+  const [searchError, setSearchError] = useState<string>();
   const [isLoading, startTransition] = useTransition();
   const [focus, setFocus] = useState<{ lat: number; lng: number } | null>(null);
 
@@ -58,12 +59,15 @@ export function MapService() {
 
   const runSearch = useCallback(async () => {
     if (!canSearch) return;
+    setSearchError(undefined);
     try {
       const url = `/api/places?q=${encodeURIComponent(query)}&lat=${location!.lat}&lng=${location!.lng}`;
       const res = await fetch(url);
       const data: PlacesResponse = await res.json();
       if (!res.ok) {
-        toast.error(data?.error || "검색에 실패했습니다.");
+        const message = data?.error || "시설 검색에 실패했습니다.";
+        toast.error(message);
+        setSearchError(message);
         setResults([]);
         return;
       }
@@ -73,7 +77,9 @@ export function MapService() {
       setSelectedCategories([]);
     } catch (e) {
       console.error(e);
-      toast.error("검색 중 오류가 발생했습니다.");
+      const message = "시설 정보를 불러오지 못했습니다.";
+      toast.error(message);
+      setSearchError(message);
       setResults([]);
     }
   }, [canSearch, query, location]);
@@ -96,6 +102,10 @@ export function MapService() {
     setMobileView("map");
   }, []);
 
+  const handleRetry = useCallback(() => {
+    startTransition(runSearch);
+  }, [runSearch, startTransition]);
+
   const handlePlaceClick = useCallback((place: Place) => {
     setFocus({ lat: place.lat, lng: place.lng });
     setSelectedId(place.id);
@@ -105,7 +115,7 @@ export function MapService() {
   return (
     <main
       id="main-content"
-      className="relative flex h-[calc(100dvh-var(--app-header-height))] min-h-[420px] flex-col"
+      className="bg-background relative flex h-[calc(100dvh-var(--app-header-height))] min-h-[420px] flex-col"
     >
       <div className="relative flex min-h-0 flex-1 overflow-hidden">
         <div
@@ -114,7 +124,9 @@ export function MapService() {
           <MapSidebar
             searchResults={visibleResults}
             isLoading={isLoading}
+            searchError={searchError}
             onSearch={handleSearch}
+            onRetry={handleRetry}
             onSelect={handleSelect}
             query={query}
             selectedId={selectedId}
@@ -145,12 +157,13 @@ export function MapService() {
         />
       </div>
       <div
-        className="grid shrink-0 grid-cols-2 border-t bg-white p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] md:hidden"
+        className="grid shrink-0 grid-cols-2 gap-2 border-t bg-white p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] md:hidden"
         aria-label="시설 화면 전환"
       >
         <Button
           variant={mobileView === "list" ? "default" : "ghost"}
           aria-pressed={mobileView === "list"}
+          className="min-h-11"
           onClick={() => setMobileView("list")}
         >
           <List aria-hidden="true" />
@@ -159,6 +172,7 @@ export function MapService() {
         <Button
           variant={mobileView === "map" ? "default" : "ghost"}
           aria-pressed={mobileView === "map"}
+          className="min-h-11"
           onClick={() => setMobileView("map")}
         >
           <MapIcon aria-hidden="true" />
@@ -172,25 +186,27 @@ export function MapService() {
       >
         {detailPlace && (
           <div className="space-y-5">
-            <span className="bg-primary/10 text-primary inline-flex rounded-full px-3 py-1 text-sm font-semibold">
+            <span className="bg-muted text-muted-foreground inline-flex rounded-md px-2 py-1 text-sm font-semibold">
               {detailPlace.category || "시설"}
             </span>
-            <dl className="space-y-4 text-sm">
+            <dl className="space-y-4 text-base">
               <div>
-                <dt className="text-muted-foreground mb-1">주소</dt>
-                <dd className="leading-relaxed">
+                <dt className="text-muted-foreground mb-1 text-sm font-semibold">
+                  주소
+                </dt>
+                <dd className="leading-relaxed break-words">
                   {detailPlace.address || "주소 정보가 제공되지 않았습니다."}
                 </dd>
               </div>
-              <div>
-                <dt className="text-muted-foreground mb-1">
-                  위치 좌표 (위도, 경도)
-                </dt>
-                <dd>
-                  {detailPlace.lat.toFixed(6)}, {detailPlace.lng.toFixed(6)}
-                </dd>
-              </div>
             </dl>
+            <details className="border-t pt-3 text-sm">
+              <summary className="text-primary flex min-h-11 cursor-pointer items-center font-semibold">
+                위치 좌표 보기
+              </summary>
+              <p className="text-muted-foreground pb-2 tabular-nums">
+                {detailPlace.lat.toFixed(6)}, {detailPlace.lng.toFixed(6)}
+              </p>
+            </details>
           </div>
         )}
       </Dialog>

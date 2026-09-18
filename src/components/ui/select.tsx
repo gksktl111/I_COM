@@ -237,8 +237,8 @@ export function Select({
         autoFocus={props.autoFocus}
         tabIndex={props.tabIndex}
         className={cn(
-          "border-input text-foreground focus:border-primary focus:ring-primary/15 aria-invalid:border-destructive aria-invalid:ring-destructive/20 flex h-11 w-full min-w-0 items-center justify-between gap-3 rounded-lg border bg-white px-3 text-left text-sm font-normal shadow-xs transition-[border-color,box-shadow] outline-none hover:border-slate-400 focus:ring-3 focus:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:opacity-50",
-          open && "border-primary ring-primary/15 ring-3",
+          "border-input text-foreground focus:border-primary aria-invalid:border-destructive hover:border-primary focus:outline-ring disabled:bg-muted disabled:text-muted-foreground flex h-11 w-full min-w-0 items-center justify-between gap-3 rounded-sm border bg-white px-3 text-left text-base font-normal transition-colors outline-none focus:outline-2 focus:outline-offset-2 disabled:cursor-not-allowed",
+          open && "border-primary outline-ring outline-2 outline-offset-2",
           className,
         )}
         onClick={() => (open ? close() : show())}
@@ -356,7 +356,7 @@ export function Select({
         <ChevronDown
           aria-hidden="true"
           className={cn(
-            "size-4 shrink-0 text-slate-500 transition-transform",
+            "text-muted-foreground size-4 shrink-0 transition-transform",
             open && "rotate-180",
           )}
         />
@@ -396,7 +396,7 @@ export function Select({
         popover="manual"
         hidden={!open}
         className={cn(
-          "border-input text-foreground fixed inset-auto z-50 m-0 overflow-y-auto overscroll-contain rounded-xl border bg-white p-1.5 shadow-xl outline-none",
+          "border-input text-foreground fixed inset-auto z-50 m-0 overflow-y-auto overscroll-contain rounded-lg border bg-white p-1.5 shadow-[0_4px_16px_rgb(24_44_41/8%)] outline-none",
           searchable && open && "flex flex-col overflow-hidden",
         )}
         onBlur={(event) => {
@@ -436,7 +436,7 @@ export function Select({
             autoComplete="off"
             placeholder={searchPlaceholder}
             value={query}
-            className="border-input focus:border-primary mb-1.5 h-10 w-full shrink-0 rounded-lg border bg-white px-3 text-sm outline-none"
+            className="border-input focus:border-primary focus:outline-ring mb-1.5 h-11 w-full shrink-0 rounded-sm border bg-white px-3 text-base outline-none focus:outline-2 focus:outline-offset-2"
             onChange={(event) => {
               setQuery(event.target.value);
               setActiveIndex(-1);
@@ -505,8 +505,8 @@ export function Select({
               aria-disabled={option.disabled || undefined}
               data-index={option.index}
               className={cn(
-                "flex min-h-10 cursor-pointer items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-sm font-normal break-words",
-                option.index === visibleActiveIndex && "bg-slate-100",
+                "flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-sm px-3 py-2.5 text-base font-normal break-words",
+                option.index === visibleActiveIndex && "bg-muted",
                 selectedValue === option.value && "text-primary font-semibold",
                 option.disabled && "cursor-not-allowed opacity-40",
               )}

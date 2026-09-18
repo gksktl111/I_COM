@@ -26,9 +26,9 @@ import styles from "./recommendation-playground.module.css";
 
 type Results = GuidedRecommendationResponse;
 const action =
-  "min-h-12 rounded-lg bg-primary px-6 py-3 text-base font-semibold text-white hover:bg-[#005f5a] disabled:cursor-not-allowed disabled:opacity-40";
+  "min-h-12 rounded-sm bg-primary px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-[#005f5a] disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500";
 const secondary =
-  "min-h-12 rounded-lg border border-slate-300 bg-white px-5 py-3 text-base font-medium text-slate-700 hover:bg-slate-50";
+  "min-h-12 rounded-sm border border-primary bg-white px-5 py-3 text-base font-semibold text-primary transition-colors hover:bg-[#e8f3ef]";
 const emptyResidence: ResidenceScope = {
   region: "",
   district: "",
@@ -159,7 +159,7 @@ export function CategoryRecommendation() {
       clearTimeout(timeout);
       clearTimeout(delay);
     };
-    // A completed questionnaire is immutable while loading; edits leave this stage.
+    // 전송 중인 답변 묶음은 바꾸지 않고, 수정할 때는 로딩 단계를 먼저 벗어납니다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stage, attempt, requestPhase]);
 
@@ -284,7 +284,7 @@ export function CategoryRecommendation() {
   return (
     <main
       id="main-content"
-      className={`mx-auto min-h-[70vh] px-5 py-8 text-slate-900 sm:px-8 md:py-12 ${stage === "RESULTS" ? "max-w-[1200px]" : "max-w-[840px]"}`}
+      className={`mx-auto min-h-[70vh] px-5 py-8 text-[#182c29] max-[359px]:px-4 sm:px-8 md:py-12 ${stage === "RESULTS" ? "max-w-[1200px]" : "max-w-[704px]"}`}
     >
       <nav aria-label="이전 단계" className="mb-3">
         {stage === "INTRO" ? (
@@ -306,7 +306,7 @@ export function CategoryRecommendation() {
           </button>
         )}
       </nav>
-      <p className="mb-4 border-b border-slate-200 pb-4 text-sm font-medium text-slate-600">
+      <p className="mb-6 border-b border-[#dce3de] pb-4 text-sm font-medium text-[#52635f]">
         맞춤 지원 찾기 ·{" "}
         {stage === "INTRO"
           ? "1. 거주지와 분야"
@@ -322,7 +322,7 @@ export function CategoryRecommendation() {
       <h1
         ref={heading}
         tabIndex={-1}
-        className="text-2xl leading-snug font-bold break-keep outline-none sm:text-[28px]"
+        className="text-[28px] leading-[1.4] font-semibold tracking-[-0.01em] break-keep outline-none sm:text-[32px] sm:leading-[1.35] sm:font-bold"
       >
         {stage === "INTRO"
           ? "어떤 지원을 찾고 계신가요?"
@@ -397,7 +397,7 @@ export function CategoryRecommendation() {
             />
           )}
           {!field?.children && (
-            <label className="mt-6 flex min-h-14 items-center gap-3 rounded-lg border border-slate-300 bg-white p-4 text-base font-medium">
+            <label className="mt-6 flex min-h-14 items-center gap-3 rounded-lg border border-[#7b8d87] bg-white p-4 text-base font-medium">
               <input
                 className="size-5 shrink-0"
                 type="checkbox"
@@ -412,7 +412,7 @@ export function CategoryRecommendation() {
               자녀에 대한 지원도 찾을게요
             </label>
           )}
-          <fieldset className="mt-8 rounded-xl border border-slate-200 bg-white p-5 sm:p-6">
+          <fieldset className="mt-8 rounded-lg border border-[#dce3de] bg-white p-5 sm:p-6">
             <legend className="px-1 text-lg font-bold">
               지금 필요한 지원{" "}
               <span className="ml-2 text-sm font-normal text-slate-600">
@@ -423,7 +423,7 @@ export function CategoryRecommendation() {
               {field?.needs.map((need) => (
                 <label
                   key={need.id}
-                  className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-lg border p-4 text-base font-medium ${needs.includes(need.id) ? "border-primary bg-slate-50 text-slate-950" : "border-slate-300 bg-white text-slate-700"}`}
+                  className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-lg border p-4 text-base font-medium ${needs.includes(need.id) ? "border-primary ring-primary bg-[#e8f3ef] text-[#164b46] ring-1" : "border-[#7b8d87] bg-white text-slate-700"}`}
                 >
                   <input
                     className="size-5 shrink-0"
@@ -492,7 +492,7 @@ export function CategoryRecommendation() {
               </div>
             </>
           ) : (
-            <div className="mt-6 rounded-xl border border-slate-200 bg-white p-5 sm:p-6">
+            <div className="mt-6 rounded-lg border border-[#dce3de] bg-white p-5 sm:p-6">
               <dl className="grid gap-5 text-base sm:grid-cols-2">
                 <div>
                   <dt className="mb-1 text-sm text-slate-600">지원 분야</dt>
@@ -694,7 +694,7 @@ export function CategoryRecommendation() {
           <div
             role="note"
             aria-label="정책 신청 전 확인 안내"
-            className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5 text-slate-800"
+            className="mt-6 border-y border-[#dce3de] py-4 text-[#182c29]"
           >
             <p className="flex items-center gap-2 font-semibold">
               <CircleAlert size={20} />
@@ -702,13 +702,12 @@ export function CategoryRecommendation() {
             </p>
             <p className="mt-2 text-sm leading-7">
               {results.method === "MIXED"
-                ? "조건을 비교한 정책과 아직 검토 중인 정책을 함께 보여드려요. ‘직접 확인 필요’ 정책은 지원 조건을 공식 안내에서 확인해 주세요. "
+                ? "확인된 조건과 검토 중인 정책을 함께 비교한 결과예요. "
                 : results.method === "VERIFIED"
-                  ? "입력한 답변을 확인된 정책 조건과 비교한 결과예요. 아직 확인하지 못한 조건은 따로 표시했어요. "
-                  : "입력한 필요와 정책 내용의 관련성을 바탕으로 한 잠정 추천이에요. 자격과 소득 기준·신청 기간은 추가 확인이 필요해요. "}
-              추천 결과가 지원 대상 확정을 의미하지는 않아요. 각 정책의 공식
-              안내 또는 담당 기관에서 최신 지원 조건·신청 기간·제출 서류를
-              반드시 확인해 주세요.
+                  ? "입력한 답변을 확인된 정책 조건과 비교한 결과예요. "
+                  : "입력한 필요와 정책 내용의 관련성을 바탕으로 한 잠정 추천이에요. "}
+              추천은 자격 확정을 의미하지 않습니다. 최신 조건·기간·서류는 공식
+              안내에서 확인해 주세요.
             </p>
           </div>
           <p className="my-6 border-b border-slate-200 pb-4 text-base text-slate-700">
@@ -716,14 +715,18 @@ export function CategoryRecommendation() {
             5개를 먼저 살펴보세요.
           </p>
           {results.withheldPolicyCount > 0 && (
-            <p role="status" className="mb-6 text-sm leading-7 text-slate-700">
-              정책 {results.withheldPolicyCount}건은 기존 조건 기준을 재확인
-              중이에요. 현재 활성 정책 중 지역·분야가 맞는 항목은 ‘직접 확인
-              필요’로 표시될 수 있어요.
-            </p>
+            <details className="mb-6 border-b border-slate-200 pb-3 text-sm leading-7 text-slate-700">
+              <summary className="text-primary flex min-h-11 cursor-pointer items-center font-semibold">
+                기준 재확인 중인 정책 {results.withheldPolicyCount}건
+              </summary>
+              <p className="pb-2">
+                현재 활성 정책 중 지역·분야가 맞는 항목은 ‘직접 확인 필요’로
+                표시될 수 있습니다.
+              </p>
+            </details>
           )}
           {!results.policies.length && (
-            <p className="rounded-xl bg-slate-50 p-6">
+            <p className="rounded-lg bg-[#f1f3f0] p-6 text-base leading-7">
               {results.withheldPolicyCount > 0
                 ? "현재 확인된 기준으로 보여드릴 수 있는 정책이 없어요. 재확인 중인 정책은 공식 안내에서 확인해 주세요."
                 : "선택한 분야에 관련된 정책을 찾지 못했어요. 분야나 관심 목적을 바꿔 다시 찾아보세요."}
@@ -732,19 +735,15 @@ export function CategoryRecommendation() {
           <ol className="list-none">
             {results.policies.map((item, index) => (
               <li key={item.policy.id}>
-                {item.reviewStatus === "CHECK_REQUIRED" && (
-                  <p className="mt-5 text-sm leading-6 text-slate-700">
-                    <strong>직접 확인 필요</strong> · 정책 조건을 검토 중입니다.
-                    거주 요건·지원 대상·신청 기간은 공식 안내에서 직접 확인해
-                    주세요.
-                  </p>
-                )}
                 <PolicyCard
                   policy={item.policy}
                   recommendation={{
                     rank: index + 1,
                     reasons: item.reasons,
-                    tags: item.tags,
+                    tags:
+                      item.reviewStatus === "CHECK_REQUIRED"
+                        ? ["직접 확인 필요", ...item.tags]
+                        : item.tags,
                   }}
                 />
               </li>
@@ -832,7 +831,7 @@ function BankChoices({
             <button
               key={option.value}
               aria-pressed={value === option.value}
-              className={`flex min-h-16 items-center gap-4 rounded-lg border bg-white px-5 py-4 text-left text-base leading-7 ${value === option.value ? "border-primary ring-primary font-semibold text-slate-950 ring-1" : "border-slate-300 text-slate-800 hover:bg-slate-50"}`}
+              className={`flex min-h-16 items-center gap-4 rounded-sm border bg-white px-5 py-3 text-left text-base leading-7 ${value === option.value ? "border-primary ring-primary bg-[#e8f3ef] font-semibold text-[#164b46] ring-1" : "border-[#7b8d87] text-slate-800 hover:bg-[#f1f3f0]"}`}
               onClick={() =>
                 setValue((old) => (old === option.value ? "" : option.value))
               }

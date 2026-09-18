@@ -1,85 +1,101 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  ChevronRight,
-  FileText,
-  MapPin,
-  MessageCircle,
-} from "lucide-react";
-import { HeroSection } from "./HeroSection";
-import { TrustSection } from "./TrustSection";
-import { Footer } from "@/components/common/Footer";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
-const services = [
-  {
-    icon: FileText,
-    tag: "정책",
-    title: "지원 정책, 조건을 입력하기 전에 먼저 둘러보세요",
-    description: "지원 내용과 대상, 신청 방법을 확인할 수 있어요.",
-    href: "/policy",
-  },
-  {
-    icon: MapPin,
-    tag: "시설",
-    title: "우리 동네 어린이집과 소아과를 찾아보세요",
-    description: "현재 위치를 중심으로 주변 시설을 지도에서 확인해요.",
-    href: "/map",
-  },
-  {
-    icon: MessageCircle,
-    tag: "소통",
-    title: "육아와 정책 이야기를 함께 나눠요",
-    description: "아이콤 커뮤니티의 소식과 이용 안내를 확인해요.",
-    href: "/community",
-  },
+const popularSearches = [
+  "출산지원금",
+  "아동수당",
+  "보육료",
+  "아이돌봄",
+  "교육비",
+  "의료비",
+  "주거지원",
+  "한부모",
+  "다자녀",
+  "산후조리",
 ];
+
 export function LandingPage() {
   return (
-    <>
-      <main id="main-content" className="page-container pb-16">
-        <HeroSection />
-        <TrustSection />
-        <section aria-labelledby="discover-heading">
-          <div className="mb-5 flex items-center justify-between gap-4">
-            <h2 id="discover-heading" className="text-xl font-bold">
-              아이콤에서 함께 찾아보세요
-            </h2>
-            <Link
-              href="/policy"
-              className="text-primary inline-flex items-center gap-1 text-xs font-semibold"
+    <main id="main-content" className="bg-card">
+      <section className="border-border bg-background border-b">
+        <div className="page-container py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-4xl">
+            <h1 className="text-accent-foreground text-center text-[2.125rem] leading-[1.3] font-semibold tracking-[-0.02em] sm:text-[2.75rem] lg:text-[3.25rem]">
+              아이와 가족에게 필요한 지원을
+              <br className="hidden sm:block" /> 한곳에서 찾아보세요
+            </h1>
+
+            <form
+              action="/policy"
+              method="get"
+              role="search"
+              className="mx-auto mt-8 flex max-w-3xl gap-2"
             >
-              전체 정책 보기
-              <ChevronRight className="size-4" />
-            </Link>
-          </div>
-          <div className="overflow-hidden rounded-xl border bg-white">
-            {services.map(({ icon: Icon, tag, title, description, href }) => (
-              <Link
-                key={href}
-                href={href}
-                className="group hover:bg-accent/50 flex items-center gap-4 border-b px-5 py-5 last:border-0"
+              <div className="min-w-0 flex-1">
+                <label htmlFor="landing-policy-search" className="sr-only">
+                  정책 검색어
+                </label>
+                <Input
+                  id="landing-policy-search"
+                  name="q"
+                  type="search"
+                  maxLength={100}
+                  placeholder="정책명이나 지원 내용을 검색해 보세요"
+                  className="border-primary h-12 border-2 bg-white px-4"
+                />
+              </div>
+              <Button type="submit" className="min-h-12 px-5 sm:px-7">
+                검색
+              </Button>
+            </form>
+
+            <div className="mx-auto mt-10 max-w-3xl">
+              <h2
+                id="popular-policy-heading"
+                className="text-foreground text-xl leading-[1.45] font-semibold"
               >
-                <Icon className="text-primary hidden size-5 shrink-0 sm:block" />
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="bg-muted text-primary rounded px-2 py-0.5 text-xs">
-                      {tag}
-                    </span>
-                    <h3 className="group-hover:text-primary font-semibold">
-                      {title}
-                    </h3>
-                  </div>
-                  <p className="text-muted-foreground mt-1 text-xs">
-                    {description}
-                  </p>
-                </div>
-                <ArrowUpRight className="text-muted-foreground size-4 shrink-0" />
-              </Link>
-            ))}
+                자주 찾는 정책
+              </h2>
+
+              <ol className="border-border mt-4 grid border-t md:grid-cols-2 md:gap-x-10">
+                {popularSearches.map((keyword, index) => (
+                  <li key={keyword} className="border-border border-b">
+                    <Link
+                      href={`/policy?q=${encodeURIComponent(keyword)}`}
+                      className="group flex min-h-14 items-center gap-4 py-3"
+                    >
+                      <span className="text-primary w-5 shrink-0 text-sm font-semibold tabular-nums">
+                        {index + 1}
+                      </span>
+                      <span className="text-foreground font-medium underline-offset-4 group-hover:underline">
+                        {keyword}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="notice-heading"
+        className="border-border bg-background border-y py-10 sm:py-12"
+      >
+        <div className="page-container">
+          <h2
+            id="notice-heading"
+            className="text-foreground text-2xl leading-[1.4] font-semibold"
+          >
+            공지사항
+          </h2>
+          <p className="text-muted-foreground border-border mt-5 border-y py-5 text-sm leading-6">
+            공개된 공지사항이 없습니다.
+          </p>
+        </div>
+      </section>
+    </main>
   );
 }
