@@ -1,4 +1,5 @@
 export type PublicPolicy = {
+  classifiedScope?: { categories: string[]; fingerprint: string };
   reviewedScope?: { categories: string[]; fingerprint: string };
   id: string;
   name: string;

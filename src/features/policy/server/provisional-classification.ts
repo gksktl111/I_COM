@@ -65,13 +65,13 @@ export function classifyProvisionalScope(
   policy: PublicPolicy,
   category: string,
 ): boolean | undefined {
-  const reviewed = policy.reviewedScope;
-  if (reviewed && RECOMMENDATION_FIELDS.some((field) => field.id === category) &&
-      Array.isArray(reviewed.categories) && reviewed.categories.length > 0 &&
-      reviewed.categories.every((key) => RECOMMENDATION_FIELDS.some((field) => field.id === key)) &&
-      reviewed.fingerprint === provisionalClassificationFingerprint(policy)) {
+  const classified = policy.reviewedScope ?? policy.classifiedScope;
+  if (classified && RECOMMENDATION_FIELDS.some((field) => field.id === category) &&
+      Array.isArray(classified.categories) && classified.categories.length > 0 &&
+      classified.categories.every((key) => RECOMMENDATION_FIELDS.some((field) => field.id === key)) &&
+      classified.fingerprint === provisionalClassificationFingerprint(policy)) {
     // 분야 포함·제외만 적용하며 신청 자격이나 조건 검수 상태는 바꾸지 않는다.
-    return reviewed.categories.includes(category);
+    return classified.categories.includes(category);
   }
   const correction = corrections.find(
     (c) => c.id === policy.id && c.category === category,

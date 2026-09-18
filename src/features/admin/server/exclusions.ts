@@ -43,7 +43,7 @@ export async function recentExclusions(): Promise<AdminExclusion[]> {
         String(row.provider),
       ) ||
       !["LIST", "DETAIL"].includes(String(row.scope_phase)) ||
-      !["policy-relevance-1", "policy-relevance-2", "policy-relevance-3", "policy-relevance-review-1", "policy-relevance-review-2", "policy-relevance-review-3"].includes(
+      !["policy-relevance-1", "policy-relevance-2", "policy-relevance-3", "policy-relevance-4", "policy-relevance-review-1", "policy-relevance-review-2", "policy-relevance-review-3"].includes(
         String(relevance.version),
       ) ||
       relevance.status !== "UNRELATED" ||

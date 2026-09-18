@@ -109,7 +109,7 @@ test("exclusion audit is guarded, projected and bounded", async (t) => {
       truncated: false,
     },
   ]);
-  for (const version of ["policy-relevance-2", "policy-relevance-3", "policy-relevance-review-1", "policy-relevance-review-2", "policy-relevance-review-3"]) {
+  for (const version of ["policy-relevance-2", "policy-relevance-3", "policy-relevance-4", "policy-relevance-review-1", "policy-relevance-review-2", "policy-relevance-review-3"]) {
     payload = { items: [{ ...row, scope_relevance: { ...row.scope_relevance, version } }] };
     assert.equal((await recentExclusions()).length, 1);
   }

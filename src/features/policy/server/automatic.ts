@@ -7,7 +7,7 @@ import { normalizeBokji } from "./bokjiro.ts";
 import type { BokjiRaw } from "./bokjiro.ts";
 import { modificationHold } from "./sync.ts";
 import { evaluatePolicyQuality, failureQuality } from "./quality.ts";
-import { evaluatePolicyRelevance } from "./relevance.ts";
+import { evaluateCollectionRelevance } from "./collection-relevance.ts";
 import type { PolicyRepository } from "./repository.ts";
 
 type Reason =
@@ -229,23 +229,6 @@ export async function runAutomatic(options: AutomaticOptions) {
           processed++;
           continue;
         }
-        if (!current) {
-          const row = page.rows[page.ids.indexOf(id)];
-          const relevance = evaluatePolicyRelevance({
-            name: provider === "GOV24" ? row?.서비스명 : row?.servNm,
-          });
-          if (relevance.status === "UNRELATED") {
-            await command("auto_exclude", {
-              ...fence,
-              externalId: id,
-              relevance,
-              phase: "LIST",
-              page: page.page,
-            });
-            processed++;
-            continue;
-          }
-        }
         let raw: Raw, normalized: Normalized;
         if (calls >= options.callBudget) throw new Stop("CALL_BUDGET");
         try {
@@ -315,7 +298,7 @@ export async function runAutomatic(options: AutomaticOptions) {
           });
           failed = true;
         } else {
-          const relevance = evaluatePolicyRelevance(normalized.display);
+          const relevance = evaluateCollectionRelevance(normalized.display);
           if (!current && relevance.status === "UNRELATED") {
             await command("auto_exclude", {
               ...fence,
@@ -323,6 +306,7 @@ export async function runAutomatic(options: AutomaticOptions) {
               relevance,
               phase: "DETAIL",
               snapshotId: saved.snapshotId,
+              normalized,
             });
             processed++;
             continue;
@@ -333,6 +317,7 @@ export async function runAutomatic(options: AutomaticOptions) {
             snapshotId: saved.snapshotId,
             normalized,
             quality,
+            relevance,
             changes: {
               rawChanged: current?.normalized.rawHash !== normalized.rawHash,
               displayChanged:

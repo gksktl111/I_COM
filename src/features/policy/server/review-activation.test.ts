@@ -251,3 +251,13 @@ test("v6 excludes tag mismatches with direct evidence while preserving uncertain
   Object.assign(decisions.items[0], { decision: "KEEP_REVIEW", evidence: [], reason: "실제 지원 내용 미확인" });
   assert.equal(prepareReviewActivation(inventory, decisions, "policy-relevance-review-6").recordedReviewCount, 1);
 });
+
+test("v6 still activates matching tags with unresolved eligibility rather than pending everything", () => {
+  const { inventory, decisions } = tagFixture();
+  inventory.rows[0].relevance.version = "policy-relevance-4";
+  const plan = prepareReviewActivation(inventory, decisions, "policy-relevance-review-6");
+  assert.equal(plan.activateCount, 1);
+  assert.deepEqual(plan.items[0].payload.relevance.conditionChecks, decisions.items[0].conditionChecks);
+  decisions.items[0].evidence = decisions.items[0].evidence.filter(e => e.field !== "target_text");
+  assert.throws(() => prepareReviewActivation(inventory, decisions, "policy-relevance-review-6"), /tag-direct-evidence-required/);
+});

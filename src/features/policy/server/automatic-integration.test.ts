@@ -45,6 +45,7 @@ test("real Bokjiro XML and PostgreSQL RPC preserve automatic cursors, quotas, sn
       "20260908082550_policy_relevance_v2",
       "20260908091150_policy_relevance_v3",
       "20260909091358_policy_new_only_collection",
+      "20260913173627_policy_collection_relevance_v4",
     ]) {
       await db.exec(
         await readFile(

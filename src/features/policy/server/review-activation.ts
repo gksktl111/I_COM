@@ -89,7 +89,7 @@ export function prepareReviewActivation(
         ![REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION].includes((row.relevance as Record<string, unknown>).version as string) ||
         (row.relevance as Record<string, unknown>).status !== "REVIEW")) fail("reassessment-source");
     if (tagging && (!row.relevance || typeof row.relevance !== "object" || Array.isArray(row.relevance) ||
-        !["policy-relevance-1", "policy-relevance-2", "policy-relevance-3", REVIEW_RELEVANCE_VERSION, REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION, REVIEW_REASSESSMENT_VERSION, ...(tagDisposition ? [REVIEW_TAG_VERSION] : [])].includes((row.relevance as Record<string, unknown>).version as string) ||
+        !["policy-relevance-1", "policy-relevance-2", "policy-relevance-3", REVIEW_RELEVANCE_VERSION, REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION, REVIEW_REASSESSMENT_VERSION, ...(tagDisposition ? ["policy-relevance-4", REVIEW_TAG_VERSION] : [])].includes((row.relevance as Record<string, unknown>).version as string) ||
         (row.relevance as Record<string, unknown>).status !== "REVIEW")) fail("tag-source");
     if (version === REVIEW_CORRECTION_VERSION &&
         (!row.relevance || typeof row.relevance !== "object" ||

@@ -23,6 +23,7 @@ function setup(total = 12) {
     storageFail: "",
     title: "test",
     target: "",
+    benefit: "",
   };
   const repository: PolicyRepository = {
     async command<T>(action: string, payload: Record<string, unknown>) {
@@ -105,7 +106,7 @@ function setup(total = 12) {
             row(control.drift && i === 0 ? "changed" : String(i)),
           )
         : endpoint === "serviceDetail"
-          ? [{ ...row(id), 수정일시: "2026-09-07", 지원대상: control.target }]
+          ? [{ ...row(id), 수정일시: "2026-09-07", 지원대상: control.target, 지원내용: control.benefit }]
           : [{ 서비스ID: id, JA0110: 0 }];
     const page = Number(url.searchParams.get("page"));
     const perPage = Number(url.searchParams.get("perPage"));
@@ -343,22 +344,23 @@ test("quality ERROR retains the source snapshot and evaluated issues without rep
   );
 });
 
-test("unrelated listing titles complete without detail, snapshots, or application", async () => {
+test("listing titles never exclude before direct detail evidence", async () => {
   const s = setup(2);
   s.control.title = "어업 장비 구입 지원";
+  s.control.target = "어업 경영체";
+  s.control.benefit = "어선 장비 구입비 지원";
   const result = await runAutomatic(s.options);
   assert.equal(result.status, "SUCCESS");
   assert.equal(result.processed, 2);
-  assert.equal(result.calls, 2);
-  assert.ok(s.requests.every((url) => url.pathname.endsWith("serviceList")));
+  assert.ok(s.requests.some((url) => url.pathname.endsWith("serviceDetail")));
+  assert.ok(s.events.some((e) => e.action === "snapshot"));
   assert.equal(
-    s.events.some((e) => ["snapshot", "apply", "fail"].includes(e.action)),
+    s.events.some((e) => e.action === "apply"),
     false,
   );
   const excluded = s.events.filter((e) => e.action === "auto_exclude");
   assert.equal(excluded.length, 2);
-  assert.equal(excluded[0].payload.phase, "LIST");
-  assert.equal(excluded[0].payload.page, 1);
+  assert.ok(excluded.every((event) => event.payload.phase === "DETAIL"));
   assert.equal(excluded[0].payload.runId, "run-1");
   assert.equal(excluded[0].payload.generation, 1);
   assert.equal(
@@ -367,9 +369,11 @@ test("unrelated listing titles complete without detail, snapshots, or applicatio
   );
 });
 
-test("ambiguous titles use detail evidence to exclude and retain the source snapshot", async () => {
+test("detail evidence excludes a clear non-tag service and retains the source snapshot", async () => {
   const s = setup(1);
-  s.control.target = "노인 전용 지원";
+  s.control.title = "무인민원발급 수수료 면제";
+  s.control.target = "무인민원발급기 이용 주민";
+  s.control.benefit = "민원 증명서 발급 수수료 면제";
   const result = await runAutomatic(s.options);
   assert.equal(result.status, "SUCCESS");
   assert.ok(s.requests.some((url) => url.pathname.endsWith("serviceDetail")));
@@ -432,7 +436,9 @@ test("existing related policies still refresh when the source becomes unrelated"
 
 test("resumed unrelated titles still require unchanged page coverage before exclusion", async () => {
   const s = setup(2);
-  s.control.title = "기초연금";
+  s.control.title = "어업 장비 구입 지원";
+  s.control.target = "어업 경영체";
+  s.control.benefit = "어선 장비 구입비 지원";
   const first = await runAutomatic({ ...s.options, maxItems: 1 });
   assert.equal(first.reason, "ITEM_LIMIT");
   s.control.drift = true;
@@ -447,7 +453,9 @@ test("resumed unrelated titles still require unchanged page coverage before excl
 
 test("exclusion storage failure stops without recording a source failure", async () => {
   const s = setup(1);
-  s.control.title = "기초연금";
+  s.control.title = "중소기업 수출 장비 지원";
+  s.control.target = "수출 중소기업";
+  s.control.benefit = "수출 장비 구입비 지원";
   s.control.storageFail = "auto_exclude";
   await assert.rejects(runAutomatic(s.options), /automatic-storage-failed/);
   assert.equal(s.success.size, 0);
@@ -457,40 +465,21 @@ test("exclusion storage failure stops without recording a source failure", async
   );
 });
 
-test("Bokjiro listing titles use servNm for early exclusion", async () => {
+test("Bokjiro listing titles also wait for direct detail evidence", async () => {
   const s = setup(1);
   s.options.provider = "BOKJIRO_CENTRAL";
-  s.options.sourceFactory = (config, ...args) => {
-    const source = createAutomaticSource(
-      { ...config, provider: "GOV24" },
-      ...args,
-    );
-    return {
-      ...source,
-      async page(number) {
-        const page = await source.page(number);
-        return {
-          ...page,
-          rows: page.rows.map((row) => ({
-            servId: row.서비스ID,
-            servNm: "기초연금",
-          })),
-        };
-      },
-      async detail() {
-        throw new Error("unrelated Bokjiro listing must not fetch detail");
-      },
-    };
-  };
+  s.control.title = "중소기업 수출 장비 지원";
+  s.options.sourceFactory = (config, ...args) =>
+    createAutomaticSource({ ...config, provider: "GOV24" }, ...args);
   const result = await runAutomatic(s.options);
   assert.equal(result.status, "SUCCESS");
   assert.equal(
-    s.events.find((e) => e.action === "auto_exclude")?.payload.phase,
-    "LIST",
+    s.events.some((e) => e.action === "auto_exclude"),
+    false,
   );
   assert.equal(
-    s.events.some((e) => e.action === "fail" || e.action === "apply"),
-    false,
+    s.events.some((e) => e.action === "apply"),
+    true,
   );
 });
 

@@ -246,6 +246,14 @@ test("v5 projection exposes only validated six-field scope without private revie
   const projected = projectPublicPolicy(row)!;
   assert.deepEqual(projected.reviewedScope?.categories, ["health", "housing"]);
   assert.doesNotMatch(JSON.stringify(projected), /private-|previousRelevance|conditionChecks|evidence/);
+  assert.deepEqual(
+    projectPublicPolicy({ ...row, relevance: { ...row.relevance, version: "policy-relevance-4" } })!.classifiedScope?.categories,
+    ["health", "housing"],
+  );
+  assert.equal(
+    projectPublicPolicy({ ...row, relevance: { ...row.relevance, version: "policy-relevance-4" } })!.reviewedScope,
+    undefined,
+  );
   for (const relevance of [
     { ...row.relevance, version: "policy-relevance-review-4" },
     { ...row.relevance, status: "REVIEW" },

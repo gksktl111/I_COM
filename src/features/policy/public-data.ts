@@ -48,12 +48,12 @@ export function projectPublicPolicy(input: unknown): PublicPolicy | null {
   if (relevance && typeof relevance === "object" && !Array.isArray(relevance)) {
     const review = relevance as Record<string, unknown>;
     const categories = review.categories;
-    if (["policy-relevance-review-5", "policy-relevance-review-6"].includes(String(review.version)) && review.status === "RELATED" &&
+    if (["policy-relevance-4", "policy-relevance-review-5", "policy-relevance-review-6"].includes(String(review.version)) && review.status === "RELATED" &&
         Array.isArray(categories) && categories.length > 0 &&
         new Set(categories).size === categories.length &&
         categories.every((label) => RECOMMENDATION_FIELDS.some((field) => field.label === label))) {
       // 공개 탐색용 분야만 전달하고 검수 이력과 미확인 자격 조건은 서버에 남긴다.
-      policy.reviewedScope = {
+      policy[review.version === "policy-relevance-4" ? "classifiedScope" : "reviewedScope"] = {
         categories: categories.map((label) => RECOMMENDATION_FIELDS.find((field) => field.label === label)!.id),
         fingerprint: provisionalClassificationFingerprint(policy),
       };

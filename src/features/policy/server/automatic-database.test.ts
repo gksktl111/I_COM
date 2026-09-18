@@ -7,6 +7,7 @@ import { normalizeBokji } from "./bokjiro.ts";
 import type { BokjiRaw } from "./bokjiro.ts";
 import { evaluatePolicyQuality, failureQuality } from "./quality.ts";
 import { evaluatePolicyRelevance } from "./relevance.ts";
+import { evaluateCollectionRelevance } from "./collection-relevance.ts";
 
 let db: PGlite;
 const provider = "BOKJIRO_CENTRAL";
@@ -252,12 +253,34 @@ test("direct RPC validates collection mode and prevents skips in legacy or expli
   }
 });
 
-test("new-only dispatcher remains an invoker RPC restricted to service role", async () => {
-  const fn = (await db.query<{ prosecdef: boolean; proconfig: string[] }>(
-    "select prosecdef,proconfig from pg_proc where oid='public.policy_sync_command(text,jsonb)'::regprocedure",
-  )).rows[0];
-  assert.equal(fn.prosecdef, false);
-  assert.ok(fn.proconfig.includes("search_path=pg_catalog, public"));
+test("automatic RPCs remain invoker functions restricted to service role", async () => {
+  const functions = (await db.query<{
+    name: string;
+    prosecdef: boolean;
+    proconfig: string[];
+    anon_execute: boolean;
+    authenticated_execute: boolean;
+    service_execute: boolean;
+  }>(`
+    select p.oid::regprocedure::text as name,p.prosecdef,p.proconfig,
+      has_function_privilege('anon',p.oid,'EXECUTE') as anon_execute,
+      has_function_privilege('authenticated',p.oid,'EXECUTE') as authenticated_execute,
+      has_function_privilege('service_role',p.oid,'EXECUTE') as service_execute
+    from pg_proc p
+    where p.oid in (
+      'public.policy_sync_command(text,jsonb)'::regprocedure,
+      'public.policy_store_relevance(jsonb)'::regprocedure,
+      'public.policy_scope_exclude(jsonb)'::regprocedure
+    )
+  `)).rows;
+  assert.equal(functions.length, 3);
+  for (const fn of functions) {
+    assert.equal(fn.prosecdef, false, fn.name);
+    assert.ok(fn.proconfig.includes("search_path=pg_catalog, public"), fn.name);
+    assert.equal(fn.anon_execute, false, fn.name);
+    assert.equal(fn.authenticated_execute, false, fn.name);
+    assert.equal(fn.service_execute, true, fn.name);
+  }
   for (const role of ["anon", "authenticated"]) {
     await db.exec(`reset role; set role ${role}`);
     await assert.rejects(db.query("select public.policy_sync_command('auto_skip_existing','{}')"), /permission denied/);
@@ -312,6 +335,8 @@ before(async () => {
     "20260911152220_policy_review_correction",
     "20260913142106_policy_official_reassessment",
     "20260913152820_policy_six_tag_activation",
+    "20260913162532_policy_six_tag_disposition",
+    "20260913173627_policy_collection_relevance_v4",
   ]) {
     await db.exec(
       await readFile(
@@ -1539,4 +1564,167 @@ test("v5 activates six-tag content despite condition conflicts and preserves v4 
   await assert.rejects(command("relevance_store", pending), /STALE_REVIEW_DECISION/);
   assert.equal((await command("relevance_store", { ...original, relevance: { version: "policy-relevance-3", status: "REVIEW", categories: [], evidence: [], reason: "자동 분류" } })).preservedReviewed, true);
   await assert.rejects(command("relevance_store", { ...payload, relevance: { ...payload.relevance, reason: "변경" } }), /RELEVANCE_VERSION_CONFLICT/);
+});
+
+
+test("v6 excludes actual tag mismatches from pending v5 and prevents stale reactivation", async () => {
+  const original = await pendingReviewActivation({ name: "대학생 장학금", target: "대학교 재학생", benefit: "대학 등록금 장학금" });
+  const pending = { ...original, relevance: { version: "policy-relevance-review-5", status: "REVIEW", categories: [], evidence: [],
+    previousRelevance: original.previousRelevance, conditionChecks: ["학교급 검토"], reason: "학교급 검토" } };
+  await command("relevance_store", pending);
+  const payload = { ...original, previousRelevance: pending.relevance,
+    relevance: { version: "policy-relevance-review-6", status: "UNRELATED", categories: [], conditionChecks: [],
+      previousRelevance: pending.relevance, reason: "대학 등록금은 아동 교육 태그에 미부합",
+      evidence: [{ field: "benefit_text", excerpt: "대학 등록금 장학금", rule: "대학 등록금" }] } };
+  const before = await dump();
+  await assert.rejects(command("relevance_store", { ...payload, relevance: { ...payload.relevance, evidence: [{ field: "name", excerpt: "대학생 장학금", rule: "제목만 확인" }] } }), /INVALID_TAG_REVIEW/);
+  assert.deepEqual(await dump(), before);
+  assert.equal((await command("relevance_store", payload)).status, "UNRELATED");
+  assert.equal((await command("relevance_store", payload)).replayed, true);
+  const row = (await db.query<{ catalog_status: string; normalized: unknown }>("select catalog_status,normalized from public.policies")).rows[0];
+  assert.equal(row.catalog_status, "EXCLUDED");
+  assert.deepEqual(row.normalized, original.expectedNormalized);
+  await assert.rejects(command("relevance_store", pending), /STALE_REVIEW_DECISION/);
+  await assert.rejects(command("relevance_store", { ...payload, relevance: { ...payload.relevance, reason: "바뀐 판정" } }), /RELEVANCE_VERSION_CONFLICT/);
+  assert.equal((await command("relevance_store", { ...original, relevance: original.previousRelevance })).preservedReviewed, true);
+});
+
+test("v6 activates matching tags from pending v5 and preserves condition checks", async () => {
+  const original = await pendingReviewActivation({ name: "아동 진료비 지원", target: "지역 아동", benefit: "외래 진료비 지원" });
+  const pending = { ...original, relevance: { version: "policy-relevance-review-5", status: "REVIEW", categories: [], evidence: [],
+    previousRelevance: original.previousRelevance, conditionChecks: ["지원 연령 확인"], reason: "의료 지원 범위 검토" } };
+  await command("relevance_store", pending);
+  const display = original.expectedNormalized.display as Record<string, string>;
+  const payload = { ...original, previousRelevance: pending.relevance,
+    relevance: { version: "policy-relevance-review-6", status: "RELATED", categories: ["의료·건강"], conditionChecks: ["지원 연령 확인"],
+      previousRelevance: pending.relevance, reason: "아동 외래 진료비 지원은 의료·건강 태그에 부합",
+      evidence: ["target_text", "benefit_text"].map(field => ({ field, excerpt: display[field], rule: "대상과 의료 지원 내용을 함께 확인" })) } };
+  assert.equal((await command("relevance_store", payload)).status, "RELATED");
+  assert.equal((await command("relevance_store", payload)).replayed, true);
+  const row = (await db.query<{ catalog_status: string; relevance: unknown }>("select catalog_status,relevance from public.policies")).rows[0];
+  assert.equal(row.catalog_status, "ACTIVE");
+  assert.deepEqual(row.relevance, payload.relevance);
+  await assert.rejects(command("relevance_store", pending), /STALE_REVIEW_DECISION/);
+});
+
+test("v6 records genuinely unclear content without changing the pending catalog status", async () => {
+  const original = await pendingReviewActivation({ name: "학생 지원", target: "학생", benefit: "지원 내용은 별도 안내" });
+  const payload = { ...original,
+    relevance: { version: "policy-relevance-review-6", status: "REVIEW", categories: [], evidence: [], conditionChecks: [],
+      previousRelevance: original.previousRelevance, reason: "학교급과 실제 지원 내용이 없어 태그 관련성을 판단할 수 없음" } };
+  assert.equal((await command("relevance_store", payload)).status, "REVIEW");
+  assert.equal((await command("relevance_store", payload)).replayed, true);
+  const row = (await db.query<{ catalog_status: string; relevance: unknown }>("select catalog_status,relevance from public.policies")).rows[0];
+  assert.equal(row.catalog_status, "REVIEW");
+  assert.deepEqual(row.relevance, payload.relevance);
+  await assert.rejects(command("relevance_store", { ...payload, relevance: { ...payload.relevance, reason: "다른 보류 판정" } }), /RELEVANCE_VERSION_CONFLICT/);
+});
+
+test("신규 수집 v4는 여섯 태그와 직접 근거를 저장하고 이전 자동 평가의 덮어쓰기를 막는다", async () => {
+  const lease = await start();
+  await save(lease, page(1, ["v4-active"], 1));
+  const bundle = raw("v4-active", "주민 의료비 지원");
+  bundle.detail[0].tgtrDtlCn = "소득과 거주기간 기준을 충족하는 지역 주민";
+  bundle.detail[0].alwServCn = "외래 진료비와 약제비 지원";
+  const normalized = normalizeBokji(bundle);
+  const { snapshotId } = await command<{ snapshotId: string }>("snapshot", {
+    ...lease, externalId: "v4-active", raw: bundle, rawHash: normalized.rawHash,
+    hashVersion: normalized.hashVersion, evidence: [],
+  });
+  const relevance = evaluateCollectionRelevance(normalized.display);
+  assert.equal(relevance.status, "RELATED");
+  await command("apply", {
+    ...lease, externalId: "v4-active", snapshotId, normalized,
+    quality: evaluatePolicyQuality(bundle, normalized), changes: { displayChanged: true }, relevance,
+  });
+  const row = (await db.query<{ source_id: string; catalog_status: string; relevance: typeof relevance }>(
+    "select source_id,catalog_status,relevance from public.policies",
+  )).rows[0];
+  assert.equal(row.catalog_status, "ACTIVE");
+  assert.deepEqual(row.relevance, relevance);
+  const old = evaluatePolicyRelevance(normalized.display);
+  const preserved = await command<{ preservedNewer: boolean }>("relevance_store", {
+    sourceId: row.source_id, snapshotId, displayHash: normalized.displayHash,
+    normalizerVersion: normalized.normalizerVersion, relevance: old,
+  });
+  assert.equal(preserved.preservedNewer, true);
+  assert.deepEqual((await db.query<{ relevance: unknown }>("select relevance from public.policies")).rows[0].relevance, relevance);
+
+  const before = await dump();
+  await assert.rejects(command("relevance_store", {
+    sourceId: row.source_id, snapshotId, displayHash: normalized.displayHash,
+    normalizerVersion: normalized.normalizerVersion,
+    relevance: { ...relevance, evidence: relevance.evidence.slice(0, 1) },
+  }), /INVALID_COLLECTION_RELEVANCE/);
+  assert.deepEqual(await dump(), before);
+});
+
+test("신규 수집 v4 보류는 v6 수동 검수로 이어지고 목록 제외는 이름 근거를 요구한다", async () => {
+  const lease = await start();
+  await save(lease, page(1, ["v4-review", "v4-out"], 2));
+  const bundle = raw("v4-review", "지정 장학금");
+  bundle.detail[0].tgtrDtlCn = "학생";
+  bundle.detail[0].alwServCn = "장학금 지원";
+  const normalized = normalizeBokji(bundle);
+  const { snapshotId } = await command<{ snapshotId: string }>("snapshot", {
+    ...lease, externalId: "v4-review", raw: bundle, rawHash: normalized.rawHash,
+    hashVersion: normalized.hashVersion, evidence: [],
+  });
+  const previousRelevance = evaluateCollectionRelevance(normalized.display);
+  assert.equal(previousRelevance.status, "REVIEW");
+  await command("apply", {
+    ...lease, externalId: "v4-review", snapshotId, normalized,
+    quality: evaluatePolicyQuality(bundle, normalized), changes: { displayChanged: true }, relevance: previousRelevance,
+  });
+  const sourceId = (await db.query<{ source_id: string }>("select source_id from public.policies")).rows[0].source_id;
+  const review = {
+    version: "policy-relevance-review-6", status: "REVIEW", categories: [], evidence: [],
+    conditionChecks: ["교육 대상 학교급 확인"], previousRelevance,
+    reason: "학교급이 없어 아동 교육 관련성을 확정할 수 없음",
+  };
+  const payload = {
+    sourceId, snapshotId, displayHash: normalized.displayHash,
+    normalizerVersion: normalized.normalizerVersion, reviewOnly: true,
+    expectedNormalized: normalized, previousRelevance, relevance: review,
+  };
+  assert.equal((await command("relevance_store", payload)).status, "REVIEW");
+  assert.equal((await command("relevance_store", payload)).replayed, true);
+
+  const outside = evaluateCollectionRelevance({ name: "중소기업 수출 장비 지원" });
+  assert.equal(outside.status, "REVIEW");
+  const outsideBundle = raw("v4-out", "중소기업 수출 장비 지원");
+  outsideBundle.detail[0].tgtrDtlCn = "수출 중소기업";
+  outsideBundle.detail[0].alwServCn = "수출 장비 구입비 지원";
+  const outsideNormalized = normalizeBokji(outsideBundle);
+  const outsideRelevance = evaluateCollectionRelevance(outsideNormalized.display);
+  assert.equal(outsideRelevance.status, "UNRELATED");
+  const outsideSnapshot = await command<{ snapshotId: string }>("snapshot", {
+    ...lease, externalId: "v4-out", raw: outsideBundle,
+    rawHash: outsideNormalized.rawHash, hashVersion: outsideNormalized.hashVersion, evidence: [],
+  });
+  const invalid = {
+    ...outsideRelevance,
+    evidence: outsideRelevance.evidence.map((evidence) =>
+      evidence.field === "benefit_text"
+        ? { ...evidence, excerpt: "장비 구입비 지원" }
+        : evidence,
+    ),
+  };
+  await assert.rejects(command("auto_exclude", {
+    ...lease, externalId: "v4-out", phase: "DETAIL", snapshotId: outsideSnapshot.snapshotId,
+    normalized: outsideNormalized, relevance: invalid,
+  }), /INVALID_SCOPE_EXCLUSION/);
+  assert.equal((await command("auto_exclude", {
+    ...lease, externalId: "v4-out", phase: "DETAIL", snapshotId: outsideSnapshot.snapshotId,
+    normalized: outsideNormalized, relevance: outsideRelevance,
+  })).status, "EXCLUDED");
+  const excluded = (await db.query<{
+    scope_normalized: typeof outsideNormalized;
+    scope_relevance: typeof outsideRelevance;
+  }>("select scope_normalized,scope_relevance from public.policy_sync_items where run_id=$1 and external_id='v4-out'", [lease.runId])).rows[0];
+  assert.deepEqual(excluded.scope_normalized, outsideNormalized);
+  assert.deepEqual(excluded.scope_relevance, outsideRelevance);
+  assert.equal((await db.query<{ count: number }>(
+    "select count(*)::integer as count from public.policies p join public.policy_sources s on s.id=p.source_id where s.external_id='v4-out'",
+  )).rows[0].count, 0);
 });

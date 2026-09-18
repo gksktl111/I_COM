@@ -1,5 +1,5 @@
 import { env } from "node:process";
-import { evaluatePolicyRelevance } from "./relevance.ts";
+import { evaluateCollectionRelevance } from "./collection-relevance.ts";
 import type { RawBundle, NormalizedBundle } from "./normalize.ts";
 
 export type CurrentPolicy = {
@@ -47,7 +47,7 @@ export function createRepository(
           | undefined;
         payload = {
           ...payload,
-          relevance: evaluatePolicyRelevance(normalized?.display ?? {}),
+          relevance: evaluateCollectionRelevance(normalized?.display ?? {}),
         };
       }
       let response: Response;
