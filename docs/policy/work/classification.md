@@ -1,6 +1,6 @@
 # 정책 관련성·분야 라벨·검수 운영
 
-관련성 후보 선별 → 여섯 분야 분류 → 원문 검수 저장의 세 단계를 구분한다. 자동 관련성 버전은 `policy-relevance-3`, 원문 재검토 버전은 `policy-relevance-review-1/2/3`, 공식 자료 재검수 버전은 `policy-relevance-review-4`다. 분류 사전의 논리 초안은 `interest-taxonomy-v2-draft`, 구현된 평가 버전은 `interest-taxonomy-2/rules-1`이다. `ACTIVE`, `VERIFIED`, 공개 승인, 자격 비교 가능 상태는 서로 대체하지 않는다.
+관련성 후보 선별 → 여섯 분야 분류 → 원문 검수 저장의 세 단계를 구분한다. 자동 관련성 버전은 `policy-relevance-3`, 원문 재검토 버전은 `policy-relevance-review-1/2/3`, 공식 자료 재검수 버전은 `policy-relevance-review-4`, 여섯 태그 검수 버전은 `policy-relevance-review-5/6`이다. 분류 사전의 논리 초안은 `interest-taxonomy-v2-draft`, 구현된 평가 버전은 `interest-taxonomy-2/rules-1`이다. `ACTIVE`, `VERIFIED`, 공개 승인, 자격 비교 가능 상태는 서로 대체하지 않는다.
 
 이 문서의 명령은 저장소 루트에서 실행한다. 날짜별 재분류·1,000건 AI 보조 검수·독립 표본 조정·마이그레이션·검증 결과는 [구현·검증 이력](../records/classification-and-operations-history.md)에 보존한다. 당시 건수는 현재 DB 집계나 인간 검수·최종 정확도 증명이 아니다. 공개 조회와 질문의 현재 동작은 최신 추천·UI 문서를 따른다.
 
@@ -13,7 +13,7 @@
 - 제목·기관명·제외 문구에만 키워드가 있거나 실제 지원 내용 자체를 확인할 수 없으면 보류한다. 명확한 범위 밖 사업을 단어 유사성으로 활성화하지 않는다.
 - 활성화는 관련 정책 안내·잠정 추천의 허용이다. 신청 가능, 현재 모집 중, 자격 검수 완료를 의미하지 않는다. 기존 자격 규칙·공개 승인 체계는 별도다.
 
-[첫 16건 적용 결과](../records/six-tag-activation-20260914.md)에 실제 적용 범위와 남은 건수를 기록했다. 신규 검수는 `policy-relevance-review-5`를 사용한다. 아래 7개 관련성 분류와 v1–v4는 기존 수집·평가 이력의 계약이며 이번 활성화 기준보다 우선하지 않는다. 기존 정책을 문서 변경만으로 자동 재분류하지 않는다.
+[첫 16건 적용 결과](../records/six-tag-activation-20260914.md)에 v5 적용 범위를, [후속 1,406건 검토 결과](../records/six-tag-disposition-review-20260914.md)에 전수 판정과 적용 상태를 기록했다. 후속 전수 검수는 명확한 태그 불일치도 기록할 수 있는 `policy-relevance-review-6`를 사용한다. 아래 7개 관련성 분류와 v1–v4는 기존 수집·평가 이력의 계약이며 이번 활성화 기준보다 우선하지 않는다. 기존 정책을 문서 변경만으로 자동 재분류하지 않는다.
 
 ## 1단계: 서비스 관련성 후보 선별
 
@@ -52,9 +52,11 @@ v3는 아동 상담·의료·급식·장학·문화·체육·생활 지원, 초�
 
 ### 여섯 태그 기준 재검수
 
-`--review-version policy-relevance-review-5`는 현재 REVIEW인 정책에 ACTIVATE 또는 KEEP_REVIEW를 기록한다. ACTIVATE에는 6개 화면 태그와 `target_text`, `benefit_text`의 정확한 원문 인용이 모두 필요하다. `conditionChecks`는 필수 배열이며 확인할 세부 조건을 기록한다. 빈 배열도 자격 검수 완료를 의미하지 않는다. 공식 사이트 재조회·`sourceConsistency=CONFIRMED`는 태그 활성화의 전제조건이 아니다.
+`--review-version policy-relevance-review-6`는 현재 REVIEW인 정책에 ACTIVATE, EXCLUDE 또는 KEEP_REVIEW를 기록한다. 실제 대상·지원 내용이 6개 화면 태그에 부합하면 ACTIVATE, 명확히 부합하지 않으면 EXCLUDE, 원문이 빠지거나 충돌해 관련성 자체를 판단할 수 없을 때만 KEEP_REVIEW를 사용한다. 연령·소득·거주·기간·신청방법 등의 세부 자격 확인은 KEEP_REVIEW 사유가 아니라 `conditionChecks`에 보존한다.
 
-전체 원문, 스냅샷, 표시 해시, 직전 판정이 일치해야 반영한다. 이전 v4의 공식 근거·충돌 기록도 `previousRelevance`에 보존한다. v5의 동일 요청 재시도는 중복 기록하지 않고 과거 자동·검수 버전이 v5를 되돌리지 못한다. v5 활성 정책의 태그는 추천 조회에도 연결하며 원문 변경으로 무효화된 평가를 재사용하지 않는다.
+ACTIVATE에는 6개 화면 태그와 `target_text`, `benefit_text`의 정확한 원문 인용이 모두 필요하다. EXCLUDE에는 `target_text`, `benefit_text`, `criteria_text` 중 하나 이상의 직접 인용이 필요하며 범위 밖인 이유를 기록한다. KEEP_REVIEW는 분야와 긍정 근거를 비우고 실제 내용 공백을 설명한다. `conditionChecks`는 모든 결정에서 필수 배열이고, 빈 배열도 자격 검수 완료를 의미하지 않는다. 공식 사이트 재조회·`sourceConsistency=CONFIRMED`는 태그 판정의 전제조건이 아니다.
+
+전체 원문, 스냅샷, 표시 해시, 직전 판정이 일치해야 반영한다. 이전 v4의 공식 근거·충돌 기록과 v5의 보류 판정도 `previousRelevance`에 보존한다. v6의 동일 요청 재시도는 중복 기록하지 않고 과거 자동·검수 버전이 v6를 되돌리지 못한다. v5·v6 활성 정책의 태그는 추천 조회에도 연결하며 원문 변경으로 무효화된 평가를 재사용하지 않는다. v5는 첫 활성 배치의 이력 계약으로 유지하며 새 전수 판정에는 사용하지 않는다.
 
 ### 관리자와 재평가
 

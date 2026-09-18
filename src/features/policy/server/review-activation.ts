@@ -8,6 +8,7 @@ export const REVIEW_DISPOSITION_VERSION = "policy-relevance-review-2";
 export const REVIEW_CORRECTION_VERSION = "policy-relevance-review-3";
 export const REVIEW_REASSESSMENT_VERSION = "policy-relevance-review-4";
 export const REVIEW_TAG_VERSION = "policy-relevance-review-5";
+export const REVIEW_TAG_DISPOSITION_VERSION = "policy-relevance-review-6";
 export type OfficialReviewEvidence = {
   originalUrl: string;
   finalUrl: string;
@@ -64,12 +65,13 @@ function validEvidenceUrl(value: unknown): boolean {
 export function prepareReviewActivation(
   inventory: { queriedAt: string; rows: ReviewSourceRow[] },
   decisions: ReviewDecisions,
-  version: typeof REVIEW_RELEVANCE_VERSION | typeof REVIEW_DISPOSITION_VERSION | typeof REVIEW_CORRECTION_VERSION | typeof REVIEW_REASSESSMENT_VERSION | typeof REVIEW_TAG_VERSION = REVIEW_RELEVANCE_VERSION,
+  version: typeof REVIEW_RELEVANCE_VERSION | typeof REVIEW_DISPOSITION_VERSION | typeof REVIEW_CORRECTION_VERSION | typeof REVIEW_REASSESSMENT_VERSION | typeof REVIEW_TAG_VERSION | typeof REVIEW_TAG_DISPOSITION_VERSION = REVIEW_RELEVANCE_VERSION,
   recordKept = false,
 ) {
-  const tagging = version === REVIEW_TAG_VERSION;
+  const tagDisposition = version === REVIEW_TAG_DISPOSITION_VERSION;
+  const tagging = version === REVIEW_TAG_VERSION || tagDisposition;
   const reassessing = version === REVIEW_REASSESSMENT_VERSION;
-  if (![REVIEW_RELEVANCE_VERSION, REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION, REVIEW_REASSESSMENT_VERSION, REVIEW_TAG_VERSION].includes(version)) fail("version");
+  if (![REVIEW_RELEVANCE_VERSION, REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION, REVIEW_REASSESSMENT_VERSION, REVIEW_TAG_VERSION, REVIEW_TAG_DISPOSITION_VERSION].includes(version)) fail("version");
   if ((recordKept && version === REVIEW_RELEVANCE_VERSION) || (version === REVIEW_CORRECTION_VERSION && !recordKept)) fail("version");
   if (!Number.isFinite(Date.parse(inventory.queriedAt)) ||
       decisions.kind !== "CATALOG_REVIEW_DECISIONS" ||
@@ -87,7 +89,7 @@ export function prepareReviewActivation(
         ![REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION].includes((row.relevance as Record<string, unknown>).version as string) ||
         (row.relevance as Record<string, unknown>).status !== "REVIEW")) fail("reassessment-source");
     if (tagging && (!row.relevance || typeof row.relevance !== "object" || Array.isArray(row.relevance) ||
-        !["policy-relevance-1", "policy-relevance-2", "policy-relevance-3", REVIEW_RELEVANCE_VERSION, REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION, REVIEW_REASSESSMENT_VERSION].includes((row.relevance as Record<string, unknown>).version as string) ||
+        !["policy-relevance-1", "policy-relevance-2", "policy-relevance-3", REVIEW_RELEVANCE_VERSION, REVIEW_DISPOSITION_VERSION, REVIEW_CORRECTION_VERSION, REVIEW_REASSESSMENT_VERSION, ...(tagDisposition ? [REVIEW_TAG_VERSION] : [])].includes((row.relevance as Record<string, unknown>).version as string) ||
         (row.relevance as Record<string, unknown>).status !== "REVIEW")) fail("tag-source");
     if (version === REVIEW_CORRECTION_VERSION &&
         (!row.relevance || typeof row.relevance !== "object" ||
@@ -127,7 +129,7 @@ export function prepareReviewActivation(
     }
     const excluding = decision.decision === "EXCLUDE";
     if (!keeping && ((decision.decision !== "ACTIVATE" && !excluding) ||
-        (excluding && ((version !== REVIEW_DISPOSITION_VERSION && !reassessing) || decision.categories.length !== 0)) ||
+        (excluding && ((version !== REVIEW_DISPOSITION_VERSION && !reassessing && !tagDisposition) || decision.categories.length !== 0)) ||
         (!excluding && !decision.categories.length) ||
         new Set(decision.categories).size !== decision.categories.length ||
         decision.categories.some((category) => !(tagging ? RECOMMENDATION_FIELDS.map((field) => field.label) : Object.values(POLICY_RELEVANCE_CATEGORIES)).some((label) => label === category)) ||
@@ -144,8 +146,10 @@ export function prepareReviewActivation(
     }
     if (!keeping && version === REVIEW_DISPOSITION_VERSION && !decision.evidence.some((e) =>
       ["target_text", "benefit_text", "criteria_text"].includes(e.field))) fail("direct-evidence-required");
-    if (tagging && !keeping && !["target_text", "benefit_text"].every((field) =>
+    if (tagging && !keeping && !excluding && !["target_text", "benefit_text"].every((field) =>
       decision.evidence.some((e) => e.field === field))) fail("tag-direct-evidence-required");
+    if (tagDisposition && excluding && !decision.evidence.some((e) =>
+      ["target_text", "benefit_text", "criteria_text"].includes(e.field))) fail("direct-evidence-required");
     return [{
       name: decision.name,
       sourceDigest: hashJson(row.normalized),

@@ -231,3 +231,23 @@ test("v5 records pending scope with evidence and rejects nonpending or unsupport
   inventory.rows[0].catalog_status = "ACTIVE";
   assert.throws(() => prepareReviewActivation(inventory, decisions, "policy-relevance-review-5"), /source/);
 });
+
+
+test("v6 excludes tag mismatches with direct evidence while preserving uncertainty separately", () => {
+  const { inventory, decisions } = tagFixture();
+  inventory.rows[0].relevance.version = "policy-relevance-review-5";
+  inventory.rows[0].normalized.display.target_text = "대학교 재학생";
+  inventory.rows[0].normalized.display.benefit_text = "대학 등록금 장학금";
+  Object.assign(decisions.items[0], { decision: "EXCLUDE", categories: [], reason: "대학 등록금 지원으로 여섯 태그에 미부합",
+    evidence: [{ field: "benefit_text", excerpt: "대학 등록금 장학금", rule: "아동 교육이 아닌 대학 등록금" }], conditionChecks: [] });
+  const plan = prepareReviewActivation(inventory, decisions, "policy-relevance-review-6");
+  assert.equal(plan.excludeCount, 1);
+  assert.equal(plan.recordedReviewCount, 0);
+  assert.equal(plan.items[0].payload.relevance.status, "UNRELATED");
+  assert.deepEqual(plan.items[0].payload.previousRelevance, inventory.rows[0].relevance);
+  assert.deepEqual(plan.items[0].payload.expectedNormalized, inventory.rows[0].normalized);
+  decisions.items[0].evidence = [{ field: "name", excerpt: "학생 급식 지원", rule: "제목만 확인" }];
+  assert.throws(() => prepareReviewActivation(inventory, decisions, "policy-relevance-review-6"), /direct-evidence-required/);
+  Object.assign(decisions.items[0], { decision: "KEEP_REVIEW", evidence: [], reason: "실제 지원 내용 미확인" });
+  assert.equal(prepareReviewActivation(inventory, decisions, "policy-relevance-review-6").recordedReviewCount, 1);
+});

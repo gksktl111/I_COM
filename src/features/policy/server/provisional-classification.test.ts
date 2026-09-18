@@ -135,11 +135,11 @@ test("classification text changes, renamed source identities and other categorie
   }
 });
 
-test("projected v5 scope drives provisional recommendations without keywords and excludes other fields", async () => {
+test("projected v6 scope drives provisional recommendations without keywords and excludes other fields", async () => {
   const policy = projectPublicPolicy({
     source_id: "00000000-0000-0000-0000-000000000005",
     normalized: { display: { name: "보조기기 제공", target_text: "지역 주민", benefit_text: "보조기기 대여 및 수리" } },
-    relevance: { version: "policy-relevance-review-5", status: "RELATED", categories: ["의료·건강"], conditionChecks: ["세부 소득 조건 확인 필요"] },
+    relevance: { version: "policy-relevance-review-6", status: "RELATED", categories: ["의료·건강"], conditionChecks: ["세부 소득 조건 확인 필요"] },
   })!;
   const request = { flow: "CATEGORY_BANK_V1", revision: 0, category: "health", childProfiles: [], needs: [], bankAnswers: [], phase: "RESULTS" };
   const recommend = createCategoryRecommendationService({ loadPolicies: async () => [policy] });
