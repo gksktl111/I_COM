@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "policy-database-retention-plan-1",
+  "projectRef": "visumyadkxleiqtxokqg",
+  "capturedAt": "2026-09-18T10:31:24.270171+00:00",
+  "databaseBytesBefore": 613018771,
+  "databasePrettyBefore": "585 MB",
+  "policyCounts": {
+    "ACTIVE": 4414,
+    "REVIEW": 79,
+    "EXCLUDED": 1402
+  },
+  "retentionRule": "출처별 최신 자동 수집 실행 1건, 전체 3건을 보존",
+  "retainedRunIds": [
+    "9216ed5b-2b00-474b-a9b5-f646d85cc414",
+    "430461c2-e846-43d6-ac8d-2e98962aa361",
+    "6d2476ea-95c0-4875-8e26-b774f55561ef"
+  ],
+  "oldRunIds": [
+    "10de6f39-f559-4881-96fb-1683817db36d",
+    "547a59cf-f9b3-4d86-be97-318be3ef4455",
+    "6cea7c91-158d-436a-85fc-950060c2aa52",
+    "78f41e01-e944-459d-a025-d60ecd441b5a",
+    "851043be-6342-4dff-b91b-f03424d9d266",
+    "87f0678c-b4f1-4bb4-a9bf-2153cf37ba57",
+    "8a75d68a-9a14-4ae0-ac8a-02568b5902fd",
+    "8ef95422-a4d3-4474-ba3e-9cbd186899e3"
+  ],
+  "oldRunDigest": "c4d59ee728fb5ececc62e924f529eaebeada2953e2addc15acdfb7b2b365bda4",
+  "deleteCounts": {
+    "runs": 8,
+    "syncItems": 11440,
+    "autoPages": 237,
+    "qualityObservations": 6310,
+    "autoJobs": 8,
+    "snapshots": 1213
+  },
+  "snapshotCandidateDigest": "bb95e4243a214ce3fb47a80584aff82093a95d34bbaaf2a070d3dd9b0db065fb",
+  "tableBytesBefore": {
+    "policySourceSnapshots": 261300224,
+    "policySyncItems": 247971840,
+    "policies": 24969216,
+    "policyAutoPages": 20922368,
+    "policyRelevanceObservations": 18677760,
+    "policyQualityObservations": 18071552
+  },
+  "oldRunSummary": [
+    { "id": "851043be-6342-4dff-b91b-f03424d9d266", "provider": "BOKJIRO_CENTRAL", "status": "PARTIAL", "stopReason": "UPSTREAM_ERROR", "startedAt": "2026-09-09T08:49:15.674939+00:00", "calls": 105, "summary": { "failed": 29, "pending": 0, "success": 94, "excluded": 27 } },
+    { "id": "87f0678c-b4f1-4bb4-a9bf-2153cf37ba57", "provider": "BOKJIRO_CENTRAL", "status": "PARTIAL", "stopReason": "SOURCE_DRIFT", "startedAt": "2026-09-08T07:19:48.116873+00:00", "calls": 60, "summary": { "failed": 46, "pending": 0, "success": 53, "excluded": 1 } },
+    { "id": "10de6f39-f559-4881-96fb-1683817db36d", "provider": "BOKJIRO_CENTRAL", "status": "SUCCESS", "stopReason": null, "startedAt": "2026-09-08T05:47:51.418018+00:00", "calls": 50, "summary": { "failed": 0, "pending": 0, "success": 40 } },
+    { "id": "78f41e01-e944-459d-a025-d60ecd441b5a", "provider": "BOKJIRO_LOCAL", "status": "PARTIAL", "stopReason": "UPSTREAM_ERROR", "startedAt": "2026-09-09T08:49:19.548783+00:00", "calls": 784, "summary": { "failed": 0, "pending": 0, "success": 733, "excluded": 117 } },
+    { "id": "547a59cf-f9b3-4d86-be97-318be3ef4455", "provider": "BOKJIRO_LOCAL", "status": "PARTIAL", "stopReason": "SOURCE_DRIFT", "startedAt": "2026-09-08T07:20:42.427642+00:00", "calls": 674, "summary": { "failed": 0, "pending": 0, "success": 633, "excluded": 67 } },
+    { "id": "6cea7c91-158d-436a-85fc-950060c2aa52", "provider": "GOV24", "status": "PARTIAL", "stopReason": "SOURCE_DRIFT", "startedAt": "2026-09-09T09:20:00.56361+00:00", "calls": 12142, "summary": { "failed": 0, "pending": 0, "success": 1967, "excluded": 2380, "skippedExisting": 1803 } },
+    { "id": "8ef95422-a4d3-4474-ba3e-9cbd186899e3", "provider": "GOV24", "status": "PARTIAL", "stopReason": "CALL_BUDGET", "startedAt": "2026-09-09T08:49:10.416051+00:00", "calls": 3899, "summary": { "failed": 0, "pending": 21, "success": 866, "excluded": 163 } },
+    { "id": "8a75d68a-9a14-4ae0-ac8a-02568b5902fd", "provider": "GOV24", "status": "PARTIAL", "stopReason": "SOURCE_DRIFT", "startedAt": "2026-09-08T07:22:42.800756+00:00", "calls": 8452, "summary": { "failed": 0, "pending": 15, "success": 1803, "excluded": 582 } }
+  ],
+  "application": {
+    "status": "NOT_APPLIED",
+    "vacuumRequiredForPhysicalReclaim": true
+  }
+}
