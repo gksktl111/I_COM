@@ -13,9 +13,9 @@ export function Chip({
       type="button"
       aria-pressed={selected}
       className={cn(
-        "disabled:bg-muted disabled:text-muted-foreground inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full border px-4 py-2 text-base transition-colors",
+        "disabled:bg-muted disabled:text-muted-foreground inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full border-2 px-4 py-2 text-base transition-colors",
         selected
-          ? "border-primary bg-accent border-2 px-[15px] font-semibold text-[#164b46]"
+          ? "border-primary bg-accent font-semibold text-[#164b46]"
           : "border-input text-foreground hover:border-primary hover:text-primary bg-white",
         className,
       )}

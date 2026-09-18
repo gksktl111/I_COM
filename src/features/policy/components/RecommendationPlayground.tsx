@@ -108,7 +108,7 @@ function AnswerChoices({
             type="button"
             aria-pressed={selected === index}
             onClick={() => setSelected(selected === index ? null : index)}
-            className={`focus-visible:outline-primary flex min-h-16 items-center justify-between gap-3 rounded-full border px-5 py-3 text-left font-medium transition-colors focus-visible:outline-2 ${selected === index ? "border-primary bg-[#e8f3ef] text-[#164b46]" : "border-[#7b8d87] bg-white hover:bg-[#f1f3f0]"}`}
+            className={`focus-visible:outline-primary flex min-h-16 items-center justify-between gap-3 rounded-sm border px-5 py-3 text-left font-medium transition-colors focus-visible:outline-2 ${selected === index ? "border-primary bg-[#e8f3ef] text-[#164b46]" : "border-[#7b8d87] bg-white hover:bg-[#f1f3f0]"}`}
           >
             <span>{testMode ? valueLabel(option.value) : option.label}</span>
             <Check
@@ -362,9 +362,8 @@ export function RecommendationPlayground({
         </div>
         <p className="mb-6 text-sm leading-6 text-slate-500">
           {testMode
-            ? "교복·입학준비 지원의 합성 사례 2개로 질문 흐름을 체험해요. 실제 신청 자격·접수 정보가 아니에요."
-            : "거주지와 지원 분야를 선택한 뒤 필요한 정보를 차근차근 확인해요. 답변은 추천 계산을 위해 서버로 전송돼요."}{" "}
-          답변은 저장하지 않으며 새로고침하면 초기화돼요.
+            ? "합성 정책으로 질문 흐름을 확인하는 화면입니다. 실제 자격·접수 정보가 아니며 답변은 저장되지 않습니다."
+            : "거주지와 지원 분야를 선택하면 필요한 조건만 확인합니다. 답변은 추천 계산을 위해 서버로 전송되며 저장하지 않습니다."}
         </p>
         <section
           className="overflow-hidden rounded-lg border border-[#dce3de] bg-white"
@@ -607,7 +606,7 @@ export function RecommendationPlayground({
               {question ? (
                 <>
                   <div className="mb-5 flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-teal-50 px-3 py-1 text-sm font-semibold text-teal-800">
+                    <span className="rounded-sm bg-teal-50 px-3 py-1 text-sm font-semibold text-teal-800">
                       {question.factKey.subject.kind === "CHILD"
                         ? childLabel(question.factKey.subject.id)
                         : "가구 공통"}

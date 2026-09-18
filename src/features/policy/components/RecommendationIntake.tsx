@@ -112,7 +112,7 @@ export function RecommendationIntake({
               type="button"
               aria-pressed={category === field.id}
               onClick={() => onCategory(category === field.id ? "" : field.id)}
-              className={`focus-visible:outline-primary flex min-h-14 cursor-pointer items-center justify-between gap-3 rounded-full border px-4 py-3 text-left text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${category === field.id ? "border-primary ring-primary bg-[#e8f3ef] font-semibold text-[#164b46] ring-1" : "hover:border-primary border-[#7b8d87] bg-white text-slate-800 hover:bg-[#f1f3f0]"}`}
+              className={`focus-visible:outline-primary flex min-h-14 cursor-pointer items-center justify-between gap-3 rounded-sm border px-4 py-3 text-left text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${category === field.id ? "border-primary ring-primary bg-[#e8f3ef] font-semibold text-[#164b46] ring-1" : "hover:border-primary border-[#7b8d87] bg-white text-slate-800 hover:bg-[#f1f3f0]"}`}
             >
               {field.label}
               <Check

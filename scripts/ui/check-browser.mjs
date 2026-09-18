@@ -128,15 +128,13 @@ try {
   await viewport(1280);
   await navigate("/");
   assert.ok(
-    await evaluate(
-      "document.body.innerText.includes('대한민국 아동 공공 복지 나침반')",
-    ),
+    await evaluate("document.body.innerText.includes('우리 가족에게 맞는')"),
   );
   assert.equal(
     await evaluate(
       "document.querySelector('main a[href=\"/policy/match\"]').textContent.trim()",
     ),
-    "맞춤 진단 시작하기",
+    "맞춤 정책 찾기",
   );
   assert.equal(
     await evaluate(
@@ -177,34 +175,18 @@ try {
     ),
     "false",
   );
-  await click("작성 기능 안내");
-  await until("!!document.querySelector('dialog[open]')");
   assert.equal(
-    await evaluate(
-      "document.querySelector('dialog').contains(document.activeElement)",
-    ),
+    await evaluate("document.querySelector('main details').open"),
+    false,
+    "community details start collapsed",
+  );
+  await evaluate("document.querySelector('main details summary').click()");
+  assert.equal(
+    await evaluate("document.querySelector('main details').open"),
     true,
-    "focus enters modal",
+    "community details disclose supporting information",
   );
-  await send("Input.dispatchKeyEvent", {
-    type: "keyDown",
-    key: "Escape",
-    code: "Escape",
-    windowsVirtualKeyCode: 27,
-  });
-  await send("Input.dispatchKeyEvent", {
-    type: "keyUp",
-    key: "Escape",
-    code: "Escape",
-    windowsVirtualKeyCode: 27,
-  });
-  await until("!document.querySelector('dialog[open]')");
-  assert.equal(
-    await evaluate("document.activeElement.textContent.trim()"),
-    "작성 기능 안내",
-    "focus returns to trigger",
-  );
-  console.log("PASS: mobile menu and modal focus/Escape");
+  console.log("PASS: mobile menu and community disclosure");
   await viewport(1280);
   await click("크게");
   assert.equal(

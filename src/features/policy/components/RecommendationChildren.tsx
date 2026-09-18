@@ -86,7 +86,7 @@ export function RecommendationChildren({
                             profile.sex === option.value ? null : option.value,
                         })
                       }
-                      className={`focus-visible:outline-primary flex min-h-12 flex-1 cursor-pointer items-center justify-center gap-2 rounded-full border px-3 py-3 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${profile.sex === option.value ? "border-primary ring-primary bg-[#e8f3ef] font-semibold text-[#164b46] ring-1" : "hover:border-primary border-[#7b8d87] bg-white text-slate-800 hover:bg-[#f1f3f0]"}`}
+                      className={`focus-visible:outline-primary flex min-h-12 flex-1 cursor-pointer items-center justify-center gap-2 rounded-sm border px-3 py-3 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${profile.sex === option.value ? "border-primary ring-primary bg-[#e8f3ef] font-semibold text-[#164b46] ring-1" : "hover:border-primary border-[#7b8d87] bg-white text-slate-800 hover:bg-[#f1f3f0]"}`}
                     >
                       {option.label}
                       {profile.sex === option.value && (

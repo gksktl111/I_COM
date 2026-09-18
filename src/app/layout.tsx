@@ -55,10 +55,11 @@ export default function RootLayout({
             }}
             className="pointer-events-none flex justify-center"
           >
-            <div className="pointer-events-auto max-w-3xl rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-amber-900 shadow-sm">
+            <div className="border-border text-foreground pointer-events-auto max-w-3xl rounded-md border bg-white px-4 py-3 shadow-sm">
               <p className="text-sm font-medium">
-                NEXT_PUBLIC_NCP_KEY_ID가 설정되지 않았습니다. .env.local 파일에
-                키를 추가하면 지도 SDK가 로드됩니다.
+                <strong className="text-primary">개발 설정 필요</strong> ·
+                NEXT_PUBLIC_NCP_KEY_ID를 .env.local에 추가하면 지도 SDK가
+                로드됩니다.
               </p>
             </div>
           </div>

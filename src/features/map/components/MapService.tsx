@@ -198,15 +198,15 @@ export function MapService() {
                   {detailPlace.address || "주소 정보가 제공되지 않았습니다."}
                 </dd>
               </div>
-              <div>
-                <dt className="text-muted-foreground mb-1 text-sm font-semibold">
-                  위치 좌표 (위도, 경도)
-                </dt>
-                <dd className="break-words tabular-nums">
-                  {detailPlace.lat.toFixed(6)}, {detailPlace.lng.toFixed(6)}
-                </dd>
-              </div>
             </dl>
+            <details className="border-t pt-3 text-sm">
+              <summary className="text-primary flex min-h-11 cursor-pointer items-center font-semibold">
+                위치 좌표 보기
+              </summary>
+              <p className="text-muted-foreground pb-2 tabular-nums">
+                {detailPlace.lat.toFixed(6)}, {detailPlace.lng.toFixed(6)}
+              </p>
+            </details>
           </div>
         )}
       </Dialog>

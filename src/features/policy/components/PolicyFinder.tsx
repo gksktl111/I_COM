@@ -65,9 +65,6 @@ export function PolicyFinder() {
       <div className={styles.content}>
         <div className="mb-8 flex flex-wrap items-end justify-between gap-5">
           <div>
-            <p className={`${styles.eyebrow} mb-2`}>
-              우리 가족을 위한 공공 지원 정보
-            </p>
             <h1 className={styles.pageTitle}>정책 둘러보기</h1>
             <p className={`${styles.bodyCopy} mt-3 max-w-2xl`}>
               수집된 정부·지자체의 육아·가족 지원 정책을 살펴보고, 지원 내용과

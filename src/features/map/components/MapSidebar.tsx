@@ -91,9 +91,11 @@ export function MapSidebar({
             내 위치
           </Button>
         </div>
-        <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
-          현재 위치를 기준으로 검색합니다. 위치 권한을 허용해 주세요.
-        </p>
+        {!hasLocation && (
+          <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
+            위치 권한을 허용하거나 시설명을 검색해 주세요.
+          </p>
+        )}
       </div>
       <div className="border-b px-4 py-3 min-[360px]:px-5">
         <p className="mb-2 text-sm font-semibold">빠른 검색</p>

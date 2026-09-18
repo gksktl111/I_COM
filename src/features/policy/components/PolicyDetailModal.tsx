@@ -76,7 +76,7 @@ export function PolicyDetailModal({
         )
           onClose();
       }}
-      className="fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto overscroll-contain rounded-2xl border border-[#dce3de] bg-white p-0 text-[#182c29] shadow-[0_16px_48px_rgb(24_44_41_/_14%)] backdrop:bg-[#182c29]/40"
+      className="fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto overscroll-contain rounded-lg border border-[#dce3de] bg-white p-0 text-[#182c29] shadow-[0_8px_24px_rgb(24_44_41_/_12%)] backdrop:bg-[#182c29]/40"
     >
       <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-slate-200 bg-white px-5 py-3 sm:px-7">
         <span className="text-sm font-semibold text-slate-600">
@@ -113,10 +113,16 @@ export function PolicyDetailModal({
             >
               {policy.name}
             </h2>
-            <dl className="space-y-4 rounded-lg border border-slate-200 bg-white p-5">
-              <PolicyField label="소관 기관" value={policy.provider_name} />
-              <PolicyField label="정책 소개" value={policy.summary} />
-              <PolicyField label="지원 목적" value={policy.purpose_text} />
+            <dl className="divide-y border-y border-slate-200">
+              <div className="py-4">
+                <PolicyField label="소관 기관" value={policy.provider_name} />
+              </div>
+              <div className="py-4">
+                <PolicyField
+                  label="정책 소개"
+                  value={policy.summary || policy.purpose_text}
+                />
+              </div>
             </dl>
           </header>
 
@@ -125,13 +131,13 @@ export function PolicyDetailModal({
               <PolicyField label="지원 혜택" value={policy.benefit_text} />
             </dl>
           </PolicyAccordion>
-          <PolicyAccordion title="지원 대상 및 선정 기준" defaultOpen>
+          <PolicyAccordion title="지원 대상 및 선정 기준">
             <dl className="space-y-5">
               <PolicyField label="지원 대상" value={policy.target_text} />
               <PolicyField label="선정 기준" value={policy.criteria_text} />
             </dl>
           </PolicyAccordion>
-          <PolicyAccordion title="신청 기간 및 방법" defaultOpen>
+          <PolicyAccordion title="신청 기간 및 방법">
             <dl className="space-y-5">
               <PolicyField
                 label="신청 기간"
@@ -163,7 +169,7 @@ export function PolicyDetailModal({
           </PolicyAccordion>
 
           <section
-            className="space-y-4 rounded-lg border border-teal-100 bg-white p-5"
+            className="space-y-4 border-t border-slate-200 pt-5"
             aria-label="공식 안내 및 신청"
           >
             <p className="text-sm leading-6 text-slate-600">

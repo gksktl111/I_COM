@@ -86,10 +86,10 @@ await send("Emulation.setDeviceMetricsOverride", {
 });
 await send("Page.navigate", { url: origin + "/" });
 await until(
-  `!![...document.querySelectorAll('a')].find(a=>a.textContent.trim()==='맞춤 진단 시작하기')`,
+  `!![...document.querySelectorAll('a')].find(a=>a.textContent.trim()==='맞춤 정책 찾기')`,
 );
 await evaluate(
-  `[...document.querySelectorAll('a')].find(a=>a.textContent.trim()==='맞춤 진단 시작하기').click()`,
+  `[...document.querySelectorAll('a')].find(a=>a.textContent.trim()==='맞춤 정책 찾기').click()`,
 );
 await until(
   `document.body?.innerText.includes('상세 정보 입력하기') && [...document.querySelectorAll('button')].some(b=>Object.keys(b).some(k=>k.startsWith('__reactProps')))`,
@@ -165,17 +165,16 @@ for (const category of [
   }
   if (category !== "아동 교육") await click("거주지·분야 변경");
 }
-await click("질문 시작하기");
-await until(`document.body?.innerText.includes('지금 확인할 질문을 마쳤어요')`);
-await click("추천 결과 보기");
-await until(`document.body?.innerText.includes('맞춤 추천을 준비하고 있어요')`);
-assert.equal(await evaluate("document.querySelectorAll('article').length"), 0);
-assert.equal(
-  await evaluate(
-    "document.body.innerText.includes('받을 수 있는 지원이 없다는 뜻은 아니에요')",
-  ),
-  true,
+await click("상세 질문 시작하기");
+await until(
+  `[...document.querySelectorAll('button')].some(b=>b.textContent.trim()==='추천 결과 보기')`,
 );
+await click("추천 결과 보기");
+await until(`document.body?.innerText.includes('맞춤 정책 추천')`);
+const livePolicyCount = await evaluate(
+  "document.querySelectorAll('article').length",
+);
+assert.ok(livePolicyCount > 0 && livePolicyCount <= 20);
 await capture("recommendation-live-awaiting-review");
 await send("Page.navigate", { url: origin + "/policy/match/test" });
 await until(
@@ -285,7 +284,7 @@ await click("건너뛰기");
 await until(`document.body?.innerText.includes('이번 묶음 2 / 5')`);
 await click("질문 마치기");
 await until(
-  `document.body?.innerText.includes('우리 아이에게 맞는 지원을 정리하고 있어요')`,
+  `document.body?.innerText.includes('선택한 내용과 관련된 지원을 정리하고 있어요')`,
 );
 assert.equal(
   await evaluate(
@@ -296,7 +295,7 @@ assert.equal(
 assert.equal(await evaluate("document.querySelectorAll('article').length"), 0);
 await capture("recommendation-preparing-mobile");
 await until(
-  `document.body?.innerText.includes('우리 가족에게 맞는 정책을 모았어요')`,
+  `document.body?.innerText.includes('입력한 내용과 관련된 정책을 모았어요')`,
 );
 assert.equal(await evaluate("document.querySelectorAll('article').length"), 2);
 assert.equal(
@@ -315,7 +314,7 @@ await evaluate(
 );
 await click("선택한 답변으로 다음");
 await until(
-  `document.body?.innerText.includes('우리 가족에게 맞는 정책을 모았어요')`,
+  `document.body?.innerText.includes('입력한 내용과 관련된 정책을 모았어요')`,
 );
 await click("상세보기");
 await until(`!!document.querySelector('dialog[open]')`);

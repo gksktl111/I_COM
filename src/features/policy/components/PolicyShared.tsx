@@ -1,12 +1,6 @@
 "use client";
 import { useEffect, useState, useSyncExternalStore } from "react";
-import {
-  ArrowRight,
-  Bookmark,
-  Check,
-  CircleHelp,
-  RefreshCw,
-} from "lucide-react";
+import { ArrowRight, Bookmark, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { EmptyState, Notice, Skeleton } from "@/components/ui/feedback";
 import type { PublicPolicy } from "../public/types";
@@ -105,6 +99,23 @@ export function PolicyCard({
   recommendation?: { rank: number; reasons: string[]; tags: string[] };
 }) {
   const [detailOpen, setDetailOpen] = useState(false);
+  const primaryBenefit =
+    policy.benefit_text ||
+    policy.summary ||
+    policy.purpose_text ||
+    "상세 화면에서 지원 내용을 확인해 주세요.";
+  const detailTags = recommendation
+    ? [
+        ...new Set(
+          recommendation.tags.filter(
+            (tag) => tag !== "잠정 추천" && !tag.includes("추가 확인"),
+          ),
+        ),
+      ]
+    : [];
+  const reviewLabel = recommendation?.tags.includes("직접 확인 필요")
+    ? "직접 확인 필요"
+    : "추가 확인 필요";
   return (
     <article
       className={`${styles.policyCard} mb-4 flex flex-col gap-4 p-5 sm:p-6`}
@@ -122,29 +133,9 @@ export function PolicyCard({
               ? `우선 추천 ${recommendation.rank}`
               : `추천 ${recommendation.rank}`}
           </span>
-          {[
-            ...new Set([
-              "추가 확인 필요",
-              ...recommendation.tags.filter(
-                (tag) => tag !== "잠정 추천" && !tag.includes("추가 확인"),
-              ),
-            ]),
-          ].map((tag) => (
-            <span
-              key={tag}
-              className="rounded border border-slate-200 px-2.5 py-1 text-slate-600"
-            >
-              {tag}
-            </span>
-          ))}
+          <span className="text-slate-600">{reviewLabel}</span>
         </div>
       )}
-      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-xs text-slate-500">
-        <span>{policy.provider_name || "소관 기관 확인 필요"}</span>
-        <span className="rounded bg-slate-100 px-2 py-1">
-          신청 일정 원문 확인
-        </span>
-      </div>
       <h2 className="text-lg leading-7 font-bold">
         <button
           type="button"
@@ -155,54 +146,54 @@ export function PolicyCard({
           {policy.name}
         </button>
       </h2>
-      <p className="text-sm leading-6 break-words text-slate-600">
-        {policy.summary ||
-          policy.purpose_text ||
-          "상세 화면에서 정책의 지원 내용을 확인해 주세요."}
+      <p className="text-sm leading-6 break-words text-slate-700">
+        {primaryBenefit}
       </p>
-      <dl className="grid gap-3 border-y border-slate-200 py-4 text-sm">
-        <div>
-          <dt className="font-semibold text-slate-800">지원 내용</dt>
-          <dd className="mt-1 leading-6 break-words text-slate-600">
-            {policy.benefit_text || "공식 안내에서 지원 내용을 확인해 주세요."}
-          </dd>
-        </div>
+      <dl className="grid gap-3 border-y border-slate-200 py-4 text-sm sm:grid-cols-2">
         <div>
           <dt className="font-semibold text-slate-800">지원 대상</dt>
           <dd className="mt-1 leading-6 break-words text-slate-600">
             {policy.target_text || "공식 안내에서 지원 대상을 확인해 주세요."}
           </dd>
         </div>
-      </dl>
-      {recommendation && recommendation.reasons.length > 0 && (
-        <div className="border-t border-slate-200 pt-4 text-sm leading-6 text-slate-700">
-          <p className="mb-1 font-semibold text-slate-900">추천 이유</p>
-          <ul className="list-disc space-y-1 pl-5">
-            {recommendation.reasons.slice(0, 3).map((reason) => (
-              <li key={reason}>{reason}</li>
-            ))}
-          </ul>
+        <div>
+          <dt className="font-semibold text-slate-800">신청 기간</dt>
+          <dd className="mt-1 leading-6 break-words text-slate-600">
+            {policy.application_period_text ||
+              "원문 정보 없음 · 기관 확인 필요"}
+          </dd>
         </div>
+      </dl>
+      {recommendation && (
+        <details className="border-b border-slate-200 pb-4 text-sm leading-6 text-slate-700">
+          <summary className="text-primary flex min-h-11 cursor-pointer items-center font-semibold">
+            추천 이유와 확인 조건
+          </summary>
+          {recommendation.reasons.length > 0 && (
+            <ul className="mt-2 list-disc space-y-1 pl-5">
+              {recommendation.reasons.slice(0, 3).map((reason) => (
+                <li key={reason}>{reason}</li>
+              ))}
+            </ul>
+          )}
+          {detailTags.length > 0 && (
+            <p className="mt-3 text-slate-600">
+              확인할 조건: {detailTags.join(" · ")}
+            </p>
+          )}
+        </details>
       )}
       {personalized && (
-        <div className="space-y-3 border-y py-4 text-sm leading-6">
-          <p className="text-primary flex gap-2">
-            <Check className="mt-0.5 size-4 shrink-0" />
-            관심 분야 관련 원문을 찾았어요. 자격 충족을 의미하지는 않아요.
-          </p>
-          <p className="flex gap-2 text-slate-600">
-            <CircleHelp className="mt-0.5 size-4 shrink-0" />
-            추가 확인: 지역·연령·소득과 정책별 기준을 공식 안내에서 확인해
-            주세요.
-          </p>
-        </div>
-      )}
-      <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-4">
-        <p className="min-w-0 flex-1 basis-56 text-xs leading-5 text-slate-500">
-          신청 기간:{" "}
-          {policy.application_period_text || "원문 정보 없음 · 기관 확인 필요"}
+        <p className="text-primary text-sm leading-6">
+          관심 분야와 관련된 원문입니다. 자격 충족 여부는 공식 안내에서 확인해
+          주세요.
         </p>
-        <div className="flex w-full flex-wrap items-center justify-end gap-2">
+      )}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="text-xs leading-5 text-slate-500">
+          {policy.provider_name || "소관 기관 확인 필요"}
+        </p>
+        <div className="flex flex-wrap items-center justify-end gap-2">
           <PolicyBookmark id={policy.id} />
           <Button
             type="button"
@@ -212,7 +203,7 @@ export function PolicyCard({
             aria-label={`${policy.name} 상세 요건 및 신청 안내`}
             onClick={() => setDetailOpen(true)}
           >
-            상세 요건 및 신청 안내
+            상세보기
             <ArrowRight />
           </Button>
         </div>
